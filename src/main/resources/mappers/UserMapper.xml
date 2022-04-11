@@ -8,7 +8,7 @@
 
 	<insert id="userJoin">
   		INSERT INTO test
-  		VALUES ('이현종')
+  		VALUES ('김예슬')
 	</insert>
 
 </mapper>
