@@ -8,5 +8,6 @@
 </head>
 <body>
 	<a href="/user/join.do">제발</a>
+	<a href="/profile/profile.do">마이페이지</a>
 </body>
 </html>

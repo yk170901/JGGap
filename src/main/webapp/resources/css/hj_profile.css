@@ -1,1 +1,13 @@
 @charset "UTF-8";
+
+.page-main {
+    scrollbar-color: #F46119 #E2EBEC;
+    scrollbar-width: thin !important;
+    -moz-appearance: none !important;
+    display: block;
+    position: relative;
+    height: calc(100vh - 75px);
+    padding: 45px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
