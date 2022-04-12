@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+/* FOOTER */
+
+.footer_outline{
+    width: 100%;
+    margin-top: 400px;
+    margin-bottom: 300px;
+    margin-left: 8px;
+    text-align: center;
+}
+.footer_st{
+    width: 50%;
+    height: 150px;
+    /* background-color: black; */
+}
+
+a {
+text-decoration-line: none; 
+}
+
+li {
+list-style: none;
+}
+
+.f_detail>li{
+	float: left;
+    padding-right: 20px;
+    font-size: 13px;
+}
+
+.f_detail>li>a {
+    color: rgb(95, 95, 95);
+    font-weight: bolder;
+    font-family: 'Noto Sans KR', sans-serif; 
+}
+
+.footer_logo {
+    margin-left: 550px;
+}
+
+#footer_logo {
+	width: 50px;
+	height: 50px;
+}
+
+#intro{
+    float: right;
+}
+.f_detail{
+    
+    padding-top: 10px;
+    font-size: 12px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 340px;
+}
+.f_last{
+    margin-top: 0px;
+    font-size: 12px;
+    margin-left: 380px;
+}
+
+.f_a{
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+}
+.footer_outline{
+background-color: rgb(255, 255, 255);
+}
+
+.endline {
+    width: 1200px;
+    margin-left: 30px;
+}
+
+.footer_last {
+    width: 1200px; 
+    color: rgb(95, 95, 95);
+}

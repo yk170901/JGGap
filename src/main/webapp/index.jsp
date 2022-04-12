@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/user/join.do">제발</a>
+<%@ include file="header.jsp" %>
+<%@ include file="footer.jsp" %>
 </body>
 </html>
