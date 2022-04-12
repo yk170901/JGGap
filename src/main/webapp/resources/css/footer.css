@@ -11,7 +11,7 @@
     text-align: center;
 }
 .footer_st{
-    width: 50%;
+    width: 100%;
     height: 150px;
     /* background-color: black; */
 }
@@ -37,7 +37,7 @@ list-style: none;
 }
 
 .footer_logo {
-    margin-left: 550px;
+    text-align: center;
 }
 
 #footer_logo {
@@ -45,16 +45,13 @@ list-style: none;
 	height: 50px;
 }
 
-#intro{
-    float: right;
-}
 .f_detail{
     
     padding-top: 10px;
     font-size: 12px;
     margin-bottom: 0px;
     margin-top: 0px;
-    margin-left: 340px;
+    margin-left: 450px;
 }
 .f_last{
     margin-top: 0px;
@@ -71,7 +68,7 @@ list-style: none;
 background-color: rgb(255, 255, 255);
 }
 
-.endline {
+.footer_line {
     width: 1200px;
     margin-left: 30px;
 }

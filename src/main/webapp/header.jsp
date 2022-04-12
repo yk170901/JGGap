@@ -30,10 +30,10 @@
             <aside class="sidebar is-show" id="sidebar">
                 <div class="sidebar-box">
                     <ul class="uk-nav">
-                        <li class="uk-active"><a href="#"><i class=""></i><span>Home</span></a></li>
+                        <li class="uk-active"><a href="#"><i class=""></i><span>구인게시판</span></a></li>
                         <li><a href="#"><i class=""></i><span>프로필</span></a></li>
                         <li><a href="#"><i class=""></i><span>채팅방</span></a></li>
-                        <li><a href="#"><i class=""></i><span></span></a></li>
+                        <li><a href="#"><i class=""></i><span>포인트샵</span></a></li>
                     </ul>
                 </div>
             </aside>            
