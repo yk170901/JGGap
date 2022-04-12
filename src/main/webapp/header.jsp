@@ -47,5 +47,8 @@
             </aside>            
         </div>
     </div>
+    
+    <script src="/resources/js/libs.js"></script>
+    <script src="/resources/js/main.js"></script>
 </body>
 </html>
