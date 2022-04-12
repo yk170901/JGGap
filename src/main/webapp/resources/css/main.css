@@ -1,0 +1,992 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+@media only screen and (max-width: 1499px) {
+    .user-item__desc {
+        max-width: 130px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+
+    .logo-big span {
+        font-size: 66px;
+    }
+
+    .page-first-screen h1 {
+        padding-left: 74px;
+    }
+
+
+    .page-header__search .search {
+        max-width: 300px;
+    }
+
+    .widjet-game-info {
+        padding: 15px;
+    }
+
+    .user-item__desc {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 959px) {
+
+    .logo-big span {
+        font-size: 56px;
+    }
+
+    .page-first-screen h1 {
+        padding-left: 30px;
+    }
+
+
+    .page-header__menu-btn {
+        display: block;
+    }
+
+    .page-header__logo_text {
+        display: none;
+    }
+
+    .sidebar.is-show + .page-main {
+        left: 0;
+        width: 100%;
+        padding: 30px;
+        overflow: hidden;
+    }
+
+    .sidebar.is-show + .page-main::before {
+        opacity: 1;
+    }
+
+    .sidebar + .page-main {
+        padding: 30px 30px 45px;
+    }
+
+    .page-first-screen {
+        padding: 50px 15px 50px 30px;
+    }
+
+    .form-login {
+        padding: 30px 20px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+
+    .logo-big span {
+        font-size: 46px;
+    }
+
+    .page-first-screen h1 {
+        padding-left: 10px;
+    }
+
+
+    .page-wrapper .page-main {
+        padding: 20px 15px 40px;
+    }
+
+    .page-header__sidebar {
+        width: auto;
+        padding: 0 10px 0 15px;
+        border-right: 0;
+    }
+
+    .page-header__menu-btn {
+        margin-right: 10px;
+    }
+
+    .page-header__content {
+        padding: 0 15px 0 10px;
+    }
+
+    .page-header__search {
+        display: none;
+    }
+
+    .page-header__action {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+    }
+
+    .page-header__action > * {
+        margin-right: 15px;
+    }
+
+    .sidebar {
+        padding: 20px 20px 20px 0;
+    }
+
+    .sidebar.is-show + .page-main {
+        padding: 20px 15px 30px;
+    }
+
+    .page-first-screen {
+        text-align: center;
+    }
+
+    .form-login {
+        margin: auto;
+    }
+
+    .widjet__body {
+        padding: 15px;
+    }
+
+    .widjet.--profile .widjet__body {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .widjet.--profile .widjet__body .uk-button {
+        margin-top: 20px;
+    }
+
+    .widjet-game-info {
+        padding: 15px 10px;
+    }
+
+    .widjet-game-info__progress .progress-box {
+        width: 150px;
+    }
+
+    .widjet.--badges .widjet__body {
+        padding: 15px 15px 5px;
+    }
+
+    .widjet.--games .widjet__body {
+        padding: 15px 15px 5px;
+    }
+
+    .my-game-item__title {
+        margin: 0 10px;
+    }
+
+    .chat-user-list {
+        padding: 10px;
+    }
+
+    .chat-user-list__head {
+        margin-bottom: 15px;
+    }
+
+    .chat-user-list__search {
+        margin-bottom: 15px;
+    }
+
+    .chat-user-list__body {
+        margin: 0 0 0 -10px;
+    }
+
+    .user-item {
+        padding: 5px 10px;
+    }
+
+    .chat-messages-head {
+        padding-right: 12px;
+    }
+
+    .chat-messages-head a + a {
+        margin-left: 12px;
+    }
+
+    .chat-messages-body {
+        padding: 12px;
+    }
+
+    .chat-messages-footer {
+        padding: 12px;
+    }
+
+    .chat-messages-form .chat-messages-form-controls {
+        padding: 0 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-first-screen h1 {
+        font-size: calc(18px + 10.2 * ((100vw - 320px) / 1920));
+    }
+
+    .user-info__title {
+        font-size: calc(20px + 10.2 * ((100vw - 320px) / 1920));
+    }
+
+    .widjet-game__info {
+        font-size: calc(12px + 3.4 * ((100vw - 320px) / 1920));
+    }
+
+    .widjet-game__info b {
+        font-size: calc(12px + 3.4 * ((100vw - 320px) / 1920));
+    }
+
+    .widjet-game__title {
+        font-size: calc(14px + 3.4 * ((100vw - 320px) / 1920));
+    }
+
+    .user-item__name {
+        font-size: calc(14px + 3.4 * ((100vw - 320px) / 1920));
+    }
+
+    .user-item__text {
+        font-size: calc(12px + 3.4 * ((100vw - 320px) / 1920));
+    }
+
+    .messages-item.--your-message .messages-item__text {
+        font-size: calc(12px + 6.8 * ((100vw - 320px) / 1920));
+    }
+
+    .messages-item.--friend-message .messages-item__text {
+        font-size: calc(12px + 6.8 * ((100vw - 320px) / 1920));
+    }
+
+    .payment-card__number {
+        font-size: calc(20px + 3.4 * ((100vw - 320px) / 1920));
+    }
+
+    .payment-card__value {
+        font-size: calc(18px + 3.4 * ((100vw - 320px) / 1920));
+    }
+
+    .activities-item__title {
+        font-size: calc(12px + 6.8 * ((100vw - 320px) / 1920));
+    }
+
+    .activities-item__date {
+        font-size: calc(12px + 3.4 * ((100vw - 320px) / 1920));
+    }
+
+    .activities-item__price {
+        font-size: calc(12px + 3.4 * ((100vw - 320px) / 1920));
+    }
+}
+
+@media only screen and (max-width: 639px) {
+
+
+    .logo-big span {
+        font-size: 46px;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .page-first-screen h1 {
+        padding-left: 10px;
+    }
+
+
+
+    * + .uk-grid-margin,
+    .uk-grid + .uk-grid,
+    .uk-grid > .uk-grid-margin {
+        margin-top: 50px;
+    }
+
+
+    .recommend-slide__img {
+        display: none;
+    }
+
+
+    .widjet-game {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .widjet-game__media {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .widjet.--upload .widjet__body > .uk-button {
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .widjet.--upload .widjet__body {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .widjet.--wallet .widjet__body {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        height: auto;
+    }
+
+    .wallet-info {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .payment-card {
+        height: 150px;
+        padding: 20px;
+    }
+
+    .payment-card__number {
+        margin: 15px 0;
+    }
+
+    .activities-item {
+        padding: 12px;
+    }
+
+    .activities-item__logo {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 40px;
+        flex: 0 0 40px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .gallery-small {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .swipper-nav {
+        display: none;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        display: none;
+    }
+
+    .recommend-slide__box {
+        padding: 15px 15px 30px;
+    }
+
+    .game-card__more {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        margin: 0;
+    }
+
+    .game-card.--horizontal .game-card__box {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .game-card.--horizontal .game-card__media {
+        width: 100%;
+        max-width: 100%;
+        min-height: 200px;
+    }
+
+    .game-card.--horizontal .game-card__info {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .game-card.--small .game-card__media {
+        width: 100%;
+        max-width: 100%;
+        min-height: 90px;
+        max-height: none;
+    }
+
+    .favourites-game .game-card__media {
+        min-height: auto !important;
+        max-height: none !important;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .user-item__desc {
+        max-width: 160px;
+    }
+
+    .user-item__box {
+        max-width: 160px;
+    }
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 767px) {
+    .page-first-screen h1 {
+        font-size: calc(18px + 6 * (100vw / 1920));
+    }
+
+    .user-info__title {
+        font-size: calc(20px + 6 * (100vw / 1920));
+    }
+
+    .widjet-game__info {
+        font-size: calc(12px + 2 * (100vw / 1920));
+    }
+
+    .widjet-game__info b {
+        font-size: calc(12px + 2 * (100vw / 1920));
+    }
+
+    .widjet-game__title {
+        font-size: calc(14px + 2 * (100vw / 1920));
+    }
+
+    .user-item__name {
+        font-size: calc(14px + 2 * (100vw / 1920));
+    }
+
+    .user-item__text {
+        font-size: calc(12px + 2 * (100vw / 1920));
+    }
+
+    .messages-item.--your-message .messages-item__text {
+        font-size: calc(12px + 4 * (100vw / 1920));
+    }
+
+    .messages-item.--friend-message .messages-item__text {
+        font-size: calc(12px + 4 * (100vw / 1920));
+    }
+
+    .payment-card__number {
+        font-size: calc(20px + 2 * (100vw / 1920));
+    }
+
+    .payment-card__value {
+        font-size: calc(18px + 2 * (100vw / 1920));
+    }
+
+    .activities-item__title {
+        font-size: calc(12px + 4 * (100vw / 1920));
+    }
+
+    .activities-item__date {
+        font-size: calc(12px + 2 * (100vw / 1920));
+    }
+
+    .activities-item__price {
+        font-size: calc(12px + 2 * (100vw / 1920));
+    }
+}
+
+@font-face {
+    font-display: swap;
+    src: url("/resources/fonts/SegoeUI-Light.woff") format("woff"), url("/resources/fonts/SegoeUI-Light.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("/resources/fonts/SegoeUI.woff") format("woff"), url("/resources/fonts/SegoeUI.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("/resources/fonts/SegoeUI-Italic.woff") format("woff"), url("/resources/fonts/SegoeUI-Italic.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("/resources/fonts/SegoeUI-SemiBold.woff") format("woff"), url("/resources/fonts/SegoeUI-SemiBold.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("/resources/fonts/SegoeUI-Bold.woff") format("woff"), url("/resources/fonts/SegoeUI-Bold.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("/resources/fonts/SegoeUI-BoldItalic.woff") format("woff"), url("/resources/fonts/SegoeUI-BoldItalic.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: italic;
+    font-weight: 700;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("/resources/fonts/Marcellus-Regular.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    src: url("/resources/fonts/icons.eot");
+    src: url("/resources/fonts/icons.eot?#iefix") format("eot"), url("/resources/fonts/icons.woff") format("woff"), url("../fonts/icons.woff2") format("woff2"), url("../fonts/icons.ttf") format("truetype"), url("../fonts/icons.svg#icons") format("svg");
+    font-family: "icons";
+}
+
+html,
+body {
+    color: #353535;
+    font-family: "SegoeUI";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.31;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "SegoeUI";
+    font-weight: 700;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*:focus,
+*:active,
+*.nice-select.open {
+    outline: none;
+}
+
+a:focus,
+a:active,
+a.nice-select.open {
+    outline: none;
+}
+
+aside,
+nav,
+footer,
+header,
+section {
+    display: block;
+}
+
+body {
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+    font-size: inherit;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button {
+    background-color: inherit;
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a {
+    -webkit-transition: all 0.25s linear;
+    -o-transition: all 0.25s linear;
+    color: #F46119;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.31;
+    transition: all 0.25s linear;
+}
+
+a:hover {
+    color: #F46119;
+}
+
+body.dark-theme .nice-select {
+    background: #1A2634;
+}
+
+body.dark-theme .nice-select .current {
+    color: #fff;
+}
+
+body.dark-theme .nice-select .list {
+    background: #1A2634;
+}
+
+body.dark-theme .nice-select .option.selected.focus,
+body.dark-theme .nice-select .option:hover {
+    background: #323446;
+}
+
+body.dark-theme .uk-button-secondary {
+    background: #323446;
+}
+
+body.dark-theme .uk-button-primary {
+    background: #1A2634;
+    color: #fff;
+}
+
+body.dark-theme .uk-text-lead {
+    color: #fff;
+}
+
+body.dark-theme .ico_more {
+    color: #fff;
+}
+
+body.dark-theme .ico_more:hover {
+    color: #F46119;
+}
+
+body.dark-theme .uk-subnav-pill > .uk-active > a {
+    background: #fff;
+    color: #000;
+}
+
+body.dark-theme .uk-subnav-pill > * > :first-child {
+    background: #0C1826;
+    color: #fff;
+}
+
+body.dark-theme .uk-modal-dialog {
+    background: #0C1826;
+}
+
+body.dark-theme .uk-textarea {
+    background: #1A2634;
+}
+
+body.dark-theme .uk-form-custom .uk-button-default {
+    background: #1A2634;
+    color: #ACACAC;
+}
+
+body.dark-theme .uk-button-danger {
+    background: #323446;
+}
+
+body.dark-theme .uk-modal-close-default {
+    background: #323446;
+}
+
+body.dark-theme .uk-modal-close-default:hover {
+    background: #F46119;
+    color: #fff;
+}
+
+body.dark-theme .swiper-button-prev::before,
+body.dark-theme .swiper-button-next::before {
+    color: #0C1826;
+}
+
+body.dark-theme .swiper-button-prev::after,
+body.dark-theme .swiper-button-next::after {
+    background: #fff;
+}
+
+body.dark-theme .form-login {
+    -webkit-box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
+    background: #0C1826;
+    box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
+    color: #ACACAC;
+}
+
+body.dark-theme .form-login .uk-heading-line > :after,
+body.dark-theme .form-login .uk-heading-line > :before {
+    border-bottom: 1px solid #1A2634;
+}
+
+body.dark-theme .form-login .uk-hr,
+body.dark-theme .form-login hr {
+    border-top: 1px solid #1A2634;
+}
+
+body.dark-theme .form-login .uk-input {
+    border: 1px solid #1A2634;
+    background: #1A2634;
+}
+
+body.dark-theme .page-wrapper {
+    background: #040615;
+}
+
+body.dark-theme .page-header__inner {
+    background: #0C1826;
+}
+
+body.dark-theme .page-header__sidebar {
+    border-right: 1px solid #030410;
+}
+
+body.dark-theme .page-header__menu-btn .menu-btn {
+    color: #fff;
+}
+
+body.dark-theme .search__input {
+    background: #1A2634;
+}
+
+body.dark-theme .search__btn button {
+    color: #fff;
+}
+
+body.dark-theme .action-btn {
+    color: #fff;
+}
+
+body.dark-theme .sidebar {
+    border-right: 1px solid #030410;
+    background: #0C1826;
+}
+
+body.dark-theme .sidebar-box .uk-nav li a {
+    color: #fff;
+}
+
+body.dark-theme .sidebar-box .uk-nav li a [class*='ico_'] {
+    color: #DADADA;
+}
+
+body.dark-theme .sidebar-box .uk-nav li.uk-active a {
+    color: #F46119;
+}
+
+body.dark-theme .sidebar-box .uk-nav li.uk-active a [class*='ico_'] {
+    color: #F46119;
+}
+
+body.dark-theme .recommend-slide {
+    -webkit-box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
+    background: #0C1826;
+    box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
+}
+
+body.dark-theme .game-card__box {
+    -webkit-box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
+    background: #0C1826;
+    box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
+}
+
+body.dark-theme .game-card__title,
+body.dark-theme .game-card__genre,
+body.dark-theme .game-card__rating,
+body.dark-theme .game-card__price,
+body.dark-theme .game-card__platform {
+    color: #fff;
+}
+
+body.dark-theme .widjet__body {
+    -webkit-box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
+    background: #0C1826;
+    box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
+}
+
+body.dark-theme .widjet .widjet-game__title {
+    color: #fff;
+}
+
+body.dark-theme .widjet .widjet-game__record,
+body.dark-theme .widjet .widjet-game__last-played {
+    color: #A1A1A1;
+}
+
+body.dark-theme .widjet .widjet-game-info {
+    background: #1A2634;
+}
+
+body.dark-theme .widjet .widjet-game-info__title {
+    color: #fff;
+}
+
+body.dark-theme .widjet .widjet-game-info__progress .progress-box {
+    background: #0C1826;
+}
+
+body.dark-theme .widjet .widjet-game-info__acheivement ul li:last-child {
+    background: #0C1826;
+    color: #fff;
+}
+
+body.dark-theme .user-info__title {
+    color: #fff;
+}
+
+body.dark-theme .user-info__text {
+    color: #A1A1A1;
+}
+
+body.dark-theme .my-game-item {
+    background: #0C1826;
+}
+
+body.dark-theme .my-game-item__title,
+body.dark-theme .my-game-item__more a {
+    color: #fff;
+}
+
+body.dark-theme .chat-user-list,
+body.dark-theme .chat-messages-box {
+    background: #0C1826;
+}
+
+body.dark-theme .user-item {
+    background: #0C1826;
+}
+
+body.dark-theme .user-item__name {
+    color: #fff;
+}
+
+body.dark-theme .user-item__text {
+    color: #A1A1A1;
+}
+
+body.dark-theme .messages-item.--your-message .messages-item__text {
+    background: #1A2634;
+    color: #fff;
+}
+
+body.dark-theme .chat-messages-form .chat-messages-form-controls {
+    background: #1A2634;
+}
+
+body.dark-theme .chat-messages-form .chat-messages-form-controls .chat-messages-input {
+    color: #fff;
+}
+
+body.dark-theme .chat-messages-form .chat-messages-form-btn button,
+body.dark-theme .chat-messages-form .chat-messages-form-btns button {
+    color: #fff;
+}
+
+body.dark-theme .friend-requests-item__name {
+    color: #fff;
+}
+
+body.dark-theme .friend-requests-item__action button.reject {
+    background: #1A2634;
+    color: #fff;
+}
+
+body.dark-theme .activities-item {
+    background: #1A2634;
+}
+
+body.dark-theme .activities-item__title {
+    color: #fff;
+}
+
+body.dark-theme .activities-item__date {
+    color: #A1A1A1;
+}
+
+body.dark-theme .gallery,
+body.dark-theme .game-profile-card,
+body.dark-theme .game-profile-price {
+    background: #0C1826;
+    color: #A1A1A1;
+}
+
+body.dark-theme .gallery__list,
+body.dark-theme .game-profile-card__list,
+body.dark-theme .game-profile-price__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body.dark-theme .gallery__list li > *:first-child,
+body.dark-theme .game-profile-card__list li > *:first-child,
+body.dark-theme .game-profile-price__list li > *:first-child {
+    color: #A1A1A1;
+}
+
+body.dark-theme .gallery__type,
+body.dark-theme .game-profile-card__type,
+body.dark-theme .game-profile-price__type {
+    color: #A1A1A1;
+}
+
+body.dark-theme .gallery__type li span,
+body.dark-theme .game-profile-card__type li span,
+body.dark-theme .game-profile-price__type li span {
+    background: #1A2634;
+    color: #ACACAC;
+}
+
+body.dark-theme .gallery__value,
+body.dark-theme .game-profile-card__value,
+body.dark-theme .game-profile-price__value {
+    color: #fff;
+}
+
+body.dark-theme .stream-item {
+    background: #0C1826;
+}
+
+body.dark-theme .stream-item__title {
+    color: #fff;
+}
+
+body.dark-theme .stream-item__nicname,
+body.dark-theme .stream-item__time {
+    color: #ACACAC;
+}
+
+body.dark-theme #modal-help h4 {
+    color: #fff;
+}
+
+body.dark-theme #modal-help ul li {
+    color: #fff;
+}
