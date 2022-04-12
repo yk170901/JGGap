@@ -493,7 +493,7 @@
 
 @font-face {
     font-display: swap;
-    src: url("../fonts/SegoeUI-Light.woff") format("woff"), url("../fonts/SegoeUI-Light.woff2") format("woff2");
+    src: url("/resources/fonts/SegoeUI-Light.woff") format("woff"), url("/resources/fonts/SegoeUI-Light.woff2") format("woff2");
     font-family: "SegoeUI";
     font-style: normal;
     font-weight: 300;
@@ -501,7 +501,7 @@
 
 @font-face {
     font-display: swap;
-    src: url("../fonts/SegoeUI.woff") format("woff"), url("../fonts/SegoeUI.woff2") format("woff2");
+    src: url("/resources/fonts/SegoeUI.woff") format("woff"), url("/resources/fonts/SegoeUI.woff2") format("woff2");
     font-family: "SegoeUI";
     font-style: normal;
     font-weight: 400;
@@ -509,7 +509,7 @@
 
 @font-face {
     font-display: swap;
-    src: url("../fonts/SegoeUI-Italic.woff") format("woff"), url("../fonts/SegoeUI-Italic.woff2") format("woff2");
+    src: url("/resources/fonts/SegoeUI-Italic.woff") format("woff"), url("/resources/fonts/SegoeUI-Italic.woff2") format("woff2");
     font-family: "SegoeUI";
     font-style: italic;
     font-weight: 400;
@@ -517,7 +517,7 @@
 
 @font-face {
     font-display: swap;
-    src: url("../fonts/SegoeUI-SemiBold.woff") format("woff"), url("../fonts/SegoeUI-SemiBold.woff2") format("woff2");
+    src: url("/resources/fonts/SegoeUI-SemiBold.woff") format("woff"), url("/resources/fonts/SegoeUI-SemiBold.woff2") format("woff2");
     font-family: "SegoeUI";
     font-style: normal;
     font-weight: 600;
@@ -525,7 +525,7 @@
 
 @font-face {
     font-display: swap;
-    src: url("../fonts/SegoeUI-Bold.woff") format("woff"), url("../fonts/SegoeUI-Bold.woff2") format("woff2");
+    src: url("/resources/fonts/SegoeUI-Bold.woff") format("woff"), url("/resources/fonts/SegoeUI-Bold.woff2") format("woff2");
     font-family: "SegoeUI";
     font-style: normal;
     font-weight: 700;
@@ -533,7 +533,7 @@
 
 @font-face {
     font-display: swap;
-    src: url("../fonts/SegoeUI-BoldItalic.woff") format("woff"), url("../fonts/SegoeUI-BoldItalic.woff2") format("woff2");
+    src: url("/resources/fonts/SegoeUI-BoldItalic.woff") format("woff"), url("/resources/fonts/SegoeUI-BoldItalic.woff2") format("woff2");
     font-family: "SegoeUI";
     font-style: italic;
     font-weight: 700;
@@ -541,21 +541,16 @@
 
 @font-face {
     font-display: swap;
-    src: url("../fonts/Marcellus-Regular.woff2") format("woff2");
+    src: url("/resources/fonts/Marcellus-Regular.woff2") format("woff2");
     font-family: "SegoeUI";
     font-style: italic;
     font-weight: 400;
 }
 
-[class^="ico_"],
-[class*=" ico_"] {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    align-items: center;
-    line-height: 1em;
+@font-face {
+    src: url("/resources/fonts/icons.eot");
+    src: url("/resources/fonts/icons.eot?#iefix") format("eot"), url("/resources/fonts/icons.woff") format("woff"), url("../fonts/icons.woff2") format("woff2"), url("../fonts/icons.ttf") format("truetype"), url("../fonts/icons.svg#icons") format("svg");
+    font-family: "icons";
 }
 
 html,
@@ -576,12 +571,6 @@ h5,
 h6 {
     font-family: "SegoeUI";
     font-weight: 700;
-}
-
-@font-face {
-    src: url("../fonts/icons.eot");
-    src: url("../fonts/icons.eot?#iefix") format("eot"), url("../fonts/icons.woff") format("woff"), url("../fonts/icons.woff2") format("woff2"), url("../fonts/icons.ttf") format("truetype"), url("../fonts/icons.svg#icons") format("svg");
-    font-family: "icons";
 }
 
 *,
