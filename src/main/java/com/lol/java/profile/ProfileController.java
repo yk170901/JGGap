@@ -12,4 +12,8 @@ public class ProfileController {
 	@Autowired
 	private ProfileService profileService;
 
+	
+	@RequestMapping("/profile.do")
+	public void profile() {
+	}
 }
