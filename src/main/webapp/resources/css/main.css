@@ -1451,8 +1451,6 @@ a:hover {
 
 .page-header {
     display: block;
-    z-index: 3;
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;

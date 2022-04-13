@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="/resources/css/main.css" type="text/css">
 	<link rel="stylesheet" href="/resources/css/libs.min.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
 </head>
 <body>
