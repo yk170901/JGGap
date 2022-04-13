@@ -11,7 +11,7 @@
     <div class="footer_outline">
         <div class="footer_st">
             <div class="footer_logo">
-                <a><img src="/resources/imgs/logo.png" id="footer_logo"></a>
+                <a href="/board_list/board_list.do"><img src="/resources/imgs/logo.png" id="footer_logo"></a>
             </div>
           
             <div>
