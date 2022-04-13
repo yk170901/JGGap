@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class Board_detail_VO {
 
-	
+	private String name;
 	
 }
