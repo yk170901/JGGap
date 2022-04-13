@@ -1527,13 +1527,13 @@ a:hover {
 .page-header__logo {
     display: block;
     position: relative;
-    margin-left: -4px;
+    margin: 0 auto;
 }
 
-
-.page-header__logo img {
-    height: auto;
-    margin-right: 12px;
+#header_logo{
+	width: 50px; 
+	height: 50px;
+	height: auto;
 }
 
 .page-header__logo_text {
