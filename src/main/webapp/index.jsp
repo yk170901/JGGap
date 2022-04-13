@@ -9,5 +9,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <%@ include file="/WEB-INF/views/basic/footer.jsp" %>
+<a href="/board_detail/yk_detail.do">바로 디테일 페이지로</a>
+
 </body>
 </html>

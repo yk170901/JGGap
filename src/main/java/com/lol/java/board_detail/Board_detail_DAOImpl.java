@@ -9,5 +9,10 @@ public class Board_detail_DAOImpl implements Board_detail_DAO{
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
+
+	@Override
+	public Board_detail_VO selectPost(Board_detail_VO vo) {
+		return mybatis.selectOne("selectPost", vo);
+	}
 	
 }

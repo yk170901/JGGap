@@ -12,4 +12,12 @@ public class Board_detail_Controller {
 	@Autowired
 	private Board_detail_Service board_detail_Service;
 
+	@RequestMapping("/yk_detail.do")
+	public void getPost() {
+		Board_detail_VO b_vo = new Board_detail_VO();
+		
+		b_vo= board_detail_Service.getPost(null);
+		System.out.println(b_vo.getName());
+	}
+
 }

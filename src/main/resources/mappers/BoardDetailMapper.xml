@@ -6,4 +6,10 @@
   
   <mapper namespace="Board_detail_DAO">
   
+  	<select id="selectPost" parameterType="board_detail" resultType="board_detail">
+  		SELECT name
+  			FROM test
+  			WHERE name = '조찬호'
+  	</select>
+  
   </mapper>

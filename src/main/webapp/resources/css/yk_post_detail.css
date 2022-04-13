@@ -1,1 +1,62 @@
 @charset "UTF-8";
+
+
+
+.post-header{
+	padding-bottom:10px;
+}
+
+.post-header-top{
+	color:#f46119;
+}
+
+.post-wrap{
+	margin:auto;
+	width: 80%;
+}
+
+input{
+	width: 60%;
+	height: 30px;
+	padding: 5px;
+}
+
+.category-wrap, .category-title{
+	padding-left:20px;
+	padding-right:10px;
+	color: #f46119;
+	font-weight: bolder;
+}
+
+.textarea-wrap{
+	padding: (40px, 0);
+}
+
+textarea{
+	width: 100%;
+	height: 400px;
+}
+
+.button-wrap{
+	text-align: right;
+}
+
+button{
+	padding:10px;
+	width: 80px;
+}
+
+button:first-child{
+	background-color: blue;
+	color: white;
+}
+
+
+
+input,
+.category-wrap,
+.category-title,
+.category-map,
+.category-game{
+	display:inline-block;
+}
