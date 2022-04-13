@@ -17,7 +17,6 @@ public class Board_detail_Controller {
 		Board_detail_VO b_vo = new Board_detail_VO();
 		
 		b_vo= board_detail_Service.getPost(null);
-		System.out.println(b_vo.getName());
 	}
 
 }
