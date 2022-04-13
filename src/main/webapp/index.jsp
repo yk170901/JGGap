@@ -7,11 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="/WEB-INF/views/basic/header.jsp" %>
 <hr>
 <a href="/board_detail/writing_page.do">바로 디테일 페이지로</a>
 <hr>
-<%@ include file="/WEB-INF/views/basic/header.jsp" %>
 <%@ include file="/WEB-INF/views/basic/footer.jsp" %>
-
 </body>
 </html>

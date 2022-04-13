@@ -8,7 +8,7 @@
     <link href="../resources/css/post_detail.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/../header.jsp" %>
+	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
 	
 	<hr><br>
 
