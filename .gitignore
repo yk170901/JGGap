@@ -1,5 +1,5 @@
-target\
-META-INF\
+target\*
+META-INF\*
 .springBeans
 
 # Compiled class file
