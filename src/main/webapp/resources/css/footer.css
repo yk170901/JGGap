@@ -3,10 +3,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
 /* FOOTER */
 
+.footer_body *{
+	margin: 0 auto;
+	text-align: center;
+}
+
 .footer_outline{
     width: 100%;
-    margin-left: 8px;
-    min-width: 1600px;
 }
 .footer_st{
     width: 100%;
@@ -34,10 +37,6 @@ list-style: none;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.footer_logo {
-    text-align: center;
-}
-
 #footer_logo {
 	width: 50px;
 	height: 50px;
@@ -46,15 +45,9 @@ list-style: none;
 .f_detail{
     padding-top: 10px;
     font-size: 12px;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    margin-left: 450px;
-    margin-left: 440px;
 }
 .f_last{
-    margin-top: 0px;
     font-size: 12px;
-    margin-left: 380px;
 }
 
 .f_a{

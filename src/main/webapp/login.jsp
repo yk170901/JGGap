@@ -76,7 +76,7 @@ a {
 					</div>
 				</div>
 				<div class="form-login repair hidden" id="modal"
-					style="margin-left: 100px; height: 670px;" />
+					style="margin-left: 100px; height: 670px;">
 				<div class="modal hidden" id="modal">
 					<div style="display: flex; justify-content: flex-end;">
 						<button class="modal-close" id="jsCloseBtn">X</button>
@@ -112,6 +112,7 @@ a {
 					</div>
 					</form>
 				</div>
+			</div>
 			</div>
 		</main>
 	</div>
