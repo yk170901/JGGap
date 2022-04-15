@@ -7,7 +7,7 @@
 <mapper namespace="user1">
 
 	<insert id="userJoin">
-	insert into test values('조찬호')
+	insert into USER_INFO values('박치영')
 	</insert>
 
 </mapper>
