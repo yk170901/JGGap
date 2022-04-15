@@ -77,7 +77,7 @@ a {
 					</div>
 				</div>
 				<div class="form-login repair hidden" id="modal"
-					style="margin-left: 0px; height: 670px;" />
+					style="margin-left: 100px; height: 670px;" />
 				<div class="modal hidden" id="modal">
 					<div style="display: flex; justify-content: flex-end;">
 						<button class="modal-close" id="jsCloseBtn">X</button>
@@ -85,6 +85,7 @@ a {
 					<div class="uk-heading-line uk-text-center">
 						<span>회원가입</span>
 					</div>
+					<form method="post" action="join.do">
 					<div class="uk-margin">
 						<input class="uk-input" type="text" placeholder="Id">
 					</div>
@@ -100,22 +101,17 @@ a {
 					<div class="uk-margin">
 						<input class="uk-input" type="text" placeholder="연락처">
 					</div>
-					<from action="#">
 					<ul>
-						<li> <input type="checkbox" /> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.
-						</li>
-						<li>
-						<li> <input type="checkbox" /> 이용약관 동의(필수)</li>
-						</li>
-						<li>
-						<li> <input type="checkbox" /> 개인정보 수집 및 이용에 대한 안내(필수)</li>
-						</li>
+						<li> <input type="checkbox" name="chkAll" id="chk" class="chkAll"/> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
+						<li> <input type="checkbox" name="chk"/> 이용약관 동의(필수)</li>
+						<li> <input type="checkbox" name="chk"/> 개인정보 수집 및 이용에 대한 안내(필수)</li>
 					</ul>
-					</from>
 					<div class="uk-margin">
-						<a class="uk-button uk-button-danger uk-width-1-1" id="sign_up"
-							href="#">가입하기</a>
+						<button type="submit"
+						class="uk-button uk-button-danger uk-width-1-1"
+						id="submit">가입하기</button>
 					</div>
+					</form>
 				</div>
 			</div>
 		</main>
