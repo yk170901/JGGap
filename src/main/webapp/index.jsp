@@ -13,5 +13,4 @@
 <a href="/profile/profile.do">마이 페이지</a>
 <hr>
 <%@ include file="/WEB-INF/views/basic/footer.jsp" %>
-</body>
 </html>

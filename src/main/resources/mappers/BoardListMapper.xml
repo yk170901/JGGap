@@ -7,7 +7,7 @@
   <mapper namespace="Board_list_DAO">
   	
   	<select id="boardList" resultType="board_list">
-  		SELECT post_no FROM board
+  		SELECT post_no, user_no, board_title, board_date FROM board ORDER BY post_no DESC
   	</select>
   	
   </mapper>
