@@ -11,6 +11,9 @@ target/
 target\*
 \target
 target\
+.settings
+.factorypath
+.classpath
 .springBeans
 
 # Compiled class file
