@@ -10,22 +10,18 @@ body {
     line-height: 1.31;
 }
 
-body {
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
 .page-main {
     scrollbar-color: #F46119 #E2EBEC;
     scrollbar-width: thin !important;
     -moz-appearance: none !important;
-    display: block;
+    display: inline-block;
     position: relative;
     height: calc(100vh - 75px);
     padding: 45px;
     overflow-x: hidden;
     overflow-y: auto;
+    width: 1250px;
+    margin-left: 300px;
 }
 
 .page-body {
@@ -33,32 +29,25 @@ body {
 }
 
     
-.profile-body {
-		padding: 15px;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        -webkit-box-align: start;
-        -ms-flex-align: start;
-        flex-direction: column;
-        align-items: flex-start;
+.profile-body,
+.badges-body {
+	padding: 20px 30px;
+    border-radius: 10px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(224, 224 ,224);   
+        
     }
 
 .profile-info {
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
 .profile-info-icon {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 110px;
     flex: 0 0 110px;
     width: 110px;
     height: 110px;
@@ -94,9 +83,14 @@ body {
     line-height: 1.36;
 }
 
+.profile-button-body {
+	width: 120px;
+}
+
     
 .profile-button {
-	margin-top: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	font-family: 'Marcellus', serif;
     display: inline-flex;
     align-items: center;
@@ -108,12 +102,10 @@ body {
     font-weight: 400;
     text-transform: none;
     transition: all 0.25s linear;
-    text-decoration: none;   
-}
-
-.profile-button {
+    text-decoration: none; 
     background: #F46119;
     color: #fff;
+    width: 110px;
 }
 
 .profile-button:hover,
@@ -122,6 +114,41 @@ body {
     background: #d04b0a;
 }
 .profile-button-text {
-    margin-left: 10px!important
+    text-align: center;
+}
+
+.badges-head {
+	margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.badges-list li {
+    margin: 0 10px 10px 0;
+    width: 92px;
+}
+
+.badges-list li:last-child {
+    margin-right: 0;
+}
+
+.badges {
+	width: 85px;
+	height: 85px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
     
