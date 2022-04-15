@@ -8,6 +8,7 @@ body {
     font-style: normal;
     font-weight: normal;
     line-height: 1.31;
+    height: 3000px;
 }
 
 .page-main {
@@ -16,7 +17,6 @@ body {
     -moz-appearance: none !important;
     display: inline-block;
     position: relative;
-    height: calc(100vh - 75px);
     padding: 45px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -30,16 +30,23 @@ body {
 
     
 .profile-body,
-.badges-body {
+.badges-body,
+.board-list-body {
 	padding: 20px 30px;
     border-radius: 10px;
-    margin-top: 15px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background-color: rgb(224, 224 ,224);   
-        
+    justify-content: space-between;     
     }
+    
+.profile-body,
+.badges-body {
+	background-color: rgb(224, 224 ,224);
+	
+}
+    
+.board-list-body
 
 .profile-info {
     display: flex;
@@ -117,13 +124,19 @@ body {
     text-align: center;
 }
 
-.badges-head {
+.badges-head,
+.boardlist-head {
 	margin-top: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
     border-bottom: 1px solid black;
+}
+
+.badges-title,
+.boardlist-title {
+	margin-bottom: 10px;
+	font-weight: bold;
 }
 
 .badges-list {
@@ -150,5 +163,14 @@ body {
 	height: 85px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.board-list tr{
+	height: 40px;
+	text-align: center;
+}
+
+.board-list tr:first-child{
+	background-color: rgb(224,224,224);
 }
     

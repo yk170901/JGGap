@@ -16,7 +16,7 @@
 	    <div class="page-header__inner">
 	        <div class="page-header__sidebar">
 	            <div class="page-header__menu-btn"><button class="menu-btn ico_menu is-active"></button></div>
-	            <div class="page-header__logo"><a href="#"><img src="/resources/imgs/logo.png" alt="logo" id="header_logo"></a></div>
+	            <div class="page-header__logo"><a href="/"><img src="/resources/imgs/logo.png" alt="logo" id="header_logo"></a></div>
 	        </div>
 	        <div class="page-header__content">
 	            <div class="page-header__search">
@@ -24,7 +24,7 @@
 	                    <div class="search__input"><i class="ico_search"></i><input type="search" name="search" placeholder="Search"></div>
 	                </div>
 	            </div>
-	            <div class="page-header__action"><a class="profile" href="/profile/profile.do"><img src="assets/img/profile.png" alt="profile"></a></div>
+	            <div class="page-header__action"><a class="profile" href="/profile/profile.do"><img src="/resources/imgs/profile_icon/5.png" alt="profile"></a></div>
 	        </div>
 	    </div>
 	</header>
