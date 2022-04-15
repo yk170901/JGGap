@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+
+body {
+    color: #353535;
+    font-family: "SegoeUI";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.31;
+}
+
+.page-main {
+    scrollbar-color: #F46119 #E2EBEC;
+    scrollbar-width: thin !important;
+    -moz-appearance: none !important;
+    display: inline-block;
+    position: relative;
+    height: calc(100vh - 75px);
+    padding: 45px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 1250px;
+    margin-left: 300px;
+}
+
+.page-body {
+    width: 100%;
+}
+
+    
+.profile-body,
+.badges-body {
+	padding: 20px 30px;
+    border-radius: 10px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(224, 224 ,224);   
+        
+    }
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.profile-info-icon {
+    flex: 0 0 110px;
+    width: 110px;
+    height: 110px;
+    margin-right: 20px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile-icon {
+	width: 120px;
+	height: 120px;
+}
+
+.profile-user {
+    display: block;
+    position: relative;
+}
+
+.profile-user-title {
+    color: #353535;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.35;
+}
+
+.profile-user-text {
+    margin-top: 6px;
+    color: #353535;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.36;
+}
+
+.profile-button-body {
+	width: 120px;
+}
+
+    
+.profile-button {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-family: 'Marcellus', serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: none;
+    transition: all 0.25s linear;
+    text-decoration: none; 
+    background: #F46119;
+    color: #fff;
+    width: 110px;
+}
+
+.profile-button:hover,
+.profile-button:focus,
+.profile-button:active {
+    background: #d04b0a;
+}
+.profile-button-text {
+    text-align: center;
+}
+
+.badges-head {
+	margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.badges-list li {
+    margin: 0 10px 10px 0;
+    width: 92px;
+}
+
+.badges-list li:last-child {
+    margin-right: 0;
+}
+
+.badges {
+	width: 85px;
+	height: 85px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+    
