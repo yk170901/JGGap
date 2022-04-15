@@ -1,5 +1,16 @@
-target\*
 META-INF\*
+/target/
+*/target/*
+*/target
+target/*
+/target
+target/
+\target\
+*\target\*
+*\target
+target\*
+\target
+target\
 .springBeans
 
 # Compiled class file
