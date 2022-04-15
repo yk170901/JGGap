@@ -14,7 +14,6 @@ public class Board_list_DAOImpl implements Board_list_DAO{
 
 	@Override
 	public List<Board_list_VO> boardList() {
-		// TODO Auto-generated method stub
 		return mybatis.selectList("Board_list_DAO.boardList");
 	}
 	

@@ -44,8 +44,7 @@ a {
 		</video>
 
 		<main class="page-first-screen">
-			<div
-				class="uk-grid uk-grid-small uk-child-width-1-2@s uk-flex-middle uk-width-1-1"
+			<div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-flex-middle uk-width-1-1"
 				data-uk-grid>
 				<div>
 					<div class="form-login">

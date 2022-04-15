@@ -1,7 +1,5 @@
 package com.lol.java.board_list;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +15,7 @@ public class Board_list_Controller {
 	
 	@RequestMapping(value="/board_list.do")
 	public String boardList(Model model) {
-		List<Board_list_VO> list = board_list_Service.boardList();
-		model.addAttribute("list", list);
-		
+		model.addAttribute("list", board_list_Service.boardList());
 		return "/board_list/board_list";
 	}
 
