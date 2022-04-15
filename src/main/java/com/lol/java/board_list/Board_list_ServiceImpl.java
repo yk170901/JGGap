@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 public class Board_list_ServiceImpl implements Board_list_Service{
 
 	@Autowired
-	Board_list_DAO board_list_DAO;
+	private Board_list_DAO board_list_DAO;
 
 	@Override
-	public List<Board_list_VO> boardList() {
+	public List<Board_list_VO> boardList(Board_list_VO vo) {
 		// TODO Auto-generated method stub
-		return board_list_DAO.boardList();
+		return board_list_DAO.boardList(vo);
 	}
 	
 }

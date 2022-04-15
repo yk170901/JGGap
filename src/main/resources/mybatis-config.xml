@@ -16,5 +16,6 @@
 		<typeAlias alias="profile" type="com.lol.java.profile.ProfileVO"/>
 		<typeAlias alias="shop" type="com.lol.java.shop.ShopVO"/>
 		<typeAlias alias="user" type="com.lol.java.user.UserVO"/>
+		
  	</typeAliases> 
  </configuration> 

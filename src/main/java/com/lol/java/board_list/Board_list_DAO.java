@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Board_list_DAO {
 
-	List<Board_list_VO> boardList();
+	List<Board_list_VO> boardList(Board_list_VO vo);
 
 }
