@@ -24,7 +24,7 @@
 	                    <div class="search__input"><i class="ico_search"></i><input type="search" name="search" placeholder="Search"></div>
 	                </div>
 	            </div>
-	            <div class="page-header__action"><a class="profile" href="#!"><img src="assets/img/profile.png" alt="profile"></a></div>
+	            <div class="page-header__action"><a class="profile" href="/profile/profile.do"><img src="assets/img/profile.png" alt="profile"></a></div>
 	        </div>
 	    </div>
 	</header>
@@ -37,6 +37,8 @@
 
                 <li><a href="/shop/shop.do"><i class="ico_store"></i><span>포인트샵</span></a></li>
             </ul>
+            <div class="uk-nav">
+            </div>
         </div>
     </aside>  
     
