@@ -1489,7 +1489,8 @@ a:hover {
 .page-header__menu-btn {
     margin-right: 30px;
     margin-bottom: -10px;
-    display: none;
+    display: block;
+    margin-right: 10px;
 }
 
 .page-header__menu-btn .menu-btn {
@@ -1507,6 +1508,10 @@ a:hover {
 .page-header__menu-btn .menu-btn:active,
 .page-header__menu-btn .menu-btn.nice-select.open {
     color: #F46119;
+}
+
+.menu-btn:click #sidebar{
+	left: 50px;
 }
 
 .logo-big img {
@@ -4539,11 +4544,6 @@ body.dark-theme #modal-help ul li {
         padding-left: 30px;
     }
 
-
-    .page-header__menu-btn {
-        display: block;
-    }
-
     .page-header__logo_text {
         display: none;
     }
@@ -4592,10 +4592,6 @@ body.dark-theme #modal-help ul li {
         width: auto;
         padding: 0 10px 0 15px;
         border-right: 0;
-    }
-
-    .page-header__menu-btn {
-        margin-right: 10px;
     }
 
     .page-header__content {

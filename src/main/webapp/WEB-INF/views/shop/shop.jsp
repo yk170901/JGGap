@@ -624,8 +624,6 @@
                     </div>
                 </div>
             </main>
-        </div>
-    </div>
     <div class="page-modals">
         <div class="uk-flex-top" id="modal-report" data-uk-modal>
             <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical"><button class="uk-modal-close-default" type="button" data-uk-close></button>
