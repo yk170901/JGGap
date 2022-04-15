@@ -81,38 +81,6 @@
 				<td><c:out value="${vo.board_date}"/>${vo.board_date}</td>
 			</tr>
 		</c:forEach>
-			
-		
-<%-- 					<c:choose> --%>
-
-<%-- 				<c:when test="${empty list }" > --%>
-
-<!-- 					<tr><td colspan="5" align="center">데이터가 없습니다.</td></tr> -->
-
-<%-- 				</c:when>  --%>
-
-<%-- 				<c:when test="${!empty list}"> --%>
-
-<%-- 					<c:forEach var="list" items="${list}"> --%>
-
-<!-- 						<tr> -->
-
-<%-- 							<td><c:out value="2"/></td> --%>
-
-<%-- 							<td><c:out value="${list.board_title}"/></td> --%>
-
-<%-- 							<td><c:out value="${list.user_no}"/></td> --%>
-
-<%-- 							<td><c:out value="${list.board_date}"/></td> --%>
-
-<!-- 						</tr> -->
-
-<%-- 					</c:forEach> --%>
-
-<%-- 				</c:when> --%>
-
-<%-- 			</c:choose> --%>
-		
 		
 		</table>
 			

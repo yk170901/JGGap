@@ -44,8 +44,7 @@ a {
 		</video>
 
 		<main class="page-first-screen">
-			<div
-				class="uk-grid uk-grid-small uk-child-width-1-2@s uk-flex-middle uk-width-1-1"
+			<div class="uk-grid uk-grid-small uk-child-width-1-2@s uk-flex-middle uk-width-1-1"
 				data-uk-grid>
 				<div>
 					<div class="form-login">
@@ -77,7 +76,7 @@ a {
 					</div>
 				</div>
 				<div class="form-login repair hidden" id="modal"
-					style="margin-left: 0px; height: 670px;" />
+					style="margin-left: 0px; height: 670px;">
 				<div class="modal hidden" id="modal">
 					<div style="display: flex; justify-content: flex-end;">
 						<button class="modal-close" id="jsCloseBtn">X</button>
@@ -100,21 +99,22 @@ a {
 					<div class="uk-margin">
 						<input class="uk-input" type="text" placeholder="연락처">
 					</div>
-					<from action="#">
+<!-- 					<form action="#"> -->
 					<ul>
 						<li> <input type="checkbox" /> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.
 						</li>
-						<li>
-						<li> <input type="checkbox" /> 이용약관 동의(필수)</li>
+						
+						<li> <input type="checkbox" /> 이용약관 동의(필수)
 						</li>
-						<li>
-						<li> <input type="checkbox" /> 개인정보 수집 및 이용에 대한 안내(필수)</li>
+						
+						<li> <input type="checkbox" /> 개인정보 수집 및 이용에 대한 안내(필수)
 						</li>
 					</ul>
-					</from>
-					<div class="uk-margin">
-						<a class="uk-button uk-button-danger uk-width-1-1" id="sign_up"
-							href="#">가입하기</a>
+<!-- 					</form> -->
+						<div class="uk-margin">
+							<a class="uk-button uk-button-danger uk-width-1-1" id="sign_up"
+								href="#">가입하기</a>
+						</div>
 					</div>
 				</div>
 			</div>
