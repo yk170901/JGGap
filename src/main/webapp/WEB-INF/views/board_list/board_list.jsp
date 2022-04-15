@@ -72,30 +72,48 @@
 				<th width="450px">작성자</th>
 				<th width="160px">등록일</th>
 			</tr>
+		<!-- 사용자 -->
+		<c:forEach items="${list}" var="vo">
+			<tr>
+				<td><c:out value="${vo.post_no}"/>${vo.post_no}</td>
+				<td><c:out value="${vo.board_title}"/>${vo.board_title}</td>
+				<td><c:out value="${vo.user_no}"/>${vo.user_no}</td>
+				<td><c:out value="${vo.board_date}"/>${vo.board_date}</td>
+			</tr>
+		</c:forEach>
 			
-			<!-- 관리자 -->
-<%-- 			<c:forEach items="${list}" var="vo"> --%>
-<!-- 				<tr> -->
-<%-- 					<td><c:set var="nick" value="${vo.u_nick }"></c:set></td> --%>
-<%-- 					<td align="left"><a href="getUser_Board.do?t_pk=${vo.t_pk }" --%>
-<%-- 						class="title"> ${vo.t_title}</a></td> --%>
-<%-- 					<td>${vo.u_nick}</td> --%>
-<%-- 					<td>${vo.t_date}</td> --%>
-<%-- 					<td>${vo.t_watch}</td> --%>
-<!-- 				</tr> -->
-<%-- 			</c:forEach> --%>
-			
-				<!-- 사용자 -->
-			<c:forEach items="${list }" var="vo">
-				<tr>
-					<td>${vo.post_no}</td>
-<%-- 					<td align="left"><a href="getUser_Board.do?t_pk=${vo.t_pk }" --%>
-<%-- 						class="title"> ${vo.t_title}</a></td> --%>
-					<td>${vo.board_title}</td>
-					<td>${vo.board_title}</td>
-					<td>${vo.board_date}</td>
-				</tr>
-			</c:forEach>
+		
+<%-- 					<c:choose> --%>
+
+<%-- 				<c:when test="${empty list }" > --%>
+
+<!-- 					<tr><td colspan="5" align="center">데이터가 없습니다.</td></tr> -->
+
+<%-- 				</c:when>  --%>
+
+<%-- 				<c:when test="${!empty list}"> --%>
+
+<%-- 					<c:forEach var="list" items="${list}"> --%>
+
+<!-- 						<tr> -->
+
+<%-- 							<td><c:out value="2"/></td> --%>
+
+<%-- 							<td><c:out value="${list.board_title}"/></td> --%>
+
+<%-- 							<td><c:out value="${list.user_no}"/></td> --%>
+
+<%-- 							<td><c:out value="${list.board_date}"/></td> --%>
+
+<!-- 						</tr> -->
+
+<%-- 					</c:forEach> --%>
+
+<%-- 				</c:when> --%>
+
+<%-- 			</c:choose> --%>
+		
+		
 		</table>
 			
 	</div>
