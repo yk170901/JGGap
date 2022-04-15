@@ -75,10 +75,10 @@
 		<!-- 사용자 -->
 		<c:forEach items="${list}" var="vo">
 			<tr>
-				<td><c:out value="${vo.post_no}"/>${vo.post_no}</td>
-				<td><c:out value="${vo.board_title}"/>${vo.board_title}</td>
-				<td><c:out value="${vo.user_no}"/>${vo.user_no}</td>
-				<td><c:out value="${vo.board_date}"/>${vo.board_date}</td>
+				<td><c:out value="${vo.post_no}"/></td>
+				<td><c:out value="${vo.board_title}"/></td>
+				<td><c:out value="${vo.user_no}"/></td>
+				<td><c:out value="${vo.board_date}"/></td>
 			</tr>
 		</c:forEach>
 		

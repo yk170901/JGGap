@@ -16,9 +16,8 @@ public class Board_list_Controller {
 	private Board_list_Service board_list_Service;
 	
 	@RequestMapping(value="/board_list.do")
-	public String boardList(Model model, Board_list_VO vo) {
-		model.addAttribute("list", board_list_Service.boardList(vo));
-//		System.out.println("컨트롤러" + board_list_Service.boardList(vo).size());
+	public String boardList(Model model) {
+		model.addAttribute("list", board_list_Service.boardList());
 		return "/board_list/board_list";
 	}
 
