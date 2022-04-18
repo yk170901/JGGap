@@ -11,10 +11,10 @@ public class UserDAOImpl implements UserDAO{
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public void insert() {
-		System.out.println("입력시작");
-		mybatis.insert("user1.userJoin");
-		System.out.println("입력완료");
+	public int sign_up(UserVO vo) {
+		System.out.println(vo);
+		System.out.println("입력");
+		return mybatis.insert("userMapper.sign_up",vo);
 	}
 	
 }

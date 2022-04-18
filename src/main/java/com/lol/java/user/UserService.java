@@ -1,7 +1,9 @@
 package com.lol.java.user;
 
+import java.lang.reflect.Member;
+
 public interface UserService {
 
-	public void insert();
+	public int sign_up(UserVO vo);
 	
 }
