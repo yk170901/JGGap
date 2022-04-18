@@ -109,21 +109,21 @@ a {
 						
 						<!-- 회원가입 폼 -->
 						<div>
-							<form method="post" action="join.do">
+							<form method="get" action="user/join.do">
 								<div class="uk-margin">
-									<input class="uk-input" type="text" placeholder="Id">
+									<input class="uk-input" name="user_id" type="text" placeholder="Id" required>
 								</div>
 								<div class="uk-margin">
-									<input class="uk-input" type="password" placeholder="Password">
+									<input class="uk-input" name="user_pwd" type="password" placeholder="Password" required>
 								</div>
 								<div class="uk-margin">
-									<input class="uk-input" type="password" placeholder="Password">
+									<input class="uk-input" name="user_pwd_chk" type="password" placeholder="Password" required>
 								</div>
 								<div class="uk-margin">
-									<input class="uk-input" type="text" placeholder="Riot-name">
+									<input class="uk-input" name="summoner_id" type="text" placeholder="Riot-name" required>
 								</div>
 								<div class="uk-margin">
-									<input class="uk-input" type="text" placeholder="연락처">
+									<input class="uk-input" name="phone_number" type="text" placeholder="연락처" required>
 								</div>
 								<div>
 									<ul>
@@ -136,7 +136,7 @@ a {
 								<div class="uk-margin">
 									<button type="submit"
 									class="uk-button uk-button-danger uk-width-1-1"
-									id="submit">가입하기</button>
+									id="submit" disabled="disabled">가입하기</button>
 								</div>
 							</form>
 						</div>

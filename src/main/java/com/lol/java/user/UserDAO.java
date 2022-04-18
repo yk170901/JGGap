@@ -2,6 +2,6 @@ package com.lol.java.user;
 
 public interface UserDAO {
 
-	public void insert();
+	public int sign_up(UserVO vo);
 	
 }
