@@ -17,7 +17,7 @@
 	    <div class="page-header__inner">
 	        <div class="page-header__sidebar">
 	            <div class="page-header__menu-btn"><button class="menu-btn ico_menu is-active"></button></div>
-	            <div class="page-header__logo"><a href="/"><img src="/resources/imgs/logo.png" alt="logo" id="header_logo"></a></div>
+	            <div class="page-header__logo"><a href="/board_list/board_list.do"><img src="/resources/imgs/logo.png" alt="logo" id="header_logo"></a></div>
 	        </div>
 	        <div class="page-header__content">
 	            <div class="page-header__search">
@@ -27,12 +27,13 @@
 	            </div>
 	            <div class="page-header__action">
 	            	<a class="profile" href="/profile/profile.do"><img src="/resources/imgs/profile_icon/5.png" alt="profile"></a>
-	            	<ul id="profile_dropdown">
-	            		<li class="profile_dropdown_list"><a href="#">내 전적</a></li>
-	            		<li class="profile_dropdown_list"><a href="#">회원정보</a></li>
-	            		<li class="profile_dropdown_list"><a href="#">고객센터</a></li>
-	            		<li class="profile_dropdown_list"><a href="#">로그아웃</a></li>
-	            	</ul>
+	            	<div id="profile_dropdown">
+	            		<div class="profile_point"><span style="color: white;">사용가능 포인트<br/>5000 points</span></div>
+	            		<a href="#" class="profile_dropdown_list" style="color: white;">내 전적</a>
+	            		<a href="#" class="profile_dropdown_list" style="color: white;">회원정보</a>
+	            		<a href="#" class="profile_dropdown_list" style="color: white;">고객센터</a>
+	            		<a href="#" class="profile_dropdown_list" style="color: white;">로그아웃</a>
+	            	</div>
 	            </div>
 	        </div>
 	    </div>
