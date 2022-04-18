@@ -11,21 +11,25 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/basic/header.jsp" %>
-<div class="total_div">
+<div class="total_div" style="background-color: white;">
 	<div class=map_game_gategory>
 	
 		<form action="#" method="get">
 			<!-- 맵 분류 -->
 			<div class="map">
-				<div>
+				<div class="main_hr">
 					<span class="map_category">맵 분류</span>
 				</div>
-				<hr>
-				<div>
-					<input type="checkbox"/>소환사 협곡
-					&emsp;&ensp;
-					<input type="checkbox"/>칼바람 나락
-				</div>	
+				<div class="new">
+				    <div class="form-group">
+				      <input type="checkbox" id="hupgok">
+				      <label for="hupgok">소환사 협곡</label>
+				      &ensp;
+				      <input type="checkbox" id="kalbaram">
+				      <label for="kalbaram">칼바람 나락</label>
+				    </div>
+				</div>
+
 			</div>
 			
 			
@@ -33,16 +37,18 @@
 			
 			<!-- 게임 분류 -->
 			<div class="game">
-				<div>
+				<div class="main_hr">
 					<span class="game_category">게임 분류</span>
 				</div>
-				<hr>
-				<div>
-					<input type="checkbox"/>일반
-					&ensp;
-					<input type="checkbox"/>솔로 랭크
-					&ensp;
-					<input type="checkbox"/>자유 랭크
+				<div class="form-group">
+				      <input type="checkbox" id="mode_normal">
+				      <label for="mode_normal">일반</label>
+				      &ensp;
+				      <input type="checkbox" id="mode_solorank">
+				      <label for="mode_solorank">솔로 랭크</label>
+				      &ensp;
+				      <input type="checkbox" id="mode_freerank">
+				      <label for="mode_freerank">자유 랭크</label>
 				</div>
 			</div>
 			
@@ -64,12 +70,12 @@
 	</div>
 	
 	<!-- 테이블 조회 기능 -->
-	<div class="table_list">
-		<table border="1" class="table_all">
+	<div class="table_list" style="text-align: center;">
+		<table class="table_all">
 			<tr>
 				<th width="100px">No</th>
-				<th width="450px">제목</th>
-				<th width="450px">작성자</th>
+				<th width="500px">제목</th>
+				<th width="400px">작성자</th>
 				<th width="160px">등록일</th>
 			</tr>
 		<!-- 사용자 -->
@@ -79,6 +85,7 @@
 				<td><c:out value="${vo.board_title}"/></td>
 				<td><c:out value="${vo.user_no}"/></td>
 				<td><c:out value="${vo.board_date}"/></td>
+				
 			</tr>
 		</c:forEach>
 		
