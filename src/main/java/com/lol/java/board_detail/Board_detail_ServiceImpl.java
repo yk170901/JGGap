@@ -10,8 +10,8 @@ public class Board_detail_ServiceImpl implements Board_detail_Service{
 	Board_detail_DAO board_detail_DAO;
 
 	@Override
-	public Board_detail_VO getPost(Board_detail_VO vo) {
-		return board_detail_DAO.selectPost(vo);
+	public void insertPost(Board_detail_VO vo) {
+		board_detail_DAO.insertPost(vo);
 	}
 	
 }

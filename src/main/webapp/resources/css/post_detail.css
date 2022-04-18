@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-
 .post-header{
 	padding-bottom:10px;
 }
@@ -13,16 +11,17 @@
 .post-wrap{
 	margin:auto;
 	width: 80%;
+	padding-left: 200px; 
 }
 
-input{
-	width: 60%;
+input#title{
+	width: 50%;
 	height: 30px;
 	padding: 5px;
 }
 
-.category-wrap, .category-title{
-	padding-left:20px;
+.category-title{
+	padding-left:10px;
 	padding-right:10px;
 	color: #f46119;
 	font-weight: bolder;
@@ -38,25 +37,39 @@ textarea{
 }
 
 .button-wrap{
+	padding-top: 10px;
 	text-align: right;
 }
 
-button{
-	padding:10px;
-	width: 80px;
-}
-
-button:first-child{
-	background-color: blue;
+.detail-big-btn{
+	padding:8px;
+	width: 70px;
+	font-size:15px;
+	border: 0;
+	outline: 0;
+	background-color: #f46119;
 	color: white;
+	font-weight: bold;
 }
 
-
+.detail-small-btn{
+	padding:5px;
+	font-size: 13px;
+	width: 50px;
+	border: 0;
+	outline: 0;
+	background-color: #f46119;
+	color: white;
+	font-weight: bold;
+}
 
 input,
 .category-wrap,
 .category-title,
+.category-content,
 .category-map,
-.category-game{
+.category-game,
+.user-info,
+.post-info{
 	display:inline-block;
 }
