@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
+  
+  <mapper namespace="Board_detail_DAO">
+  
+  	<select id="selectPost" parameterType="board_detail" resultType="board_detail">
+  		SELECT name
+  			FROM test
+  			WHERE name = '조찬호'
+  	</select>
+  
+  </mapper>
