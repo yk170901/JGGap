@@ -24,7 +24,15 @@
 	                    <div class="search__input"><i class="ico_search"></i><input type="search" name="search" placeholder="Search"></div>
 	                </div>
 	            </div>
-	            <div class="page-header__action"><a class="profile" href="/profile/profile.do"><img src="/resources/imgs/profile_icon/5.png" alt="profile"></a></div>
+	            <div class="page-header__action">
+	            	<a class="profile" href="/profile/profile.do"><img src="/resources/imgs/profile_icon/5.png" alt="profile"></a>
+	            	<ul id="profile_dropdown">
+	            		<li class="profile_dropdown_list"></li>
+	            		<li class="profile_dropdown_list"></li>
+	            		<li class="profile_dropdown_list"></li>
+	            		<li class="profile_dropdown_list"></li>
+	            	</ul>
+	            </div>
 	        </div>
 	    </div>
 	</header>
@@ -36,6 +44,8 @@
                 <li><a href="/chat/chat.do"><i class="ico_chats"></i><span>채팅</span></a></li>
 
                 <li><a href="/shop/shop.do"><i class="ico_store"></i><span>포인트샵</span></a></li>
+                
+                <li><a href="/record/record.do"><i class="ico_profile"></i><span>전적검색</span></a></li>
             </ul>
             <div class="uk-nav">
             </div>

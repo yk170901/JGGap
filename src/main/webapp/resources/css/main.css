@@ -5031,3 +5031,8 @@ body.dark-theme #modal-help ul li {
     font-family: 'Marcellus', serif;
     font-weight: 600 !important;
 }
+
+.profile_dropdown_list{
+	list-style-type: none;
+	display: none;
+}
