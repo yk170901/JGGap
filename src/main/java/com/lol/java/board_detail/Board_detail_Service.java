@@ -4,5 +4,4 @@ public interface Board_detail_Service {
 
 	public void insertPost(Board_detail_VO vo);
 	
-	public void getUserInfo(int user_no);
 }
