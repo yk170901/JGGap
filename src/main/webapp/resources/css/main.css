@@ -1510,10 +1510,6 @@ a:hover {
     color: #F46119;
 }
 
-.menu-btn:click #sidebar{
-	left: 50px;
-}
-
 .logo-big img {
     max-width: 65px;
 }
@@ -1640,15 +1636,15 @@ a:hover {
     -webkit-box-align: center;
     -ms-flex-align: center;
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 32px;
+    -ms-flex: 0 0 40px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    flex: 0 0 32px;
+    flex: 0 0 40px;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
 }
 
 .uk-modal-dialog {
@@ -5032,7 +5028,15 @@ body.dark-theme #modal-help ul li {
     font-weight: 600 !important;
 }
 
-.profile_dropdown_list{
-	list-style-type: none;
-	display: none;
+.profile_dropdown_list {
+	width:100px;
+	display:none;
+	position: absolute;
+	font-size:14px;
+	background: yellow;
+	list-style: none;
+}
+
+.profile>img:hover > .profile_dropdown_list {
+	display:block;
 }

@@ -26,7 +26,7 @@
             <br>
             <hr class="footer_line"></hr>
             <div class="footer_div">
-                <p class="f_last">조장 : 김예슬  &nbsp;  | &nbsp;  기술지원 : 박동성 &nbsp;   |   &nbsp;  재정지원 : 조찬호 &nbsp;   |   &nbsp;  정보지원 : 이현종 &nbsp;   |   &nbsp;  애플지원 : 박치영 &nbsp;   |   &nbsp;  사업자등록번호 : 101-054-0110531</p>
+                <p class="f_last">조장 : 김예슬  &nbsp;  | &nbsp;  외부지원 : 박동성 &nbsp;   |   &nbsp;  재정지원 : 조찬호 &nbsp;   |   &nbsp;  기술지원 : 이현종 &nbsp;   |   &nbsp;  애플지원 : 박치영 &nbsp;   |   &nbsp;  사업자등록번호 : 101-054-0110531</p>
             </div>
         </div>
     </div>
