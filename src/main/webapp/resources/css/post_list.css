@@ -1,16 +1,80 @@
 @charset "UTF-8";
 
+	/* checkbox */
+	*, *:before, *:after {
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  box-sizing: border-box;
+	  margin: 0;
+	  padding: 0;
+	}
+	
+	
+	.form-group {
+	  display: block;
+	  margin-bottom: 10px;
+	}
+	
+	.form-group input {
+	  padding: 0;
+	  height: initial;
+	  width: initial;
+	  margin-bottom: 0;
+	  display: none;
+	  cursor: pointer;
+	}
+	
+	.form-group label {
+	  position: relative;
+	  cursor: pointer;
+	}
+	
+	.form-group label:before {
+	  content:'';
+	  -webkit-appearance: none;
+	  background-color: transparent;
+	  border: 2px solid black;
+	  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+	  padding: 6px;
+	  display: inline-block;
+	  position: relative;
+	  vertical-align: middle;
+	  cursor: pointer;
+	  margin-right: 5px;
+	  margin-top: -3px;
+	}
+	
+	.form-group input:checked + label:after {
+	  content: '';
+	  display: block;
+	  position: absolute;
+	  top: 4px;
+	  left: 6px;
+	  width: 6px;
+	  height: 11px;
+	  border: solid black;
+	  border-width: 0 2px 2px 0;
+	  transform: rotate(45deg);
+	}
+
+
+
 	/* 셀렉트 조회 부분*/
 	.total_div {
-		width: 1200px;
+		width: 1520px;
 		height: 1000px;
 	}
 	
-	hr {
-		background-color: black;
-		height: 2px;
+/* 	hr { */
+/* 		background-color: black; */
+/* 		height: 2px; */
+/* 	} */
+	.main_hr {
+		border-bottom: 2px solid black;
+		padding-bottom: 6px;
+		margin-bottom: 17px;
 	}
-
+	
 	.map_game_gategory {
 		width: 1028px;
 		display: inline-block;
@@ -18,18 +82,24 @@
 		top: 20%;
 		left: 19%;
 		padding: 30px;
-		background-color: rgb(230,224,224);
+		
+		background-color: white;
+		border: 1px solid #F97B3B; 
+		border-radius: 14px;
+		box-shadow: inset 0 0 5px #F98B54;
 	}
 
 	.map {
 		width: 260px;
 		float: left;
 		margin-right: 45px;
+		padding-top: 10px;
 	}
 	
 	.game {
 		width: 280px;
 		float: left;
+		padding-top: 10px;
 	}
 	
 	.map_category,.game_category {
@@ -37,14 +107,14 @@
 	}
 	
 	.search {
-		margin-top: 15px;
+		margin-top: 20px;
 		margin-left: 30px;
 		float: left;
 		display: table;
 	}
 	
 	.radius {
-		border-radius: 8px;
+		border-radius: 5px;
 	}
 	
 	#text_ra {
@@ -53,9 +123,10 @@
 	
 	#search_value {
 		width: 70px;
-		height: 36px;
+		height: 31px;
 		border-width: 2px;
 		border-color: black;
+		margin-right: 2px;
 	}
 	
 	#submit {
@@ -69,9 +140,38 @@
 	
 	/* 게시판 조회 부분*/
 	.table_list {
-		width: 1000px;
+		width: 1028px;
 		display: inline-block;
 		position: absolute;
 		top: 44%;
-		left: 20%;
+		left: 19%;
+		background-color: white;
 	}
+	
+	td{
+		padding: 7px;
+	}
+	
+	th{
+		border-top: 2px solid rgb(230,224,224);
+		border-bottom: 2px solid rgb(230,224,224);
+		padding: 7px;
+	}
+	
+	table {
+		border: 1px solid rgb(230,224,224);
+		border-left: none;	
+		border-right: none;
+		border-top: none;
+		border-collapse: collapse;
+	}
+	
+	
+	
+	
+	
+
+
+
+	
+	

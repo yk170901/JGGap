@@ -2,5 +2,7 @@ package com.lol.java.board_detail;
 
 public interface Board_detail_Service {
 
-	public Board_detail_VO getPost(Board_detail_VO vo);
+	public void insertPost(Board_detail_VO vo);
+	
+	public void getUserInfo(int user_no);
 }

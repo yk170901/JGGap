@@ -30,7 +30,7 @@
         },
         E = C.document,
         c = {
-            type: !0,
+            type: !0,a
             src: !0,
             nonce: !0,
             noModule: !0
