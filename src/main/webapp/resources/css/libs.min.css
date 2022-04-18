@@ -6690,9 +6690,9 @@ iframe.uk-cover {
     flex: 1
 }
 
-/* .uk-margin { */
-/*     margin-bottom: 20px */
-/* } */
+.uk-margin {
+    margin-bottom: 20px
+}
 
 *+.uk-margin,
 .uk-margin-top {
