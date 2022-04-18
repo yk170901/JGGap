@@ -1,16 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>마이 페이지</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/resources/css/profile.css" type="text/css">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
 	<main class="page-main">
 		<div class="page-body">
+			<!-- 프로필 정보 -->
 			<div class="profile-body">
 				<div class="profile-info">
 					<div class="profile-info-icon">
@@ -22,10 +27,11 @@
 					</div>
 				</div>
 				<div class="profile-button-body">
-					<a class="profile-button" href="#!"><span class="profile-button-text">비밀번호 변경</span></a>
+					<a class="profile-button" href="#!" onclick="chg_password()" ><span class="profile-button-text">비밀번호 변경</span></a>
 					<a class="profile-button" href="#!"><span class="profile-button-text">전적 보기</span></a>
 				</div>
 			</div>
+			<!-- 뱃지 목록 -->
 			<div class="badges-box">
 				<div class="badges-head">
 					<h2 class="badges-title">활동 뱃지</h2>
@@ -35,9 +41,17 @@
                     	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
                     	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
                     	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
+                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
+                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
+                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
+                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
+                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
+                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
+                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
                     </ul>
 				</div>
 			</div>
+			<!-- 게시글 목록 -->
 			<div class="board-box">
 				<div class="boardlist-head">
 					<h2 class="boardlist-title">게시글</h2>
@@ -103,11 +117,62 @@
 					</table>
 				</div>
 			</div>
+			<!-- 모달 -->
+			<div class="modal" id="Modal" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+
+						<div class="modal-header">
+							<h3 class="modal-title" id="change_password">비밀번호 변경</h3>
+							<button type="button" class="modal-close"
+								onclick="chg_password_cancle()">
+								<span>X</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form class="password_form" action="#" method="post">
+								<div class="form-group">
+									<label>현재 비밀번호</label> <input type="password" name="password"
+										class="form-control" required />
+								</div>
+								<div class="form-group">
+									<label>새 비밀번호 <small>(필수)</small></label> <input
+										type="password" name="new-password" class="form-control"
+										required />
+								</div>
+								<div class="form-group">
+									<label>새 비밀번호 확인 <small>(필수)</small></label> <input
+										type="password" name="new-password2" class="form-control"
+										required />
+								</div>
+								<div class="form-group" style="text-align: right">
+									<input class="primary" type="submit" value="비밀번호 변경" />
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-secondary" type="button"
+								onclick="chg_password_cancle()">취소</button>
+						</div>
+
+
+
+					</div>
+					<div class="modal_layer"></div>
+				</div>
+			</div>
+
+
+
+
 		</div>
 
 
 
 	</main>
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
+	<script type="text/javascript" src="/resources/js/profile.js"></script>
+
+
 </body>
 </html>
