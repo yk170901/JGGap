@@ -11,7 +11,7 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="format-detection" content="telephone=no">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/resources/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/resources/css/libs.min.css">
     <link rel="stylesheet" href="/resources/css/main.css">
 </head>
