@@ -1510,10 +1510,6 @@ a:hover {
     color: #F46119;
 }
 
-.menu-btn:click #sidebar{
-	left: 50px;
-}
-
 .logo-big img {
     max-width: 65px;
 }
@@ -1581,6 +1577,7 @@ a:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: flex-end;
 }
@@ -1640,15 +1637,15 @@ a:hover {
     -webkit-box-align: center;
     -ms-flex-align: center;
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 32px;
+    -ms-flex: 0 0 40px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    flex: 0 0 32px;
+    flex: 0 0 40px;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
 }
 
 .uk-modal-dialog {
@@ -5032,7 +5029,41 @@ body.dark-theme #modal-help ul li {
     font-weight: 600 !important;
 }
 
-.profile_dropdown_list{
-	list-style-type: none;
+#profile_dropdown {
+	width:160px;
 	display: none;
+	position: absolute;
+	font-size:14px;
+	top: 41px;
+	right: -33px;
+	z-index: 1;
+	background: gray;
+	padding-left: 0;
+}
+
+.profile_point {
+	background: black;
+}
+
+.profile_point span {
+	font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.31;
+}
+
+.profile_dropdown_list, .profile_point {
+	list-style: none;
+	text-align: center;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	display: block;
+}
+
+.page-header__action:hover > #profile_dropdown {
+	display:block;
+}
+
+.profile_dropdown_list:hover {
+	background: #F46119;
 }

@@ -10,8 +10,9 @@ public class UserServiceImpl implements UserService{
 	UserDAO userDAO;
 
 	@Override
-	public void insert() {		
-		userDAO.insert();
+	public int sign_up(UserVO vo) {	
+		System.out.println("1");
+		return userDAO.sign_up(vo);
 	}
 	
 }

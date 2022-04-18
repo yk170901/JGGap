@@ -8,15 +8,16 @@
 	<link rel="stylesheet" href="/resources/css/main.css" type="text/css">
 	<link rel="stylesheet" href="/resources/css/libs.min.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">    
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
 	<header class="page-header">
 	    <div class="page-header__inner">
 	        <div class="page-header__sidebar">
 	            <div class="page-header__menu-btn"><button class="menu-btn ico_menu is-active"></button></div>
-	            <div class="page-header__logo"><a href="/"><img src="/resources/imgs/logo.png" alt="logo" id="header_logo"></a></div>
+	            <div class="page-header__logo"><a href="/board_list/board_list.do"><img src="/resources/imgs/logo.png" alt="logo" id="header_logo"></a></div>
 	        </div>
 	        <div class="page-header__content">
 	            <div class="page-header__search">
@@ -26,17 +27,18 @@
 	            </div>
 	            <div class="page-header__action">
 	            	<a class="profile" href="/profile/profile.do"><img src="/resources/imgs/profile_icon/5.png" alt="profile"></a>
-	            	<ul id="profile_dropdown">
-	            		<li class="profile_dropdown_list"></li>
-	            		<li class="profile_dropdown_list"></li>
-	            		<li class="profile_dropdown_list"></li>
-	            		<li class="profile_dropdown_list"></li>
-	            	</ul>
+	            	<div id="profile_dropdown">
+	            		<div class="profile_point"><span style="color: white;">사용가능 포인트<br/>5000 points</span></div>
+	            		<a href="#" class="profile_dropdown_list" style="color: white;">내 전적</a>
+	            		<a href="#" class="profile_dropdown_list" style="color: white;">회원정보</a>
+	            		<a href="#" class="profile_dropdown_list" style="color: white;">고객센터</a>
+	            		<a href="#" class="profile_dropdown_list" style="color: white;">로그아웃</a>
+	            	</div>
 	            </div>
 	        </div>
 	    </div>
 	</header>
-    <aside class="sidebar is-show" id="sidebar">
+    <aside class="sidebar is-show">
         <div class="sidebar-box">
             <ul class="uk-nav">
                 <li class="uk-active"><a href="/board_list/board_list.do"><i class="ico_home"></i><span>구인게시판</span></a></li>
@@ -52,7 +54,7 @@
         </div>
     </aside>  
     
-    <script src="/resources/js/libs.js"></script>
+    <script src="/resources/js/lib.js"></script>
     <script src="/resources/js/main.js"></script>
 </body>
 </html>
