@@ -32,6 +32,21 @@ ul>li {
 a {
 	text-decoration: none;
 }
+
+.important {
+ 	height: 600px;
+/*  	margin-right: 7px; */
+ 	margin-left: 100px;
+	padding: 30px 30px 30px 30px;
+	-webkit-box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 25px;
+    background: #FFFFFF;
+    box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
+/*     opacity: 0.85; */
+}
+
 </style>
 </head>
 
@@ -75,44 +90,59 @@ a {
 						</div>
 					</div>
 				</div>
-				<div class="form-login repair hidden" id="modal"
-					style="margin-left: 100px; height: 670px;">
-				<div class="modal hidden" id="modal">
-					<div style="display: flex; justify-content: flex-end;">
-						<button class="modal-close" id="jsCloseBtn">X</button>
+				
+<!-- 				<div class="form-login repair hidden" id="modal" -->
+<!-- 					style="margin-left: 100px; height: 670px;"> -->
+					
+					<!-- 회원가입 modal 적용 -->
+					<div class="modal hidden important" id="modal">
+						
+						<!-- 'X' 닫기창 -->
+						<div style="display: flex; justify-content: flex-end;">
+							<button class="modal-close" id="jsCloseBtn">X</button>
+						</div>
+						
+						<!--  회원가입 제목 -->
+						<div class="uk-heading-line uk-text-center">
+							<span>회원가입</span>
+						</div>
+						
+						<!-- 회원가입 폼 -->
+						<div>
+							<form method="post" action="join.do">
+								<div class="uk-margin">
+									<input class="uk-input" type="text" placeholder="Id">
+								</div>
+								<div class="uk-margin">
+									<input class="uk-input" type="password" placeholder="Password">
+								</div>
+								<div class="uk-margin">
+									<input class="uk-input" type="password" placeholder="Password">
+								</div>
+								<div class="uk-margin">
+									<input class="uk-input" type="text" placeholder="Riot-name">
+								</div>
+								<div class="uk-margin">
+									<input class="uk-input" type="text" placeholder="연락처">
+								</div>
+								<div>
+									<ul>
+										<li> <input type="checkbox" name="chkAll" id="chk" class="chkAll"/> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
+										<li> <input type="checkbox" name="chk"/> 이용약관 동의(필수)</li>
+										<li> <input type="checkbox" name="chk"/> 개인정보 수집 및 이용에 대한 안내(필수)</li>
+									</ul>
+								</div>
+								
+								<div class="uk-margin">
+									<button type="submit"
+									class="uk-button uk-button-danger uk-width-1-1"
+									id="submit">가입하기</button>
+								</div>
+							</form>
+						</div>
+						
 					</div>
-					<div class="uk-heading-line uk-text-center">
-						<span>회원가입</span>
-					</div>
-					<form method="post" action="join.do">
-					<div class="uk-margin">
-						<input class="uk-input" type="text" placeholder="Id">
-					</div>
-					<div class="uk-margin">
-						<input class="uk-input" type="password" placeholder="Password">
-					</div>
-					<div class="uk-margin">
-						<input class="uk-input" type="password" placeholder="Password">
-					</div>
-					<div class="uk-margin">
-						<input class="uk-input" type="text" placeholder="Riot-name">
-					</div>
-					<div class="uk-margin">
-						<input class="uk-input" type="text" placeholder="연락처">
-					</div>
-					<ul>
-						<li> <input type="checkbox" name="chkAll" id="chk" class="chkAll"/> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
-						<li> <input type="checkbox" name="chk"/> 이용약관 동의(필수)</li>
-						<li> <input type="checkbox" name="chk"/> 개인정보 수집 및 이용에 대한 안내(필수)</li>
-					</ul>
-					<div class="uk-margin">
-						<button type="submit"
-						class="uk-button uk-button-danger uk-width-1-1"
-						id="submit">가입하기</button>
-					</div>
-					</form>
-				</div>
-			</div>
+<!-- 				</div> -->
 			</div>
 		</main>
 	</div>
