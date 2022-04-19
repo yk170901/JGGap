@@ -13,5 +13,5 @@ public class Board_detail_ServiceImpl implements Board_detail_Service{
 	public void insertPost(Board_detail_VO vo) {
 		board_detail_DAO.insertPost(vo);
 	}
-	
+
 }

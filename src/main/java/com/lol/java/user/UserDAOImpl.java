@@ -16,5 +16,11 @@ public class UserDAOImpl implements UserDAO{
 		System.out.println("입력");
 		return mybatis.insert("userMapper.sign_up",vo);
 	}
+
+	@Override
+	public UserVO idCheck_Login(UserVO vo) {
+		
+		return mybatis.selectOne("userMapper.idCheck_Login",vo);
+	}
 	
 }
