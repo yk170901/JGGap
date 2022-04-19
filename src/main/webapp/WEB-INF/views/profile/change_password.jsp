@@ -13,7 +13,7 @@
 		role="dialog">
 		<div class="modal-content chgpwd-modal-content">
 			<div class="modal-header chgpwd-modal-header">
-				<h3 class="modal-title chgpwd-modal-title">비밀번호 변경</h3>
+				<h4 class="modal-title chgpwd-modal-title">비밀번호 변경</h4>
 				<button type="button" class="modal-close chgpwd-modal-close"
 					onclick="chg_password_cancle()">
 					<span>X</span>
