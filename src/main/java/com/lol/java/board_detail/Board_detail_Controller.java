@@ -27,5 +27,4 @@ public class Board_detail_Controller {
 //		return "redirect:/detail_page.do";
 		return "redirect:/board_list/board_list.do";
 	}
-
 }
