@@ -1,5 +1,54 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI-Light.woff") format("woff"), url("../fonts/SegoeUI-Light.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI.woff") format("woff"), url("../fonts/SegoeUI.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI-Italic.woff") format("woff"), url("../fonts/SegoeUI-Italic.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI-SemiBold.woff") format("woff"), url("../fonts/SegoeUI-SemiBold.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI-Bold.woff") format("woff"), url("../fonts/SegoeUI-Bold.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI-BoldItalic.woff") format("woff"), url("../fonts/SegoeUI-BoldItalic.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: italic;
+    font-weight: 700;
+}
 
 body {
     color: #353535;
@@ -60,12 +109,37 @@ body {
     margin-right: 20px;
     overflow: hidden;
     border-radius: 50%;
+    position: relative;
 }
 
 .profile-icon {
 	width: 120px;
 	height: 120px;
 }
+
+.profile-icon-text {
+	font-size: 25px;
+	position: absolute;
+	text-align: center;
+	width: 110px;
+	height: 110px;
+	top: 50%;
+	left: 50%;
+	padding-top: 40px;
+	transform: translate(-50%, -50%);
+	color:white;
+	opacity: 0;
+}
+
+.profile-icon-text:hover,
+.profile-icon-text:focus,
+.profile-icon-text:active {
+	cursor: pointer;
+	opacity: 0.8;
+	background: gray;
+	
+}
+
 
 .profile-user {
     display: block;
@@ -173,61 +247,34 @@ body {
 	background-color: rgb(224,224,224);
 }
 
-/* 모달 부분 */
 
-/* .modal-dialog { */
-/*     position: relative; */
-/*     box-sizing: border-box; */
-/*     margin: 0 auto; */
-/*     width: 600px; */
-/*     max-width: calc(100% - .01px)!important; */
-/*     background: #fff; */
-/*     opacity: 0; */
-/*     transform: translateY(-100px); */
-/*     transition: .3s linear; */
-/*     transition-property: opacity, transform; */
-/*     display: flow-root; */
-/*     padding: 30px; */
-/*     margin-top: auto!important; */
-/*     margin-bottom: auto!important; */
-/* } */
-
-/* .password_form { */
-/*     display: block; */
-/*     margin-bottom: 5px */
-/* } */
-.modal-dialog {
-	position:relative;
-  	width:100%;
-  	height:100%;
-  	z-index:4;
-}
-
-.modal-title {
-	display: inline;
-	margin:10px;
-	width:300px;
-	
-}
-
-.modal-header {
-	display:block;
-}
-
-.modal-header button,
-.modal-footer button {
-	display:inline-block;
-  	width:100px;
-  	margin-left:calc(100% - 100px - 10px);
-}
-
-.modal_content {
-	width:300px;
- 	margin:100px auto;
-  	padding:20px 10px;
+/* 비밀번호 변경 모달 부분 */
+.chgpwd-modal-container {
+	width: 450px;
+	height: 480px;
+ 	margin: auto;
   	background:#fff;
-  	border-radius: 1rem;
+  	border-radius: 25px;
+  	border: none;
 }
+
+.chgpwd-modal-content {
+	padding: 20px;
+	border-radius: 25px;
+  	border: none;
+}
+
+.chgpwd-modal-header {
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.chgpwd-modal-header button:hover,
+.chgicon-modal-header button:hover {
+	background-color: rgb(224,224,224);
+}
+
 
 .modal_layer {
 	position:fixed;
@@ -239,8 +286,120 @@ body {
   	z-index:-1;
 }
 
-.modal-close {
+.chgpwd-modal-close {
 	border-radius: 1rem;
 	border: 0px;
-	font-size: 2rem;
+	font-size: 1rem;
 }
+
+.form-box {
+	border: none;
+	border-radius: 15px;
+	background-color: rgb(224, 224 ,224);
+	width: 100%;
+	height: 45px;
+	padding: 0px 20px;	
+}
+
+.form-box:focus {
+	border:none;
+}
+
+.password_form div:last-child {
+	border-top: 1px solid rgb(224,224,224);
+}
+
+.form-submit {
+	margin-top: 15px;
+	border: 1px solid rgb(224,224,224);
+	border-radius: 15px;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 45px;	
+	background: #F46119;
+	color : white;
+}
+
+.form-submit:hover {
+	background: #d04b0a;
+	color: rgb(15,110,205);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* 프로필 아이콘 변경 부분 모달 */
+
+.chgicon-modal-container {
+	width: 600px;
+	height: 650px;
+ 	margin: auto;
+  	background:#fff;
+  	border-radius: 25px;
+  	border: none;
+}
+
+.chgicon-modal-content {
+	padding: 20px;
+	border-radius: 25px;
+  	border: none;
+}
+
+.chgicon-modal-header {
+	display:block;
+	text-align: center;
+}
+
+.chgicon-modal-title {
+	display: inline;
+	padding: 10px;
+	color: white;
+	background: #F46119;
+	border-radius : 2rem;
+}
+
+.profile-icon-list {
+	padding: 10px;
+}
+
+.modal-profile-icon-body {
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	margin: 10px 20px;
+}
+
+.modal-profile-icon {
+	border-radius: 50%;
+}
+
+.profile-icon-radio {
+	display:none;
+}
+
+.profile-icon-radio:checked + label img {
+	border: 4px solid #F46119;
+	
+}
+
+.chgicon-modal-footer {
+	justify-content: center;
+}
+
+.chgicon-modal-button {
+	width : 250px;
+	height: 45px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.chgicon-modal-button button {
+	margin: 0px 10px;
+	width:90px;
+	height: 45px;
+	border-radius: 2rem;
+	border: 1px solid rgb(224,224,224);
+	background: #F46119;
+	color : white;
+}
+

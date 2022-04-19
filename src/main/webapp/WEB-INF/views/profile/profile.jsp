@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/resources/css/profile.css" type="text/css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
+	<%@ include file="/WEB-INF/views/basic/header.jsp"%>
 	<main class="page-main">
 		<div class="page-body">
 			<!-- 프로필 정보 -->
@@ -20,6 +20,7 @@
 				<div class="profile-info">
 					<div class="profile-info-icon">
 						<img class="profile-icon" src="/resources/imgs/profile_icon/7.png" alt="profile">
+						<span class="profile-icon-text" onclick="chg_profile_icon()">변경</span>
 					</div>
 					<div class="profile-user">
 						<div class="profile-user-title">네네스노윙순살</div>
@@ -27,8 +28,10 @@
 					</div>
 				</div>
 				<div class="profile-button-body">
-					<a class="profile-button" href="#!" onclick="chg_password()" ><span class="profile-button-text">비밀번호 변경</span></a>
-					<a class="profile-button" href="#!"><span class="profile-button-text">전적 보기</span></a>
+					<a class="profile-button" href="#!" onclick="chg_password()"><span
+						class="profile-button-text">비밀번호 변경</span></a> <a
+						class="profile-button" href="#!"><span
+						class="profile-button-text">전적 보기</span></a>
 				</div>
 			</div>
 			<!-- 뱃지 목록 -->
@@ -38,17 +41,37 @@
 				</div>
 				<div class="badges-body">
 					<ul class="badges-list">
-                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
-                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
-                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
-                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
-                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
-                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
-                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
-                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
-                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
-                    	<li><img class="badges" src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge name</span></li>
-                    </ul>
+						<li><img class="badges"
+							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
+								name</span></li>
+						<li><img class="badges"
+							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
+								name</span></li>
+						<li><img class="badges"
+							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
+								name</span></li>
+						<li><img class="badges"
+							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
+								name</span></li>
+						<li><img class="badges"
+							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
+								name</span></li>
+						<li><img class="badges"
+							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
+								name</span></li>
+						<li><img class="badges"
+							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
+								name</span></li>
+						<li><img class="badges"
+							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
+								name</span></li>
+						<li><img class="badges"
+							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
+								name</span></li>
+						<li><img class="badges"
+							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
+								name</span></li>
+					</ul>
 				</div>
 			</div>
 			<!-- 게시글 목록 -->
@@ -113,64 +136,19 @@
 							<td>수정좀</td>
 							<td>2022-04-15</td>
 						</tr>
-						
+
 					</table>
 				</div>
 			</div>
-			<!-- 모달 -->
-			<div class="modal" id="Modal" tabindex="-1" role="dialog">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
-
-						<div class="modal-header">
-							<h3 class="modal-title" id="change_password">비밀번호 변경</h3>
-							<button type="button" class="modal-close"
-								onclick="chg_password_cancle()">
-								<span>X</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<form class="password_form" action="#" method="post">
-								<div class="form-group">
-									<label>현재 비밀번호</label> <input type="password" name="password"
-										class="form-control" required />
-								</div>
-								<div class="form-group">
-									<label>새 비밀번호 <small>(필수)</small></label> <input
-										type="password" name="new-password" class="form-control"
-										required />
-								</div>
-								<div class="form-group">
-									<label>새 비밀번호 확인 <small>(필수)</small></label> <input
-										type="password" name="new-password2" class="form-control"
-										required />
-								</div>
-								<div class="form-group" style="text-align: right">
-									<input class="primary" type="submit" value="비밀번호 변경" />
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button class="btn btn-secondary" type="button"
-								onclick="chg_password_cancle()">취소</button>
-						</div>
-
-
-
-					</div>
-					<div class="modal_layer"></div>
-				</div>
-			</div>
-
-
-
-
 		</div>
 
 
 
+
 	</main>
-	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/profile/change_password.jsp"%>
+	<%@ include file="/WEB-INF/views/profile/change_profile_icon.jsp"%>
+	<%@ include file="/WEB-INF/views/basic/footer.jsp"%>
 	<script type="text/javascript" src="/resources/js/profile.js"></script>
 
 

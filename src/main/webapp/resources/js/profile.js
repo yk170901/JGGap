@@ -1,11 +1,17 @@
 /* 비밀번호 변경 모달 */
 function chg_password() {
-//	document.getElementById("Modal").style.display="block";
-//	$("#Modal").attr("style", "display:block");
-//	$('.modal-content').load("../../WEB-INF/views/profile/change_password.jsp")
-	$("#Modal").fadeIn();
+
+	$(".chgpwd-modal-container").fadeIn();
 }
 function chg_password_cancle() {
-//	document.getElementById("Modal").style.display="none";	
-	$("#Modal").fadeOut();
+	$(".chgpwd-modal-container").fadeOut();
+}
+
+/* 프로필 아이콘 변경 모달 */
+function chg_profile_icon() {
+
+	$(".chgicon-modal-container").fadeIn();
+}
+function chg_profile_icon_cancle() {
+	$(".chgicon-modal-container").fadeOut();
 }
