@@ -11,8 +11,14 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public int sign_up(UserVO vo) {	
-		System.out.println("1");
+		
 		return userDAO.sign_up(vo);
+	}
+
+	@Override
+	public UserVO idCheck_Login(UserVO vo) {
+		
+		return userDAO.idCheck_Login(vo);
 	}
 	
 }
