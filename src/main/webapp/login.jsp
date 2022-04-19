@@ -16,6 +16,15 @@
 <link rel="stylesheet" href="resources/css/libs.min.css">
 <link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/login.css">
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+	/* 회원가입 이용약관 동시 체크 */ 
+      $( document ).ready( function() {
+        $( '.chkAll' ).click( function() {
+          $( '.chk' ).prop( 'checked', this.checked );
+        } );
+      } );
+</script>
 <style type="text/css">
 .repair {
 	padding: 25px 45px;
@@ -67,15 +76,16 @@ a {
 							<div class="uk-heading-line uk-text-center">
 								<span>ㅈㄱㅊㅇ</span>
 							</div>
-							<form action="#!">
+						 	<!-- 로그인 폼 -->
+							<form method="get" action="user/login_ok.do">
 								<div class="uk-margin">
-									<input class="uk-input" type="text" placeholder="Username">
+									<input class="uk-input" name="user_id" type="text" placeholder="아이디">
 								</div>
 								<div class="uk-margin">
-									<input class="uk-input" type="password" placeholder="Password">
+									<input class="uk-input" name="user_pwd" type="password" placeholder="비밀번호">
 								</div>
 								<div class="uk-margin">
-									<a class="uk-button uk-button-danger uk-width-1-1" href="#">로그인</a>
+									<button type="submit" class="uk-button uk-button-danger uk-width-1-1" id="submit">로그인</button>
 								</div>
 								<div class="uk-margin uk-text-center">
 									<a href="#">또 잊어먹음?</a>
@@ -128,8 +138,8 @@ a {
 								<div>
 									<ul>
 										<li> <input type="checkbox" name="chkAll" id="chk" class="chkAll"/> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
-										<li> <input type="checkbox" name="chk"/> 이용약관 동의(필수)</li>
-										<li> <input type="checkbox" name="chk"/> 개인정보 수집 및 이용에 대한 안내(필수)</li>
+										<li> <input type="checkbox" name="chk" class="chk"/> 이용약관 동의(필수)</li>
+										<li> <input type="checkbox" name="chk" class="chk"/> 개인정보 수집 및 이용에 대한 안내(필수)</li>
 									</ul>
 								</div>
 								
