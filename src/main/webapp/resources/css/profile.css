@@ -60,12 +60,37 @@ body {
     margin-right: 20px;
     overflow: hidden;
     border-radius: 50%;
+    position: relative;
 }
 
 .profile-icon {
 	width: 120px;
 	height: 120px;
 }
+
+.profile-icon-text {
+	font-size: 25px;
+	position: absolute;
+	text-align: center;
+	width: 110px;
+	height: 110px;
+	top: 50%;
+	left: 50%;
+	padding-top: 35px;
+	transform: translate(-50%, -50%);
+	color:white;
+	opacity: 0;
+}
+
+.profile-icon-text:hover,
+.profile-icon-text:focus,
+.profile-icon-text:active {
+	cursor: pointer;
+	opacity: 0.8;
+	background: gray;
+	
+}
+
 
 .profile-user {
     display: block;
@@ -173,61 +198,31 @@ body {
 	background-color: rgb(224,224,224);
 }
 
-/* 모달 부분 */
 
-/* .modal-dialog { */
-/*     position: relative; */
-/*     box-sizing: border-box; */
-/*     margin: 0 auto; */
-/*     width: 600px; */
-/*     max-width: calc(100% - .01px)!important; */
-/*     background: #fff; */
-/*     opacity: 0; */
-/*     transform: translateY(-100px); */
-/*     transition: .3s linear; */
-/*     transition-property: opacity, transform; */
-/*     display: flow-root; */
-/*     padding: 30px; */
-/*     margin-top: auto!important; */
-/*     margin-bottom: auto!important; */
-/* } */
-
-/* .password_form { */
-/*     display: block; */
-/*     margin-bottom: 5px */
-/* } */
-.modal-dialog {
-	position:relative;
-  	width:100%;
-  	height:100%;
-  	z-index:4;
-}
-
-.modal-title {
-	display: inline;
-	margin:10px;
-	width:300px;
-	
-}
-
-.modal-header {
-	display:block;
-}
-
-.modal-header button,
-.modal-footer button {
-	display:inline-block;
-  	width:100px;
-  	margin-left:calc(100% - 100px - 10px);
-}
-
-.modal_content {
-	width:300px;
- 	margin:100px auto;
-  	padding:20px 10px;
+/* 비밀번호 변경 모달 부분 */
+.chgpwd-modal-container {
+	width: 600px;
+	height: 500px;
+ 	margin: auto;
   	background:#fff;
-  	border-radius: 1rem;
+  	border-radius: 25px;
+  	border: 2px solid #F46119;
 }
+
+.chgpwd-modal-content {
+	padding: 20px;
+}
+
+.chgpwd-modal-header {
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.chgpwd-modal-header button:hover {
+	background-color: rgb(224,224,224);
+}
+
 
 .modal_layer {
 	position:fixed;
@@ -239,8 +234,46 @@ body {
   	z-index:-1;
 }
 
-.modal-close {
+.chgpwd-modal-close {
 	border-radius: 1rem;
 	border: 0px;
 	font-size: 2rem;
 }
+
+.form-box {
+	border: none;
+	border-radius: 15px;
+	background-color: rgb(224, 224 ,224);
+	width: 100%;
+	height: 50px;
+	padding: 0px 20px;	
+}
+
+.form-box:focus {
+	border:none;
+}
+
+.password_form div:last-child {
+	border-top: 1px solid rgb(224,224,224);
+}
+
+.form-submit {
+	margin-top: 15px;
+	border: 1px solid rgb(224,224,224);
+	border-radius: 15px;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 40px;	
+	background: #F46119;
+	color : white;
+}
+
+.form-submit:hover {
+	background: #d04b0a;
+	color: rgb(15,110,205);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* 프로필 아이콘 변경 모달 부분*/
