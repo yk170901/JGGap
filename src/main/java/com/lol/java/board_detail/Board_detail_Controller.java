@@ -28,12 +28,5 @@ public class Board_detail_Controller {
 		return "redirect:/board_list/board_list.do";
 	}
 	
-	@RequestMapping("/board_detail.do")
-	public String insertPost(int user_no) {
-		board_detail_Service.getUserInfo(user_no);
-		
-//		return "redirect:/detail_page.do";
-		return "redirect:/board_list/board_list.do";
-	}
 
 }

@@ -1,7 +1,10 @@
 package com.lol.java.user;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,5 +32,25 @@ public class UserController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/login_ok.do")
+	public String login(UserVO vo, HttpSession session,  Model model) throws Exception {
+		UserVO result = userService.idCheck_Login(vo);
+		System.out.println("login 컨트롤러 호출");
 
+		if (result == null) {
+			System.out.println("로그인 실패");
+			return "./login";
+		} else {
+			System.out.println(result.getUser_no());
+			System.out.println("[" + result.getSummoner_id() + "]" + "로그인 성공");
+			session.setAttribute("user_id", result.getUser_id());
+			session.setAttribute("user_pwd", result.getUser_pwd());
+			session.setAttribute("user_no", result.getUser_no());
+			return "redirect:/board_list/board_list.do";
+		}
+	}
+	
 }
+
+
