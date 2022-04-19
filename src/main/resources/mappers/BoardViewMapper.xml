@@ -6,9 +6,14 @@
   
   <mapper namespace="Board_view_DAO">
  
-<!--   	<select id="selectUserInfo" parameterType="int" resultType="board_view">
-		SELECT 
-			FROM 
-  	</select> -->
+	<insert id="insertReply" parameterType="board_view">
+		INSERT INTO re_board(user_re_no, post_no, re_text, re_date, user_no)
+			VALUES(user_re_no.NEXTVAL, 72, #{re_text_insert}, sysdate, #{user_no_reply_insert})
+	</insert>
+	
+	<select id="selectBoard" parameterType="int" resultType="board_view">
+		SELECT * from board
+			WHERE post_no = #{post_no }
+	</select>
   
   </mapper>

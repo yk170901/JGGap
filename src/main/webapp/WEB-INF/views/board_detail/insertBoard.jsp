@@ -18,10 +18,9 @@
 			<div class="post-header">
 				<h1 class="post-header-top">글 작성</h1>
 				<div class="post-header-bottom">
-					<input type="text" id="title" placeholder="제목을 입력해주세요" name="board_title">
+					<input type="text" id="title" placeholder="제목을 입력해주세요" name="board_title" maxlength=30>
 					
 					<div class="category-wrap">
-					
 						<div class="category-content">
 							<div class="category-title">맵 분류</div>
 							<select class="category-map" id="category-map" name="game_map">
@@ -38,6 +37,17 @@
 								<option value="일반">일반</option>
 								<option value="팔로 랭크">팔로 랭크</option>
 								<option value="자유 랭크">자유 랭크</option>
+							</select>
+						</div>
+						
+						<div class="category-content">
+							<div class="category-title">모집인원</div>
+							<select class="category-recruitment" id="category-recruitment" name="recruitment">
+								<option value="none">선택해주세요.</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
 							</select>
 						</div>
 					</div>
