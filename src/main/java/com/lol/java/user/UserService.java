@@ -6,4 +6,6 @@ public interface UserService {
 
 	public int sign_up(UserVO vo);
 	
+	public UserVO idCheck_Login(UserVO vo);
+	
 }
