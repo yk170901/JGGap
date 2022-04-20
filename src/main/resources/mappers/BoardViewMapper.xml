@@ -39,7 +39,7 @@
  
 	<insert id="insertReply" parameterType="board_view">
 		INSERT INTO re_board(user_re_no, post_no, re_text, re_date, user_no)
-			VALUES(user_re_no.NEXTVAL, 108, #{re_text_insert}, sysdate, #{user_no_reply_insert})
+			VALUES(user_re_no.NEXTVAL, 108, #{re_text}, sysdate, #{user_no_reply})
 	</insert>
 
 	<select id="selectBoard" resultMap="BoardInfoMap" parameterType="board_view" resultType="board_view" >
