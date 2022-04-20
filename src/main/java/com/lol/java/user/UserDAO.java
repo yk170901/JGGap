@@ -6,4 +6,6 @@ public interface UserDAO {
 	
 	public UserVO idCheck_Login(UserVO vo);
 	
+	public String idCheck(String user_id);
+	
 }

@@ -8,4 +8,6 @@ public interface UserService {
 	
 	public UserVO idCheck_Login(UserVO vo);
 	
+	public String idCheck(String user_id);
+	
 }
