@@ -20,7 +20,7 @@
 				</button>
 			</div>
 			<div class="modal-body chgpwd-modal-body">
-				<form class="password_form" action="#" method="get">
+				<form class="password_form" name="password_form">
 					<div class="form-group">
 						<label>현재 비밀번호</label> <input type="password" name="password"
 							class="form-box" required />
@@ -34,7 +34,7 @@
 							type="password" name="new-password2" class="form-box" required />
 					</div>
 					<div class="form-group" style="text-align: right">
-						<input class="form-submit" type="submit" value="비밀번호 변경 확인" />
+						<input class="form-submit" type="button" value="비밀번호 변경 확인" onclick="password_check(password_form)" />
 					</div>
 				</form>
 			</div>
