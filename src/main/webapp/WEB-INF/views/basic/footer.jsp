@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/footer.css" type="text/css">
 </head>
-<body id="footer_body">
+<body>
 	<hr class="footer_line"></hr>
     <div class="footer_outline">
         <div class="footer_st">

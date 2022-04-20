@@ -13,9 +13,8 @@ public class ShopController {
 	@Autowired
 	private ShopService shopService;
 	
-	@RequestMapping("/{url}.do")
-	public String userJoin(@PathVariable String url) {	
-		return "/shop/" + url;
+	@RequestMapping("/shop.do")
+	public void shopenter(){
 	}
 
 }
