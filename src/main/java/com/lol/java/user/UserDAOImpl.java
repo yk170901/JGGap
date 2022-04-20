@@ -23,4 +23,11 @@ public class UserDAOImpl implements UserDAO{
 		return mybatis.selectOne("userMapper.idCheck_Login",vo);
 	}
 	
+	@Override
+	public String idCheck(String user_id) {
+		System.out.println("진입 DAO");
+		
+
+		return mybatis.selectOne("userMapper.userIdCheck",user_id);
+	}
 }
