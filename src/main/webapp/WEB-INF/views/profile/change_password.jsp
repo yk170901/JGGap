@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>비밀번호 변경</title>
 </head>
 <body>
 
@@ -22,7 +22,10 @@
 			<div class="modal-body chgpwd-modal-body">
 				<form class="password_form" name="password_form">
 					<div class="form-group">
-						<label>현재 비밀번호</label> <input type="password" name="password"
+						<input type="hidden" name="password" class="form-box" value="${profile_info.user_pwd }" required />
+					</div>
+					<div class="form-group">
+						<label>현재 비밀번호</label> <input type="password" name="current-password"
 							class="form-box" required />
 					</div>
 					<div class="form-group">

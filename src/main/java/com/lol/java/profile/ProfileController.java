@@ -1,5 +1,7 @@
 package com.lol.java.profile;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,11 +28,11 @@ public class ProfileController {
 		model.addAttribute("profile_board", profileService.mypage_board(profileVO));
 	}
 	
-	@ResponseBody
-	@RequestMapping("/Check_Pwd.do")
-	public Object Check_Pwd(ProfileVO profileVO) {
-		Object password = profileService.Check_Pwd(profileVO);
-		return password;
+	@RequestMapping("/Chg_Pwd.do")
+	public String Check_Pwd(HttpServletRequest request) {
+		String password = request.getParameter("new-password");
+		profileService.chg_pwd(password);
+		return "redirect:/profile/profile.do";
 	}
 	
 	

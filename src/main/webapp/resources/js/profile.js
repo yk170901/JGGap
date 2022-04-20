@@ -20,26 +20,45 @@ function chg_profile_icon_cancle() {
 
 /* 비밀번호 변경 창 */
 
-$(function () {
-	let Check_Pwd = False;
-	let Check_NewPwd = False;
-	let NexPwd;
+function password_check(form){
+	console.log(form)
+	if (form.elements["current-password"].value=="") {
+		alert("현재 비밀번호를 입력해 주세요.")
+		form.elements["current-password"].focus();
+		return;
+	}
 	
-	$("input[name=password]").blur(function () {
-		const password = $(this).val();
-		$.ajax({
-			url: "/profile/Check_Pwd.do",
-			type: "post",
-			data : {password: password},
-			dataType: "text",
-			success: function (data) {
-				
-			}
-		})
-	})
+	if (form.elements["new-password"].value=="") {
+		alert("새 비밀번호를 입력해 주세요.")
+		form.elements["new-password"].focus();
+		return;
+	}
 	
+	if (form.elements["new-password2"].value=="") {
+		alert("새 비밀번호 확인을 입력해 주세요.")
+		form.elements["new-password2"].focus();
+		return;
+	}
 	
-})
+	if (form.elements["new-password"].value != form.elements["new-password2"].value) {
+		alert("새 비밀번호와 확인이 일치하지 않습니다.")
+		form.elements["new-password"].value()="";
+		form.elements["new-password2"].value()="";
+		return;
+	}
+	
+	if (form.elements["password"].value != form.elements["current-password"].value){
+		alert("비밀번호가 틀렸습니다.")
+		return;
+	}
+	
+	if (form.elements["password"].value == form.elements["current-password"].value){
+		alert("다 맞아유~")
+		form.setAttribute('method','POST');
+		form.setAttribute('action','/profile/Chg_Pwd.do');
+		form.submit();
+	}
+}
 
 
 

@@ -13,7 +13,6 @@ public interface ProfileService {
 	List<ProfileVO> mypage_badge(ProfileVO profileVO);
 	// 마이페이지 게시글 목록 불러오기
 	List<ProfileVO> mypage_board(ProfileVO profileVO);
-	// 비밀번호 변경 체크
-	Object Check_Pwd(ProfileVO profileVO);
-
+	// 비밀번호 변경
+	void chg_pwd(String password);
 }

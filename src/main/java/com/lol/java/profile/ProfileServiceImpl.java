@@ -30,8 +30,8 @@ public class ProfileServiceImpl implements ProfileService{
 	}
 
 	@Override
-	public Object Check_Pwd(ProfileVO profileVO) {
-		return profileDAO.Check_Pwd(profileVO);
+	public void chg_pwd(String password) {
+		profileDAO.chg_pwd(password);
 	}
 	
 }

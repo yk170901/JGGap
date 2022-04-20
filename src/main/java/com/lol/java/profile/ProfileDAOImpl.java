@@ -31,8 +31,9 @@ public class ProfileDAOImpl implements ProfileDAO{
 	}
 
 	@Override
-	public Object Check_Pwd(ProfileVO profileVO) {
-		return mybatis.selectOne("ProfileDAO.Check_Pwd", profileVO);
+	public void chg_pwd(String password) {
+		mybatis.update("ProfileDAO.chg_pwd", password);
+		
 	}
 
 }
