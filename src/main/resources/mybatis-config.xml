@@ -10,6 +10,7 @@
 		<typeAlias alias="board_detail" type="com.lol.java.board_detail.Board_detail_VO"/>
 		<typeAlias alias="board_view" type="com.lol.java.board_view.Board_view_VO"/>
 		<typeAlias alias="board_list" type="com.lol.java.board_list.Board_list_VO"/>
+		<typeAlias alias="paging" type="com.lol.java.board_list.Paging_VO"/>
 		<typeAlias alias="chat" type="com.lol.java.chat.ChatVO"/>
 		<typeAlias alias="profile" type="com.lol.java.profile.ProfileVO"/>
 		<typeAlias alias="shop" type="com.lol.java.shop.ShopVO"/>

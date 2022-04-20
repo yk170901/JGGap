@@ -17,5 +17,4 @@ public class Board_list_VO {
 	
 	private String searchKeyword;
 	private String searchCondition;
-	
 }
