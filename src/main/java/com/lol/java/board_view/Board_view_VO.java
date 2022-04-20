@@ -16,12 +16,9 @@ public class Board_view_VO {
 	private String board_text;
 	private String game_map;
 	private String game_mode;
-	private int recruitment;
+	private int cru_pre;
+	private int cru_max;
 	private Date board_date;
 	
 	Board_view_VO_writer writer;
-	
-	Board_view_VO_reply reply;
-	
-	Board_view_VO_replier replier;
 }

@@ -21,31 +21,36 @@ public class Board_view_Controller {
 	public String viewPage(@PathVariable String path) {
 		return "board_view/"+path;
 	}
-	
-	@RequestMapping("/viewBoard.do")
-	public void viewBoard(Board_view_VO vo, Model model) {
 
-		System.out.println("삽입 전의 포스트 넘버 : "+ vo.getPost_no());
-		vo.setPost_no("108");
-		model.addAttribute("board_view", board_view_Service.viewBoard(vo));
-		System.out.println("c최종 : " + vo);
+	@RequestMapping("/viewBoard.do")
+	public void viewBoard(Board_view_VO board_vo, Board_view_VO_reply reply_vo, Model model) {
+
+		System.out.println("삽입 전의 포스트 넘버 : "+ board_vo.getPost_no());
+		board_vo.setPost_no("108");
+		reply_vo.setPost_no("108");
+		
+		// 글 & 글쓴이 보여주는 메소드
+		model.addAttribute("board",board_view_Service.viewBoard(board_vo));
+		
+		// 댓글들 & 댓글쓴이들 보여주는 메소드
+		model.addAttribute("reply", board_view_Service.viewReplies(reply_vo.getPost_no()));
+		
+		System.out.println("최종 보드 : " + board_vo);
+		System.out.println("최종 댓글 : " + reply_vo);
 	}
-	
 	
 	// 댓긋 삽입 컨트롤러
 	@RequestMapping("/insertReply.do")
-	public String insertReply(Board_view_VO vo, HttpSession session){
+	public void insertReply(Board_view_VO_reply reply_vo, HttpSession session, Model model){
 		
 		session.setAttribute("user_no", 10028);
 
-//		vo.setUser_no_reply_insert(String.valueOf(session.getAttribute("user_no")));
+		reply_vo.setUser_no(String.valueOf(session.getAttribute("user_no")));
 		
-		System.out.println(vo);
+		board_view_Service.insertReply(reply_vo);
 		
-		board_view_Service.insertReply(vo);
-		
-		return "redirect:/board_view/viewBoard.do";
-		
+		// 댓글들 & 댓글쓴이들 보여주는 메소드
+//		model.addAttribute("reply", board_view_Service.viewReplies(reply_vo.getPost_no()));
 	}
 	
 }

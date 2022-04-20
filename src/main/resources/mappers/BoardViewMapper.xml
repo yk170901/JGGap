@@ -6,13 +6,15 @@
   
   <mapper namespace="Board_view_DAO">
   
-  	<resultMap type="board_view" id="BoardInfoMap">
+  	<resultMap type="board_view" id="BoardMap">
   		<id property="post_no" column="post_no"></id>
  		<result property="board_title" column="board_title"/>
  		<result property="board_text" column="board_text"/>
  		<result property="game_map" column="game_map"/>
  		<result property="game_mode" column="game_mode"/>
  		<result property="board_date" column="board_date"/>
+ 		<result property="cru_pre" column="cru_pre"/>
+ 		<result property="cru_max" column="cru_max"/>
   			
   		<association property="writer" javaType="board_view_writer">
   			<id property="user_no" column="user_no_writer"></id>
@@ -20,13 +22,15 @@
   			<result property="summoner_id" column="summoner_id_writer"/>
   			<result property="solo_rank_tier" column="solo_rank_tier_writer"/>
   		</association>
-  		
-  		<association property="reply" javaType="board_view_reply">
-  			<id property="user_re_no" column="user_re_no"></id>
-  			<result property="re_text" column="re_text"/>
-  			<result property="re_date" column="re_date"/>
-  			<result property="user_no" column="user_no_replier"/>
-  		</association>
+  	</resultMap>
+  	
+  	  
+  	<resultMap type="board_view_reply" id="RepliesMap">
+  		<id property="user_re_no" column="user_re_no"></id>
+ 		<result property="post_no" column="post_no"/>
+ 		<result property="re_text" column="re_text"/>
+ 		<result property="re_date" column="re_date"/>
+ 		<result property="user_no" column="user_no_replier"/>
   		
   		<association property="replier" javaType="board_view_replier">
   			<id property="user_no" column="user_no_replier"></id>
@@ -37,43 +41,37 @@
   		
   	</resultMap>
  
-	<insert id="insertReply" parameterType="board_view">
+	<insert id="insertReply" parameterType="board_view_reply">
 		INSERT INTO re_board(user_re_no, post_no, re_text, re_date, user_no)
-			VALUES(user_re_no.NEXTVAL, 108, #{re_text}, sysdate, #{user_no_reply})
+			VALUES(user_re_no.NEXTVAL, 108, #{re_text}, sysdate, #{user_no})
 	</insert>
 
-	<select id="selectBoard" resultMap="BoardInfoMap" parameterType="board_view" resultType="board_view" >
+	<select id="selectBoard" resultMap="BoardMap" parameterType="String" resultType="board_view" >
 		SELECT DISTINCT u.honor_rate AS honor_rate_writer, u.summoner_id AS summoner_id_writer, u.user_no AS user_no_writer,
 					l.solo_rank_tier AS solo_rank_tier_writer,
-					b.post_no, b.board_title, b.board_text, b.game_map, b.game_mode, b.board_date,
-					re.user_re_no, re.re_text, re.re_date, re.user_no AS user_no_replier,
-					u_re.honor_rate AS honor_rate_replier, u_re.summoner_id AS summoner_id_replier, u_re.user_no AS user_no_replier,
-					l_re.solo_rank_tier AS solo_rank_tier_replier
+					b.post_no, b.board_title, b.board_text, b.game_map, b.game_mode, b.board_date, b.cru_pre, b.cru_max
 			from user_info u,
 					lol_info l,
-					board b,
+					board b
+			where b.post_no = ${value}
+					AND u.user_no = b.user_no
+					and l.user_no = b.user_no
+	</select>
+	
+	<select id="selectReplies" resultMap="RepliesMap" parameterType="String" resultType="board_view_reply">
+		SELECT b.post_no,
+				re.user_re_no, re.re_text, re.re_date, re.user_no AS user_no_replier,
+					u_re.honor_rate AS honor_rate_replier, u_re.summoner_id AS summoner_id_replier, u_re.user_no as user_no_replier,
+					l_re.solo_rank_tier AS solo_rank_tier_replier
+			FROM board b,
 					re_board re,
 					user_info u_re,
 					lol_info l_re
-			where b.post_no = #{post_no}
-					AND u.user_no = b.user_no
-					and l.user_no = b.user_no
+			where b.post_no = ${value}
 					and re.post_no = b.post_no
 					AND re.user_no = u_re.USER_NO 
 					AND l_re.USER_NO = re.USER_NO
 			ORDER BY re.re_date
 	</select>
-	
-<!-- 	<select id="selectBoard" parameterType="board_view" resultType="board_view">
-		SELECT board_title, game_map, game_mode, board_date, board_text, user_no as user_no_writer
-			FROM board
-			WHERE post_no = #{post_no }
-	</select>
-  
-	<select id="selectWriter" parameterType="board_view" resultType="board_view">
-		SELECT summoner_id as summoner_id_writer, honor_rate as honor_rate_writer
-			FROM user_info
-			WHERE user_no = #{user_no_writer }
-	</select> -->
   
   </mapper>

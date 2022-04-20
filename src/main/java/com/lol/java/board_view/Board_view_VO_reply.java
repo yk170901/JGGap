@@ -8,13 +8,15 @@ import lombok.Data;
 public class Board_view_VO_reply {
 
 	/* Board */
-	private int post_no;
+	private String post_no;
 
 	/* Re_board */
 	private String user_re_no;
 	private String user_no;
 	private String re_text;
 	private Date re_date;
+	
+	Board_view_VO_replier replier;
 	
 	/* 댓글 개수 */
 	

@@ -6,7 +6,7 @@ import lombok.Data;
 public class Board_view_VO_replier {
 
 	/* Board */
-	private int post_no;
+	private String post_no;
 	
 	/* Reply 단 유저의 User_info */
 	private String user_no;
