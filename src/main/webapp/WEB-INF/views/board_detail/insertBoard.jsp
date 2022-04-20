@@ -42,12 +42,12 @@
 						
 						<div class="category-content">
 							<div class="category-title">모집인원</div>
-							<select class="category-recruitment" id="category-recruitment" name="recruitment">
+							<select class="category-recruitment" id="category-recruitment" name="cru_max">
 								<option value="none">선택해주세요.</option>
-								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
 								<option value="4">4</option>
+								<option value="5">5</option>
 							</select>
 						</div>
 					</div>

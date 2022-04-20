@@ -19,11 +19,17 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	}
 	
 	@Override
-	public Board_view_VO selectBoard(int post_no) {
-		mybatis.selectOne("selectBoard",post_no);
-		return null;
+	public Board_view_VO selectBoard(String post_no) {
+		return mybatis.selectOne("selectBoard",post_no);
 	}
 
+	@Override
+	public Board_view_VO selectWriter(String user_no_writer) {
+		return mybatis.selectOne("selectWriter",user_no_writer);
+	}
+
+	
+	
 	public List<Board_view_VO> selectReply(int post_no) {
 		// 댓글의 정보, 댓글쓴이의 정보를 가져올 것. 여러 사람이 댓글을 달 수 있기에 List의 형태로 줌.
 		return null;

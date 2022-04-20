@@ -25,16 +25,17 @@
 				<div class="post-header-bottom">
 					
 					<div class="user-info">
-						<div class="user-info">티어 이미지${board_view.board_title }</div>
-						<div class="user-info">티어 레벨${board_view.solo_rank_tier_writer }</div>
-						<div class="user-info">닉네임${board_view.summoner_id_writer }</div>
-						<div class="user-info">평점${board_view.honor_rate_writer }</div>
+						<div class="user-info">티어 이미지<%-- ${board_view.board_title } --%></div>
+						<div class="user-info">티어 레벨 ${board_view.writer.solo_rank_tier }</div>
+						<div class="user-info">닉네임${board_view.writer.summoner_id }</div>
+						<div class="user-info">평점${board_view.writer.honor_rate }</div>
 						<button class="detail-small-btn">팔로우</button>
 					</div>
 					
 					<div class="post-info">
 						<div class="post-info">맵 분류 : ${board_view.game_map }</div>
 						<div class="post-info">게임 분류 : ${board_view.game_mode }</div>
+						<div class="post-info">모집인원 : ${board_view.recruitment }</div>
 						<div class="post-info">작성날짜 : ${board_view.board_date }</div>
 						<button class="detail-small-btn">신고</button>
 					</div>
@@ -61,7 +62,9 @@
 					</div>
 				</div>
 				<div>
-					<p>(reply db에서 가져온 거)</p>
+					<%--c:for each 써야 함 --%>
+					<p>내용 : ${board_view.reply.re_text }</p>
+					<p>날짜 : ${board_view.reply.re_date  }</p>
 					<button class="detail-small-btn">삭제</button>
 					<img src="">
 				</div>
