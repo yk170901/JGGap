@@ -8,7 +8,8 @@ import lombok.Data;
 public class Board_detail_VO {
 
 	private int post_no;
-	private int recruitment;
+	private int cru_max;
+	private int cru_pre;
 	private String user_no;
 	private String board_title;
 	private String board_text;

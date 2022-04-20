@@ -1,5 +1,7 @@
 package com.lol.java.board_view;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +12,22 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 	Board_view_DAO board_view_DAO;
 
 	@Override
-	public void viewBoard(Board_view_VO vo) {
-		
-		// 게시글 정보를 받는 메소드 호출하여 게시글 번호 (post_no) 넘겨주기
-		board_view_DAO.selectBoard(vo.getPost_no());
-		
-		// 댓글 정보를 댓글의 수만큼 배열의 형태로 가져오는 메소드
-		
+	public Board_view_VO viewBoard(Board_view_VO vo) {
+		// 게시글 정보를 받는 메소드
+		vo = board_view_DAO.selectBoard(vo.getPost_no());
+
+		System.out.println("viewBoard 셀렉트 보드" +  vo);
+		return vo;	
+	}
+	
+	@Override
+	public List<Board_view_VO_reply> viewReplies(String post_no) {
+		System.out.println(board_view_DAO.selectReplies(post_no));
+		return board_view_DAO.selectReplies(post_no);
 	}
 
 	@Override
-	public void insertReply(Board_view_VO vo) {
+	public void insertReply(Board_view_VO_reply vo) {
 		board_view_DAO.insertReply(vo);
 	}
 

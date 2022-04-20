@@ -18,16 +18,14 @@ public class Board_list_ServiceImpl implements Board_list_Service{
 	}	
 	
 	@Override
-	public List<Board_list_VO> boardList(String result) {
-		// TODO Auto-generated method stub
-		return board_list_DAO.boardList(result);
+	public int countBoard() {
+		return board_list_DAO.countBoard();
 	}
 
-//	@Override
-//	public List<Board_list_VO> search_boardList() {
-//		// TODO Auto-generated method stub
-//		return board_list_DAO.search_boardList();
-//	}
+	@Override
+	public List<Board_list_VO> selectBoard(Paging_VO vo) {
+		return board_list_DAO.selectBoard(vo);
+	}
 
 
 	

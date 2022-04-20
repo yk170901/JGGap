@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	
 <!DOCTYPE html>
 <html>
@@ -23,8 +24,8 @@
 						<span class="profile-icon-text" onclick="chg_profile_icon()">변경</span>
 					</div>
 					<div class="profile-user">
-						<div class="profile-user-title">네네스노윙순살</div>
-						<div class="profile-user-text">명예지수 0.5 / 5.0</div>
+						<div class="profile-user-title">${profile_info.summoner_id }</div>
+						<div class="profile-user-text">명예지수 : ${profile_info.honor_rate } / 5.0</div>
 					</div>
 				</div>
 				<div class="profile-button-body">
@@ -41,36 +42,12 @@
 				</div>
 				<div class="badges-body">
 					<ul class="badges-list">
-						<li><img class="badges"
-							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
-								name</span></li>
-						<li><img class="badges"
-							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
-								name</span></li>
-						<li><img class="badges"
-							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
-								name</span></li>
-						<li><img class="badges"
-							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
-								name</span></li>
-						<li><img class="badges"
-							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
-								name</span></li>
-						<li><img class="badges"
-							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
-								name</span></li>
-						<li><img class="badges"
-							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
-								name</span></li>
-						<li><img class="badges"
-							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
-								name</span></li>
-						<li><img class="badges"
-							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
-								name</span></li>
-						<li><img class="badges"
-							src="/resources/imgs/profile_icon/9.png" alt="badge"><span>badge
-								name</span></li>
+						<c:forEach items="${profile_badge }" var="badge">
+							<li>
+								<img class="badges"src="/resources/imgs/profile_icon/${badge.badge_name }.png" alt="badge">
+								<span>${badge.badge_name }</span>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
@@ -86,56 +63,13 @@
 							<th width="860px">제목</th>
 							<th width="150px">등록일</th>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td>찬호님</td>
-							<td>2022-04-15</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>사이드바가</td>
-							<td>2022-04-15</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>이상해요</td>
-							<td>2022-04-15</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>길이가</td>
-							<td>2022-04-15</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>짧아요</td>
-							<td>2022-04-15</td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>수정좀</td>
-							<td>2022-04-15</td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>수정좀</td>
-							<td>2022-04-15</td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td>수정좀</td>
-							<td>2022-04-15</td>
-						</tr>
-						<tr>
-							<td>9</td>
-							<td>수정좀</td>
-							<td>2022-04-15</td>
-						</tr>
-						<tr>
-							<td>10</td>
-							<td>수정좀</td>
-							<td>2022-04-15</td>
-						</tr>
+						<c:forEach items="${profile_board }" var="board">
+							<tr>
+								<td>${board.post_no }</td>
+								<td>${board.board_title }</td>
+								<td>${board.board_date }</td>
+							</tr>
+						</c:forEach>
 
 					</table>
 				</div>
