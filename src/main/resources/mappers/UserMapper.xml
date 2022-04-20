@@ -18,5 +18,11 @@
 	FROM USER_INFO
 	WHERE USER_ID = #{user_id} AND USER_PWD = #{user_pwd}
 	</select>
+	
+	<select id="userIdCheck" parameterType="String" resultType="String">
+	SELECT COUNT(*)
+	FROM USER_INFO
+	WHERE USER_ID = #{user_id}
+	</select>
 
 </mapper>

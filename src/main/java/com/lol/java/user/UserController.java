@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 // 로그인페이지(메인) 및 회원가입페이지
@@ -34,13 +37,13 @@ public class UserController {
 	}
 	
 	@RequestMapping("/login_ok.do")
-	public String login(UserVO vo, HttpSession session,  Model model) throws Exception {
+	public String login(UserVO vo, HttpSession session) throws Exception {
 		UserVO result = userService.idCheck_Login(vo);
 		System.out.println("login 컨트롤러 호출");
 
 		if (result == null) {
 			System.out.println("로그인 실패");
-			return "./login";
+			return "redirect:./login";
 		} else {
 			System.out.println(result.getUser_no());
 			System.out.println("[" + result.getSummoner_id() + "]" + "로그인 성공");
@@ -49,6 +52,17 @@ public class UserController {
 			session.setAttribute("user_no", result.getUser_no());
 			return "redirect:/board_list/board_list.do";
 		}
+	}
+	
+	// id 중복 체크 컨트롤러
+	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String idCheck(String user_id) {
+		System.out.println("진입");
+		String x = userService.idCheck(user_id);
+		System.out.println(x);
+
+		return userService.idCheck(user_id);
 	}
 	
 }
