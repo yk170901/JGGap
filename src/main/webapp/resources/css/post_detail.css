@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+
+.reply_wrap{
+	font-size: 6px;
+}
+
+
+
 .post-header{
 	padding-bottom:10px;
 }

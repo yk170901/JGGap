@@ -7,8 +7,8 @@
   <mapper namespace="Board_detail_DAO">
  
   	<insert id="insertPost" parameterType="board_detail">
-		INSERT INTO board(post_no, user_no, board_title, board_text, game_map, game_mode, board_date, recruitment)
-			VALUES (post_no.NEXTVAL, #{user_no}, #{board_title},#{board_text},#{game_map},#{game_mode}, sysdate, #{recruitment})
+		INSERT INTO board(post_no, user_no, board_title, board_text, game_map, game_mode, board_date, cru_max)
+			VALUES (post_no.NEXTVAL, #{user_no}, #{board_title},#{board_text},#{game_map},#{game_mode}, sysdate, #{cru_max})
   	</insert>
   
   </mapper>
