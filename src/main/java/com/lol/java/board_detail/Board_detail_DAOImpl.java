@@ -15,10 +15,4 @@ public class Board_detail_DAOImpl implements Board_detail_DAO{
 		mybatis.insert("insertPost", vo);
 		System.out.println("insert 완료");
 	}
-
-	@Override
-	public void selectPost(int user_no) {
-		
-	}
-	
 }

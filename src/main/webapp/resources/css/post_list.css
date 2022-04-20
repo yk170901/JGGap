@@ -129,7 +129,7 @@
 		margin-right: 2px;
 	}
 	
-	#submit {
+	#submitbutton {
 		margin-left: 10px;
 		width: 70px;
 		height: 36px;
@@ -166,7 +166,21 @@
 		border-collapse: collapse;
 	}
 	
+	tr {
+		border-bottom: 1px solid rgb(230,224,224);
+	}
 	
+	
+	/* 관리자 리스트 */
+	.admin_td {
+		font-weight: bold;
+		color: blue;
+		background-color: rgb(244,244,244);
+	}
+	
+	.admin_td_left {
+		border-left: 3px solid red;
+	}
 	
 	
 	

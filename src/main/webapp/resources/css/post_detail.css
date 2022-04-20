@@ -15,11 +15,11 @@
 }
 
 input#title{
-	width: 50%;
+	width: 45%;
 	height: 30px;
 	padding: 5px;
 }
-
+ 
 .category-title{
 	padding-left:10px;
 	padding-right:10px;

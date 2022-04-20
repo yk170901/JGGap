@@ -13,8 +13,20 @@ public class Board_list_DAOImpl implements Board_list_DAO{
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public List<Board_list_VO> boardList() {
-		return mybatis.selectList("Board_list_DAO.boardList");
+	public List<Board_list_VO> admin_boardList() {
+		return mybatis.selectList("Board_list_DAO.admin_boardList");
 	}
+	
+	@Override
+	public List<Board_list_VO> boardList(String result) {
+		return mybatis.selectList("Board_list_DAO.boardList", result);
+	}
+
+//	@Override
+//	public List<Board_list_VO> search_boardList() {
+//		return mybatis.selectList("Board_list_DAO.search_boardList");
+//	}
+
+
 	
 }

@@ -15,9 +15,9 @@
 		<!-- 현종2 -->
 <!-- 		<property name="url" value="jdbc:oracle:thin:@dbjunglegap_high?TNS_ADMIN=C:\\Users\\user\\Desktop\\lolproject\\Wallet_DBJungleGap"/> -->
 		<!-- 예슬 -->
-  		<!-- <property name="url" value="jdbc:oracle:thin:@dbjunglegap_high?TNS_ADMIN=C:\\Users\\yk170\\Desktop\\Wallet_DBJungleGap"/> -->
+<!-- <property name="url" value="jdbc:oracle:thin:@dbjunglegap_high?TNS_ADMIN=C:\\Users\\yk170\\Desktop\\Wallet_DBJungleGap"/> -->
 		<!-- 치영 -->
-  		<property name="url" value="jdbc:oracle:thin:@dbjunglegap_high?TNS_ADMIN=/Users/chiyoungpark/Downloads/Wallet_DBJungleGap"/>
+  	<property name="url" value="jdbc:oracle:thin:@dbjunglegap_high?TNS_ADMIN=/Users/chiyoungpark/Downloads/Wallet_DBJungleGap"/>
 		<property name="username" value="admin"/>
         <property name="password" value="Ab1234567890"/>
 	</bean>

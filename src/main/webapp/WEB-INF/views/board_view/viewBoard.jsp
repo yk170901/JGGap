@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<!-- c 가져오기 -->
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,30 +19,29 @@
 	<div class="post-wrap">
 		<div class="post-content">
 			<div class="post-header">
-				<h1 class="post-header-top">${board_detail.title } 글 제목이 들어올 장소입니다</h1>
+				<!-- 포스트 넘버 임의로 줌 -->
+				<input type="hidden" name="post_no" value="72">
+				<h1 class="post-header-top">${board_view.board_title }</h1>
 				<div class="post-header-bottom">
 					
 					<div class="user-info">
-						<div class="user-info">티어 이미지</div>
-						<div class="user-info">티어 레벨</div>
-						<div class="user-info">닉네임</div>
-						<div class="user-info">평점</div>
+						<div class="user-info">티어 이미지${board_view.board_title }</div>
+						<div class="user-info">티어 레벨${board_view.solo_rank_tier_writer }</div>
+						<div class="user-info">닉네임${board_view.summoner_id_writer }</div>
+						<div class="user-info">평점${board_view.honor_rate_writer }</div>
 						<button class="detail-small-btn">팔로우</button>
 					</div>
 					
 					<div class="post-info">
-						<div class="post-info">맵 분류 : </div>
-						<div class="post-info">게임 분류 : </div>
-						<div class="post-info">작성날짜 : </div>
+						<div class="post-info">맵 분류 : ${board_view.game_map }</div>
+						<div class="post-info">게임 분류 : ${board_view.game_mode }</div>
+						<div class="post-info">작성날짜 : ${board_view.board_date }</div>
 						<button class="detail-small-btn">신고</button>
 					</div>
 					
 				</div>
 			</div>
-			<div><p id="content-on-display">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-				Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+			<div><p id="content-on-display">${board_view.board_text }</p></div>
 			<div class="button4writer">
 				<button class="detail-big-btn">수정</button>
 				<button class="detail-big-btn" onclick="confirmDelete()">삭제</button>
@@ -65,8 +67,11 @@
 				</div>
 			</div>
 			<div class="new-reply">
-				<input type="text" placeholder="내용을 작성하세요.">
-				<button class="detail-big-btn">작성</button>
+				<form method="post" action="insertReply.do">
+					<%-- <input type="hidden" name="post_no" value=${board_detail.post_no }> --%>
+					<input type="text" name="re_text_insert" placeholder="내용을 작성하세요.">
+					<button type="submit" class="detail-big-btn">작성</button>				
+				</form>
 			</div>
 		</div>
 		

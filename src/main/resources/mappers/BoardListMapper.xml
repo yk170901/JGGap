@@ -5,9 +5,21 @@
   <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
   
   <mapper namespace="Board_list_DAO">
+  
+  	<!-- 관리자 게시판 조회 기능 -->
+  	<select id="admin_boardList" resultType="board_list">
+  		SELECT post_no, user_no, board_title, board_date FROM admin_board ORDER BY post_no DESC
+  	</select>  	
   	
-  	<select id="boardList" resultType="board_list">
-  		SELECT post_no, user_no, board_title, board_date FROM board ORDER BY post_no DESC
+  	<!-- 유저 게시판 조회 기능 -->
+  	<select id="boardList" resultType="board_list" parameterType="String">
+  		SELECT post_no, user_no, board_title, board_date
+  		FROM board
+  		<if test="value != null">
+  			WHERE board_title LIKE '%${value}%'
+  		</if>
+  		ORDER BY post_no DESC
   	</select>
   	
+  		
   </mapper>

@@ -12,9 +12,23 @@ public class Board_list_ServiceImpl implements Board_list_Service{
 	private Board_list_DAO board_list_DAO;
 
 	@Override
-	public List<Board_list_VO> boardList() {
+	public List<Board_list_VO> admin_boardList() {
 		// TODO Auto-generated method stub
-		return board_list_DAO.boardList();
+		return board_list_DAO.admin_boardList();
+	}	
+	
+	@Override
+	public List<Board_list_VO> boardList(String result) {
+		// TODO Auto-generated method stub
+		return board_list_DAO.boardList(result);
 	}
+
+//	@Override
+//	public List<Board_list_VO> search_boardList() {
+//		// TODO Auto-generated method stub
+//		return board_list_DAO.search_boardList();
+//	}
+
+
 	
 }
