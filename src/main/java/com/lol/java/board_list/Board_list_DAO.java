@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface Board_list_DAO {
 
-	List<Board_list_VO> admin_boardList();
-	
-	List<Board_list_VO> boardList(String result);
+	public List<Board_list_VO> admin_boardList();
 
-//	List<Board_list_VO> search_boardList();
+	public int countBoard();
+
+	public List<Board_list_VO> selectBoard(Paging_VO vo);
 
 }
