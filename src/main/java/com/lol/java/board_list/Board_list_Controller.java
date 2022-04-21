@@ -20,7 +20,7 @@ public class Board_list_Controller {
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, String searchCondition,String searchKeyword) {
 		
 		int total = board_list_Service.countBoard();
-		// 리스트에 몇개 보여주는 기능
+		// 리스트에 개수 보여주는 기능
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
