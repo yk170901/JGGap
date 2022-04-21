@@ -19,6 +19,7 @@ public class Board_view_VO_reply {
 	Board_view_VO_replier replier;
 	
 	/* 댓글 개수 */
+	private int reply_count;
 	
 	/* 채택된 댓글 수 */
 

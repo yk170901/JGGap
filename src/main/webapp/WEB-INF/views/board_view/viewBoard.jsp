@@ -26,10 +26,13 @@
 					
 					<div class="user-info">
 						<div class="user-info">티어 이미지<%-- ${board.board_title } --%></div>
-						<div class="user-info">티어 레벨 ${board.writer.solo_rank_tier }</div>
-						<div class="user-info">닉네임${board.writer.summoner_id }</div>
-						<div class="user-info">평점${board.writer.honor_rate }</div>
-						<button class="detail-small-btn">팔로우</button>
+						<span class="writer-info-separator">|</span>
+						<div class="user-info">${board.writer.solo_rank_tier }</div>
+						<span class="writer-info-separator">|</span>
+						<div class="user-info">${board.writer.summoner_id }</div>
+						<span class="writer-info-separator">|</span>
+						<div class="user-info">${board.writer.honor_rate }</div>
+						<button class="detail-small-btn follow">팔로우</button>
 					</div>
 					
 					<div class="post-info">
@@ -37,39 +40,45 @@
 						<div class="post-info">게임 분류 : ${board.game_mode }</div>
 						<div class="post-info">모집인원 : ${board.cru_pre } / ${board.cru_max }</div>
 						<div class="post-info">작성날짜 : ${board.board_date }</div>
-						<button class="detail-small-btn">신고</button>
+						<button class="detail-small-btn report">신고</button>
 					</div>
 					
 				</div>
 			</div>
-			<div><p id="content-on-display">${board.board_text }</p></div>
-			<div class="button4writer">
-				<button class="detail-big-btn">수정</button>
-				<button class="detail-big-btn" onclick="confirmDelete()">삭제</button>
+			
+			<hr>
+			
+			<div><span id="content-on-display">${board.board_text }</span></div>
+			
+			<div id="writer-post-button">
+				<button class="detail-big-btn modify-post">수정</button>
+				<button class="detail-big-btn delete-post" onclick="confirmDelete()">삭제</button>
 			</div>
 		</div>
 		
+		<hr>
+		
 		<div class="reply_wrap">
-			<div class="reply-header"><img src="">댓글 (댓글 수)</div>
-			<div class="reply-content">
-			<c:forEach var="reply" items="${reply}">
-				<div>
+			<div class="reply-header"><img src="../resources/imgs/post_detail/message.png" id="message-img">댓글 ${board_view_reply.reply_count }</div>
+			<div id="reply-content">
+				<c:forEach var="reply" items="${reply}">
 					<div class="user-info">
 						<div class="user-info">티어 이미지</div>
-						<div class="user-info">티어 레벨</div>
-						<div class="user-info">닉네임</div>
-						<div class="user-info">평점</div>
-						<button class="detail-small-btn">팔로우</button>
+						<span class="replier-info-separator">|</span>
+						<div class="user-info">${reply.replier.solo_rank_tier }</div>
+						<span class="replier-info-separator">|</span>
+						<div class="user-info">${reply.replier.summoner_id }</div>
+						<span class="replier-info-separator">|</span>
+						<div class="user-info">${reply.replier.honor_rate }</div>
+						<button class="detail-small-btn follow">팔로우</button>
+						<span id="reply-date">작성 날짜 : <c:out value="${reply.re_date }" /></span>
 					</div>
-				</div>
-				<div>
-					<p>내용 : <c:out value="${reply.re_text }" /></p>
-					<p>날짜 : <c:out value="${reply.re_date }" /></p>
-					<button class="detail-small-btn">삭제</button>
-					<img src="">
-				</div>
-			</c:forEach>
-				
+					<div class="reply-content">
+						<span>내용 : <c:out value="${reply.re_text }" /></span>
+						<button class="detail-small-btn delete-reply">삭제</button>
+						<img src="../resources/imgs/post_detail/checked.png" id="check-img">
+					</div>
+				</c:forEach>
 			</div>
 			<div class="new-reply">
 				<form method="post" action="insertReply.do">

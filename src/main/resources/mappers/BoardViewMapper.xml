@@ -25,7 +25,7 @@
   	</resultMap>
   	
   	  
-  	<resultMap type="board_view_reply" id="RepliesMap">
+  	<resultMap type="board_view_reply" id="ReplyListMap">
   		<id property="user_re_no" column="user_re_no"></id>
  		<result property="post_no" column="post_no"/>
  		<result property="re_text" column="re_text"/>
@@ -58,7 +58,7 @@
 					and l.user_no = b.user_no
 	</select>
 	
-	<select id="selectReplies" resultMap="RepliesMap" parameterType="String" resultType="board_view_reply">
+	<select id="selectReplyList" resultMap="ReplyListMap" parameterType="String" resultType="board_view_reply">
 		SELECT b.post_no,
 				re.user_re_no, re.re_text, re.re_date, re.user_no AS user_no_replier,
 					u_re.honor_rate AS honor_rate_replier, u_re.summoner_id AS summoner_id_replier, u_re.user_no as user_no_replier,

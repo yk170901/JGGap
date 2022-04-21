@@ -25,15 +25,22 @@ public class Board_view_Controller {
 	@RequestMapping("/viewBoard.do")
 	public void viewBoard(Board_view_VO board_vo, Board_view_VO_reply reply_vo, Model model) {
 
+		// 포스트 넘버 가져오기
 		System.out.println("삽입 전의 포스트 넘버 : "+ board_vo.getPost_no());
 		board_vo.setPost_no("108");
 		reply_vo.setPost_no("108");
+		
+		// 들어온 사람이 
+		if (true) {
+			System.out.println("당신은 글쓴이입니다");
+			// 수정, 삭제 버튼도 보여주기
+		}
 		
 		// 글 & 글쓴이 보여주는 메소드
 		model.addAttribute("board",board_view_Service.viewBoard(board_vo));
 		
 		// 댓글들 & 댓글쓴이들 보여주는 메소드
-		model.addAttribute("reply", board_view_Service.viewReplies(reply_vo.getPost_no()));
+		model.addAttribute("reply", board_view_Service.viewReplyList(reply_vo.getPost_no()));
 		
 		System.out.println("최종 보드 : " + board_vo);
 		System.out.println("최종 댓글 : " + reply_vo);

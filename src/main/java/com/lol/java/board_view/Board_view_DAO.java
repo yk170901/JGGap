@@ -7,5 +7,5 @@ public interface Board_view_DAO {
 	
 	public Board_view_VO selectBoard(String post_no);
 	
-	public List<Board_view_VO_reply> selectReplies(String post_no);
+	public List<Board_view_VO_reply> selectReplyList(String post_no);
 }
