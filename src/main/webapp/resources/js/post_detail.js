@@ -1,5 +1,7 @@
+// 댓글 쓸 때, 이미 db에 해당 user_no 있으면 막기.
+// 채택 버튼을 누를 경우, 글쓴이가 아니면 아무런 이벤트도 나타나지 않게 하기
+
 function checkValidation(){
-	
 	var title = document.getElementById('title').value;
 	var context = document.getElementById('content').value;
 	var map = document.getElementById('category-map');

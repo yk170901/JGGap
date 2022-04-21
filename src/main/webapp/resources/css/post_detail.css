@@ -1,9 +1,44 @@
 @charset "UTF-8";
 
 
-.reply_wrap{
-	font-size: 6px;
+#reply-content{
+	padding: 20px, 0;
 }
+
+.detail-small-btn{
+	margin-left:15px;
+	border-radius: 5px;
+}
+
+#message-img{
+	width:35px;
+}
+
+#check-img{
+	width:50px;
+}
+
+.writer-info-separator,
+.replier-info-separator{
+	padding: 10px;
+}
+
+#content-on-display{
+	line-height:30px;
+}
+
+#writer-post-button{
+	text-align: right;
+}
+
+#reply-date{
+	float: right;
+}
+
+.user-info{
+	font-weight: bold;
+}
+
 
 
 
