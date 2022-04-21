@@ -14,7 +14,7 @@ public class Paging_VO {
 	public Paging_VO() {
 	}
 		
-	public Paging_VO(int total, int nowPage, int cntPerPage,String searchCondition,String searchKeyword) {
+	public Paging_VO(int total, int nowPage, int cntPerPage, String searchCondition,String searchKeyword) {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
 		setTotal(total);
