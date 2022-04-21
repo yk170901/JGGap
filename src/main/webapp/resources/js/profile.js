@@ -41,9 +41,9 @@ function password_check(form){
 	}
 	
 	if (form.elements["new-password"].value != form.elements["new-password2"].value) {
-		alert("새 비밀번호와 확인이 일치하지 않습니다.");
-		form.elements["new-password"].value()=="";
-		form.elements["new-password2"].value()=="";
+		alert("새 비밀번호와 확인이 일치하지 않습니다.")
+		form.elements["new-password"].value()="";
+		form.elements["new-password2"].value()="";
 		return;
 	}
 	
