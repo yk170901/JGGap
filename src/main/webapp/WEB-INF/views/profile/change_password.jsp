@@ -22,6 +22,7 @@
 			<div class="modal-body chgpwd-modal-body">
 				<form class="password_form" name="password_form">
 					<div class="form-group">
+						<input type="hidden" name="user_no" class="form-box" value=${sessionScope.user_no }  required />
 						<input type="hidden" name="password" class="form-box" value="${profile_info.user_pwd }" required />
 					</div>
 					<div class="form-group">
@@ -37,7 +38,7 @@
 							type="password" name="new-password2" class="form-box" required />
 					</div>
 					<div class="form-group" style="text-align: right">
-						<input class="form-submit" type="button" value="비밀번호 변경 확인" onclick="password_check(password_form)" />
+						<input class="form-submit" type="button" value="비밀번호 변경 확인" onclick="chg_pwd(password_form)" />
 					</div>
 				</form>
 			</div>

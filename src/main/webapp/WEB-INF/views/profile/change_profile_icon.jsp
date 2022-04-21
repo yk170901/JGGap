@@ -18,8 +18,9 @@
 				<h4 class="modal-title chgicon-modal-title">변경할 아이콘을 선택하세요</h4>
 			</div>
 			<div class="modal-body chgicon-modal-body">
-				<form class="profile-icon-form" action="#" method="get">
+				<form class="profile-icon-form">
 					<div class="profile-icon-list">
+						<input type="hidden" name="user_no" value=${sessionScope.user_no } />
 						<c:forEach var="i" begin="1" end="9">
 							<div class="modal-profile-icon-body">
 								<input type="radio" class="profile-icon-radio" name="profile-icon-check" value="${i }" id="${i }">
@@ -29,7 +30,7 @@
 					</div>
 					<div class="chgicon-modal-button">
 						<div class="chgicon-modal-button-body">
-							<button type="button" class="chgicon-modal-submit">
+							<button type="button" class="chgicon-modal-submit" onclick="chg_icon()">
 								<span>확인</span>
 							</button>
 							<button type="button" class="modal-close chgicon-modal-close"
