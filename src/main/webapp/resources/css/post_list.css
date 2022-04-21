@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-	/* 체크박스 */
+	/* checkbox */
 	*, *:before, *:after {
 	  -webkit-box-sizing: border-box;
 	  -moz-box-sizing: border-box;
@@ -64,7 +64,11 @@
 		width: 1520px;
 		height: 1000px;
 	}
-
+	
+/* 	hr { */
+/* 		background-color: black; */
+/* 		height: 2px; */
+/* 	} */
 	.main_hr {
 		border-bottom: 2px solid black;
 		padding-bottom: 6px;
@@ -134,7 +138,7 @@
 	
 	
 	
-	/* 유저 게시판 조회*/
+	/* 게시판 조회 부분*/
 	.table_list {
 		width: 1028px;
 		display: inline-block;
@@ -179,11 +183,6 @@
 	}
 	
 	
-	/* 페이징 */
-	.paging_total {
-		display: inline-block;
-		padding-top: 50px;
-	}
 	
 
 
