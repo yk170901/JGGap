@@ -23,11 +23,11 @@ public class Board_list_Controller {
 		// 리스트에 몇개 보여주는 기능
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "10";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) { 
-			cntPerPage = "5";
+			cntPerPage = "3";
 		}
 		vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), searchCondition, searchKeyword);
 		model.addAttribute("admin_list", board_list_Service.admin_boardList());

@@ -34,7 +34,7 @@
 							ORDER BY POST_NO DESC 
 							) A
 					)
-		WHERE RN BETWEEN #{start} AND #{end} 
+		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
   	
   		
