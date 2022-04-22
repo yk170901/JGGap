@@ -1,5 +1,18 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI.woff") format("woff"), url("../fonts/SegoeUI.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 400;
+}
 
+	.total_div:before{
+		font-family: "SegoeUI";
+		font-weight: 400;
+	}
+	
 	/* 체크박스 */
 	*, *:before, *:after {
 	  -webkit-box-sizing: border-box;
@@ -182,7 +195,7 @@
 	/* 페이징 */
 	.paging_total {
 		display: inline-block;
-		padding-top: 50px;
+/* 		padding-top: 50px; */
 	}
 	
 

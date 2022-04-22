@@ -7,28 +7,39 @@
   <mapper namespace="ProfileDAO">
   
 	<!-- 마이페이지 유저 정보 불러오기 -->
-  	<select id="profile_info" resultType="profile" parameterType="profile">
+  	<select id="profile_info" resultType="profile" parameterType="Object">
   		SELECT summoner_id, honor_rate, profile_icon, user_pwd
   		FROM user_info
-  		WHERE user_no = '10029'
+  		WHERE user_no = #{user_no}
   	</select>
+  	
   	<!-- 마이페이지 뱃지 목록 불러오기 -->
-  	<select id="profile_badge" resultType="profile" parameterType="profile">
+  	<select id="profile_badge" resultType="profile" parameterType="Object">
   		SELECT badge_name
   		FROM badge
-  		WHERE user_no = '10029'
+  		WHERE user_no = #{user_no}
   	</select>
+  	
   	<!-- 마이페이지 게시글 목록 불러오기 -->
-  	<select id="profile_board" resultType="profile" parameterType="profile">
+  	<select id="profile_board" resultType="profile" parameterType="Object">
   		SELECT post_no, board_title, TO_CHAR(board_date,'YYYY-MM-DD HH:MM') as board_date
   		FROM board
-  		WHERE user_no = '10029'
+  		WHERE user_no = #{user_no}
   		ORDER BY post_no DESC
   	</select>
-  	<update id="chg_pwd" parameterType="String">
-  		
-  		UPDATE user_pwd
-  		FROM user_info
-  		WHERE
-  	</update> 
+  	
+  	<!-- 비밀번호 변경 -->
+  	<update id="chg_pwd" parameterType="profile">
+  		UPDATE user_info
+  		SET user_pwd = #{user_pwd}
+  		WHERE user_no = #{user_no}
+  	</update>
+  	
+  	<!-- 프로필 아이콘 변경 -->
+  	<update id="chg_icon" parameterType="profile">
+  		UPDATE user_info
+  		SET profile_icon = #{profile_icon}
+  		WHERE user_no = #{user_no}
+  	</update>
+  	 
   </mapper>

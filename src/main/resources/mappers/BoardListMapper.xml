@@ -15,25 +15,29 @@
   	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM board
 	</select>
+	
+	 <!-- 게시글 카운터 검색페이징 -->
+  	<select id="searchCountBoard" resultType="int">
+		SELECT COUNT(*) FROM board
+		<where>
+			<if test="searchKeyword != null">
+					${searchCondition} LIKE '%'||#{searchKeyword}||'%'
+	  		</if>
+		</where>
+	</select>
 
   	<!-- 페이징 처리 후 게시글 조회 -->
 	<select id="selectBoard" parameterType="paging" resultType="board_list" >
-		SELECT * 
-			FROM (
-				SELECT ROWNUM RN, A.* 
-					FROM (
-							SELECT * 
-							FROM BOARD
-							<where>
-								<if test="searchKeyword != null">
-<!-- 										'||#{searchCondition}||' LIKE '%'||#{searchKeyword}||'%' -->
-										${searchCondition} LIKE '%'||#{searchKeyword}||'%'
-						  		</if>
-							</where>
-							
-							ORDER BY POST_NO DESC 
-							) A
-					)
+		SELECT * FROM (
+			SELECT ROWNUM RN, A.* FROM (
+				SELECT * FROM BOARD
+				<where>
+					<if test="searchKeyword != null">
+					${searchCondition} LIKE '%'||#{searchKeyword}||'%'
+			  		</if>
+				</where>					
+				ORDER BY POST_NO DESC )
+				A )
 		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
   	

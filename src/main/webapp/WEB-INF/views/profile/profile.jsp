@@ -20,12 +20,12 @@
 			<div class="profile-body">
 				<div class="profile-info">
 					<div class="profile-info-icon">
-						<img class="profile-icon" src="/resources/imgs/profile_icon/7.png" alt="profile">
+						<img class="profile-icon" src="/resources/imgs/profile_icon/${profile_info.profile_icon }.png" alt="profile">
 						<span class="profile-icon-text" onclick="chg_profile_icon()">변경</span>
 					</div>
 					<div class="profile-user">
 						<div class="profile-user-title">${profile_info.summoner_id }</div>
-						<div class="profile-user-text">명예지수 : ${profile_info.honor_rate } / 5.0</div>
+						<div class="profile-user-text">${sessionScope.user_no } 명예지수 : ${profile_info.honor_rate } / 5.0</div>
 					</div>
 				</div>
 				<div class="profile-button-body">
@@ -45,7 +45,7 @@
 						<c:forEach items="${profile_badge }" var="badge">
 							<li>
 								<img class="badges"src="/resources/imgs/profile_icon/${badge.badge_name }.png" alt="badge">
-								<span>${badge.badge_name }</span>
+								<div>${badge.badge_name }</div>
 							</li>
 						</c:forEach>
 					</ul>
@@ -84,7 +84,5 @@
 	<%@ include file="/WEB-INF/views/profile/change_profile_icon.jsp"%>
 	<%@ include file="/WEB-INF/views/basic/footer.jsp"%>
 	<script type="text/javascript" src="/resources/js/profile.js"></script>
-
-
 </body>
 </html>
