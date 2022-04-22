@@ -1,21 +1,52 @@
 @charset "UTF-8";
 
-
-#reply-content{
-	padding: 20px, 0;
+#reply-header{
+	margin: 10px 0;
 }
 
-.detail-small-btn{
+.reply-content-repeat{
+	padding: 10px 0;
+	border-top: solid gray 1px;
+	border-bottom: solid gray 1px;
+}
+
+.reply-content{
+	display: inline-block;
+	width:85%;
+	line-height:30px;
+}
+
+.post-info{
+	padding-right: 10px;
+}
+
+.post-info-detail{
+	color: blue;
+}
+
+.follow{
 	margin-left:15px;
 	border-radius: 5px;
+	font-size: 11px;
+	border: gray solid 1px;
+}
+
+.report{
+	font-size: 11px;
+	text-align: right;
+	color: gray;
+	border: 0;
+	float:right;
 }
 
 #message-img{
-	width:35px;
+	width:30px;
+	margin-right: 10px;
 }
 
 #check-img{
-	width:50px;
+	width:45px;
+	padding-left:10px;
 }
 
 .writer-info-separator,
@@ -23,8 +54,8 @@
 	padding: 10px;
 }
 
-#content-on-display{
-	line-height:30px;
+#post-content{
+	line-height:40px;
 }
 
 #writer-post-button{
@@ -32,14 +63,43 @@
 }
 
 #reply-date{
-	float: right;
+	font-weight: normal;
+	font-size: 11px;
+	padding: 0 15px;
+}
+
+.writer-info{
+	font-size: 1.1em;
 }
 
 .user-info{
 	font-weight: bold;
+	display:inline-block;
 }
 
+.user-info-wrap{
+	display:flex;
+	justify-content: space-between;
+}
 
+.user-info-remain{
+	display: flex;
+}
+
+#new-reply-text{
+	height: 39px;
+	width: 90%;
+	padding-left: 5px;
+}
+
+#new-reply{
+	background-color: lightgray;
+	padding:15px;
+}
+
+.submit-reply{
+	margin: auto;
+}
 
 
 .post-header{
@@ -92,6 +152,7 @@ textarea{
 	background-color: #f46119;
 	color: white;
 	font-weight: bold;
+	border-radius: 5px;
 }
 
 .detail-small-btn{
@@ -111,7 +172,6 @@ input,
 .category-content,
 .category-map,
 .category-game,
-.user-info,
 .post-info{
 	display:inline-block;
 }
