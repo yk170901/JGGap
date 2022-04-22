@@ -29,18 +29,19 @@
 						<span class="writer-info-separator">|</span>
 						<div class="user-info">${board.writer.solo_rank_tier }</div>
 						<span class="writer-info-separator">|</span>
+						<div class="user-info">${board.writer.site_level }&emsp;</div>
 						<div class="user-info">${board.writer.summoner_id }</div>
 						<span class="writer-info-separator">|</span>
 						<div class="user-info">${board.writer.honor_rate }</div>
-						<button class="detail-small-btn follow">팔로우</button>
+						<button class="follow">팔로우</button>
 					</div>
 					
 					<div class="post-info">
-						<div class="post-info">맵 분류 : ${board.game_map }</div>
-						<div class="post-info">게임 분류 : ${board.game_mode }</div>
-						<div class="post-info">모집인원 : ${board.cru_pre } / ${board.cru_max }</div>
+						<div class="post-info">맵 분류 : <span class="post-info-detail">${board.game_map }</span></div>
+						<div class="post-info">게임 분류 : <span class="post-info-detail">${board.game_mode }</span></div>
+						<div class="post-info">모집인원 : <span class="post-info-detail">${board.cru_pre } / ${board.cru_max }</span></div>
 						<div class="post-info">작성날짜 : ${board.board_date }</div>
-						<button class="detail-small-btn report">신고</button>
+						<button class="report">신고</button>
 					</div>
 					
 				</div>
@@ -48,7 +49,7 @@
 			
 			<hr>
 			
-			<div><span id="content-on-display">${board.board_text }</span></div>
+			<div><span id="post-content">${board.board_text }</span></div>
 			
 			<div id="writer-post-button">
 				<button class="detail-big-btn modify-post">수정</button>
@@ -59,32 +60,36 @@
 		<hr>
 		
 		<div class="reply_wrap">
-			<div class="reply-header"><img src="../resources/imgs/post_detail/message.png" id="message-img">댓글 ${board_view_reply.reply_count }</div>
+			<div id="reply-header"><img src="../resources/imgs/post_detail/message.png" id="message-img">댓글 ${board_view_reply.reply_count }</div>
 			<div id="reply-content">
 				<c:forEach var="reply" items="${reply}">
-					<div class="user-info">
-						<div class="user-info">티어 이미지</div>
-						<span class="replier-info-separator">|</span>
-						<div class="user-info">${reply.replier.solo_rank_tier }</div>
-						<span class="replier-info-separator">|</span>
-						<div class="user-info">${reply.replier.summoner_id }</div>
-						<span class="replier-info-separator">|</span>
-						<div class="user-info">${reply.replier.honor_rate }</div>
-						<button class="detail-small-btn follow">팔로우</button>
-						<span id="reply-date">작성 날짜 : <c:out value="${reply.re_date }" /></span>
-					</div>
-					<div class="reply-content">
-						<span>내용 : <c:out value="${reply.re_text }" /></span>
-						<button class="detail-small-btn delete-reply">삭제</button>
-						<img src="../resources/imgs/post_detail/checked.png" id="check-img">
+					<div class="reply-content-repeat">
+						<div class="user-info">
+							<div class="user-info">티어 이미지</div>
+							<span class="replier-info-separator">|</span>
+							<div class="user-info">${reply.replier.solo_rank_tier }</div>
+							<span class="replier-info-separator">|</span>
+							<div class="user-info">${reply.replier.site_level }&emsp;</div>
+							<div class="user-info">${reply.replier.summoner_id }</div>
+							<span class="replier-info-separator">|</span>
+							<div class="user-info">${reply.replier.honor_rate }</div>
+							<button class="follow">팔로우</button>
+							<span id="reply-date">( <c:out value="${reply.re_date }" /> )</span>
+							<button class="report">신고</button>
+						</div>
+						<div>
+							<span class="reply-content"><c:out value="${reply.re_text }" /></span>
+							<button class="detail-small-btn delete-reply">삭제</button>
+							<img src="../resources/imgs/post_detail/checked.png" id="check-img">
+						</div>
 					</div>
 				</c:forEach>
 			</div>
-			<div class="new-reply">
+			<div id="new-reply">
 				<form method="post" action="insertReply.do">
 					<%-- <input type="hidden" name="post_no" value=${board_detail.post_no }> --%>
-					<input type="text" name="re_text" placeholder="내용을 작성하세요.">
-					<button type="submit" class="detail-big-btn">작성</button>				
+					<textarea name="re_text" placeholder="내용을 작성하세요." id="new-reply-text"></textarea>
+					<button type="submit" class="detail-big-btn submit-reply">작성</button>				
 				</form>
 			</div>
 		</div>
