@@ -1,14 +1,13 @@
 package com.lol.java.user;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +20,13 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping("/join.do")
-	public ModelAndView sign_up(UserVO vo) {
+	public ModelAndView sign_up(UserVO vo/*, Model model, HttpServletRequest request*/) {
+//		// 암호 확인
+//		System.out.println("첫번째:" + UserVO.getUser_pw());
+//		// 비밀번호 암호화 (sha256
+//		String encryPassword = UserSHA.encrypt(vo.getUser_pwd());
+//		vo.setUser_pwd(encryPassword);
+//		System.out.println("두번째:" + vo.getUser_pwd());
 		System.out.println("sign_up");
 		int result = userService.sign_up(vo);
 		String message = "가입되지 않았습니다";
@@ -45,10 +50,7 @@ public class UserController {
 			System.out.println("로그인 실패");
 			return "redirect:./login";
 		} else {
-			System.out.println(result.getUser_no());
-			System.out.println("[" + result.getSummoner_id() + "]" + "로그인 성공");
-			session.setAttribute("user_id", result.getUser_id());
-			session.setAttribute("user_pwd", result.getUser_pwd());
+			
 			session.setAttribute("user_no", result.getUser_no());
 			return "redirect:/board_list/board_list.do";
 		}
@@ -64,6 +66,8 @@ public class UserController {
 
 		return userService.idCheck(user_id);
 	}
+	
+	
 	
 }
 
