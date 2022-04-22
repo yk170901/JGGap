@@ -29,6 +29,12 @@ public class Board_list_DAOImpl implements Board_list_DAO{
 		return mybatis.selectList("Board_list_DAO.selectBoard", pvo);
 	}
 
+	@Override
+	public int searchCountBoard(Paging_VO vo) {
+		// TODO Auto-generated method stub
+		return mybatis.selectOne("searchCountBoard", vo);
+	}
+
 
 	
 }
