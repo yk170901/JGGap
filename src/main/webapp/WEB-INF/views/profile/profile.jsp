@@ -44,10 +44,10 @@
 					<ul class="badges-list">
 						<c:forEach items="${profile_badge }" var="badge">
 							<li>
-								<img class="badges"src="/resources/imgs/profile_icon/${badge.badge_name }.png" alt="badge">
+								<img class="badges"src="/resources/imgs/profile_icon/${badge.badge_no }.png" alt="badge">
 								<div class="shop-explain-wrapper">
 					    			<h2 style="margin-bottom: 15px;">포인트 획득 방법</h2>
-					    			<div>소환사협곡(2인,5인) - 승리시 <span class="shop-explain-color">10</span>P / 패배시 <span class="shop-explain-color">5</span>P</div>
+					    			<div>${badge.badge_name } <span class="shop-explain-color">10</span>P / 패배시 <span class="shop-explain-color">5</span>P</div>
 					    			<div>소환사협곡(일반) - 승리시 <span class="shop-explain-color">7</span>P / 패배시 <span class="shop-explain-color">3</span>P</div>
 					    			<div>칼바람나락 - 승리시 <span class="shop-explain-color">3</span>P / 패배시 <span class="shop-explain-color">1</span>P</div>
 				    			</div>

@@ -15,8 +15,8 @@
   	
   	<!-- 마이페이지 뱃지 목록 불러오기 -->
   	<select id="profile_badge" resultType="profile" parameterType="Object">
-  		SELECT badge_name
-  		FROM badge
+  		SELECT *
+  		FROM user_badge
   		WHERE user_no = #{user_no}
   	</select>
   	
