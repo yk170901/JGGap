@@ -24,7 +24,7 @@
 				<h1 class="post-header-top">${board.board_title }</h1>
 				<div class="post-header-bottom">
 					
-					<div class="user-info">
+					<div class="user-info writer-info">
 						<div class="user-info">티어 이미지<%-- ${board.board_title } --%></div>
 						<span class="writer-info-separator">|</span>
 						<div class="user-info">${board.writer.solo_rank_tier }</div>
@@ -77,9 +77,10 @@
 							<span id="reply-date">( <c:out value="${reply.re_date }" /> )</span>
 							<button class="report">신고</button>
 						</div>
+						
 						<div>
 							<span class="reply-content"><c:out value="${reply.re_text }" /></span>
-							<button class="detail-small-btn delete-reply">삭제</button>
+							<!-- <button class="detail-small-btn delete-reply">삭제</button> -->
 							<img src="../resources/imgs/post_detail/checked.png" id="check-img">
 						</div>
 					</div>
@@ -88,7 +89,7 @@
 			<div id="new-reply">
 				<form method="post" action="insertReply.do">
 					<%-- <input type="hidden" name="post_no" value=${board_detail.post_no }> --%>
-					<textarea name="re_text" placeholder="내용을 작성하세요." id="new-reply-text"></textarea>
+					<input type="text" name="re_text" placeholder="내용을 작성하세요." id="new-reply-text">
 					<button type="submit" class="detail-big-btn submit-reply">작성</button>				
 				</form>
 			</div>
