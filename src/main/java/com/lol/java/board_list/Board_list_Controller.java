@@ -1,5 +1,7 @@
 package com.lol.java.board_list;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +21,19 @@ public class Board_list_Controller {
 	@RequestMapping("/board_list.do")
 	public String boardList(Paging_VO vo, Model model
 			, @RequestParam(value="nowPage", required=false)String nowPage
-			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, String searchCondition, String searchKeyword, HttpSession session) {
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage,
+			String searchCondition, String searchKeyword, HttpSession session,
+			@RequestParam List<String> search_check) {
 		if (session.getAttribute("user_no") == null) {
-			return "하이";
+			return "redirect:/login";
 		}
 		else {
 			int total = 0;
+			
+//			for (String c : search_check) {
+//				board_list_Service.insert(c);
+//	        }
+			
 			if(searchKeyword == null) {
 				total = board_list_Service.countBoard();
 			}
