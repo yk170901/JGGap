@@ -24,7 +24,9 @@ public class ProfileController {
 		Object user_no = session.getAttribute("user_no");
 		model.addAttribute("profile_info", profileService.mypage_info(user_no));
 		model.addAttribute("profile_badge", profileService.mypage_badge(user_no));
-		model.addAttribute("profile_board", profileService.mypage_board(user_no));
+		int total = profileService.mypage_countBoard(user_no);
+		System.out.println(total);
+//		model.addAttribute("profile_board", profileService.mypage_board(user_no));
 	}
 	
 	@ResponseBody

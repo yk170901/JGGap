@@ -20,6 +20,12 @@
   		WHERE user_no = #{user_no}
   	</select>
   	
+  	<select id="profile_countBoard" resultType="int" parameterType="Object">
+		SELECT COUNT(*)
+		FROM board
+		WHERE user_no = #{user_no}
+	</select>
+  	
   	<!-- 마이페이지 게시글 목록 불러오기 -->
   	<select id="profile_board" resultType="profile" parameterType="Object">
   		SELECT post_no, board_title, TO_CHAR(board_date,'YYYY-MM-DD HH:MM') as board_date
