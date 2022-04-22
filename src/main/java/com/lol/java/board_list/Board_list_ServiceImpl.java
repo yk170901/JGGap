@@ -27,6 +27,12 @@ public class Board_list_ServiceImpl implements Board_list_Service{
 		return board_list_DAO.selectBoard(vo);
 	}
 
+	@Override
+	public int searchCountBoard(Paging_VO vo) {
+		// TODO Auto-generated method stub
+		return board_list_DAO.searchCountBoard(vo);
+	}
+
 
 	
 }

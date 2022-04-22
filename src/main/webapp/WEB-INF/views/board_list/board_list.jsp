@@ -15,13 +15,14 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-<%-- <%@ include file="/WEB-INF/views/basic/header.jsp" %> --%>
+<%@ include file="/WEB-INF/views/basic/header.jsp" %>
 <div class="total_div" style="background-color: white;">
 
-	<!-- 전체 div -->
+	<!-- 검색 전체 div -->
 	<div class=map_game_gategory>
-	
-		<form action="board_list.do" method="post" onsubmit="is_checked()">
+		
+		<!-- 토탈 검색 기능 -->
+		<form action="board_list.do" method="get" onsubmit="is_checked()">
 			<!-- 맵 분류 -->
 			<div class="map">
 				<div class="main_hr">
@@ -38,6 +39,7 @@
 				</div>
 
 			</div>
+			<!-- 맵 분류 end -->
 			
 			
 			
@@ -58,7 +60,7 @@
 				      <label for="mode_freerank">자유 랭크</label>
 				</div>
 			</div>
-			
+			<!-- 게임 분류 end -->
 			
 			
 			<!-- 검색 기능 -->
@@ -70,11 +72,12 @@
 				<input type="text" class="radius" id="text_ra" name="searchKeyword"/>
 				<input type="submit" value="조 회" id="submitbutton"/>
 			</div>
-			
-			
+			<!--  검색 기능 end -->
 		</form>
-
+		<!-- 토탈 검색 기능 end -->
 	</div>
+	<!-- 	검색 전체 div end -->
+	
 	
 	<!-- 테이블 조회 기능 -->
 	<div class="table_list" style="text-align: center;">
@@ -86,6 +89,7 @@
 				<th width="160px">등록일</th>
 				<th width="60px">모집 인원</th>
 			</tr>
+			
 		<!-- 관리자 게시판 조회 -->
 		<c:forEach items="${admin_list}" var="admin_vo">
 			<tr>
@@ -96,7 +100,8 @@
 				<td class="admin_td"><c:out value="-"/></td>
 				
 			</tr>
-		</c:forEach>			
+		</c:forEach>
+		<!-- 관리자 게시판 조회 end -->		
 			
 			
 		<!-- 사용자 게시판 조회 -->
@@ -110,66 +115,113 @@
 				
 			</tr>
 		</c:forEach>
+		<!-- 사용자 게시판 조회 end -->
 		
 		</table>
-			
-			
-			
-			<!-- 페이징 -->
-	<div class="paging_total">
+		
+		
+		<!-- 글 작성 -->
+		<div style="text-align: right; padding: 20px;">	
+			<a href="/board_detail/insertBoard.do" style="text-decoration: none;">글 작성</a>
+		</div>
+		
+		
+		<!-- 페이징 -->
+		<div class="paging_total">
 			<!-- 스프링 부트 -->
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<ul class="pagination">
-						
-							<!-- 이전 페이지 조건문 -->
-							<c:if test="${paging.startPage != 1 }">
-								<li class="page-item"><a class="page-link" href="board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">이전</a></li>				
+							<!-- searchKeyword != null -->
+							<c:if test="${paging.searchKeyword == null}">
+								<!-- 이전 페이지 조건문 -->
+								<c:if test="${paging.startPage != 1 }">
+									<li class="page-item"><a class="page-link" href="board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">이전</a></li>				
+								</c:if>
+								<!-- 이전 페이지 조건문 end -->
+								
+								
+								<!-- 값이 있을때의 반복문 -->
+								
+									<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+										<c:choose>
+											<c:when test="${p == paging.nowPage }">
+												<li class="page-item">
+													<a class="page-link" style="font-weight: bold; color: rgb(65,105,225);">${p }</a>
+												</li>
+											</c:when>
+											<c:when test="${p != paging.nowPage }">
+												<li class="page-item">
+													<a class="page-link" href="board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}" class="paging_num">${p }</a>
+												</li>
+											</c:when>
+										</c:choose>															
+									</c:forEach>
+								
+								<!-- 값이 있을때의 반복문 end -->
+										
+								<!-- 다음 페이지 조건문 -->
+								<c:if test="${paging.endPage != paging.lastPage}">
+									<li class="page-item">
+										<a class="page-link" href="board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">다음</a>
+									</li>
+								</c:if>	
+								<!-- 다음 페이지 조건문 end -->
 							</c:if>
 							
 							
-							<!-- 값이 있을때의 반복문 -->
-							<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
-								<c:choose>
-									<c:when test="${p == paging.nowPage }">
-										<li class="page-item">
-											<a class="page-link" style="font-weight: bold; color: rgb(65,105,225);">${p }</a>
-										</li>
-									</c:when>
-									<c:when test="${p != paging.nowPage }">
-										<li class="page-item">
-											<a class="page-link" href="board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}" class="paging_num">${p }</a>
-										</li>
-									</c:when>
-								</c:choose>															
-							</c:forEach>
-									
-							<!-- 다음 페이지 조건문 -->
-							<c:if test="${paging.endPage != paging.lastPage}">
-								<li class="page-item">
-									<a class="page-link" href="board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">다음</a>
-								</li>
+							
+							
+							
+							
+							
+							<!-- searchKeyword null -->
+							<c:if test="${paging.searchKeyword != null}">
+								<!-- 이전 페이지 조건문 -->
+								<c:if test="${paging.startPage != 1 }">
+									<li class="page-item"><a class="page-link" href="board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }">이전</a></li>				
+								</c:if>
+								<!-- 이전 페이지 조건문 end -->
+								
+								
+								<!-- 값이 있을때의 반복문 -->
+								
+									<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+										<c:choose>
+											<c:when test="${p == paging.nowPage }">
+												<li class="page-item">
+													<a class="page-link" style="font-weight: bold; color: rgb(65,105,225);">${p }</a>
+												</li>
+											</c:when>
+											<c:when test="${p != paging.nowPage }">
+												<li class="page-item">
+													<a class="page-link" href="board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }" class="paging_num">${p }</a>
+												</li>
+											</c:when>
+										</c:choose>															
+									</c:forEach>
+								
+								<!-- 값이 있을때의 반복문 end -->
+										
+								<!-- 다음 페이지 조건문 -->
+								<c:if test="${paging.endPage != paging.lastPage}">
+									<li class="page-item">
+										<a class="page-link" href="board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }">다음</a>
+									</li>
+								</c:if>	
+								<!-- 다음 페이지 조건문 end -->
 							</c:if>
-									
 						</ul>
 					</div>
 				</div>
 			</div>
-
-	</div>
-			
-			
-			
-			
-	</div>
+			<!-- 스프링 부트 end -->
+		</div>
+		<!-- 페이징 end -->
+	</div>		
+</div>	
 	
-	
-	
-	
-	
-</div>
-	
-<%-- <%@ include file="/WEB-INF/views/basic/footer.jsp" %> --%>
+<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
 </html>
