@@ -32,7 +32,7 @@
 	            		<a href="#" class="profile_dropdown_list" style="color: white;">내 전적</a>
 	            		<a href="#" class="profile_dropdown_list" style="color: white;">회원정보</a>
 	            		<a href="#" class="profile_dropdown_list" style="color: white;">고객센터</a>
-	            		<a href="#" class="profile_dropdown_list" style="color: white;">로그아웃</a>
+	            		<a href="/user/logout.do" class="profile_dropdown_list" style="color: white;">로그아웃</a>
 	            	</div>
 	            </div>
 	        </div>

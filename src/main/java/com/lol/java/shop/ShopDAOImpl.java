@@ -10,4 +10,9 @@ public class ShopDAOImpl implements ShopDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
+	@Override
+	public int getUsablePoints(ShopVO vo) {		
+		return mybatis.selectOne("ShopDAO.usablepoints", vo);
+	}
+
 }

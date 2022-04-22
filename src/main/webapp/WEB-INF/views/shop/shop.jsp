@@ -24,7 +24,7 @@
    			<div class="shop-top">
    				<div class="shop-class"><p>응모</p></div>
    				<div id="shop-point-wrapper">
-	   				<div id="shop-point">내가 보유한 포인트 : <span class="shop-explain-color">999</span> Point</div>
+	   				<div id="shop-point">내가 보유한 포인트 : <span class="shop-explain-color">5000</span> Point</div>
 	   				<div id="shop-explain">
 	   					<img src="/resources/imgs/info.jpeg">
 			   			<div class="shop-explain-wrapper">
