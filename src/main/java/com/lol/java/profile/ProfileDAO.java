@@ -14,9 +14,6 @@ public interface ProfileDAO {
 	// 마이페이지 뱃지 목록 불러오기
 	List<ProfileVO> mypage_badge(Object user_no);
 	
-	// 마이페이지 게시글 총 갯수
-	int mypage_countBoard(Object user_no);
-	
 	// 마이페이지 게시글 목록 불러오기
 	List<ProfileVO> mypage_board(Object user_no);
 	

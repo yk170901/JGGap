@@ -27,13 +27,6 @@ public class ProfileServiceImpl implements ProfileService{
 		return profileDAO.mypage_badge(user_no);
 	}
 	
-	// 마이페이지 게시글 총 갯수
-	@Override
-	public int mypage_countBoard(Object user_no) {
-		// TODO Auto-generated method stub
-		return profileDAO.mypage_countBoard(user_no);
-	}
-	
 	// 마이페이지 게시글 목록 불러오기
 	@Override
 	public List<ProfileVO> mypage_board(Object user_no) {

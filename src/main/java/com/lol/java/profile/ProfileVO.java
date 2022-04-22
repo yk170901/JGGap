@@ -23,9 +23,6 @@ public class ProfileVO {
 	private String board_date;
 	
 	// Choice
-	private int user_cho_no;
-	private int user_re_no;
-	private String choice;
 	
 	
 }

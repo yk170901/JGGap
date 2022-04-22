@@ -27,12 +27,6 @@ public class ProfileDAOImpl implements ProfileDAO{
 	public List<ProfileVO> mypage_badge(Object user_no) {
 		return mybatis.selectList("ProfileDAO.profile_badge", user_no);
 	}
-	
-	// 마이페이지 게시글 총 갯수
-	@Override
-	public int mypage_countBoard(Object user_no) {
-		return mybatis.selectOne("ProfileDAO.profile_countBoard", user_no);
-	}
 
 	// 마이페이지 게시글 목록 불러오기
 	@Override

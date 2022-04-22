@@ -25,7 +25,7 @@
 					</div>
 					<div class="profile-user">
 						<div class="profile-user-title">${profile_info.summoner_id }</div>
-						<div class="profile-user-text">${sessionScope.user_no } 명예지수 : ${profile_info.honor_rate } / 5.0</div>
+						<div class="profile-user-text">명예지수 : ${profile_info.honor_rate } / 5.0</div>
 					</div>
 				</div>
 				<div class="profile-button-body">
@@ -45,7 +45,13 @@
 						<c:forEach items="${profile_badge }" var="badge">
 							<li>
 								<img class="badges"src="/resources/imgs/profile_icon/${badge.badge_name }.png" alt="badge">
-								<div>${badge.badge_name }</div>
+								<div class="shop-explain-wrapper">
+					    			<h2 style="margin-bottom: 15px;">포인트 획득 방법</h2>
+					    			<div>소환사협곡(2인,5인) - 승리시 <span class="shop-explain-color">10</span>P / 패배시 <span class="shop-explain-color">5</span>P</div>
+					    			<div>소환사협곡(일반) - 승리시 <span class="shop-explain-color">7</span>P / 패배시 <span class="shop-explain-color">3</span>P</div>
+					    			<div>칼바람나락 - 승리시 <span class="shop-explain-color">3</span>P / 패배시 <span class="shop-explain-color">1</span>P</div>
+				    			</div>
+<%-- 								<div>${badge.badge_name }</div> --%>
 							</li>
 						</c:forEach>
 					</ul>
@@ -54,7 +60,7 @@
 			<!-- 게시글 목록 -->
 			<div class="board-box">
 				<div class="boardlist-head">
-					<h2 class="boardlist-title">게시글</h2>
+					<h2 class="boardlist-title">게시글<small> [최신순 10개]</small></h2>
 				</div>
 				<div class="board-list-body">
 					<table border="1" class="board-list">
@@ -63,7 +69,7 @@
 							<th width="860px">제목</th>
 							<th width="150px">등록일</th>
 						</tr>
-						<c:forEach items="${profile_board }" var="board">
+						<c:forEach items="${profile_board }" var="board" end="10">
 							<tr>
 								<td>${board.post_no }</td>
 								<td>${board.board_title }</td>
