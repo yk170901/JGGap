@@ -16,4 +16,7 @@ public class ShopVO {
 	// shop_apply 테이블
 	private int apply_no;
 	
+	// user_no
+	private int user_no;
+	
 }

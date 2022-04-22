@@ -8,5 +8,10 @@ public class ShopServiceImpl implements ShopService{
 
 	@Autowired
 	ShopDAO shopDAO;
+
+	@Override
+	public int getUsablePoints(ShopVO vo) {
+		return shopDAO.getUsablePoints(vo);
+	}
 	
 }

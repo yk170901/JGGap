@@ -7,9 +7,9 @@
   <mapper namespace="ShopDAO">
   	
 	<!-- 사용가능 포인트 조회 -->
-<!--   	<select id="usablepoint" parameterType="int" resultType="int"> -->
-<!--   		SELECT usable_point from user_info where user_no=#{user_no} -->
-<!--   	</select> -->
+  	<select id="usablepoints" parameterType="int" resultType="int">
+  		SELECT usable_point from user_info where user_no=#{user_no}
+  	</select>
 
 	<!-- 상품테이블 전체조회 -->
 	<select id="selectItems" resultType="shop">
@@ -23,10 +23,19 @@
 	</insert>
 	
   	<!-- 응모테이블 상품명 조회 -->
-<!--   	<select id="selectItemName" parameterType="int" resultType="string"> -->
-<!--   		SELECT item_name FROM shop_apply WHERE user_no=#{user_no} -->
-<!--   	</select> -->
+  	<select id="selectItemName" parameterType="int" resultType="string">
+  		SELECT item_name FROM shop_apply WHERE user_no=#{user_no}
+  	</select>
 
-	<!--  -->
+	<!-- 응모횟수 조회 -->
+	<select id="selectcount" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM shop_apply WHERE user_no=#{user_no}
+	</select>
+	
+	<!-- 응모버튼 클릭 -->
+	<insert id="insertApply" parameterType="shop">
+		INSERT INTO shop_apply
+		VALUES(apply_no.nextval, #{user_no}, #{item-name})
+	</insert>
   	
   </mapper>
