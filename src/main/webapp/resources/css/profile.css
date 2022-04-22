@@ -239,6 +239,18 @@ body {
 	margin-bottom: 10px;
 }
 
+.badges-list li div {
+	margin: 0px 5px;
+    width: 90px;
+    height: 50px;
+    border: 1px solid  #F46119;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
 .board-list tr{
 	height: 40px;
 	text-align: center;
@@ -413,4 +425,3 @@ body {
 	background: #F46119;
 	color : white;
 }
-
