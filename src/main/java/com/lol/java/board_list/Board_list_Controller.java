@@ -1,5 +1,7 @@
 package com.lol.java.board_list;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,23 +19,38 @@ public class Board_list_Controller {
 	@RequestMapping("/board_list.do")
 	public String boardList(Paging_VO vo, Model model
 			, @RequestParam(value="nowPage", required=false)String nowPage
-			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, String searchCondition,String searchKeyword) {
-		
-		int total = board_list_Service.countBoard();
-		// 리스트에 개수 보여주는 기능
-		if (nowPage == null && cntPerPage == null) {
-			nowPage = "1";
-			cntPerPage = "10";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) { 
-			cntPerPage = "5";
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, String searchCondition, String searchKeyword, HttpSession session) {
+		if (session.getAttribute("user_no") == null) {
+			return "하이";
+		}
+		else {
+			int total = 0;
+			if(searchKeyword == null) {
+				total = board_list_Service.countBoard();
+			}
+			else if(searchKeyword != null) {
+				vo = new Paging_VO(searchCondition, searchKeyword);
+				total = board_list_Service.searchCountBoard(vo);
+			}
+			
+			// 리스트에 개수 보여주는 기능
+			if (nowPage == null && cntPerPage == null) {
+				nowPage = "1";
+				cntPerPage = "10";
+			} else if (nowPage == null) {
+				nowPage = "1";
+			} else if (cntPerPage == null) { 
+				cntPerPage = "5";
+			}
+			
+			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), searchCondition, searchKeyword);
+			model.addAttribute("admin_list", board_list_Service.admin_boardList());
+			model.addAttribute("paging", vo);
+			model.addAttribute("list", board_list_Service.selectBoard(vo));
+			
+			
+			return "/board_list/board_list";
 		}
 		
-		vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), searchCondition, searchKeyword);
-		model.addAttribute("admin_list", board_list_Service.admin_boardList());
-		model.addAttribute("paging", vo);
-		model.addAttribute("list", board_list_Service.selectBoard(vo));
-		return "/board_list/board_list";
 	}
 }
