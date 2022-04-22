@@ -21,6 +21,7 @@
   			<result property="honor_rate" column="honor_rate_writer"/>
   			<result property="summoner_id" column="summoner_id_writer"/>
   			<result property="solo_rank_tier" column="solo_rank_tier_writer"/>
+  			<result property="site_level" column="site_level"/>
   		</association>
   	</resultMap>
   	
@@ -37,6 +38,7 @@
   			<result property="honor_rate" column="honor_rate_replier"/>
   			<result property="summoner_id" column="summoner_id_replier"/>
   			<result property="solo_rank_tier" column="solo_rank_tier_replier"/>
+  			<result property="site_level" column="site_level"/>
   		</association>
   		
   	</resultMap>
@@ -47,7 +49,7 @@
 	</insert>
 
 	<select id="selectBoard" resultMap="BoardMap" parameterType="String" resultType="board_view" >
-		SELECT DISTINCT u.honor_rate AS honor_rate_writer, u.summoner_id AS summoner_id_writer, u.user_no AS user_no_writer,
+		SELECT DISTINCT u.honor_rate AS honor_rate_writer, u.summoner_id AS summoner_id_writer, u.user_no AS user_no_writer, u.site_level,
 					l.solo_rank_tier AS solo_rank_tier_writer,
 					b.post_no, b.board_title, b.board_text, b.game_map, b.game_mode, b.board_date, b.cru_pre, b.cru_max
 			from user_info u,
@@ -61,7 +63,7 @@
 	<select id="selectReplyList" resultMap="ReplyListMap" parameterType="String" resultType="board_view_reply">
 		SELECT b.post_no,
 				re.user_re_no, re.re_text, re.re_date, re.user_no AS user_no_replier,
-					u_re.honor_rate AS honor_rate_replier, u_re.summoner_id AS summoner_id_replier, u_re.user_no as user_no_replier,
+					u_re.honor_rate AS honor_rate_replier, u_re.summoner_id AS summoner_id_replier, u_re.user_no as user_no_replier, u_re.site_level,
 					l_re.solo_rank_tier AS solo_rank_tier_replier
 			FROM board b,
 					re_board re,

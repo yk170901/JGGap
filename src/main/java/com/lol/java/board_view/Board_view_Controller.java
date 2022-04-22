@@ -48,7 +48,7 @@ public class Board_view_Controller {
 	
 	// 댓긋 삽입 컨트롤러
 	@RequestMapping("/insertReply.do")
-	public void insertReply(Board_view_VO_reply reply_vo, HttpSession session, Model model){
+	public String insertReply(Board_view_VO_reply reply_vo, HttpSession session, Model model){
 		
 		session.setAttribute("user_no", 10028);
 
@@ -56,8 +56,12 @@ public class Board_view_Controller {
 		
 		board_view_Service.insertReply(reply_vo);
 		
+		reply_vo.setPost_no("108");
+		
 		// 댓글들 & 댓글쓴이들 보여주는 메소드
-//		model.addAttribute("reply", board_view_Service.viewReplies(reply_vo.getPost_no()));
+		model.addAttribute("reply", board_view_Service.viewReplyList(reply_vo.getPost_no()));
+		
+		return "redirect:/board_view/viewBoard.do";
 	}
 	
 }
