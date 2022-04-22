@@ -47,5 +47,6 @@ public class ProfileDAOImpl implements ProfileDAO{
 		mybatis.update("ProfileDAO.chg_icon", profileVO);
 		
 	}
+	
 
 }

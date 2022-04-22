@@ -47,7 +47,7 @@ function chg_pwd(form){
 	}
 	
 	if (form.elements["password"].value != form.elements["current-password"].value){
-		alert("비밀번호가 틀렸습니다.")
+		alert("현재 비밀번호가 틀렸습니다.")
 		return;
 	}
 	

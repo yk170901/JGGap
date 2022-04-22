@@ -24,5 +24,6 @@ public interface ProfileDAO {
 	void chg_icon(ProfileVO profileVO);
 	
 	
+	
 
 }

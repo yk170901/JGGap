@@ -15,8 +15,8 @@
   	
   	<!-- 마이페이지 뱃지 목록 불러오기 -->
   	<select id="profile_badge" resultType="profile" parameterType="Object">
-  		SELECT badge_name
-  		FROM badge
+  		SELECT *
+  		FROM user_badge
   		WHERE user_no = #{user_no}
   	</select>
   	
@@ -24,7 +24,7 @@
   	<select id="profile_board" resultType="profile" parameterType="Object">
   		SELECT post_no, board_title, TO_CHAR(board_date,'YYYY-MM-DD HH:MM') as board_date
   		FROM board
-  		WHERE user_no = #{user_no}
+  		WHERE user_no = #{user_no} AND deleted = 0
   		ORDER BY post_no DESC
   	</select>
   	

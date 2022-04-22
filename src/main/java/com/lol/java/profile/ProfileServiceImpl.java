@@ -44,5 +44,6 @@ public class ProfileServiceImpl implements ProfileService{
 	public void chg_icon(ProfileVO profileVO) {
 		profileDAO.chg_icon(profileVO);
 	}
+
 	
 }

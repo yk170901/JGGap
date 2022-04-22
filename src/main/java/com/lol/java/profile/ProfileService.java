@@ -22,4 +22,5 @@ public interface ProfileService {
 	
 	// 프로필 아이콘 변경
 	void chg_icon(ProfileVO profileVO);
+
 }
