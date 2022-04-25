@@ -80,7 +80,8 @@ body {
     
 .profile-body,
 .badges-body,
-.board-list-body {
+.boardlist-body,
+.choices-body {
 	padding: 20px 30px;
     border-radius: 10px;
     margin-top: 30px;
@@ -95,7 +96,7 @@ body {
 	
 }
     
-.board-list-body,
+.boardlist-body,
 .profile-info {
     display: flex;
     align-items: center;
@@ -198,7 +199,8 @@ body {
 }
 
 .badges-head,
-.boardlist-head {
+.boardlist-head,
+.choices-head {
 	margin-top: 60px;
     display: flex;
     align-items: center;
@@ -207,7 +209,8 @@ body {
 }
 
 .badges-title,
-.boardlist-title {
+.boardlist-title,
+.choices-title {
 	margin-bottom: 10px;
 	font-weight: bold;
 }
@@ -245,32 +248,51 @@ body {
 	margin-bottom: 10px;
 }
 
+.choices-list {
+	width: 1100px;
+	text-align: center;
+}
 
-.shop-explain-wrapper {
-	width: 310px;
+#choices_check {
+	width : 45px;
+	border-radius:50%;
+}
+
+#choices_check:hover {
+	cursor:pointer;
+	filter:grayscale(100%);
+	box-shadow: 3px 3px 7px 3px #dadce0;
+}
+
+.badges-info {
+	width: 200px;
 	display: none;
 	position: absolute;
 	font-size: 14px;
 	top: -50px;
-	right: -320px;
+	right: -100px;
 	z-index: 1;
-	background: navy;
+	background: #F46119;
 	padding: 10px 0 10px 0;
 	color: white;
-	border-radius: 10px;
+	border-radius: 2rem;
 }
 
-.shop-explain-wrapper > h2 {
+.badges-info > h2 {
 	color: white;
+	margin-bottom: 15px;
 }
 
 .badges-list > li > img:hover {
 	border: 2px solid #F46119;
 }
 
-.badges-list > li > img:hover + .shop-explain-wrapper {
+.badges-list > li > img:hover + .badges-info {
 	display: block;
 }
+
+
+
 
 .board-list tr{
 	height: 40px;

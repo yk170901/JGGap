@@ -16,8 +16,17 @@
   	<!-- 마이페이지 뱃지 목록 불러오기 -->
   	<select id="profile_badge" resultType="profile" parameterType="Object">
   		SELECT *
-  		FROM user_badge
+  		FROM user_badge NATURAL JOIN badge
   		WHERE user_no = #{user_no}
+  	</select>
+  	
+  	<!-- 마이페이지 채택 목록 불러오기 -->
+  	<select id="profile_choice" resultType="profile" parameterType="Object">
+		SELECT user_info.SUMMONER_ID, user_info.HONOR_RATE, lol_info.SOLO_RANK_TIER, choice.choice_user_no
+		FROM choice, user_info, LOL_INFO
+		WHERE choice.user_no = #{user_no} 
+		AND choice.CHOICE_USER_NO = user_info.USER_NO
+		AND choice.CHOICE_USER_NO = lol_info.USER_NO
   	</select>
   	
   	<!-- 마이페이지 게시글 목록 불러오기 -->
@@ -41,5 +50,11 @@
   		SET profile_icon = #{profile_icon}
   		WHERE user_no = #{user_no}
   	</update>
+  	
+  	<!-- 채택 해제 -->
+  	<delete id="delete_choice" parameterType="profile">
+  		DELETE FROM choice
+  		WHERE choice_user_no = #{user_no}
+  	</delete>
   	 
   </mapper>
