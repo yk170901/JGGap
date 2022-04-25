@@ -18,12 +18,13 @@
 			<div class="post-header">
 				<h1 class="post-header-top">글 수정</h1>
 				<div class="post-header-bottom">
-					<input type="text" id="title" placeholder="제목을 입력해주세요" name="board_title" maxlength=30>
+					<input type="text" id="title" name="board_title" maxlength=30 value="${update.board_title }">
 					
 					<div class="category-wrap">
 						<div class="category-content">
 							<div class="category-title">맵 분류</div>
 							<select class="category-map" id="category-map" name="game_map">
+								<option value="${update.game_map }" selected></option>
 								<option value="none">선택해주세요.</option>
 								<option value="소환사의 협곡">소환사의 협곡</option>
 								<option value="칼바람 나락">칼바람 나락</option>
@@ -54,7 +55,7 @@
 				</div>
 			</div>
 			<div class="post-content">
-				<div class="textarea-wrap"><textarea id="content" name="board_text"></textarea></div>
+				<div class="textarea-wrap"><textarea id="content" name="board_text" value="${update.board_text }"></textarea></div>
 			</div>
 			<div class="button-wrap">
 				<button class="post-submit detail-big-btn" type="submit">작성</button>

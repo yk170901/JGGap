@@ -10,5 +10,20 @@
 		INSERT INTO board(post_no, user_no, board_title, board_text, game_map, game_mode, board_date, cru_max)
 			VALUES (post_no.NEXTVAL, #{user_no}, #{board_title},#{board_text},#{game_map},#{game_mode}, sysdate, #{cru_max})
   	</insert>
+  	
+  	<select id="getPost_no" parameterType="int" resultType="int">
+  		SELECT post_no
+			FROM (SELECT post_no
+		  		FROM BOARD
+		  		WHERE user_no = #{value}
+		  		ORDER BY post_no DESC)
+		  	WHERE ROWNUM = 1
+  	</select>
+  
+  	<select id="getBoard" parameterType="int" resultType="board_detail">
+  		SELECT *
+  			FROM board
+  			WHERE post_no = #{value}
+  	</select>
   
   </mapper>
