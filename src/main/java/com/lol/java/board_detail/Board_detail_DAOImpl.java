@@ -13,6 +13,10 @@ public class Board_detail_DAOImpl implements Board_detail_DAO{
 	@Override
 	public void insertPost(Board_detail_VO vo) {
 		mybatis.insert("insertPost", vo);
-		System.out.println("insert 완료");
 	}
+
+	/*
+	 * @Override public void updatePost(Board_detail_VO vo) {
+	 * mybatis.update("updatePost", vo); }
+	 */
 }

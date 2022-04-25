@@ -21,7 +21,7 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 	}
 	
 	@Override
-	public List<Board_view_VO_reply> viewReplyList(String post_no) {
+	public List<Board_view_VO_reply> viewReplyList(int post_no) {
 		return board_view_DAO.selectReplyList(post_no);
 	}
 

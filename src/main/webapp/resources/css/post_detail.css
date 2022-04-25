@@ -84,6 +84,11 @@
 	padding: 0 15px;
 }
 
+.modify-post:hover{
+	text-decoration: none;
+	color: white;
+}
+
 .writer-info{
 	font-size: 1.1em;
 }
