@@ -14,4 +14,14 @@ public class Board_detail_ServiceImpl implements Board_detail_Service{
 		board_detail_DAO.insertPost(vo);
 	}
 
+	@Override
+	public int getPost_no(int user_no) {
+		return board_detail_DAO.getPost_no(user_no);
+	}
+
+	@Override
+	public Board_detail_VO getBoard(int post_no) {
+		return board_detail_DAO.getBoard(post_no);
+	}
+
 }

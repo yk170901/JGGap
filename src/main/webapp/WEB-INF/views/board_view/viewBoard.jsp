@@ -22,7 +22,7 @@
 			<div class="post-header">
 				<!-- 포스트 넘버 임의로 줌 -->
 				<input type="hidden" name="post_no" value="72">
-				<h1 class="post-header-top"><c:out value="${board_view_reply.reply_count }" />${board.board_title }</h1>
+				<h1 class="post-header-top"><c:out value="${board.board_title }" /></h1>
 				<div class="post-header-bottom">
 					
 					<div class="user-info writer-info">

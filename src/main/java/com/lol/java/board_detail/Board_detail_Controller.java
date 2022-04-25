@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -30,17 +31,19 @@ public class Board_detail_Controller {
 		 
 		board_detail_Service.insertPost(vo);
 		
-		// 포스트 넘버가 안 받아진다. DAOImpl에서 setPost_no 할 Mapper 오가는 코드가 있어야겠다. Mapper에 <select id= getPostNo></select> 매퍼 놓으면 됨
-		System.out.println("포스트 넘버 : "+vo.getPost_no());
+		// 유저 번호를 사용해, 그 유저의 최신 작성글 번호 post_no 가져오기
+		int post_no = board_detail_Service.getPost_no(vo.getUser_no());
 		
-//		return "redirect:/viewBoard?post_no="+post_no".do";
-		return "redirect:/board_view/viewBoard.do?post_no="+vo.getPost_no();
+		return "redirect:/board_view/viewBoard.do?post_no="+post_no;
 	}
 	
 	@RequestMapping("/updateBoard.do")
-	public void getBoardToUpdate(Board_detail_VO vo) {
+	public void getBoardToUpdate(Board_detail_VO vo, Model model) {
 
-		System.out.println("포스트 넘버 : "+vo.getPost_no());
+		Board_detail_VO vovo = board_detail_Service.getBoard(vo.getPost_no());
 		
+		System.out.println(vovo);
+
+		model.addAttribute("update", vovo);
 	}
 }
