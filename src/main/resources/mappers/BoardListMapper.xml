@@ -20,7 +20,7 @@
 	
 	 <!-- 게시글 카운터 검색페이징 -->
   	<select id="searchCountBoard" resultType="int">
-		SELECT COUNT(*) FROM board
+		SELECT DISTINCT COUNT(*) FROM board
 		<where>
 			<!-- 소환사의 협곡/칼바람 나락 null 체크  -->
 			<if test="search_check_map != null">
@@ -61,17 +61,19 @@
 	<select id="selectBoard" parameterType="paging" resultType="board_list" >
 		SELECT * FROM (
 			SELECT ROWNUM RN, A.* FROM (
-				SELECT
+				SELECT DISTINCT
 					a.SITE_LEVEL,
 					a.SUMMONER_ID,
 					a.HONOR_RATE,
 					b.SOLO_RANK_TIER,
 					c.POST_NO,
 					c.BOARD_TITLE,
-					c.BOARD_DATE
+					c.BOARD_DATE,
+					c.CRU_MAX,
+					c.CRU_PRE
 					FROM USER_INFO a, LOL_INFO b, BOARD c
 					<where>
-						(a.USER_NO = b.USER_NO AND b.USER_NO = c.USER_NO)
+						a.USER_NO = b.USER_NO AND b.USER_NO = c.USER_NO
 						<!-- 소환사의 협곡/칼바람 나락 null 체크  -->
 						<if test="search_check_map != null">
 							AND game_map in
