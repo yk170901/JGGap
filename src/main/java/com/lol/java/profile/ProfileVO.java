@@ -26,7 +26,9 @@ public class ProfileVO {
 	
 	// Choice
 	private int choice_user_no;
-	private String solo_rank_tier;
+	private int site_level;
+	private String solo_tier;
+	private String solo_tier_grade;
 	
 	
 }

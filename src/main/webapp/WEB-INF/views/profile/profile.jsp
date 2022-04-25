@@ -47,8 +47,8 @@
 							<li>
 								<img class="badges"src="/resources/imgs/profile_icon/${badge.badge_file }.png" alt="badge">
 								<div class="badges-info">
-					    			<h2">${badge.badge_name }</h2>
-					    			<div>${badge.badge_require }</div>
+					    			<h3>${badge.badge_name }</h3>
+					    			<div>"${badge.badge_require }"</div>
 				    			</div>
 							</li>
 						</c:forEach>
@@ -61,17 +61,38 @@
 					<h2 class="choices-title">채택 목록<small></small></h2>
 				</div>
 				<div class="choices-body">
-					<table border="1" class="choices-list">
-						<c:forEach items="${profile_choice }" var="choice">
-							<tr>
-								<td>${choice.solo_rank_tier }</td>
-								<td>${choice.summoner_id }</td>
-								<td>${choice.honor_rate }</td>
-								<td width="100px"><img src="../resources/imgs/post_detail/checked.png" id="choices_check" value="${choice.choice_user_no }"></td>
-							</tr>
-						</c:forEach>
+						<c:set var="i" value="0" />
+						<c:set var="j" value="2" />
+						<table border=1 class="choices-list">
+							<c:choose>
+								<c:when test="${profile_choice != null}">
+									<c:forEach items="${profile_choice}" var="choice">
+									<c:if test="{i%j == 0}">
+										<tr>
+									</c:if>
+									<td class="td-line td-tier"><img class="choice-tiers"src="/resources/imgs/tier/${choice.solo_tier }.png" alt="tier">${choice.solo_tier } ${choice.solo_tier_grade }</td>
+									<td class="td-line td-sitelevel">${choice.site_level }</td>
+									<td class="td-line td-honorrate">${choice.honor_rate } / 5.0</td>
+									<td class="td-line td-summonerid">${choice.summoner_id }</td>
+									<td class="td-line td-checked"><img
+										src="../resources/imgs/post_detail/checked.png"
+										id="choices_check" value="${choice.choice_user_no }"></td>
+									<td class="td-empty"></td>
+									<c:if test="${i%j == j-1}">
+										</tr>
+									</c:if>
+									<c:set var="i" value="${i+1}" />
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td>존재하지 않습니다.</td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
+						</table>
 
-					</table>
+
 				</div>
 			</div>
 			
