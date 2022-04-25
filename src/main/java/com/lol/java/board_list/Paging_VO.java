@@ -33,6 +33,8 @@ public class Paging_VO {
 		setTotal(total);
 		setSearchCondition(searchCondition);
 		setSearchKeyword(searchKeyword);
+		setSearch_check_map(search_check_map);
+		setSearch_check_mode(search_check_mode);
 		calcLastPage(getTotal(), getCntPerPage());
 		calcStartEndPage(getNowPage(), cntPage);
 		calcStartEnd(getNowPage(), getCntPerPage());
