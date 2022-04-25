@@ -1,5 +1,7 @@
 package com.lol.java.shop;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,7 +14,27 @@ public class ShopDAOImpl implements ShopDAO{
 
 	@Override
 	public int getUsablePoints(ShopVO vo) {		
-		return mybatis.selectOne("ShopDAO.usablepoints", vo);
+		return mybatis.selectOne("ShopDAO.usablePoints", vo.getUser_no());
+	}
+
+	@Override
+	public List<ShopVO> getItems() {
+		return mybatis.selectList("ShopDAO.getItems");
+	}
+
+	@Override
+	public void insertItem(ShopVO vo) {
+		mybatis.insert("ShopDAO.insertItem", vo);
+	}
+
+	@Override
+	public int[] getCounts() {
+		return mybatis.selectOne("ShopDAO.getCounts");
+	}
+
+	@Override
+	public void insertApply(ShopVO vo) {
+		mybatis.insert("ShopDAO.insertApply", vo);
 	}
 
 }

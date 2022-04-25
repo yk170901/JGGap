@@ -7,13 +7,13 @@
   <mapper namespace="ShopDAO">
   	
 	<!-- 사용가능 포인트 조회 -->
-  	<select id="usablepoints" parameterType="int" resultType="int">
+  	<select id="usablePoints" parameterType="int" resultType="int">
   		SELECT usable_point from user_info where user_no=#{user_no}
   	</select>
 
 	<!-- 상품테이블 전체조회 -->
-	<select id="selectItems" resultType="shop">
-		SELECT * FROM shop_items
+	<select id="getItems" resultType="shop">
+		SELECT * FROM shop_items ORDER BY item_name
 	</select>
 	
 	<!-- 상품 추가 -->
@@ -21,15 +21,14 @@
 		INSERT INTO shop_items 
 		values(#{item_name}, #{item_remain}, #{item_total}, #{item_per}, #{item_point}, #{item_file})
 	</insert>
-	
-  	<!-- 응모테이블 상품명 조회 -->
-  	<select id="selectItemName" parameterType="int" resultType="string">
-  		SELECT item_name FROM shop_apply WHERE user_no=#{user_no}
-  	</select>
 
 	<!-- 응모횟수 조회 -->
-	<select id="selectcount" parameterType="int" resultType="int">
-		SELECT COUNT(*) FROM shop_apply WHERE user_no=#{user_no}
+	<select id="getCounts" resultType="_int[]">
+		SELECT cnt
+		FROM (SELECT item_name, COUNT(*) cnt
+				FROM shop_apply 
+				GROUP BY item_name
+				ORDER BY item_name)
 	</select>
 	
 	<!-- 응모버튼 클릭 -->

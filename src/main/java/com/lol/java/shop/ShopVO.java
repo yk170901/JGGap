@@ -19,4 +19,7 @@ public class ShopVO {
 	// user_no
 	private int user_no;
 	
+	// 응모횟수
+	private int item_applied;
+	
 }

@@ -1,5 +1,7 @@
 package com.lol.java.shop;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +17,33 @@ public class ShopController {
 
 	@Autowired
 	private ShopService shopService;
+	ShopVO vo = new ShopVO();
 	
-	// 사용가능 포인트 가져오기
+	// 페이지 진입시
 	@RequestMapping("/shop.do")
-	public void shopenter(Model model, HttpSession session){
+	public void shopEnter(Model model, HttpSession session){
 		int user_no = (int) session.getAttribute("user_no");
-		ShopVO vo = new ShopVO();
 		vo.setUser_no(user_no);
-		model.addAttribute("", shopService.getUsablePoints(vo));
+		List<ShopVO> items = shopService.getItems();
+		int[] applied = shopService.getCounts();
+		int i = 0;
+		for (ShopVO vo : items) {
+			vo.setItem_applied(applied[i]);
+			i++;
+		}
 		
+		model.addAttribute("usablePoints", shopService.getUsablePoints(vo));
+		model.addAttribute("items", items);
 	}
+	
+	// 응모버튼 클릭시
+	@RequestMapping("/apply.do")
+	public String shopApply(ShopVO vo) {
+		shopService.insertApply(vo);
+		int itemPer = vo.getItem_per();
+		
+		return "redirect:/shop/shop.do";
+	}
+	
 
 }
