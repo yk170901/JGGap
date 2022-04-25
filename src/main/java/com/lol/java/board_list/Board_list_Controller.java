@@ -68,7 +68,6 @@ public class Board_list_Controller {
 				model.addAttribute("paging", vo);
 				model.addAttribute("list", board_list_Service.selectBoard(vo));
 				
-				
 				return "/board_list/board_list";
 			}
 		}
