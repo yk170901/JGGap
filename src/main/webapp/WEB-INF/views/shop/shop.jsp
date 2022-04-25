@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="format-detection" content="telephone=no">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <link rel="shortcut icon" href="/resources/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
 	<link rel="stylesheet" href="/resources/css/shop.css" type="text/css">
 </head>
 
@@ -46,11 +46,11 @@
 		    		<div class="item_name">${item.item_name }</div>
 		    		<div class="point-amount"><p>${item.item_point }P</p></div>
 			    	<div class="shop-apply-img">
-			    		<img src="/resources/imgs/shop_items/${item.item_file }.jpg">
+			    		<img src="/resources/imgs/shop_items/${item.item_file}.jpg">
 			    	</div>
 			    	<div class="shop-apply-btn">
 			    		<button onclick="">응모하기</button>
-			    		<div class="shop-apply-fre">응모횟수 : ${item.item_applied }회</div>
+			    		<div class="shop-apply-fre">응모횟수 : ${item.item_applied }회</div>		    		
 			    	</div>
 		    	</div>
 		    	</c:forEach>

@@ -53,10 +53,10 @@
 				      <input type="checkbox" id="mode_normal" checked="checked" name="search_check_mode" value="일반">
 				      <label for="mode_normal">일반</label>
 				      &ensp;
-				      <input type="checkbox" id="mode_solorank" checked="checked" name="search_check_mode" value="솔로랭크">
+				      <input type="checkbox" id="mode_solorank" checked="checked" name="search_check_mode" value="솔로 랭크">
 				      <label for="mode_solorank">솔로 랭크</label>
 				      &ensp;
-				      <input type="checkbox" id="mode_freerank" checked="checked" name="search_check_mode" value="자유랭크">
+				      <input type="checkbox" id="mode_freerank" checked="checked" name="search_check_mode" value="자유 랭크">
 				      <label for="mode_freerank">자유 랭크</label>
 				</div>
 			</div>
@@ -108,11 +108,10 @@
 		<c:forEach items="${list}" var="vo">
 			<tr>
 				<td><c:out value="${vo.post_no}"/></td>
-				<td><c:out value="${vo.board_title}"/></td>
-				<td><c:out value="${vo.user_no}"/></td>
+				<td><a href="../board_view/viewBoard.do?post_no=${vo.post_no }"><c:out value="${vo.board_title}"/></a></td>
+				<td><c:out value="${vo.solo_rank_tier} | ${vo.summoner_id} | ${vo.site_level} | ${vo.honor_rate}"/></td>
 				<td><c:out value="${vo.board_date}"/></td>
-				<td><c:out value="0/4"/></td>
-				
+				<td><c:out value="${vo.cru_pre}/${vo.cru_max}"/></td>
 			</tr>
 		</c:forEach>
 		<!-- 사용자 게시판 조회 end -->
@@ -180,7 +179,9 @@
 							<c:if test="${paging.searchKeyword != null}">
 								<!-- 이전 페이지 조건문 -->
 								<c:if test="${paging.startPage != 1 }">
-									<li class="page-item"><a class="page-link" href="board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }">이전</a></li>				
+									<li class="page-item"><a class="page-link" href="board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}
+									&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }
+									&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}">이전</a></li>				
 								</c:if>
 								<!-- 이전 페이지 조건문 end -->
 								
@@ -196,7 +197,10 @@
 											</c:when>
 											<c:when test="${p != paging.nowPage }">
 												<li class="page-item">
-													<a class="page-link" href="board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }" class="paging_num">${p }</a>
+													<a class="page-link paging_num" href="board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}
+													&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }
+													&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}" 
+													>${p }</a>
 												</li>
 											</c:when>
 										</c:choose>															
@@ -207,7 +211,9 @@
 								<!-- 다음 페이지 조건문 -->
 								<c:if test="${paging.endPage != paging.lastPage}">
 									<li class="page-item">
-										<a class="page-link" href="board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }">다음</a>
+										<a class="page-link" href="board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}
+										&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }
+										&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}">다음</a>
 									</li>
 								</c:if>	
 								<!-- 다음 페이지 조건문 end -->

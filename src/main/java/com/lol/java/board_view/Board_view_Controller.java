@@ -23,27 +23,22 @@ public class Board_view_Controller {
 	}
 
 	@RequestMapping("/viewBoard.do")
-	public void viewBoard(Board_view_VO board_vo, Board_view_VO_reply reply_vo, Model model) {
+	public void viewBoard(Board_view_VO board_vo, Board_view_VO_reply reply_vo, HttpSession session, Model model) {
 
-		// 포스트 넘버 가져오기
-		System.out.println("삽입 전의 포스트 넘버 : "+ board_vo.getPost_no());
-		board_vo.setPost_no("108");
-		reply_vo.setPost_no("108");
-		
-		// 들어온 사람이 
-		if (true) {
-			System.out.println("당신은 글쓴이입니다");
-			// 수정, 삭제 버튼도 보여주기
-		}
+		session.setAttribute("user_no", 10028);
+		board_vo.setUser_no(Integer.parseInt(String.valueOf(session.getAttribute("user_no"))));
 		
 		// 글 & 글쓴이 보여주는 메소드
 		model.addAttribute("board",board_view_Service.viewBoard(board_vo));
-		
+
 		// 댓글들 & 댓글쓴이들 보여주는 메소드
 		model.addAttribute("reply", board_view_Service.viewReplyList(reply_vo.getPost_no()));
-		
-		System.out.println("최종 보드 : " + board_vo);
-		System.out.println("최종 댓글 : " + reply_vo);
+	}
+	
+	// 채택 버튼 누르기 컨트롤러
+	@RequestMapping("/checkUser.do")
+	public void checkUser(){
+		// 글쓴이가 눌렀나 아닌가는 이미 js에서 걸러서 true 값을 받아 진행된다는 전제 하에 코드를 쓴다.
 	}
 	
 	// 댓긋 삽입 컨트롤러
@@ -52,16 +47,17 @@ public class Board_view_Controller {
 		
 		session.setAttribute("user_no", 10028);
 
-		reply_vo.setUser_no(String.valueOf(session.getAttribute("user_no")));
+		reply_vo.setUser_no(Integer.parseInt(String.valueOf(session.getAttribute("user_no"))));
 		
+		
+		System.out.println("댓글에서 가져가는 post_no"+reply_vo.getPost_no());
+
 		board_view_Service.insertReply(reply_vo);
-		
-		reply_vo.setPost_no("108");
 		
 		// 댓글들 & 댓글쓴이들 보여주는 메소드
 		model.addAttribute("reply", board_view_Service.viewReplyList(reply_vo.getPost_no()));
 		
-		return "redirect:/board_view/viewBoard.do";
+		return "redirect:/board_view/viewBoard.do?post_no="+reply_vo.getPost_no();
 	}
 	
 }

@@ -8,11 +8,11 @@ import lombok.Data;
 public class Board_view_VO_reply {
 
 	/* Board */
-	private String post_no;
+	private int post_no;
 
 	/* Re_board */
-	private String user_re_no;
-	private String user_no;
+	private int user_re_no;
+	private int user_no;
 	private String re_text;
 	private Date re_date;
 	

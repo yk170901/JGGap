@@ -10,7 +10,7 @@ public interface ShopDAO {
 	// 상품 추가
 	void insertItem(ShopVO vo);	
 	// 응모횟수 조회
-	int[] getCounts();
+	List<ShopVO> getCounts(ShopVO vo);
 	// 응모버튼 클릭
 	void insertApply(ShopVO vo);
 }

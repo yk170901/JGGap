@@ -39,14 +39,30 @@
 	float:right;
 }
 
+#tier-img{
+	width: 45px;
+}
+
 #message-img{
 	width:30px;
 	margin-right: 10px;
 }
 
+#select-user-to-play-with{
+	padding:0;
+	border:0;
+}
+
 #check-img{
-	width:45px;
-	padding-left:10px;
+	width:40px;
+}
+
+#user-check-form{
+	display: inline-block;
+}
+
+#check-img:hover{
+	cursor: pointer;
 }
 
 .writer-info-separator,
@@ -66,6 +82,11 @@
 	font-weight: normal;
 	font-size: 11px;
 	padding: 0 15px;
+}
+
+.modify-post:hover{
+	text-decoration: none;
+	color: white;
 }
 
 .writer-info{

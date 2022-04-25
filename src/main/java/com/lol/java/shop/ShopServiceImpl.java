@@ -27,8 +27,8 @@ public class ShopServiceImpl implements ShopService{
 	}
 
 	@Override
-	public int[] getCounts() {
-		return shopDAO.getCounts();
+	public List<ShopVO> getCounts(ShopVO vo) {
+		return shopDAO.getCounts(vo);
 	}
 
 	@Override

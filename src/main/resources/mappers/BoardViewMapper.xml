@@ -45,22 +45,22 @@
  
 	<insert id="insertReply" parameterType="board_view_reply">
 		INSERT INTO re_board(user_re_no, post_no, re_text, re_date, user_no)
-			VALUES(user_re_no.NEXTVAL, 108, #{re_text}, sysdate, #{user_no})
+			VALUES(user_re_no.NEXTVAL, #{post_no}, #{re_text}, sysdate, #{user_no})
 	</insert>
 
-	<select id="selectBoard" resultMap="BoardMap" parameterType="String" resultType="board_view" >
+	<select id="selectBoard" resultMap="BoardMap" parameterType="int" resultType="board_view" >
 		SELECT DISTINCT u.honor_rate AS honor_rate_writer, u.summoner_id AS summoner_id_writer, u.user_no AS user_no_writer, u.site_level,
 					l.solo_rank_tier AS solo_rank_tier_writer,
 					b.post_no, b.board_title, b.board_text, b.game_map, b.game_mode, b.board_date, b.cru_pre, b.cru_max
 			from user_info u,
 					lol_info l,
 					board b
-			where b.post_no = ${value}
+			where b.post_no = #{value}
 					AND u.user_no = b.user_no
 					and l.user_no = b.user_no
 	</select>
 	
-	<select id="selectReplyList" resultMap="ReplyListMap" parameterType="String" resultType="board_view_reply">
+	<select id="selectReplyList" resultMap="ReplyListMap" parameterType="int" resultType="board_view_reply">
 		SELECT b.post_no,
 				re.user_re_no, re.re_text, re.re_date, re.user_no AS user_no_replier,
 					u_re.honor_rate AS honor_rate_replier, u_re.summoner_id AS summoner_id_replier, u_re.user_no as user_no_replier, u_re.site_level,
@@ -69,7 +69,7 @@
 					re_board re,
 					user_info u_re,
 					lol_info l_re
-			where b.post_no = ${value}
+			where b.post_no = #{value}
 					and re.post_no = b.post_no
 					AND re.user_no = u_re.USER_NO 
 					AND l_re.USER_NO = re.USER_NO
