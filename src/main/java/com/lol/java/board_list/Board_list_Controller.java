@@ -1,7 +1,6 @@
 package com.lol.java.board_list;
 
-import java.util.List;
-
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,45 +20,71 @@ public class Board_list_Controller {
 	@RequestMapping("/board_list.do")
 	public String boardList(Paging_VO vo, Model model
 			, @RequestParam(value="nowPage", required=false)String nowPage
-			, @RequestParam(value="cntPerPage", required=false)String cntPerPage,
-			String searchCondition, String searchKeyword, HttpSession session,
-			@RequestParam List<String> search_check) {
-		if (session.getAttribute("user_no") == null) {
-			return "redirect:/login";
-		}
-		else {
-			int total = 0;
-			
-//			for (String c : search_check) {
-//				board_list_Service.insert(c);
-//	        }
-			
-			if(searchKeyword == null) {
-				total = board_list_Service.countBoard();
-			}
-			else if(searchKeyword != null) {
-				vo = new Paging_VO(searchCondition, searchKeyword);
-				total = board_list_Service.searchCountBoard(vo);
-			}
-			
-			// 리스트에 개수 보여주는 기능
-			if (nowPage == null && cntPerPage == null) {
-				nowPage = "1";
-				cntPerPage = "10";
-			} else if (nowPage == null) {
-				nowPage = "1";
-			} else if (cntPerPage == null) { 
-				cntPerPage = "5";
-			}
-			
-			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), searchCondition, searchKeyword);
-			model.addAttribute("admin_list", board_list_Service.admin_boardList());
-			model.addAttribute("paging", vo);
-			model.addAttribute("list", board_list_Service.selectBoard(vo));
-			
-			
-			return "/board_list/board_list";
-		}
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage
+			,String searchCondition, String searchKeyword, HttpSession session
+			,HttpServletRequest request
+			,String[] search_check_map
+			,String[] search_check_mode) {
 		
-	}
+			if (session.getAttribute("user_no") == null) {
+				return "redirect:/login.jsp";
+			}
+			else {
+				
+				/* 게시글 총 갯수 카운트*/
+				int total = 0;
+				
+				/* search_check_map, search_check_mode value값 가져와서 배열에 저장 */
+//				String[] search_check_map = request.getParameterValues("search_check_map");
+//				String[] search_check_mode = request.getParameterValues("search_check_mode");
+				
+				if(searchKeyword == null) {
+					/* 검색 키워드가 없을때 일반 페이징*/
+					total = board_list_Service.countBoard();
+				}
+				else if(searchKeyword != "" || searchKeyword != null){
+					vo = new Paging_VO(search_check_map, search_check_mode, searchCondition, searchKeyword);
+					
+					total = board_list_Service.searchCountBoard(vo);
+				}
+				
+				// 리스트에 개수 보여주는 기능
+				if (nowPage == null && cntPerPage == null) {
+					nowPage = "1";
+					cntPerPage = "10";
+				} else if (nowPage == null) {
+					nowPage = "1";
+				} else if (cntPerPage == null) { 
+					cntPerPage = "10";
+				}
+				
+				System.out.println(total);
+				vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), searchCondition, searchKeyword, search_check_map, search_check_mode);
+				model.addAttribute("admin_list", board_list_Service.admin_boardList());
+				model.addAttribute("paging", vo);
+				model.addAttribute("list", board_list_Service.selectBoard(vo));
+				
+				
+				
+				
+				/*테스트*/
+//				if(search_check_map != null) {
+//					for(int i=0; i<search_check_map.length; i++) {
+//						System.out.println(search_check_map[i]);
+//						model.addAttribute("search_check_map", search_check_map);
+//					}
+//				}
+//				
+//				if(search_check_mode != null) {
+//					for(int i=0; i<search_check_mode.length; i++) {
+//						System.out.println(search_check_mode[i]);
+//						model.addAttribute("search_check_mode", search_check_mode[i]);
+//					}
+//				}
+				
+				
+				
+				return "/board_list/board_list";
+			}
+		}
 }

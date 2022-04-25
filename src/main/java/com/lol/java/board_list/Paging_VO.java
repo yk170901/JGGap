@@ -1,5 +1,7 @@
 package com.lol.java.board_list;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -10,17 +12,22 @@ public class Paging_VO {
 	private int cntPage = 5;
 	private String searchCondition;
 	private String searchKeyword;
+	
+	private String[] search_check_map;
+	private String[] search_check_mode;
 		
 	public Paging_VO() {
 	}
 	
-	public Paging_VO(String searchCondition,String searchKeyword) {
+	public Paging_VO(String[] search_check_map, String[] search_check_mode, String searchCondition, String searchKeyword) {
+		setSearch_check_map(search_check_map);
+		setSearch_check_mode(search_check_mode);
 		setSearchCondition(searchCondition);
 		setSearchKeyword(searchKeyword);
 	}
 	
 	
-	public Paging_VO(int total, int nowPage, int cntPerPage, String searchCondition,String searchKeyword) {
+	public Paging_VO(int total, int nowPage, int cntPerPage, String searchCondition, String searchKeyword, String[] search_check_map, String[] search_check_mode) {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
 		setTotal(total);
@@ -67,7 +74,7 @@ public class Paging_VO {
 	public String toString() {
 		return "PagingVO [nowPage=" + nowPage + ", startPage=" + startPage + ", endPage=" + endPage + ", total=" + total
 				+ ", cntPerPage=" + cntPerPage + ", lastPage=" + lastPage + ", start=" + start + ", end=" + end
-				+ ", cntPage=" + cntPage + "]";
+				+ ", cntPage=" + cntPage + ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", search_check_map=" + search_check_map + ", search_check_mode=" + search_check_mode + "]";
 	}
 }
 

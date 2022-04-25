@@ -67,7 +67,12 @@ public class UserController {
 		return userService.idCheck(user_id);
 	}
 	
-	
+	// 로그아웃
+	   @RequestMapping("/logout.do")
+	   public String logout(HttpSession session) {
+	      session.invalidate();
+	      return "redirect:/login.jsp";
+	   }
 	
 }
 

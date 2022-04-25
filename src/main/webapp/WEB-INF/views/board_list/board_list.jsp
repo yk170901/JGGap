@@ -15,7 +15,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-http://localhost:8080/board_list/board_list.do?searchCondition=board_title&searchKeyword=
 <%@ include file="/WEB-INF/views/basic/header.jsp" %>
 <div class="total_div" style="background-color: white;">
 
@@ -31,10 +30,10 @@ http://localhost:8080/board_list/board_list.do?searchCondition=board_title&searc
 				</div>
 				<div class="new">
 				    <div class="form-group">
-				      <input type="checkbox" id="hupgok" checked="checked" name="search_check" value="소환사 협곡">
-				      <label for="hupgok">소환사 협곡</label>
+				      <input type="checkbox" id="hupgok" checked="checked" name="search_check_map" value="소환사의 협곡">
+				      <label for="hupgok">소환사의 협곡</label>
 				      &ensp;
-				      <input type="checkbox" id="kalbaram" checked="checked" name="search_check" value="칼바람 나락">
+				      <input type="checkbox" id="kalbaram" checked="checked" name="search_check_map" value="칼바람 나락">
 				      <label for="kalbaram">칼바람 나락</label>
 				    </div>
 				</div>
@@ -51,13 +50,13 @@ http://localhost:8080/board_list/board_list.do?searchCondition=board_title&searc
 					<span class="game_category">게임 분류</span>
 				</div>
 				<div class="form-group">
-				      <input type="checkbox" id="mode_normal" checked="checked" name="search_check" value="일반">
+				      <input type="checkbox" id="mode_normal" checked="checked" name="search_check_mode" value="일반">
 				      <label for="mode_normal">일반</label>
 				      &ensp;
-				      <input type="checkbox" id="mode_solorank" checked="checked" name="search_check" value="솔로 랭크">
+				      <input type="checkbox" id="mode_solorank" checked="checked" name="search_check_mode" value="솔로랭크">
 				      <label for="mode_solorank">솔로 랭크</label>
 				      &ensp;
-				      <input type="checkbox" id="mode_freerank" checked="checked" name="search_check" value="자유 랭크">
+				      <input type="checkbox" id="mode_freerank" checked="checked" name="search_check_mode" value="자유랭크">
 				      <label for="mode_freerank">자유 랭크</label>
 				</div>
 			</div>
