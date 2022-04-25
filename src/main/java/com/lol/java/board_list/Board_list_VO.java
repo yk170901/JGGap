@@ -26,5 +26,7 @@ public class Board_list_VO {
 	private int site_level;
 	private float honor_rate;
 	private String solo_rank_tier;
+	private int cru_max;
+	private int cru_pre;
 	
 }
