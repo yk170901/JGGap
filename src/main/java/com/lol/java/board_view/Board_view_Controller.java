@@ -46,6 +46,12 @@ public class Board_view_Controller {
 		System.out.println("최종 댓글 : " + reply_vo);
 	}
 	
+	// 채택 버튼 누르기 컨트롤러
+	@RequestMapping("/checkUser.do")
+	public void checkUser(){
+		// 글쓴이가 눌렀나 아닌가는 이미 js에서 걸러서 true 값을 받아 진행된다는 전제 하에 코드를 쓴다.
+	}
+	
 	// 댓긋 삽입 컨트롤러
 	@RequestMapping("/insertReply.do")
 	public String insertReply(Board_view_VO_reply reply_vo, HttpSession session, Model model){
