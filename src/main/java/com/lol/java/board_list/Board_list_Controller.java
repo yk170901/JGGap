@@ -34,17 +34,12 @@ public class Board_list_Controller {
 				/* 게시글 총 갯수 카운트*/
 				int total = 0;
 				
-				/* search_check_map, search_check_mode value값 가져와서 배열에 저장 */
-//				String[] search_check_map = request.getParameterValues("search_check_map");
-//				String[] search_check_mode = request.getParameterValues("search_check_mode");
-				
 				if(searchKeyword == null) {
 					/* 검색 키워드가 없을때 일반 페이징*/
 					total = board_list_Service.countBoard();
 				}
 				else if(searchKeyword != "" || searchKeyword != null){
 					vo = new Paging_VO(search_check_map, search_check_mode, searchCondition, searchKeyword);
-					
 					total = board_list_Service.searchCountBoard(vo);
 				}
 				
@@ -57,31 +52,21 @@ public class Board_list_Controller {
 				} else if (cntPerPage == null) { 
 					cntPerPage = "10";
 				}
-				
-				System.out.println(total);
+				System.out.println("토탈 계산 끝 : " + total);
 				vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), searchCondition, searchKeyword, search_check_map, search_check_mode);
+				if(vo.getSearch_check_map() != null) {
+					for(int i=0; i<vo.getSearch_check_map().length; i++) {
+						System.out.println(vo.getSearch_check_map()[i]);
+					}
+				}
+				if(vo.getSearch_check_mode() != null) {
+					for(int i=0; i<vo.getSearch_check_mode().length; i++) {
+						System.out.println(vo.getSearch_check_mode()[i]);
+					}
+				}
 				model.addAttribute("admin_list", board_list_Service.admin_boardList());
 				model.addAttribute("paging", vo);
 				model.addAttribute("list", board_list_Service.selectBoard(vo));
-				
-				
-				
-				
-				/*테스트*/
-//				if(search_check_map != null) {
-//					for(int i=0; i<search_check_map.length; i++) {
-//						System.out.println(search_check_map[i]);
-//						model.addAttribute("search_check_map", search_check_map);
-//					}
-//				}
-//				
-//				if(search_check_mode != null) {
-//					for(int i=0; i<search_check_mode.length; i++) {
-//						System.out.println(search_check_mode[i]);
-//						model.addAttribute("search_check_mode", search_check_mode[i]);
-//					}
-//				}
-				
 				
 				
 				return "/board_list/board_list";

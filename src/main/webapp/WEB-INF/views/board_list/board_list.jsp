@@ -53,10 +53,10 @@
 				      <input type="checkbox" id="mode_normal" checked="checked" name="search_check_mode" value="일반">
 				      <label for="mode_normal">일반</label>
 				      &ensp;
-				      <input type="checkbox" id="mode_solorank" checked="checked" name="search_check_mode" value="솔로랭크">
+				      <input type="checkbox" id="mode_solorank" checked="checked" name="search_check_mode" value="솔로 랭크">
 				      <label for="mode_solorank">솔로 랭크</label>
 				      &ensp;
-				      <input type="checkbox" id="mode_freerank" checked="checked" name="search_check_mode" value="자유랭크">
+				      <input type="checkbox" id="mode_freerank" checked="checked" name="search_check_mode" value="자유 랭크">
 				      <label for="mode_freerank">자유 랭크</label>
 				</div>
 			</div>
@@ -108,7 +108,7 @@
 		<c:forEach items="${list}" var="vo">
 			<tr>
 				<td><c:out value="${vo.post_no}"/></td>
-				<td><c:out value="${vo.board_title}"/></td>
+				<td><a href="../board_view/viewBoard.do?post_no=${vo.post_no }"><c:out value="${vo.board_title}"/></a></td>
 				<td><c:out value="${vo.user_no}"/></td>
 				<td><c:out value="${vo.board_date}"/></td>
 				<td><c:out value="0/4"/></td>
