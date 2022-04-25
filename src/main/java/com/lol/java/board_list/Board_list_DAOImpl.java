@@ -32,7 +32,12 @@ public class Board_list_DAOImpl implements Board_list_DAO{
 	@Override
 	public int searchCountBoard(Paging_VO vo) {
 		// TODO Auto-generated method stub
-		return mybatis.selectOne("searchCountBoard", vo);
+		if(vo.getSearch_check_map() != null) {
+			for(int i=0; i<vo.getSearch_check_map().length; i++) {
+				System.out.println(vo.getSearch_check_map()[i]);
+			}
+		}
+		return mybatis.selectOne("Board_list_DAO.searchCountBoard", vo);
 	}
 
 
