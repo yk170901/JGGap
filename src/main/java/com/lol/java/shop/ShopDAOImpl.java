@@ -29,7 +29,8 @@ public class ShopDAOImpl implements ShopDAO{
 
 	@Override
 	public List<ShopVO> getCounts(ShopVO vo) {
-		return mybatis.selectOne("ShopDAO.getCounts", vo);
+		System.out.println("DAO");
+		return mybatis.selectList("ShopDAO.getCounts", vo);
 	}
 
 	@Override

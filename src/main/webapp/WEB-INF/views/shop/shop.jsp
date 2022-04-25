@@ -41,7 +41,7 @@
 	    	<!-- 응모상품 목록 -->
 	    	
 	    	<div class="shop-apply-wrapper">
-	    	<c:forEach items="${items}" var="item">
+	    	<c:forEach items="${items}" var="item" varStatus="items">
 		    	<div class="shop-apply">
 		    		<div class="item_name">${item.item_name }</div>
 		    		<div class="point-amount"><p>${item.item_point }P</p></div>
@@ -50,7 +50,7 @@
 			    	</div>
 			    	<div class="shop-apply-btn">
 			    		<button onclick="">응모하기</button>
-			    		<div class="shop-apply-fre">응모횟수 : ${item.item_applied }회</div>		    		
+			    		<div class="shop-apply-fre">응모횟수 : ${applied[items.index].item_applied }회</div>		    		
 			    	</div>
 		    	</div>
 		    	</c:forEach>

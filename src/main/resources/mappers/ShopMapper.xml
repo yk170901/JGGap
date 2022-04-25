@@ -24,9 +24,9 @@
 
 	<!-- 응모횟수 조회 -->
 	<select id="getCounts" parameterType="shop" resultType="shop">
-		SELECT item_name, COUNT(*) item_applied
-		FROM shop_apply 
-		WHERE user_no=#{user_no} and item_name=#{item_name}
+		SELECT item_name, COUNT(*) AS item_applied
+		FROM shop_apply
+		WHERE user_no=#{user_no}
 		GROUP BY item_name
 		ORDER BY item_name
 	</select>

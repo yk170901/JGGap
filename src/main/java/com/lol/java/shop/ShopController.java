@@ -25,6 +25,7 @@ public class ShopController {
 		vo.setUser_no(user_no);
 		model.addAttribute("usablePoints", shopService.getUsablePoints(vo));
 		model.addAttribute("items", shopService.getItems());
+		System.out.println("items 가져오긴 했음");
 		model.addAttribute("applied", shopService.getCounts(vo));
 		System.out.println("완료");
 	}
