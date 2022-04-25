@@ -23,12 +23,12 @@
 	</insert>
 
 	<!-- 응모횟수 조회 -->
-	<select id="getCounts" resultType="_int[]">
-		SELECT cnt
-		FROM (SELECT item_name, COUNT(*) cnt
-				FROM shop_apply 
-				GROUP BY item_name
-				ORDER BY item_name)
+	<select id="getCounts" parameterType="shop" resultType="shop">
+		SELECT item_name, COUNT(*) item_applied
+		FROM shop_apply 
+		WHERE user_no=#{user_no} and item_name=#{item_name}
+		GROUP BY item_name
+		ORDER BY item_name
 	</select>
 	
 	<!-- 응모버튼 클릭 -->

@@ -28,8 +28,8 @@ public class ShopDAOImpl implements ShopDAO{
 	}
 
 	@Override
-	public int[] getCounts() {
-		return mybatis.selectOne("ShopDAO.getCounts");
+	public List<ShopVO> getCounts(ShopVO vo) {
+		return mybatis.selectOne("ShopDAO.getCounts", vo);
 	}
 
 	@Override

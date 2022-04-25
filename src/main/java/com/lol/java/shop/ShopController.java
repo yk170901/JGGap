@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 // 상점페이지
@@ -24,19 +23,14 @@ public class ShopController {
 	public void shopEnter(Model model, HttpSession session){
 		int user_no = (int) session.getAttribute("user_no");
 		vo.setUser_no(user_no);
-		List<ShopVO> items = shopService.getItems();
-		int[] applied = shopService.getCounts();
-		int i = 0;
-		for (ShopVO vo : items) {
-			vo.setItem_applied(applied[i]);
-			i++;
-		}
-		
 		model.addAttribute("usablePoints", shopService.getUsablePoints(vo));
-		model.addAttribute("items", items);
+		model.addAttribute("items", shopService.getItems());
+		model.addAttribute("applied", shopService.getCounts(vo));
+		System.out.println("완료");
 	}
 	
 	// 응모버튼 클릭시
+	// 미완
 	@RequestMapping("/apply.do")
 	public String shopApply(ShopVO vo) {
 		shopService.insertApply(vo);
