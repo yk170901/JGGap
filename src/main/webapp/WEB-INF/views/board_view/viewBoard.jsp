@@ -100,7 +100,7 @@
 						<div class="post-info">게임 분류 : <span class="post-info-detail"><c:out value="${board.game_mode }" /></span></div>
 						<div class="post-info">모집인원 : <span class="post-info-detail"><c:out value="${board.cru_pre } / ${board.cru_max }" /></span></div>
 						<div class="post-info">작성날짜 : <c:out value="${board.board_date }" /></div>
-						<button class="report">신고</button>
+						<button class="report" onclick="">신고</button>
 					</div>
 					
 				</div>
@@ -110,9 +110,10 @@
 			
 			<div><span id="post-content"><c:out value="${board_view_reply.reply_count }" />${board.board_text }</span></div>
 			
+			<!-- 이건 c if문으로, session의 user_no가 글쓴이의 user_no와 같을 때만 보여주기  -->
 			<div id="writer-post-button">
-				<button class="detail-big-btn modify-post">수정</button>
-				<button class="detail-big-btn delete-post" onclick="confirmDelete()">삭제</button>
+				<a class="detail-big-btn modify-post" href="../board_detail/updateBoard.do?post_no=<c:out value="${board.post_no }"/>"style=" padding-left: 20px; padding-right: 20px;">수정</a>
+				<button class="detail-big-btn" onclick="confirmDelete()">삭제</button>
 			</div>
 		</div>
 		
@@ -124,9 +125,67 @@
 				<c:forEach var="reply" items="${reply}">
 					<div class="reply-content-repeat">
 						<div class="user-info">
-							<div class="user-info">티어 이미지</div>
+							
+							<c:set var="tier" value="${reply.replier.solo_rank_tier }"/>
+							<!-- 이걸 더 예쁘게 줄이는 방법이 있을 거 같은데... -->
+							<c:if test="${fn:contains(tier,'challenger') }">
+								<div class="user-info"><img src="../resources/imgs/tier/challenger.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'grandmaster') }">
+								<div class="user-info"><img src="../resources/imgs/tier/grand_master.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'master') }">
+								<div class="user-info"><img src="../resources/imgs/tier/master.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'diamond') }">
+								<div class="user-info"><img src="../resources/imgs/tier/diamond.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'platinum') }">
+								<div class="user-info"><img src="../resources/imgs/tier/platinum.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'gold') }">
+								<div class="user-info"><img src="../resources/imgs/tier/gold.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'silver') }">
+								<div class="user-info"><img src="../resources/imgs/tier/silver.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'bronze') }">
+								<div class="user-info"><img src="../resources/imgs/tier/bronze.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'iron') }">
+								<div class="user-info"><img src="../resources/imgs/tier/iron.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'unranked') }">
+								<div class="user-info"><img src="../resources/imgs/tier/unranked.png" id="tier-img"></div>
+							</c:if>
+							
 							<span class="replier-info-separator">|</span>
-							<div class="user-info">${reply.replier.solo_rank_tier }</div>
+							
+							<c:if test="${fn:endsWith(tier,'1') }">
+								<div class="user-info"><c:out value="${fn:substringBefore(tier, '1') }" />&nbsp;I</div>
+							</c:if>
+						
+							<c:if test="${fn:endsWith(tier,'2') }">
+								<div class="user-info"><c:out value="${fn:substringBefore(tier, '2') }" />&nbsp;II</div>
+							</c:if>
+						
+							<c:if test="${fn:endsWith(tier,'3') }">
+								<div class="user-info"><c:out value="${fn:substringBefore(tier, '3') }" />&nbsp;III</div>
+							</c:if>
+						
+							<c:if test="${fn:endsWith(tier,'4') }">
+								<div class="user-info"><c:out value="${fn:substringBefore(tier, '4') }" />&nbsp;IV</div>
+							</c:if>
+							
 							<span class="replier-info-separator">|</span>
 							<div class="user-info">${reply.replier.site_level }&emsp;</div>
 							<div class="user-info">${reply.replier.summoner_id }</div>
@@ -149,7 +208,7 @@
 			</div>
 			<div id="new-reply">
 				<form method="post" action="insertReply.do">
-					<%-- <input type="hidden" name="post_no" value=${board_detail.post_no }> --%>
+					<input type="hidden" name="post_no" value=${board.post_no }>
 					<input type="text" name="re_text" placeholder="내용을 작성하세요." id="new-reply-text">
 					<button type="submit" class="detail-big-btn submit-reply">작성</button>				
 				</form>

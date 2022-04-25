@@ -8,5 +8,5 @@ public interface Board_view_Service {
 	
 	public Board_view_VO viewBoard(Board_view_VO vo);
 	
-	public List<Board_view_VO_reply> viewReplyList(String post_no);
+	public List<Board_view_VO_reply> viewReplyList(int post_no);
 }

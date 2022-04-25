@@ -25,18 +25,22 @@ public class Board_detail_Controller {
 	public String insertPost(Board_detail_VO vo, HttpSession session) {
 		// 치영 세션 업데이트 후 제거
 		session.setAttribute("user_no", 10027);
-	
-		vo.setUser_no(String.valueOf(session.getAttribute("user_no")));
-		
-		System.out.println(vo);
-		
+
+		vo.setUser_no(Integer.parseInt(String.valueOf(session.getAttribute("user_no"))));
+		 
 		board_detail_Service.insertPost(vo);
 		
 		// 포스트 넘버가 안 받아진다. DAOImpl에서 setPost_no 할 Mapper 오가는 코드가 있어야겠다. Mapper에 <select id= getPostNo></select> 매퍼 놓으면 됨
 		System.out.println("포스트 넘버 : "+vo.getPost_no());
-		/* int post_no = vo.getPost_no(); */
 		
 //		return "redirect:/viewBoard?post_no="+post_no".do";
-		return "redirect:/board_list/board_list.do";
+		return "redirect:/board_view/viewBoard.do?post_no="+vo.getPost_no();
+	}
+	
+	@RequestMapping("/updateBoard.do")
+	public void getBoardToUpdate(Board_detail_VO vo) {
+
+		System.out.println("포스트 넘버 : "+vo.getPost_no());
+		
 	}
 }
