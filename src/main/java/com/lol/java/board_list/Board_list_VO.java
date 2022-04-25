@@ -1,6 +1,7 @@
 package com.lol.java.board_list;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -17,4 +18,7 @@ public class Board_list_VO {
 	
 	private String searchKeyword;
 	private String searchCondition;
+	
+	private String[] search_check_map;
+	private String[] search_check_mode;
 }

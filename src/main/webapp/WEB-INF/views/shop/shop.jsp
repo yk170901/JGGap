@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,62 +39,21 @@
 	    	</div>
 	    	<hr class="shop-line">
 	    	<!-- 응모상품 목록 -->
+	    	
 	    	<div class="shop-apply-wrapper">
+	    	<c:forEach items="${items}" var="item">
 		    	<div class="shop-apply">
-		    		<div class="point-amount"><p>10P</p></div>
+		    		<div class="item_name">${item.item_name }</div>
+		    		<div class="point-amount"><p>${item.item_point }P</p></div>
 			    	<div class="shop-apply-img">
-			    		<img src="/resources/imgs/shop_items/shop_brandskin.jpg">
+			    		<img src="/resources/imgs/shop_items/${item.item_file }.jpg">
 			    	</div>
 			    	<div class="shop-apply-btn">
-			    		<button>응모하기</button>
-			    		<div class="shop-apply-fre">응모횟수 : 0회</div>
+			    		<button onclick="">응모하기</button>
+			    		<div class="shop-apply-fre">응모횟수 : ${item.item_applied }회</div>
 			    	</div>
 		    	</div>
-		    	<div class="shop-apply">
-		    		<div class="point-amount"><p>10P</p></div>
-		    		<div class="shop-apply-img">
-			    		<img src="/resources/imgs/shop_items/shop_blitzskin.jpg">
-			    	</div>
-			    	<div class="shop-apply-btn">
-			    		<button>응모하기</button>
-			    	</div>
-		    	</div>
-		    	<div class="shop-apply">
-		    		<div class="point-amount"><p>10P</p></div>
-		    		<div class="shop-apply-img">
-			    		<img src="/resources/imgs/shop_items/shop_nunuskin.jpg">
-			    	</div>
-			    	<div class="shop-apply-btn">
-			    		<button>응모하기</button>
-			    	</div>
-		    	</div>
-		    	<div class="shop-apply">
-		    		<div class="point-amount"><p>10P</p></div>
-		    		<div class="shop-apply-img">
-			    		<img src="/resources/imgs/shop_items/shop_nocturneskin.jpg">
-			    	</div>
-			    	<div class="shop-apply-btn">
-			    		<button>응모하기</button>
-			    	</div>
-		    	</div>
-		    	<div class="shop-apply">
-		    		<div class="point-amount"><p>10P</p></div>
-		    		<div class="shop-apply-img">
-			    		<img src="/resources/imgs/shop_items/shop_nunuskin.jpg">
-			    	</div>
-			    	<div class="shop-apply-btn">
-			    		<button>응모하기</button>
-			    	</div>
-		    	</div>
-		    	<div class="shop-apply">
-		    		<div class="point-amount"><p>10P</p></div>
-		    		<div class="shop-apply-img">
-			    		<img src="/resources/imgs/shop_items/shop_nunuskin.jpg">
-			    	</div>
-			    	<div class="shop-apply-btn">
-			    		<button>응모하기</button>
-			    	</div>
-		    	</div>
+		    	</c:forEach>
 		    </div>
 		    <hr class="shop-line">
 		    <!-- 구매상품 목록 -->
