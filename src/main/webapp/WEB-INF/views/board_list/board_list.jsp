@@ -109,7 +109,7 @@
 			<tr>
 				<td><c:out value="${vo.post_no}"/></td>
 				<td><a href="../board_view/viewBoard.do?post_no=${vo.post_no }"><c:out value="${vo.board_title}"/></a></td>
-				<td><c:out value="${vo.user_no}"/></td>
+				<td><c:out value="${vo.solo_rank_tier} | ${vo.summoner_id} | ${vo.site_level} | ${vo.honor_rate}"/></td>
 				<td><c:out value="${vo.board_date}"/></td>
 				<td><c:out value="0/4"/></td>
 				
