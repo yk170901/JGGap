@@ -14,6 +14,9 @@ public interface ProfileService {
 	// 마이페이지 뱃지 목록 불러오기
 	List<ProfileVO> mypage_badge(Object user_no);
 	
+	// 마이페이지 채택 목록 불러오기
+	List<ProfileVO> mypage_choice(Object user_no);
+	
 	// 마이페이지 게시글 목록 불러오기
 	List<ProfileVO> mypage_board(Object user_no);
 	
@@ -22,5 +25,9 @@ public interface ProfileService {
 	
 	// 프로필 아이콘 변경
 	void chg_icon(ProfileVO profileVO);
+	
+	// 채택 해제
+	void delete_choice(ProfileVO profileVO);
+
 
 }

@@ -27,6 +27,12 @@ public class ProfileServiceImpl implements ProfileService{
 		return profileDAO.mypage_badge(user_no);
 	}
 	
+	// 마이페이지 채택 목록 불러오기
+	@Override
+	public List<ProfileVO> mypage_choice(Object user_no) {
+		return profileDAO.mypage_choice(user_no);
+	}
+	
 	// 마이페이지 게시글 목록 불러오기
 	@Override
 	public List<ProfileVO> mypage_board(Object user_no) {
@@ -44,6 +50,14 @@ public class ProfileServiceImpl implements ProfileService{
 	public void chg_icon(ProfileVO profileVO) {
 		profileDAO.chg_icon(profileVO);
 	}
+	
+	// 채택 헤제
+	@Override
+	public void delete_choice(ProfileVO profileVO) {
+		profileDAO.delete_choice(profileVO);
+		
+	}
+	
 
 	
 }

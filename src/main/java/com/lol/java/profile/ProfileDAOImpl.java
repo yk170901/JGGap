@@ -28,6 +28,12 @@ public class ProfileDAOImpl implements ProfileDAO{
 		return mybatis.selectList("ProfileDAO.profile_badge", user_no);
 	}
 
+	// 마이페이지 채택 목록 불러오기
+	@Override
+	public List<ProfileVO> mypage_choice(Object user_no) {
+		return mybatis.selectList("ProfileDAO.profile_choice", user_no);
+	}
+	
 	// 마이페이지 게시글 목록 불러오기
 	@Override
 	public List<ProfileVO> mypage_board(Object user_no) {
@@ -47,6 +53,14 @@ public class ProfileDAOImpl implements ProfileDAO{
 		mybatis.update("ProfileDAO.chg_icon", profileVO);
 		
 	}
+	
+	// 채택 해제
+	@Override
+	public void delete_choice(ProfileVO profileVO) {
+		mybatis.update("ProfileDAO.delete_choice", profileVO);
+		
+	}
+	
 	
 
 }

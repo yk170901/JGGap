@@ -15,6 +15,8 @@ public class ProfileVO {
 	// Badge
 	private int badge_no;
 	private String badge_name;
+	private String badge_file;
+	private String badge_require;
 	
 	// Board
 	private int post_no;
@@ -23,6 +25,8 @@ public class ProfileVO {
 	private String board_date;
 	
 	// Choice
+	private int choice_user_no;
+	private String solo_rank_tier;
 	
 	
 }
