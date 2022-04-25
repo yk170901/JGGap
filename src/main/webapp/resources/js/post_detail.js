@@ -34,6 +34,17 @@ function checkValidation(){
 	}
 }
 
+function checkUser(){
+	
+	if(true){
+		document.getElementById("check-img").src = "../resources/imgs/post_detail/checked.png";
+		return true;
+	}	
+	/*return false;*/
+}
+
+
+
 function confirmDiscard(){
 	var confirm = confirm("작성한 내용을 저장하지 않고 끝내시겠습니까?");
 	
@@ -49,3 +60,5 @@ function confirmDelete(){
 		
 	}
 }
+
+

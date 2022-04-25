@@ -3,6 +3,7 @@
 
 <!-- c 가져오기 -->
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,26 +22,84 @@
 			<div class="post-header">
 				<!-- 포스트 넘버 임의로 줌 -->
 				<input type="hidden" name="post_no" value="72">
-				<h1 class="post-header-top">${board.board_title }</h1>
+				<h1 class="post-header-top"><c:out value="${board_view_reply.reply_count }" />${board.board_title }</h1>
 				<div class="post-header-bottom">
 					
 					<div class="user-info writer-info">
-						<div class="user-info">티어 이미지<%-- ${board.board_title } --%></div>
+						<c:set var="tier" value="${board.writer.solo_rank_tier }"/>
+							<!-- 이걸 더 예쁘게 줄이는 방법이 있을 거 같은데... -->
+							<c:if test="${fn:contains(tier,'challenger') }">
+								<div class="user-info"><img src="../resources/imgs/tier/challenger.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'grandmaster') }">
+								<div class="user-info"><img src="../resources/imgs/tier/grand_master.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'master') }">
+								<div class="user-info"><img src="../resources/imgs/tier/master.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'diamond') }">
+								<div class="user-info"><img src="../resources/imgs/tier/diamond.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'platinum') }">
+								<div class="user-info"><img src="../resources/imgs/tier/platinum.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'gold') }">
+								<div class="user-info"><img src="../resources/imgs/tier/gold.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'silver') }">
+								<div class="user-info"><img src="../resources/imgs/tier/silver.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'bronze') }">
+								<div class="user-info"><img src="../resources/imgs/tier/bronze.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'iron') }">
+								<div class="user-info"><img src="../resources/imgs/tier/iron.png" id="tier-img"></div>
+							</c:if>
+							
+							<c:if test="${fn:contains(tier,'unranked') }">
+								<div class="user-info"><img src="../resources/imgs/tier/unranked.png" id="tier-img"></div>
+							</c:if>
 						<span class="writer-info-separator">|</span>
-						<div class="user-info">${board.writer.solo_rank_tier }</div>
+					
+							<!-- <%-- ${fn:toUpperCase(${fn:substring(tier, 0, 1) })} --%> -->
+							
+							<c:if test="${fn:endsWith(tier,'1') }">
+								<div class="user-info"><c:out value="${fn:substringBefore(tier, '1') }" />&nbsp;I</div>
+							</c:if>
+						
+							<c:if test="${fn:endsWith(tier,'2') }">
+								<div class="user-info"><c:out value="${fn:substringBefore(tier, '2') }" />&nbsp;II</div>
+							</c:if>
+						
+							<c:if test="${fn:endsWith(tier,'3') }">
+								<div class="user-info"><c:out value="${fn:substringBefore(tier, '3') }" />&nbsp;III</div>
+							</c:if>
+						
+							<c:if test="${fn:endsWith(tier,'4') }">
+								<div class="user-info"><c:out value="${fn:substringBefore(tier, '4') }" />&nbsp;IV</div>
+							</c:if>
+						
 						<span class="writer-info-separator">|</span>
-						<div class="user-info">${board.writer.site_level }&emsp;</div>
-						<div class="user-info">${board.writer.summoner_id }</div>
+						<div class="user-info"><c:out value="${board.writer.site_level }" />&emsp;</div>
+						<div class="user-info"><c:out value="${board.writer.summoner_id }" /></div>
 						<span class="writer-info-separator">|</span>
-						<div class="user-info">${board.writer.honor_rate }</div>
+						<div class="user-info"><c:out value="${board.writer.honor_rate }" /></div>
 						<button class="follow">팔로우</button>
 					</div>
 					
 					<div class="post-info">
-						<div class="post-info">맵 분류 : <span class="post-info-detail">${board.game_map }</span></div>
-						<div class="post-info">게임 분류 : <span class="post-info-detail">${board.game_mode }</span></div>
-						<div class="post-info">모집인원 : <span class="post-info-detail">${board.cru_pre } / ${board.cru_max }</span></div>
-						<div class="post-info">작성날짜 : ${board.board_date }</div>
+						<div class="post-info">맵 분류 : <span class="post-info-detail"><c:out value="${board.game_map }" /></span></div>
+						<div class="post-info">게임 분류 : <span class="post-info-detail"><c:out value="${board.game_mode }" /></span></div>
+						<div class="post-info">모집인원 : <span class="post-info-detail"><c:out value="${board.cru_pre } / ${board.cru_max }" /></span></div>
+						<div class="post-info">작성날짜 : <c:out value="${board.board_date }" /></div>
 						<button class="report">신고</button>
 					</div>
 					
@@ -49,7 +108,7 @@
 			
 			<hr>
 			
-			<div><span id="post-content">${board.board_text }</span></div>
+			<div><span id="post-content"><c:out value="${board_view_reply.reply_count }" />${board.board_text }</span></div>
 			
 			<div id="writer-post-button">
 				<button class="detail-big-btn modify-post">수정</button>
@@ -60,7 +119,7 @@
 		<hr>
 		
 		<div class="reply_wrap">
-			<div id="reply-header"><img src="../resources/imgs/post_detail/message.png" id="message-img">댓글 ${board_view_reply.reply_count }</div>
+			<div id="reply-header"><img src="../resources/imgs/post_detail/message.png" id="message-img">댓글 <c:out value="${board_view_reply.reply_count }" /></div>
 			<div id="reply-content">
 				<c:forEach var="reply" items="${reply}">
 					<div class="reply-content-repeat">
@@ -81,7 +140,9 @@
 						<div>
 							<span class="reply-content"><c:out value="${reply.re_text }" /></span>
 							<!-- <button class="detail-small-btn delete-reply">삭제</button> -->
-							<img src="../resources/imgs/post_detail/checked.png" id="check-img">
+							<!-- <form action="" method="post" onsubmit="return checkUser()" id="user-check-form"> -->
+								<button id="select-user-to-play-with" type="submit"><img src="../resources/imgs/post_detail/unchecked.png" id="check-img" onclick="checkUser()"></button>
+							<!-- </form> -->
 						</div>
 					</div>
 				</c:forEach>
