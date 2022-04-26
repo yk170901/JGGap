@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 
@@ -45,8 +46,16 @@ public class ProfileController {
 	// 채택 해제
 	@ResponseBody
 	@RequestMapping("/delete_choice.do")
-	public void delete_choice(ProfileVO profileVO)  {
+	public void delete_choice(ProfileVO profileVO, HttpSession session)  {
+		profileVO.setUser_no((int)session.getAttribute("user_no"));
 		profileService.delete_choice(profileVO);
+	}
+	
+	// 명예 점수
+	@ResponseBody
+	@RequestMapping("/honor_rate.do")
+	public void honor_rate(ProfileVO profileVO) {
+		profileService.honor_rate(profileVO);
 	}
 	
 	

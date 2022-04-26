@@ -57,6 +57,13 @@ public class ProfileServiceImpl implements ProfileService{
 		profileDAO.delete_choice(profileVO);
 		
 	}
+
+	// 명예 점수
+	@Override
+	public void honor_rate(ProfileVO profileVO) {
+		profileDAO.honor_rate(profileVO);
+		
+	}
 	
 
 	
