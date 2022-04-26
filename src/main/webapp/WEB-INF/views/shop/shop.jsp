@@ -14,6 +14,7 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
 	<link rel="stylesheet" href="/resources/css/shop.css" type="text/css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="page-store">
@@ -44,13 +45,20 @@
 	    	<c:forEach items="${items}" var="item" varStatus="items">
 		    	<div class="shop-apply">
 		    		<div class="item_name">${item.item_name }</div>
-		    		<div class="point-amount"><p>${item.item_point }P</p></div>
+		    		<div class="point-amount">${item.item_point }P</div>
 			    	<div class="shop-apply-img">
 			    		<img src="/resources/imgs/shop_items/${item.item_file}.jpg">
 			    	</div>
 			    	<div class="shop-apply-btn">
-			    		<button onclick="">응모하기</button>
-			    		<div class="shop-apply-fre">응모횟수 : ${applied[items.index].item_applied }회</div>		    		
+			    		<button class="apply">응모하기</button>
+			    		<div class="shop-apply-fre">
+			    		<c:if test="${item.item_name eq applied[items.index].item_name }">
+			    		응모횟수 : ${applied[items.index].item_applied }회
+			    		</c:if>
+			    		<c:if test="${item.item_name ne applied[items.index].item_name }">
+			    		응모횟수 : 0회
+			    		</c:if>
+			    		</div>		    		
 			    	</div>
 		    	</div>
 		    	</c:forEach>
@@ -94,5 +102,31 @@
     <%@ include file="/WEB-INF/views/basic/footer.jsp"%>
 
 </body>
+<script type="text/javascript">
+$(function() { $('.apply').on("click", function() {
+	console.log($(this).parents('div', '.shop-apply').children());
+		alert("hi");
+		alert($(this).parents('div', '.shop-apply').children()[2].innerHTML);
+		alert($(this).parents('div', '.shop-apply').children()[3].innerHTML);
+		$.ajax({ 
+			url : "/shop/apply.do", 
+			type : "POST", 
+			data : {
+				item_name : $(this).parents('div', '.shop-apply').children()[2].innerHTML,
+				item_point : $(this).parents('div', '.shop-apply').children()[3].innerHTML,
+				item_per : $(this).parents('div', '.shop-apply').children()[3].innerHTML
+			},
+			dataType: "text",
+			success: function(data) {
+				alert("성공")
+	// 			location.href = "/shop/apply.do";
+			},
+			error: function(err) {
+				alert("에러" + err)
+			}
+		})
+	})
+})
+</script>
 
 </html>
