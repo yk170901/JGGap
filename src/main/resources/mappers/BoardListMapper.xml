@@ -73,7 +73,9 @@
 					c.BOARD_TITLE,
 					c.BOARD_DATE,
 					c.CRU_MAX,
-					c.CRU_PRE
+					c.CRU_PRE,
+					c.GAME_MODE,
+					c.GAME_MAP
 					FROM USER_INFO a, LOL_INFO b, BOARD c
 					<where>
 						a.USER_NO = b.USER_NO AND b.USER_NO = c.USER_NO

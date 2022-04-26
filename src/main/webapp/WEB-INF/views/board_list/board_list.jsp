@@ -108,12 +108,24 @@
 		<c:forEach items="${list}" var="vo">
 			<tr>
 				<td><c:out value="${vo.post_no}"/></td>
-				<td><a href="../board_view/viewBoard.do?post_no=${vo.post_no }"><c:out value="${vo.board_title}"/></a></td>
+				<td><a href="../board_view/viewBoard.do?post_no=${vo.post_no }" style="color: black; font-weight: normal; text-decoration: none;"><c:out value="${vo.board_title}"/></a></td>
 				<td>
-					<c:if test="${paging.search_check_mode != null}">
-						<c:out value="${paging.search_check_mode[0]}"/>
+					<!-- 일반 / 솔로랭크 티어 정보 -->
+					<c:if test="${vo.game_mode == '일반' or vo.game_mode == '솔로 랭크'}">
+						<c:out value="[개인 랭크]"/>
+						<img src="/resources/imgs/tier/${vo.solo_tier}.png">
+						<c:out value="| ${vo.solo_tier_grade}"/>
 					</c:if>
 					
+					<!-- 자유랭크 티어 정보 -->
+					<c:if test="${vo.game_mode == '자유 랭크'}">
+						<c:out value="[자유 랭크]"/>
+						<img src="/resources/imgs/tier/${vo.free_tier}.png">
+						<c:out value="| ${vo.free_tier_grade}"/>
+					</c:if>
+
+					<!-- 그 외 정보 -->
+					<c:out value="| ${vo.summoner_id} | ${vo.site_level} | ${vo.honor_rate}"/>
 				</td>
 				<td><c:out value="${vo.board_date}"/></td>
 				<td><c:out value="${vo.cru_pre}/${vo.cru_max}"/></td>
