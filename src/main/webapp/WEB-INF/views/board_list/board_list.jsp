@@ -22,7 +22,7 @@
 	<div class=map_game_gategory>
 		
 		<!-- 토탈 검색 기능 -->
-		<form action="board_list.do" method="get" onsubmit="is_checked()">
+		<form action="board_list.do" method="get" onsubmit="return is_checked()">
 			<!-- 맵 분류 -->
 			<div class="map">
 				<div class="main_hr">
@@ -83,7 +83,9 @@
 	<div class="table_list" style="text-align: center;">
 		<table class="table_all">
 			<tr>
-				<th width="100px">No</th>
+				<th width="70px">No</th>
+				<th width="130px">맵</th>
+				<th width="100px">모드</th>
 				<th width="470px">제목</th>
 				<th width="370px">작성자</th>
 				<th width="160px">등록일</th>
@@ -94,6 +96,8 @@
 		<c:forEach items="${admin_list}" var="admin_vo">
 			<tr>
 				<td class="admin_td admin_td_left"><c:out value="공지"/></td>
+				<td class="admin_td">-</td>
+				<td class="admin_td">-</td>
 				<td class="admin_td"><c:out value="${admin_vo.board_title}"/></td>
 				<td class="admin_td"><c:out value="관리자"/></td>
 				<td class="admin_td"><c:out value="${admin_vo.board_date}"/></td>
@@ -108,18 +112,20 @@
 		<c:forEach items="${list}" var="vo">
 			<tr>
 				<td><c:out value="${vo.post_no}"/></td>
+				<td><c:out value="${vo.game_map}"/></td>
+				<td><c:out value="${vo.game_mode}"/></td>
 				<td><a href="../board_view/viewBoard.do?post_no=${vo.post_no }" style="color: black; font-weight: normal; text-decoration: none;"><c:out value="${vo.board_title}"/></a></td>
 				<td>
 					<!-- 일반 / 솔로랭크 티어 정보 -->
-					<c:if test="${vo.game_mode == '일반' or vo.game_mode == '솔로 랭크'}">
-						<c:out value="[개인 랭크]"/>
+					<c:if test="${vo.game_mode == '일반' or vo.game_mode == '솔로 랭크' or vo.game_map == '칼바람 나락'}">
+<%-- 						<c:out value="[개인 랭크]"/> --%>
 						<img src="/resources/imgs/tier/${vo.solo_tier}.png">
 						<c:out value="| ${vo.solo_tier_grade}"/>
 					</c:if>
 					
 					<!-- 자유랭크 티어 정보 -->
 					<c:if test="${vo.game_mode == '자유 랭크'}">
-						<c:out value="[자유 랭크]"/>
+<%-- 						<c:out value="[자유 랭크]"/> --%>
 						<img src="/resources/imgs/tier/${vo.free_tier}.png">
 						<c:out value="| ${vo.free_tier_grade}"/>
 					</c:if>
@@ -137,7 +143,7 @@
 		
 		
 		<!-- 글 작성 -->
-		<div style="text-align: right; padding: 20px;">	
+		<div style="text-align: right; padding: 40px 60px;">	
 			<a href="/board_detail/insertBoard.do" style="text-decoration: none;">글 작성</a>
 		</div>
 		
