@@ -26,69 +26,12 @@
 				<div class="post-header-bottom">
 					
 					<div class="user-info writer-info">
-						<c:set var="tier" value="${board.writer.solo_rank_tier }"/>
-							<!-- 이걸 더 예쁘게 줄이는 방법이 있을 거 같은데... -->
-							<c:if test="${fn:contains(tier,'challenger') }">
-								<div class="user-info"><img src="../resources/imgs/tier/challenger.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'grandmaster') }">
-								<div class="user-info"><img src="../resources/imgs/tier/grand_master.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'master') }">
-								<div class="user-info"><img src="../resources/imgs/tier/master.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'diamond') }">
-								<div class="user-info"><img src="../resources/imgs/tier/diamond.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'platinum') }">
-								<div class="user-info"><img src="../resources/imgs/tier/platinum.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'gold') }">
-								<div class="user-info"><img src="../resources/imgs/tier/gold.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'silver') }">
-								<div class="user-info"><img src="../resources/imgs/tier/silver.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'bronze') }">
-								<div class="user-info"><img src="../resources/imgs/tier/bronze.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'iron') }">
-								<div class="user-info"><img src="../resources/imgs/tier/iron.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'unranked') }">
-								<div class="user-info"><img src="../resources/imgs/tier/unranked.png" id="tier-img"></div>
-							</c:if>
+						<div class="user-info"><img src="../resources/imgs/tier/${board.writer.solo_tier }.png" id="tier-img"></div>
 						<span class="writer-info-separator">|</span>
-					
-							<!-- <%-- ${fn:toUpperCase(${fn:substring(tier, 0, 1) })} --%> -->
-							
-							<c:if test="${fn:endsWith(tier,'1') }">
-								<div class="user-info"><c:out value="${fn:substringBefore(tier, '1') }" />&nbsp;I</div>
-							</c:if>
-						
-							<c:if test="${fn:endsWith(tier,'2') }">
-								<div class="user-info"><c:out value="${fn:substringBefore(tier, '2') }" />&nbsp;II</div>
-							</c:if>
-						
-							<c:if test="${fn:endsWith(tier,'3') }">
-								<div class="user-info"><c:out value="${fn:substringBefore(tier, '3') }" />&nbsp;III</div>
-							</c:if>
-						
-							<c:if test="${fn:endsWith(tier,'4') }">
-								<div class="user-info"><c:out value="${fn:substringBefore(tier, '4') }" />&nbsp;IV</div>
-							</c:if>
+						<div class="user-info"><c:out value="${fn:toUpperCase(board.writer.solo_tier) } ${board.writer.solo_tier_grade }" /></div>
 						
 						<span class="writer-info-separator">|</span>
-						<div class="user-info"><c:out value="${board.writer.site_level }" />&emsp;</div>
+						<div class="user-info"><c:out value="${board.writer.site_level }" />&nbsp;</div>
 						<div class="user-info"><c:out value="${board.writer.summoner_id }" /></div>
 						<span class="writer-info-separator">|</span>
 						<div class="user-info"><c:out value="${board.writer.honor_rate }" /></div>
@@ -126,66 +69,9 @@
 					<div class="reply-content-repeat">
 						<div class="user-info">
 							
-							<c:set var="tier" value="${reply.replier.solo_rank_tier }"/>
-							<!-- 이걸 더 예쁘게 줄이는 방법이 있을 거 같은데... -->
-							<c:if test="${fn:contains(tier,'challenger') }">
-								<div class="user-info"><img src="../resources/imgs/tier/challenger.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'grandmaster') }">
-								<div class="user-info"><img src="../resources/imgs/tier/grand_master.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'master') }">
-								<div class="user-info"><img src="../resources/imgs/tier/master.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'diamond') }">
-								<div class="user-info"><img src="../resources/imgs/tier/diamond.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'platinum') }">
-								<div class="user-info"><img src="../resources/imgs/tier/platinum.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'gold') }">
-								<div class="user-info"><img src="../resources/imgs/tier/gold.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'silver') }">
-								<div class="user-info"><img src="../resources/imgs/tier/silver.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'bronze') }">
-								<div class="user-info"><img src="../resources/imgs/tier/bronze.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'iron') }">
-								<div class="user-info"><img src="../resources/imgs/tier/iron.png" id="tier-img"></div>
-							</c:if>
-							
-							<c:if test="${fn:contains(tier,'unranked') }">
-								<div class="user-info"><img src="../resources/imgs/tier/unranked.png" id="tier-img"></div>
-							</c:if>
-							
+							<div class="user-info"><img src="../resources/imgs/tier/${reply.replier.solo_tier }.png" id="tier-img"></div>
 							<span class="replier-info-separator">|</span>
-							
-							<c:if test="${fn:endsWith(tier,'1') }">
-								<div class="user-info"><c:out value="${fn:substringBefore(tier, '1') }" />&nbsp;I</div>
-							</c:if>
-						
-							<c:if test="${fn:endsWith(tier,'2') }">
-								<div class="user-info"><c:out value="${fn:substringBefore(tier, '2') }" />&nbsp;II</div>
-							</c:if>
-						
-							<c:if test="${fn:endsWith(tier,'3') }">
-								<div class="user-info"><c:out value="${fn:substringBefore(tier, '3') }" />&nbsp;III</div>
-							</c:if>
-						
-							<c:if test="${fn:endsWith(tier,'4') }">
-								<div class="user-info"><c:out value="${fn:substringBefore(tier, '4') }" />&nbsp;IV</div>
-							</c:if>
-							
+							<div class="user-info">&nbsp;<c:out value="${reply.replier.solo_tier_grade }" /></div>
 							<span class="replier-info-separator">|</span>
 							<div class="user-info">${reply.replier.site_level }&emsp;</div>
 							<div class="user-info">${reply.replier.summoner_id }</div>
@@ -194,6 +80,7 @@
 							<button class="follow">팔로우</button>
 							<span id="reply-date">( <c:out value="${reply.re_date }" /> )</span>
 							<button class="report">신고</button>
+							
 						</div>
 						
 						<div>

@@ -12,5 +12,6 @@ public class Board_view_VO_writer {
 	private int site_level; 
 
 	/* Lol_info */
-	private String solo_rank_tier;
+	private String solo_tier;
+	private String solo_tier_grade;
 }
