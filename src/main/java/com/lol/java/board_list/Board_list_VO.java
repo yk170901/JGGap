@@ -25,8 +25,13 @@ public class Board_list_VO {
 	private String summoner_id;
 	private int site_level;
 	private float honor_rate;
-	private String solo_rank_tier;
 	private int cru_max;
 	private int cru_pre;
+	
+	private String solo_tier;
+	private String free_tier;
+	private String solo_tier_grade;
+	private String free_tier_grade;
+	
 	
 }
