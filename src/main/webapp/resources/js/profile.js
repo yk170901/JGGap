@@ -16,11 +16,20 @@ function chg_profile_icon_cancle() {
 	$(".chgicon-modal-container").fadeOut();
 }
 
+/* 채택 헤제를 완료 했을때 */
+function honor_rate() {
+	$(".honor-modal-container").fadeIn();
+}
+
+/* 명예 점수 창 닫기를 눌렀을때 */
+function honor_rate_cancle() {
+	$(".honor-modal-container").fadeOut();
+}
+
 
 /* 비밀번호 변경 */
 
 function chg_pwd(form){
-	console.log(form)
 	if (form.elements["current-password"].value=="") {
 		Swal.fire({
 			icon: 'error',
@@ -116,11 +125,18 @@ function chg_icon() {
 
 	})
 }
+
+// 채택 해제
 $(function() {
-	$('#choices_check').on("click", function() {
+	
+		var choice_user_no;
+	
+	$('.choices_check').on("click", function() {
 		
-		var user_no = $(this).attr('value');
-		var summoner_id = $(this).parents('tr').children()[1].innerHTML;
+		choice_user_no = $(this).children().attr('value');
+		var summoner_id = $(this).parents('tr').children()[3].innerHTML;
+		
+		document.getElementsByClassName("honor-modal-title")[0].innerHTML = summoner_id;
 		
 		Swal.fire({
 			title: summoner_id + " 님의 채택을 해제하시겠습니까?",
@@ -136,7 +152,7 @@ $(function() {
 				$.ajax({
 					url: "/profile/delete_choice.do",
 					type: "post",
-					data: { user_no: user_no },
+					data: { choice_user_no: choice_user_no },
 					dataType: "text",
 					success: function(data) {
 						Swal.mixin().fire({
@@ -146,9 +162,13 @@ $(function() {
 							timer: 1500,
 							timerProgressBar: true,
 							icon: 'success',
-							title: '명예점수 주는 기능 넣어야 할 곳'
+							title: '해제중 입니다'
 						})
-						location.href = "/profile/profile.do";
+						
+						setTimeout(function(){
+							honor_rate();
+						}, 1000)
+						
 					},
 					error: function(err) {
 						alert("에러" + err)
@@ -160,8 +180,44 @@ $(function() {
 			}
 		})
 	})
+	
+	// 명예 점수
+	$('.honor-modal-submit').on("click", function() {
+	
+		$.ajax({
+		url: "/profile/honor_rate.do",
+		type: "post",
+		data: { honor_rate : document.querySelector('input[name="honor-check"]').value,
+				choice_user_no : choice_user_no},
+		dataType: "text",
+		success: function(data) {
+			Swal.mixin().fire({
+				toast: true,
+				position: 'center-center',
+				showConfirmButton: false,
+				timer: 1500,
+				timerProgressBar: true,
+				icon: 'success',
+				title: '투표해 주셔서 감사합니다'
+			})
+			setTimeout(function() {
+				location.href = "/profile/profile.do";
+			}, 1500)
+			
+		},
+		error: function(err) {
+			alert("에러" + err)
+		}
+
+	})
+		
+		})
+	
+	
 })
 
-
-
+// 명예 점수
+const honor_drawStar = (target) => {
+  document.querySelector(`.honor-star span`).style.width = `${target.value * 20}%`;
+}
 

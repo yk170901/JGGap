@@ -60,6 +60,13 @@ public class ProfileDAOImpl implements ProfileDAO{
 		mybatis.update("ProfileDAO.delete_choice", profileVO);
 		
 	}
+
+	// 명예 점수
+	@Override
+	public void honor_rate(ProfileVO profileVO) {
+		mybatis.update("ProfileDAO.honor_rate", profileVO);
+		
+	}
 	
 	
 

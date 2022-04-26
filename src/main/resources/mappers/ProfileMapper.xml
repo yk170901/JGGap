@@ -54,7 +54,15 @@
   	<!-- 채택 해제 -->
   	<delete id="delete_choice" parameterType="profile">
   		DELETE FROM choice
-  		WHERE choice_user_no = #{user_no}
+  		WHERE choice_user_no = #{choice_user_no}
+  		AND user_no = #{user_no}
   	</delete>
+  	
+  	<!-- 명예 점수 -->
+  	<update id="honor_rate" parameterType="profile">
+  		UPDATE USER_INFO 
+		SET HONOR_RATE = HONOR_RATE + #{honor_rate}
+		WHERE USER_NO = #{choice_user_no}
+  	</update>
   	 
   </mapper>

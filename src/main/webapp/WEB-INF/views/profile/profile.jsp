@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/profile.css" type="text/css">
 </head>
 <body>
@@ -74,9 +75,9 @@
 									<td class="td-line td-sitelevel">${choice.site_level }</td>
 									<td class="td-line td-honorrate">${choice.honor_rate } / 5.0</td>
 									<td class="td-line td-summonerid">${choice.summoner_id }</td>
-									<td class="td-line td-checked"><img
+									<td class="td-line td-checked choices_check"><img
 										src="../resources/imgs/post_detail/checked.png"
-										id="choices_check" value="${choice.choice_user_no }"></td>
+										value="${choice.choice_user_no }"></td>
 									<td class="td-empty"></td>
 									<c:if test="${i%j == j-1}">
 										</tr>
@@ -111,7 +112,7 @@
 						<c:forEach items="${profile_board }" var="board" end="10">
 							<tr>
 								<td>${board.post_no }</td>
-								<td>${board.board_title }</td>
+								<td><a href="/board_view/viewBoard.do?post_no=${board.post_no }">${board.board_title }</a></td>
 								<td>${board.board_date }</td>
 							</tr>
 						</c:forEach>
@@ -127,6 +128,7 @@
 	</main>
 	<%@ include file="/WEB-INF/views/profile/change_password.jsp"%>
 	<%@ include file="/WEB-INF/views/profile/change_profile_icon.jsp"%>
+	<%@ include file="/WEB-INF/views/profile/honor_rate.jsp"%>
 	<%@ include file="/WEB-INF/views/basic/footer.jsp"%>
 	<script type="text/javascript" src="/resources/js/profile.js"></script>
 </body>

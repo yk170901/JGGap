@@ -28,6 +28,9 @@ public interface ProfileDAO {
 	
 	// 채택 헤제
 	void delete_choice(ProfileVO profileVO);
+
+	// 명예 점수
+	void honor_rate(ProfileVO profileVO);
 	
 	
 	
