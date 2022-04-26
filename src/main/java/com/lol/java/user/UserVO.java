@@ -10,4 +10,5 @@ public class UserVO {
 	private String user_id;
 	private String user_pwd;
 	private String phone_number;
+	private int ban;
 }

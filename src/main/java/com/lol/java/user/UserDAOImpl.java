@@ -12,8 +12,7 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public int sign_up(UserVO vo) {
-		System.out.println(vo);
-		System.out.println("입력");
+
 		return mybatis.insert("userMapper.sign_up",vo);
 	}
 
@@ -25,9 +24,13 @@ public class UserDAOImpl implements UserDAO{
 	
 	@Override
 	public String idCheck(String user_id) {
-		System.out.println("진입 DAO");
-		
 
 		return mybatis.selectOne("userMapper.userIdCheck",user_id);
+	}
+
+	@Override
+	public String summoner_idCheck(String summoner_id) {
+		
+		return mybatis.selectOne("userMapper.summonerIdCheck",summoner_id);
 	}
 }
