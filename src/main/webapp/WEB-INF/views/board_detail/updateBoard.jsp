@@ -8,7 +8,7 @@
     <link href="../resources/css/post_detail.css" rel="stylesheet" type="text/css">
     <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
 </head>
-<body>
+<body onload="get_chosen_options()">
 <%@ include file="/WEB-INF/views/basic/header.jsp" %>
 	
 	<hr><br>
@@ -24,8 +24,7 @@
 						<div class="category-content">
 							<div class="category-title">맵 분류</div>
 							<select class="category-map" id="category-map" name="game_map">
-								<option value="${update.game_map }" selected></option>
-								<option value="none">선택해주세요.</option>
+								<option value="${update.game_map }">${update.game_map }</option>
 								<option value="소환사의 협곡">소환사의 협곡</option>
 								<option value="칼바람 나락">칼바람 나락</option>
 							</select>
@@ -34,7 +33,7 @@
 						<div class="category-content">
 							<div class="category-title">게임 분류</div>
 							<select class="category-game" id="category-game" name="game_mode">
-								<option value="none">선택해주세요.</option>
+								<option value="${update.game_mode }">${update.game_mode }</option>
 								<option value="일반">일반</option>
 								<option value="팔로 랭크">팔로 랭크</option>
 								<option value="자유 랭크">자유 랭크</option>
@@ -43,8 +42,9 @@
 						
 						<div class="category-content">
 							<div class="category-title">모집인원</div>
-							<select class="category-recruitment" id="category-recruitment" name="cru_max">
+							<select class="category-cru-max" id="category-cru-max" name="cru_max">
 								<option value="none">선택해주세요.</option>
+								<option value="${update.cru_max }">${update.cru_max }</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
 								<option value="4">4</option>
@@ -55,10 +55,10 @@
 				</div>
 			</div>
 			<div class="post-content">
-				<div class="textarea-wrap"><textarea id="content" name="board_text" value="${update.board_text }"></textarea></div>
+				<div class="textarea-wrap"><textarea id="content" name="board_text">${update.board_text }</textarea></div>
 			</div>
 			<div class="button-wrap">
-				<button class="post-submit detail-big-btn" type="submit">작성</button>
+				<button class="post-modify detail-big-btn" type="submit">수정</button>
 				<button class="post-discard detail-big-btn" type="button" onclick="confirmDiscard()">취소</button>
 			</div>
 		</form>

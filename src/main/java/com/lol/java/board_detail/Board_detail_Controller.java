@@ -40,10 +40,6 @@ public class Board_detail_Controller {
 	@RequestMapping("/updateBoard.do")
 	public void getBoardToUpdate(Board_detail_VO vo, Model model) {
 
-		Board_detail_VO vovo = board_detail_Service.getBoard(vo.getPost_no());
-		
-		System.out.println(vovo);
-
-		model.addAttribute("update", vovo);
+		model.addAttribute("update", board_detail_Service.getBoard(vo.getPost_no()));
 	}
 }
