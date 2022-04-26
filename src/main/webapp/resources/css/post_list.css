@@ -149,11 +149,11 @@
 	
 	/* 유저 게시판 조회*/
 	.table_list {
-		width: 1028px;
+		width: 1400px;
 		display: inline-block;
 		position: absolute;
 		top: 44%;
-		left: 19%;
+		left: 6%;
 		background-color: white;
 	}
 	
@@ -199,8 +199,7 @@
 	
 	/* 티어 이미지 */
 	img {
-		width: 22px;
-		height: 17px;
+		width: 24px;
 	}
 	
 
