@@ -10,11 +10,11 @@
 	INSERT INTO
 	USER_INFO
 	VALUES
-	(USER_NO.NEXTVAL, #{summoner_id}, #{user_id}, #{user_pwd}, #{phone_number}, 1, 0, 0, 0, null, 0, current_date)
+	(USER_NO.NEXTVAL, #{summoner_id}, #{user_id}, #{user_pwd}, #{phone_number}, 1, 0, 0, 0, null, 0, current_date, null)
 	</insert>
 	
 	<select id="idCheck_Login" parameterType="user" resultType="user">
-	SELECT USER_NO
+	SELECT USER_NO, BAN
 	FROM USER_INFO
 	WHERE USER_ID = #{user_id} AND USER_PWD = #{user_pwd}
 	</select>
@@ -23,6 +23,12 @@
 	SELECT COUNT(*)
 	FROM USER_INFO
 	WHERE USER_ID = #{user_id}
+	</select>
+	
+	<select id="summonerIdCheck" parameterType="String" resultType="String">
+	SELECT COUNT(*)
+	FROM USER_INFO
+	WHERE SUMMONER_ID = #{summoner_id}
 	</select>
 
 </mapper>

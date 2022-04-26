@@ -28,9 +28,15 @@ public class UserServiceImpl implements UserService{
 	// 중복 아이디 체크
 	@Override
 	public String idCheck(String user_id) {
-		System.out.println("진입2");
 		
 		return userDAO.idCheck(user_id);
+	}
+	
+	// 서머너 아이디 중복 체크
+	@Override
+	public String summoner_idCheck(String user_id) {
+		
+		return userDAO.summoner_idCheck(user_id);
 	}
 	
 	
