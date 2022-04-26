@@ -22,4 +22,7 @@ public class ShopVO {
 	// 응모횟수
 	private int item_applied;
 	
+	// usablePoints
+	private int usable_points;
+	
 }

@@ -7,8 +7,8 @@
   <mapper namespace="ShopDAO">
   	
 	<!-- 사용가능 포인트 조회 -->
-  	<select id="usablePoints" parameterType="int" resultType="int">
-  		SELECT usable_point from user_info where user_no=#{user_no}
+  	<select id="usablePoints" parameterType="int" resultType="shop">
+  		SELECT usable_point AS usable_points from user_info where user_no=#{value }
   	</select>
 
 	<!-- 상품테이블 전체조회 -->

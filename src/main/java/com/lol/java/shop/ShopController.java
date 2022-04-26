@@ -25,6 +25,10 @@ public class ShopController {
 		int user_no = (int) session.getAttribute("user_no");
 		vo.setUser_no(user_no);
 		model.addAttribute("usablePoints", shopService.getUsablePoints(vo));
+		for(ShopVO vo : shopService.getUsablePoints(vo)) {
+			System.out.println(vo.getUsable_points());
+		}
+			
 		model.addAttribute("items", shopService.getItems());
 		model.addAttribute("applied", shopService.getCounts(vo));
 		System.out.println("완료");
@@ -33,11 +37,11 @@ public class ShopController {
 	// 응모버튼 클릭시
 	@ResponseBody
 	@RequestMapping("/apply.do")
-	public String shopApply(HttpSession session, ShopVO vo) {
+	public void shopApply(HttpSession session, ShopVO vo) {
 		System.out.println("apply 매핑");
 		int itemPer = vo.getItem_per();
 		shopService.insertApply(vo);
-		return "성공";
+		System.out.println("insertApply 갔다옴");
 	}
 	
 

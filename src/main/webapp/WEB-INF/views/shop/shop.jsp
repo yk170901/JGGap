@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,10 +24,12 @@
 		
 		<!-- 보유포인트 및 포인트 획득방법 드롭다운 -->
 	    <main class="shop-main">
-   			<div class="shop-top">
+   			<div class="shop-top" style="border-bottom: 1px solid gray;">
    				<div class="shop-class"><p>응모</p></div>
    				<div id="shop-point-wrapper">
-	   				<div id="shop-point">내가 보유한 포인트 : <span class="shop-explain-color">5000</span> Point</div>
+	   				<div id="shop-point">내가 보유한 포인트 : 
+	   					<span class="shop-explain-color"><c:forEach items="${usablePoints }" var="point">${point.usable_points }</c:forEach></span> Point
+	   				</div>
 	   				<div id="shop-explain">
 	   					<img src="/resources/imgs/info.jpeg">
 			   			<div class="shop-explain-wrapper">
@@ -42,26 +45,27 @@
 	    	<!-- 응모상품 목록 -->
 	    	
 	    	<div class="shop-apply-wrapper">
-	    	<c:forEach items="${items}" var="item" varStatus="items">
-		    	<div class="shop-apply">
-		    		<div class="item_name">${item.item_name }</div>
-		    		<div class="point-amount">${item.item_point }P</div>
-			    	<div class="shop-apply-img">
-			    		<img src="/resources/imgs/shop_items/${item.item_file}.jpg">
+		    	<c:forEach items="${items}" var="item" varStatus="items">
+			    	<div class="shop-apply">
+			    		<div class="item_name">${item.item_name }</div>
+			    		<div class="point-amount"><p>${item.item_point }P</p></div>
+				    	<div class="shop-apply-img">
+				    		<img src="/resources/imgs/shop_items/${item.item_file}.jpg">
+				    	</div>
+				    	<div class="shop-apply-btn">			    		
+				    		<div class="shop-apply-fre">
+				    			<c:forEach items="${applied }" var="applied">
+						    		<c:if test="${item.item_name eq applied.item_name }">
+						    			<c:out value="응모횟수 : ${applied.item_applied }회"></c:out>
+						    		</c:if>								    			    		
+						    	</c:forEach>
+						    </div>
+				    		<div class="point-per">당첨확률 : ${item.item_per }</div>
+				    		<div class="item-remain">남은 상품 : ${item.item_remain }/${item.item_total }</div>
+				    		<button class="apply">응모하기</button>
+				    	</div>
 			    	</div>
-			    	<div class="shop-apply-btn">
-			    		<button class="apply">응모하기</button>
-			    		<div class="shop-apply-fre">
-			    		<c:if test="${item.item_name eq applied[items.index].item_name }">
-			    		응모횟수 : ${applied[items.index].item_applied }회
-			    		</c:if>
-			    		<c:if test="${item.item_name ne applied[items.index].item_name }">
-			    		응모횟수 : 0회
-			    		</c:if>
-			    		</div>		    		
-			    	</div>
-		    	</div>
-		    	</c:forEach>
+			    </c:forEach>
 		    </div>
 		    <hr class="shop-line">
 		    <!-- 구매상품 목록 -->
@@ -106,15 +110,16 @@
 $(function() { $('.apply').on("click", function() {
 	console.log($(this).parents('div', '.shop-apply').children());
 		alert("hi");
-		alert($(this).parents('div', '.shop-apply').children()[2].innerHTML);
-		alert($(this).parents('div', '.shop-apply').children()[3].innerHTML);
+		alert($(this).parents(".shop-apply").children(".item_name").text());
+		alert($(this).parents(".shop-apply").children(".point-amount").text().split('P')[0]);
+		alert($(this).parents(".shop-apply").children(".point-per").text().split(':&nbsp;')[1]);
 		$.ajax({ 
 			url : "/shop/apply.do", 
 			type : "POST", 
 			data : {
-				item_name : $(this).parents('div', '.shop-apply').children()[2].innerHTML,
-				item_point : $(this).parents('div', '.shop-apply').children()[3].innerHTML,
-				item_per : $(this).parents('div', '.shop-apply').children()[3].innerHTML
+				item_name : $(this).parents(".shop-apply").children(".item_name").text(),
+				item_point : $(this).parents(".shop-apply").children(".point-amount").text().split('P')[0],
+				item_per : $(this).parents(".shop-apply").children(".point-per").text().split(': ')[1]
 			},
 			dataType: "text",
 			success: function(data) {

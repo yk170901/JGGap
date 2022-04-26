@@ -12,7 +12,7 @@ public class ShopServiceImpl implements ShopService{
 	ShopDAO shopDAO;
 
 	@Override
-	public int getUsablePoints(ShopVO vo) {
+	public List<ShopVO> getUsablePoints(ShopVO vo) {
 		return shopDAO.getUsablePoints(vo);
 	}
 

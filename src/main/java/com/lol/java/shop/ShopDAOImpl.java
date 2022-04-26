@@ -13,8 +13,8 @@ public class ShopDAOImpl implements ShopDAO{
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public int getUsablePoints(ShopVO vo) {		
-		return mybatis.selectOne("ShopDAO.usablePoints", vo.getUser_no());
+	public List<ShopVO> getUsablePoints(ShopVO vo) {
+		return mybatis.selectList("ShopDAO.usablePoints", vo.getUser_no());
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class ShopDAOImpl implements ShopDAO{
 
 	@Override
 	public List<ShopVO> getCounts(ShopVO vo) {
-		System.out.println("DAO");
+		System.out.println("getCounts");
 		return mybatis.selectList("ShopDAO.getCounts", vo);
 	}
 
