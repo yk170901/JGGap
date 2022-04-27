@@ -18,7 +18,7 @@
 			<div class="post-header">
 				<h1 class="post-header-top">글 수정</h1>
 				<div class="post-header-bottom">
-					<input type="hidden" name="post_no" value="${update.post_no}">
+					<input type="hidden" name="post_no" id="post_no" value="${update.post_no}">
 					<input type="text" id="title" name="board_title" maxlength=30 value="${update.board_title }">
 					
 					<div class="category-wrap">
@@ -60,7 +60,7 @@
 			</div>
 			<div class="button-wrap">
 				<button class="post-modify detail-big-btn" type="submit">수정</button>
-				<button class="post-discard detail-big-btn" type="button" onclick="confirmDiscard()">취소</button>
+				<button class="post-discard detail-big-btn" type="button" onclick="cancelPostUpdate()">취소</button>
 			</div>
 		</form>
 	</div>

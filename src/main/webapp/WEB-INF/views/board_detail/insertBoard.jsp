@@ -58,7 +58,7 @@
 			</div>
 			<div class="button-wrap">
 				<button class="post-submit detail-big-btn" type="submit">작성</button>
-				<button class="post-discard detail-big-btn" type="button" onclick="confirmDiscard()">취소</button>
+				<button class="post-discard detail-big-btn" type="button" onclick="cancelPostInsert()">취소</button>
 			</div>
 		</form>
 	</div>
