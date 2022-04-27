@@ -13,6 +13,11 @@ public class Board_detail_ServiceImpl implements Board_detail_Service{
 	public void insertPost(Board_detail_VO vo) {
 		board_detail_DAO.insertPost(vo);
 	}
+	
+	@Override
+	public void updatePost(Board_detail_VO vo) {
+		board_detail_DAO.updatePost(vo);
+	}
 
 	@Override
 	public int getPost_no(int user_no) {
@@ -23,5 +28,10 @@ public class Board_detail_ServiceImpl implements Board_detail_Service{
 	public Board_detail_VO getBoard(int post_no) {
 		return board_detail_DAO.getBoard(post_no);
 	}
+	
+	@Override
+	public void deletePost(int post_no) {
+		board_detail_DAO.deletePost(post_no);
+	};
 
 }

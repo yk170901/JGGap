@@ -24,11 +24,11 @@ public class Board_detail_Controller {
 
 	@RequestMapping("/postInsert.do")
 	public String insertPost(Board_detail_VO vo, HttpSession session) {
-		// 치영 세션 업데이트 후 제거
-		session.setAttribute("user_no", 10027);
 
 		vo.setUser_no(Integer.parseInt(String.valueOf(session.getAttribute("user_no"))));
-		 
+
+		System.out.println(session.getAttribute("user_no"));
+		
 		board_detail_Service.insertPost(vo);
 		
 		// 유저 번호를 사용해, 그 유저의 최신 작성글 번호 post_no 가져오기
@@ -41,5 +41,27 @@ public class Board_detail_Controller {
 	public void getBoardToUpdate(Board_detail_VO vo, Model model) {
 
 		model.addAttribute("update", board_detail_Service.getBoard(vo.getPost_no()));
+	}
+	
+
+	@RequestMapping("/postUpdate.do")
+	public String updateBoard(Board_detail_VO vo) {
+
+		System.out.println("PostUpdate");
+		System.out.println(vo.getPost_no());
+		board_detail_Service.updatePost(vo);
+		System.out.println(vo.getPost_no());
+		
+		return "redirect:/board_view/viewBoard.do?post_no="+vo.getPost_no();
+		
+	}
+	
+	@RequestMapping("/postDelete")
+	public String deleteBoard(int post_no) {
+		System.out.println(post_no);
+		
+		board_detail_Service.deletePost(post_no);
+		
+		return "redirect:/board_list/board_list.do";
 	}
 }

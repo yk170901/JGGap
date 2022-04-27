@@ -35,7 +35,7 @@
 							<select class="category-game" id="category-game" name="game_mode">
 								<option value="none">선택해주세요.</option>
 								<option value="일반">일반</option>
-								<option value="팔로 랭크">팔로 랭크</option>
+								<option value="솔로 랭크">솔로 랭크</option>
 								<option value="자유 랭크">자유 랭크</option>
 							</select>
 						</div>
