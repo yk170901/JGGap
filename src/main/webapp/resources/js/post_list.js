@@ -35,3 +35,17 @@ function is_checked(){
 	}
 	
 }
+
+
+function Frameset(page) {
+		framecode = "<frameset rows='1*'>"
+		+ "<frame name=main src='" + page + "'>"
+		+ "</frameset>";
+
+		document.write(framecode);
+		document.title = "구인 게시판";
+		document.close();
+		
+		
+
+	}
