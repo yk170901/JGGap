@@ -67,7 +67,7 @@
 			<div class="search">
 				<select name="searchCondition" class="radius" id="search_value">
 					<option value="board_title">제 목</option>
-					<option value="user_no">작성자</option>
+					<option value="summoner_id">작성자</option>
 				</select>
 				<input type="text" class="radius" id="text_ra" name="searchKeyword"/>
 				<input type="submit" value="조 회" id="submitbutton"/>
@@ -83,11 +83,11 @@
 	<div class="table_list" style="text-align: center;">
 		<table class="table_all">
 			<tr>
-				<th width="70px">No</th>
-				<th width="130px">맵</th>
-				<th width="100px">모드</th>
+				<th width="70px">번호</th>
+				<th width="140px">분류</th>
+<!-- 				<th width="100px">모드</th> -->
 				<th width="470px">제목</th>
-				<th width="320px" colspan="2">작성자</th>
+				<th width="320px" colspan="2">글쓴이</th>
 				<th width="100px">등록일</th>
 				<th width="40px">모집 인원</th>
 			</tr>
@@ -96,16 +96,16 @@
 		<c:forEach items="${admin_list}" var="admin_vo">
 			<tr>
 				<td class="admin_td admin_td_left"><c:out value="공지"/></td>
-				<td class="admin_td">-</td>
-				<td class="admin_td">-</td>
+<!-- 				<td class="admin_td"></td> -->
+				<td class="admin_td"></td>
 				<td class="admin_td"><c:out value="${admin_vo.board_title}"/></td>
 				<td class="admin_td" style="text-align: left;">
 				<img src="/resources/imgs/level_icon/222.gif">
 				<c:out value="관리자"/>
 				</td>
-				<td class="admin_td"><c:out value="그냥"/></td>
+				<td class="admin_td"></td>
 				<td class="admin_td"><c:out value="${admin_vo.board_date}"/></td>
-				<td class="admin_td"><c:out value="-"/></td>
+				<td class="admin_td"></td>
 				
 			</tr>
 		</c:forEach>
@@ -116,8 +116,29 @@
 		<c:forEach items="${list}" var="vo">
 			<tr>
 				<td><c:out value="${vo.post_no}"/></td>
-				<td><c:out value="${vo.game_map}"/></td>
-				<td><c:out value="${vo.game_mode}"/></td>
+				<td style="text-align: left; padding-right: 0px;">
+					<c:if test="${vo.game_map != '칼바람 나락'}">
+						<c:if test="${vo.game_mode == '솔로 랭크'}">
+							<c:out value="[ 솔로 ] ${vo.game_map}"/>
+						</c:if>
+						<c:if test="${vo.game_mode == '자유 랭크'}">
+							<c:out value="[ 자유 ] ${vo.game_map}"/>
+						</c:if>
+						<c:if test="${vo.game_mode == '일반'}">
+							<c:out value="[ 일반 ] ${vo.game_map}"/>
+						</c:if>
+
+					</c:if>
+					<c:if test="${vo.game_map == '칼바람 나락'}">
+						&ensp;&ensp;&ensp;
+						<c:out value="${vo.game_map}"/>
+					</c:if>
+				</td>
+<!-- 				<td style="text-align: left; padding-left: 0px;">	 -->
+<%-- 					<c:if test="${vo.game_map != '칼바람 나락'}"> --%>
+<%-- 						<c:out value="(${vo.game_mode})"/> --%>
+<%-- 					</c:if> --%>
+<!-- 				</td> -->
 				<td><a href="../board_view/viewBoard.do?post_no=${vo.post_no }" style="color: black; font-weight: normal; text-decoration: none; font-size: 13px;"><c:out value="${vo.board_title}"/></a></td>
 				<td style="text-align: left;"><img src="/resources/imgs/level_icon/${vo.site_level}.gif">
 					<c:out value="${vo.summoner_id}"/></td>
