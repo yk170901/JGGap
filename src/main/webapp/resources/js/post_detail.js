@@ -58,23 +58,28 @@ function checkValidation(){
 function confirmPostDelete(){
 	return confirm("정말로 게시글을 삭제하시겠습니까?");
 }
-    
 
-function checkUser(){
-	
-	if(true){
-		document.getElementById("check-img").src = "../resources/imgs/post_detail/checked.png";
-		return true;
-	}	
-	/*return false;*/
+/* 수정 취소 */
+function cancelPostUpdate(){
+	if(confirm("수정한 내용을 저장하지 않고 끝내시겠습니까?")){
+		window.location.href = 'http://localhost:8080/board_view/viewBoard.do?post_no='+document.getElementById('post_no').value;
+	}
+}
+
+/* 작성 취소 */
+function cancelPostInsert(){
+	if(confirm("작성한 내용을 저장하지 않고 끝내시겠습니까?")){
+		window.location.href = 'http://localhost:8080/board_list/board_list.do';
+	}
 }
 
 
-
-function confirmDiscard(){
-	var confirm = confirm("작성한 내용을 저장하지 않고 끝내시겠습니까?");
-	
-	if(confirm){
-		
+function checkUser(){
+	var check_img = document.getElementsByClassName("check-img").src;
+	alert(document.getElementsByClassName("check-img").length);
+	if(check_img === "../resources/imgs/post_detail/checked.png"){
+		document.getElementsByClassName("check-img").src = "../resources/imgs/post_detail/unchecked.png";
+	}else{
+		document.getElementsByClassName("check-img").src = "../resources/imgs/post_detail/checked.png";
 	}
 }

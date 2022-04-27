@@ -56,8 +56,8 @@
 			<!-- 이건 c if문으로, session의 user_no가 글쓴이의 user_no와 같을 때만 보여주기  -->
 			<div id="writer-post-button">
 				<a class="detail-big-btn modify-post" href="../board_detail/updateBoard.do?post_no=<c:out value="${board.post_no }"/>" style=" padding-left: 20px; padding-right: 20px;">수정</a>
-				<form method="post" >
-					<button class="detail-big-btn" id="post-delete" onsubmit="return confirmPostDelete()">삭제</button>
+				<form method="post" action="../board_detail/postDelete.do?post_no=<c:out value="${board.post_no }"/>" style="display: inline-block;" onsubmit="return confirmPostDelete()">
+					<button class="detail-big-btn" type="submit">삭제</button>
 				</form>
 			</div>
 		</div>
@@ -89,7 +89,7 @@
 							<span class="reply-content"><c:out value="${reply.re_text }" /></span>
 							<!-- <button class="detail-small-btn delete-reply">삭제</button> -->
 							<!-- <form action="" method="post" onsubmit="return checkUser()" id="user-check-form"> -->
-								<button id="select-user-to-play-with" type="submit"><img src="../resources/imgs/post_detail/unchecked.png" id="check-img" onclick="checkUser()"></button>
+								<button id="select-user-to-play-with" type="submit" onclick="checkUser()"><img src="../resources/imgs/post_detail/unchecked.png" class="check-img"></button>
 							<!-- </form> -->
 						</div>
 					</div>

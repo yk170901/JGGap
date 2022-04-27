@@ -1,5 +1,9 @@
 package com.lol.java.board_detail;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,11 +60,20 @@ public class Board_detail_Controller {
 		
 	}
 	
-	@RequestMapping("/postDelete")
-	public String deleteBoard(int post_no) {
+	@RequestMapping("/postDelete.do")
+	public String deleteBoard(int post_no, HttpServletResponse response) throws IOException {
 		System.out.println(post_no);
 		
 		board_detail_Service.deletePost(post_no);
+		
+		/* 게시글이 삭제되었습니다 alert 문
+		 * response.setContentType("text/html; charset=UTF-8"); PrintWriter writer =
+		 * response.getWriter();
+		 * 
+		 * writer.println("<script language='javascript'>'+alert('게시글이 삭제되었습니다.')+</script>");
+		 * 
+		 * writer.flush();
+		 */
 		
 		return "redirect:/board_list/board_list.do";
 	}
