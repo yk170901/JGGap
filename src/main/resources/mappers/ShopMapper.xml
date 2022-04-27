@@ -24,11 +24,21 @@
 
 	<!-- 응모횟수 조회 -->
 	<select id="getCounts" parameterType="shop" resultType="shop">
-		SELECT item_name, COUNT(*) AS item_applied
-		FROM shop_apply
-		WHERE user_no=#{user_no}
-		GROUP BY item_name
-		ORDER BY item_name
+		SELECT item_name, CASE count(*) WHEN 1 THEN 0 WHEN 2 THEN 1 ELSE count(*)/2 END item_applied
+		FROM ((SELECT item_name, user_no 
+				FROM (SELECT item_name, user_no 
+						FROM shop_apply 
+						WHERE user_no=#{user_no }) 
+					FULL OUTER JOIN shop_items
+					USING (item_name))
+			UNION ALL
+				(SELECT a.item_name, a.user_no 
+				FROM (SELECT item_name, user_no 
+						FROM shop_apply 
+						WHERE user_no=#{user_no }) a 
+					LEFT JOIN shop_items b
+	                ON a.item_name = b.item_name))
+		GROUP BY item_name;
 	</select>
 	
 	<!-- 응모버튼 클릭 -->
