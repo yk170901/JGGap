@@ -9,7 +9,7 @@ function get_chosen_options(){
 	var game_mode_chosen = document.getElementById("game-mode-chosen").value
 	var cru_max_chosen = document.getElementById("cru-max-chosen").value
 	
-	var map = document.getElementById('category-map');
+	var map = document.getElementById('category-map').options.len;
 	var game = document.getElementById('category-game');
 	var cru_max = document.getElementById('category-cru-max');
 	
@@ -54,6 +54,12 @@ function checkValidation(){
 	}
 }
 
+/* 삭제 버튼 */
+function confirmPostDelete(){
+	return confirm("정말로 게시글을 삭제하시겠습니까?");
+}
+    
+
 function checkUser(){
 	
 	if(true){
@@ -72,13 +78,3 @@ function confirmDiscard(){
 		
 	}
 }
-
-function confirmDelete(){
-	var confirm = confirm("게시글을 삭제하시겠습니까?");
-	
-	if(confirm){
-		
-	}
-}
-
-

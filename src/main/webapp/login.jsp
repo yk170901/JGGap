@@ -82,7 +82,7 @@ a {
 							<form method="get" action="user/login_ok.do">
 								<div class="uk-margin">
 									<input class="uk-input" name="user_id" type="text"
-										placeholder="아이디">
+										 onkeyup="chkCharCode(event)" placeholder="아이디">
 								</div>
 								<div class="uk-margin">
 									<input class="uk-input" name="user_pwd" type="password"
@@ -128,7 +128,7 @@ a {
 							onsubmit="return confirm();">
 							<div class="uk-margin">
 								<input class="uk-input" id="user_id" name="user_id" type="text"
-									placeholder="Id" required>
+									onkeyup="chkCharCode(event)" placeholder="Id" required>
 								<div id="id_check"></div>
 							</div>
 							<div class="uk-margin">
@@ -148,7 +148,7 @@ a {
 								<input class="uk-input" name="phone_number" type="text"
 									placeholder="연락처" required>
 							</div>
-							<div>
+							<div style="padding-top: 5px;">
 								<ul>
 									<li><input type="checkbox" name="chkAll" id="chk"
 										class="chkAll" /> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
@@ -175,114 +175,7 @@ a {
 
 </body>
 
-<script>
-                /* 회원가입 이용약관 동시 체크 */
-                $(document).ready(function() {
-                    $('.chkAll').click(function() {
-                        $('.chk').prop('checked', this.checked);
-                    });
-                });
-
-                // 아이디 유효성 검사(1 = 중복 / 0 != 중복)
-                $("#user_id").blur(function() {
-
-                    let user_id = $('#user_id').val();
-                    $.ajax({
-                        url: 'user/idCheck.do',
-                        type: 'post',
-                        data: {
-                            user_id: user_id
-                        },
-                        datatype: "text",
-                        success: function(data) {
-                            console.log("1 = 중복o / 0 = 중복x : " + data);
-
-                            if (data == 1) {
-                                // 1 : 아이디가 중복되는 문구
-                                $("#id_check").text("사용중인 아이디입니다 :p");
-                                $("#id_check").css("color", "red");
-                                $("#sign_up_submit").attr("disabled", true);
-                            } else {
-
-                                if (data == 0) {
-                                    // 0 : 아이디 길이 / 문자열 검사
-                                    $("#id_check").text("사용가능한 아이디 입니다.");
-                                    $("#id_check").css("color", "green");
-                                    $("#sign_up_submit").attr("disabled", false);
-
-                                } else if (data.length < 4 || data.length > 12) {
-
-                                    $('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-                                    $('#id_check').css('color', 'red');
-                                    $("#sign_up_submit").attr("disabled", true);
-                                }
-
-                            }
-                        },
-                        error: function() {
-                            console.log("실패");
-                        }
-                    });
-                });
-
-                // 서머너 아이디 중복 검사
-                $("#summoner_id").blur(function() {
-
-                    let summoner_id = $('#summoner_id').val();
-                    $.ajax({
-                        url: 'user/summoner_Check.do',
-                        type: 'post',
-                        data: {
-                            summoner_id: summoner_id
-                        },
-                        datatype: "text",
-                        success: function(data1) {
-
-                            if (data1 == 1) {
-
-                                $("#summoner_check").text("사용중인 아이디입니다 :p");
-                                $("#summoner_check").css("color", "red");
-                                $("#sign_up_submit").attr("disabled", true);
-                            } else {
-
-                                $("#summoner_check").text("사용가능한 아이디 입니다.");
-                                $("#summoner_check").css("color", "green");
-                                $("#sign_up_submit").attr("disabled", false);
-                            }
-                        },
-                        error: function() {
-                            console.log("실패");
-                        }
-                    });
-                });
-
-                /* 회원가입 비밀번호 확인 */
-                function confirm() {
-                    let p1 = document.getElementById('user_pwd').value;
-                    let p2 = document.getElementById('user_pwd_chk').value;
-                    let c1 = document.getElementById("chk1").checked;
-                    let c2 = document.getElementById("chk2").checked;
-
-                    if (c1 == false || c2 == false) {
-                        Swal.fire("이용약관, 개인정보 수집 및 이용에 동의해주세요.");
-                        return false;
-                    }
-
-                    if (p1.length < 6) {
-                        Swal.fire('입력한 글자가 6글자 이상이어야 합니다.');
-                        return false;
-                    }
-                    if (p1 != p2) {
-                        Swal.fire("비밀번호불일치");
-                        return false;
-                    } else {
-                        Swal.fire("비밀번호가 일치합니다");
-                        return true;
-                    }
-
-
-                }
-            </script>
+<script src="resources/js/login.js"/>
 <script src="resources/js/libs.js"></script>
 <!-- <script src="resources/js/main.js"></script> -->
 <script src="resources/js/index.js?ver=1"></script>

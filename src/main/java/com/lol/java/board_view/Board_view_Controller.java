@@ -45,13 +45,10 @@ public class Board_view_Controller {
 	@RequestMapping("/insertReply.do")
 	public String insertReply(Board_view_VO_reply reply_vo, HttpSession session, Model model){
 		
-		session.setAttribute("user_no", 10028);
-
 		reply_vo.setUser_no(Integer.parseInt(String.valueOf(session.getAttribute("user_no"))));
 		
+		System.out.println(session.getAttribute("user_no"));
 		
-		System.out.println("댓글에서 가져가는 post_no"+reply_vo.getPost_no());
-
 		board_view_Service.insertReply(reply_vo);
 		
 		// 댓글들 & 댓글쓴이들 보여주는 메소드

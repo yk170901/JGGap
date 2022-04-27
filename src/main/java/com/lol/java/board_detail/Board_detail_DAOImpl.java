@@ -25,8 +25,14 @@ public class Board_detail_DAOImpl implements Board_detail_DAO{
 		return mybatis.selectOne("Board_detail_DAO.getBoard", post_no);
 	}
 
-	/*
-	 * @Override public void updatePost(Board_detail_VO vo) {
-	 * mybatis.update("updatePost", vo); }
-	 */
+	
+	@Override
+	public void updatePost(Board_detail_VO vo) {
+		mybatis.update("updatePost", vo);
+	}
+	
+	@Override
+	public void deletePost(int post_no) {
+		mybatis.update("deletePost",post_no);
+	};
 }

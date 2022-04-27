@@ -11,6 +11,16 @@
 			VALUES (post_no.NEXTVAL, #{user_no}, #{board_title},#{board_text},#{game_map},#{game_mode}, sysdate, #{cru_max})
   	</insert>
   	
+  	<update id="updatePost" parameterType="board_detail">
+  		UPDATE board
+  			SET board_title = #{board_title},
+  				board_text = #{board_text},
+  				game_map = #{game_map},
+  				game_mode = #{game_mode},
+  				cru_max = #{cru_max}
+  			WHERE post_no = #{post_no}
+  	</update>
+  	
   	<select id="getPost_no" parameterType="int" resultType="int">
   		SELECT post_no
 			FROM (SELECT post_no
@@ -26,4 +36,9 @@
   			WHERE post_no = #{value}
   	</select>
   
+  	<update id="deletePost" parameterType="int">
+  		UPDATE board
+  			SET deleted = 1
+  			WHERE post_no = #{value}
+  	</update>
   </mapper>

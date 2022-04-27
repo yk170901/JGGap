@@ -30,7 +30,6 @@ public class Board_list_Controller {
 				return "redirect:/login.jsp";
 			}
 			else {
-				
 				/* 게시글 총 갯수 카운트*/
 				int total = 0;
 				
