@@ -87,9 +87,9 @@
 				<th width="130px">맵</th>
 				<th width="100px">모드</th>
 				<th width="470px">제목</th>
-				<th width="370px">작성자</th>
-				<th width="160px">등록일</th>
-				<th width="60px">모집 인원</th>
+				<th width="320px" colspan="2">작성자</th>
+				<th width="100px">등록일</th>
+				<th width="40px">모집 인원</th>
 			</tr>
 			
 		<!-- 관리자 게시판 조회 -->
@@ -99,7 +99,11 @@
 				<td class="admin_td">-</td>
 				<td class="admin_td">-</td>
 				<td class="admin_td"><c:out value="${admin_vo.board_title}"/></td>
-				<td class="admin_td"><c:out value="관리자"/></td>
+				<td class="admin_td" style="text-align: left;">
+				<img src="/resources/imgs/level_icon/222.gif">
+				<c:out value="관리자"/>
+				</td>
+				<td class="admin_td"><c:out value="그냥"/></td>
 				<td class="admin_td"><c:out value="${admin_vo.board_date}"/></td>
 				<td class="admin_td"><c:out value="-"/></td>
 				
@@ -114,24 +118,27 @@
 				<td><c:out value="${vo.post_no}"/></td>
 				<td><c:out value="${vo.game_map}"/></td>
 				<td><c:out value="${vo.game_mode}"/></td>
-				<td><a href="../board_view/viewBoard.do?post_no=${vo.post_no }" style="color: black; font-weight: normal; text-decoration: none;"><c:out value="${vo.board_title}"/></a></td>
-				<td>
+				<td><a href="../board_view/viewBoard.do?post_no=${vo.post_no }" style="color: black; font-weight: normal; text-decoration: none; font-size: 13px;"><c:out value="${vo.board_title}"/></a></td>
+				<td style="text-align: left;"><img src="/resources/imgs/level_icon/${vo.site_level}.gif">
+					<c:out value="${vo.summoner_id}"/></td>
+				<td style="text-align: left;">
 					<!-- 일반 / 솔로랭크 티어 정보 -->
 					<c:if test="${vo.game_mode == '일반' or vo.game_mode == '솔로 랭크' or vo.game_map == '칼바람 나락'}">
 <%-- 						<c:out value="[개인 랭크]"/> --%>
 						<img src="/resources/imgs/tier/${vo.solo_tier}.png">
-						<c:out value="| ${vo.solo_tier_grade}"/>
+						<c:out value="| ${vo.solo_tier_grade} | "/>
 					</c:if>
 					
 					<!-- 자유랭크 티어 정보 -->
 					<c:if test="${vo.game_mode == '자유 랭크'}">
 <%-- 						<c:out value="[자유 랭크]"/> --%>
 						<img src="/resources/imgs/tier/${vo.free_tier}.png">
-						<c:out value="| ${vo.free_tier_grade}"/>
+						<c:out value="| ${vo.free_tier_grade} | "/>
 					</c:if>
 
 					<!-- 그 외 정보 -->
-					<c:out value="| ${vo.summoner_id} | ${vo.site_level} | ${vo.honor_rate}"/>
+						
+					<c:out value="${vo.honor_rate}"/>
 				</td>
 				<td><c:out value="${vo.board_date}"/></td>
 				<td><c:out value="${vo.cru_pre}/${vo.cru_max}"/></td>
@@ -159,7 +166,7 @@
 							<c:if test="${paging.searchKeyword == null || paging.searchKeyword == empty string}">
 								<!-- 이전 페이지 조건문 -->
 								<c:if test="${paging.startPage != 1 }">
-									<li class="page-item"><a class="page-link" href="board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">이전</a></li>				
+									<li class="page-item"><a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}')">이전</a></li>				
 								</c:if>
 								<!-- 이전 페이지 조건문 end -->
 								
@@ -174,8 +181,8 @@
 												</li>
 											</c:when>
 											<c:when test="${p != paging.nowPage }">
-												<li class="page-item">
-													<a class="page-link" href="board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}" class="paging_num">${p }</a>
+												<li class="page-item">													
+													<a class="page-link paging_num" href="javascript:Frameset('board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}')">${p }</a>
 												</li>
 											</c:when>
 										</c:choose>															
@@ -186,7 +193,7 @@
 								<!-- 다음 페이지 조건문 -->
 								<c:if test="${paging.endPage != paging.lastPage}">
 									<li class="page-item">
-										<a class="page-link" href="board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">다음</a>
+										<a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}')">다음</a>
 									</li>
 								</c:if>	
 								<!-- 다음 페이지 조건문 end -->
@@ -202,9 +209,9 @@
 							<c:if test="${paging.searchKeyword != null}">
 								<!-- 이전 페이지 조건문 -->
 								<c:if test="${paging.startPage != 1 }">
-									<li class="page-item"><a class="page-link" href="board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}
+									<li class="page-item"><a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}
 									&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }
-									&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}">이전</a></li>				
+									&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}')">이전</a></li>				
 								</c:if>
 								<!-- 이전 페이지 조건문 end -->
 								
@@ -220,9 +227,9 @@
 											</c:when>
 											<c:when test="${p != paging.nowPage }">
 												<li class="page-item">
-													<a class="page-link paging_num" href="board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}
+													<a class="page-link paging_num" href="javascript:Frameset('board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}
 													&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }
-													&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}" 
+													&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}')"
 													>${p }</a>
 												</li>
 											</c:when>
@@ -234,11 +241,11 @@
 								<!-- 다음 페이지 조건문 -->
 								<c:if test="${paging.endPage != paging.lastPage}">
 									<li class="page-item">
-										<a class="page-link" href="board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}
+										<a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}
 										&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }
-										&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}">다음</a>
+										&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}')">다음</a>
 									</li>
-								</c:if>	
+								</c:if>
 								<!-- 다음 페이지 조건문 end -->
 							</c:if>
 						</ul>
