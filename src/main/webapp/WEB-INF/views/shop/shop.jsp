@@ -108,23 +108,18 @@
 </body>
 <script type="text/javascript">
 $(function() { $('.apply').on("click", function() {
-	console.log($(this).parents('div', '.shop-apply').children());
-		alert("hi");
-		alert($(this).parents(".shop-apply").children(".item_name").text());
-		alert($(this).parents(".shop-apply").children(".point-amount").text().split('P')[0]);
-		alert($(this).parents(".shop-apply").children(".point-per").text().split(':&nbsp;')[1]);
 		$.ajax({ 
 			url : "/shop/apply.do", 
 			type : "POST", 
 			data : {
 				item_name : $(this).parents(".shop-apply").children(".item_name").text(),
 				item_point : $(this).parents(".shop-apply").children(".point-amount").text().split('P')[0],
-				item_per : $(this).parents(".shop-apply").children(".point-per").text().split(': ')[1]
+				item_per : $(this).parents(".shop-apply-btn").children(".point-per").text().split(': ')[1]
 			},
 			dataType: "text",
-			success: function(data) {
-				alert("성공")
-	// 			location.href = "/shop/apply.do";
+			success: function(data) {		
+				console.log(data);
+				location.href = "/shop/shop.do";
 			},
 			error: function(err) {
 				alert("에러" + err)

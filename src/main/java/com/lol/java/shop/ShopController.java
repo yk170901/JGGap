@@ -37,11 +37,15 @@ public class ShopController {
 	// 응모버튼 클릭시
 	@ResponseBody
 	@RequestMapping("/apply.do")
-	public void shopApply(HttpSession session, ShopVO vo) {
-		System.out.println("apply 매핑");
-		int itemPer = vo.getItem_per();
+	public ShopVO shopApply(HttpSession session, ShopVO vo) {
+		int user_no = (int) session.getAttribute("user_no");
+		vo.setUser_no(user_no);
+		for(ShopVO shop : shopService.getUsablePoints(vo)) {
+			vo.setUsable_points(shop.getUsable_points());
+		}		
 		shopService.insertApply(vo);
-		System.out.println("insertApply 갔다옴");
+		System.out.println(vo);
+		return vo;				
 	}
 	
 
