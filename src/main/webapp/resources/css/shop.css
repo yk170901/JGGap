@@ -70,13 +70,22 @@
 	min-width: 910px;
 }
 
-.shop-apply, .shop-buy {
+.shop-apply, .shop-apply-off, .shop-buy {
 	list-style: none;
 	display: inline-block;
 	width: 240px;
 	height: 300px;
 	background: transparent;
 	margin: 20px 30px;
+}
+
+.shop-apply-off {
+	
+}
+
+.shop-apply-off button {
+	opacity: 0.6;
+  	cursor: not-allowed;
 }
 
 .point-amount {
@@ -134,11 +143,18 @@
 }
 
 .shop-apply-fre {
-	float: left;
-	width: 50%;
 	margin-top: 15px;
 	font-weight: bolder;
-	font-size: 18px;
+	font-size: 17px;
+}
+
+.point-per, .item-remain {	
+	font-size: small;
+}
+
+.description {
+	float: left;
+	width: 50%;
 }
 
 .shop-buy-btn > button {

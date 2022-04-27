@@ -52,5 +52,11 @@
 		SET item_remain = #{item_remain}
 		WHERE item_name = #{item_name} 
 	</update>
+	
+	<update id="updateUser" parameterType="shop">
+		UPDATE user_info
+		SET usable_points = usable_points - #{item_point}
+		WHERE user_no = #{user_no}
+	</update>
   	
   </mapper>

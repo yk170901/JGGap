@@ -46,22 +46,24 @@
 	    	
 	    	<div class="shop-apply-wrapper">
 		    	<c:forEach items="${items}" var="item" varStatus="items">
-			    	<div class="shop-apply">
+			    	<div class="shop-apply<c:if test="${item.item_remain <= 0 }">-off</c:if>">
 			    		<div class="item_name">${item.item_name }</div>
 			    		<div class="point-amount"><p>${item.item_point }P</p></div>
 				    	<div class="shop-apply-img">
 				    		<img src="/resources/imgs/shop_items/${item.item_file}.jpg">
 				    	</div>
-				    	<div class="shop-apply-btn">			    		
-				    		<div class="shop-apply-fre">
-				    			<c:forEach items="${applied }" var="applied">
-						    		<c:if test="${item.item_name eq applied.item_name }">
-						    			<c:out value="응모횟수 : ${applied.item_applied }회"></c:out>
-						    		</c:if>								    			    		
-						    	</c:forEach>
-						    </div>
-				    		<div class="point-per">당첨확률 : ${item.item_per }</div>
-				    		<div class="item-remain">남은 상품 : ${item.item_remain }/${item.item_total }</div>
+				    	<div class="shop-apply-btn">	
+				    		<div class="description">		    		
+					    		<div class="shop-apply-fre">
+					    			<c:forEach items="${applied }" var="applied">
+							    		<c:if test="${item.item_name eq applied.item_name }">
+							    			<c:out value="응모횟수 : ${applied.item_applied }회"></c:out>
+							    		</c:if>								    			    		
+							    	</c:forEach>
+							    </div>
+					    		<div class="point-per" hidden="true">당첨확률 : ${item.item_per }</div>
+					    		<div class="item-remain">남은 상품 : ${item.item_remain }/${item.item_total }</div>
+				    		</div>
 				    		<button class="apply">응모하기</button>
 				    	</div>
 			    	</div>

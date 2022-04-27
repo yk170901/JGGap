@@ -38,9 +38,6 @@ public class ShopController {
 		int user_no = (int) session.getAttribute("user_no");
 		vo.setUser_no(user_no);
 		System.out.println("apply 컨트롤러");
-		for(ShopVO shop : shopService.getUsablePoints(vo)) {
-			vo.setUsable_points(shop.getUsable_points());
-		}
 		shopService.insertApply(vo);
 		return vo;				
 	}
