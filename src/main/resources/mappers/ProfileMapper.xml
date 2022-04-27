@@ -8,7 +8,7 @@
   
 	<!-- 마이페이지 유저 정보 불러오기 -->
   	<select id="profile_info" resultType="profile" parameterType="Object">
-  		SELECT summoner_id, honor_rate, profile_icon, user_pwd
+  		SELECT summoner_id, trunc(honor_rate/user_info.honor_cnt,1) as honor_rate, profile_icon, user_pwd
   		FROM user_info
   		WHERE user_no = #{user_no}
   	</select>
@@ -22,7 +22,7 @@
   	
   	<!-- 마이페이지 채택 목록 불러오기 -->
   	<select id="profile_choice" resultType="profile" parameterType="Object">
-		SELECT user_info.SUMMONER_ID, user_info.HONOR_RATE, user_info.site_level, lol_info.SOLO_TIER, lol_info.solo_tier_grade, choice.choice_user_no
+		SELECT user_info.SUMMONER_ID, trunc(user_info.HONOR_RATE/user_info.honor_cnt,1) as honor_rate, user_info.site_level, lol_info.SOLO_TIER, lol_info.solo_tier_grade, choice.choice_user_no
 		FROM choice, user_info, LOL_INFO
 		WHERE choice.user_no = #{user_no} 
 		AND choice.CHOICE_USER_NO = user_info.USER_NO
@@ -61,7 +61,7 @@
   	<!-- 명예 점수 -->
   	<update id="honor_rate" parameterType="profile">
   		UPDATE USER_INFO 
-		SET HONOR_RATE = HONOR_RATE + #{honor_rate}
+		SET HONOR_RATE = HONOR_RATE + #{honor_rate}, honor_cnt = honor_cnt + 1
 		WHERE USER_NO = #{choice_user_no}
   	</update>
   	 
