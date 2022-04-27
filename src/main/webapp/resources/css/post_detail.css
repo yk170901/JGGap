@@ -53,16 +53,12 @@
 	border:0;
 }
 
-#check-img{
+.check-img{
 	width:40px;
 }
 
 #user-check-form{
 	display: inline-block;
-}
-
-#check-img:hover{
-	cursor: pointer;
 }
 
 .writer-info-separator,

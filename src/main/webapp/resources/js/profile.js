@@ -27,9 +27,31 @@ function honor_rate_cancle() {
 }
 
 
-/* 비밀번호 변경 */
+$(document).ready(function(){
+	
+	$("input[name=current-password]").keydown(function (key) {
+		if(key.keyCode == 13) {
+			$("input[name=form-submit]").click();
+		}
+	})
+	
+	$("input[name=new-password]").keydown(function (key) {
+		if(key.keyCode == 13) {
+			$("input[name=form-submit]").click();
+		}
+	})
+	
+	$("input[name=new-password2]").keydown(function (key) {
+		if(key.keyCode == 13) {
+			$("input[name=form-submit]").click();
+		}
+	})
+})
 
+
+/* 비밀번호 변경 */
 function chg_pwd(form){
+		
 	if (form.elements["current-password"].value=="") {
 		Swal.fire({
 			icon: 'error',
@@ -60,6 +82,44 @@ function chg_pwd(form){
 		return;
 	}
 	
+	if (form.elements["new-password"].value.length > 15 || form.elements["new-password"].value.length < 6) {
+		Swal.fire({
+			icon: 'error',
+			confirmButtonColor: '#F46119',
+			text: "비밀번호는 6~15 글자로 입력해주세요.",
+		})
+		form.elements["new-password"].value="";
+		form.elements["new-password2"].value="";
+		form.elements["new-password"].focus();
+		return;
+	}
+	
+	if (form.elements["new-password"].value.search(/\s/) != -1) {
+		Swal.fire({
+			icon: 'error',
+			confirmButtonColor: '#F46119',
+			text: "비밀번호는 공백 없이 입력해주세요.",
+		})
+		form.elements["new-password"].value="";
+		form.elements["new-password2"].value="";
+		form.elements["new-password"].focus();
+		return;
+	}
+	
+	
+	if (form.elements["new-password"].value.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi) > 0) {
+		Swal.fire({
+			icon: 'error',
+			confirmButtonColor: '#F46119',
+			text: "비밀번호에는 특수문자가 들어갈수 없습니다.",
+		})
+		form.elements["new-password"].value="";
+		form.elements["new-password2"].value="";
+		form.elements["new-password"].focus();
+		return;
+	}
+	
+	
 	if (form.elements["new-password"].value != form.elements["new-password2"].value) {
 		Swal.fire({
 			icon: 'error',
@@ -68,24 +128,26 @@ function chg_pwd(form){
 		})
 		form.elements["new-password"].value="";
 		form.elements["new-password2"].value="";
+		form.elements["new-password"].focus();
 		return;
 	}
 	
-	if (form.elements["password"].value != form.elements["current-password"].value){
+	if (form.elements["password"].value != sha256(form.elements["current-password"].value)){
 		Swal.fire({
 			icon: 'error',
 			confirmButtonColor: '#F46119',
 			text: "현재 비밀번호가 틀렸습니다.",
 		})
+		form.elements["current-password"].focus();
 		return;
 	}
 	
-	if (form.elements["password"].value == form.elements["current-password"].value){
+	if (form.elements["password"].value == sha256(form.elements["current-password"].value)){
 		$.ajax({
 			
 			url: "/profile/Chg_Pwd.do",
 			type: "post",
-			data: { user_no : form.elements["user_no"].value, user_pwd: form.elements["new-password"].value },
+			data: { user_no : form.elements["user_no"].value, user_pwd: sha256(form.elements["new-password"].value) },
 			dataType: "text",
 			success: function(data) {
 				Swal.mixin().fire({
@@ -129,7 +191,7 @@ function chg_icon() {
 // 채택 해제
 $(function() {
 	
-		var choice_user_no;
+	var choice_user_no;
 	
 	$('.choices_check').on("click", function() {
 		

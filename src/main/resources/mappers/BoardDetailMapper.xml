@@ -7,8 +7,10 @@
   <mapper namespace="Board_detail_DAO">
  
   	<insert id="insertPost" parameterType="board_detail">
-		INSERT INTO board(post_no, user_no, board_title, board_text, game_map, game_mode, board_date, cru_max)
-			VALUES (post_no.NEXTVAL, #{user_no}, #{board_title},#{board_text},#{game_map},#{game_mode}, sysdate, #{cru_max})
+		INSERT INTO board(post_no, user_no, board_title, board_text, game_map, game_mode, board_date, cru_max, summoner_id)
+			VALUES (post_no.NEXTVAL, #{user_no}, #{board_title},#{board_text},#{game_map},#{game_mode}, sysdate, #{cru_max}, (SELECT summoner_id
+																																FROM user_info
+																																WHERE user_no = #{user_no}))
   	</insert>
   	
   	<update id="updatePost" parameterType="board_detail">

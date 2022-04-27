@@ -27,6 +27,7 @@
 	            </div>
 	            <div class="page-header__action">
 	            	<a class="profile" href="/profile/profile.do"><img src="/resources/imgs/profile_icon/5.png" alt="profile"></a>
+	            	<div><span>${sessionScope.user_no}</span></div>
 	            	<div id="profile_dropdown">
 	            		<div class="profile_point"><span class="profile_point_value" style="color: white;"></span></div>
 	            		<a href="#" class="profile_dropdown_list" style="color: white;">내 전적</a>
