@@ -7,6 +7,7 @@
  <configuration>
  	<typeAliases>
  		<typeAlias alias="admin" type="com.lol.java.admin.AdminVO"/>
+ 		<typeAlias alias="basic" type="com.lol.java.basic.BasicVO"/>
 		<typeAlias alias="board_detail" type="com.lol.java.board_detail.Board_detail_VO"/>
 		<typeAlias alias="board_view" type="com.lol.java.board_view.Board_view_VO"/>
 		<typeAlias alias="board_view_writer" type="com.lol.java.board_view.Board_view_VO_writer"/>

@@ -28,9 +28,9 @@
 	            <div class="page-header__action">
 	            	<a class="profile" href="/profile/profile.do"><img src="/resources/imgs/profile_icon/5.png" alt="profile"></a>
 	            	<div id="profile_dropdown">
-	            		<div class="profile_point"><span style="color: white;">사용가능 포인트<br/>5000 points</span></div>
+	            		<div class="profile_point"><span class="profile_point_value" style="color: white;"></span></div>
 	            		<a href="#" class="profile_dropdown_list" style="color: white;">내 전적</a>
-	            		<a href="#" class="profile_dropdown_list" style="color: white;">회원정보</a>
+	            		<a href="/profile/profile.do" class="profile_dropdown_list" style="color: white;">회원정보</a>
 	            		<a href="#" class="profile_dropdown_list" style="color: white;">고객센터</a>
 	            		<a href="/user/logout.do" class="profile_dropdown_list" style="color: white;">로그아웃</a>
 	            	</div>
@@ -56,5 +56,6 @@
     
     <script src="/resources/js/lib.js"></script>
     <script src="/resources/js/main.js"></script>
+    <script src="/resources/js/header.js"></script>
 </body>
 </html>
