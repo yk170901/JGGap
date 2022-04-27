@@ -46,5 +46,11 @@
 		INSERT INTO shop_apply
 		VALUES(apply_no.nextval, #{user_no}, #{item_name})
 	</insert>
+	
+	<update id="updateItem" parameterType="shop">
+		UPDATE shop_items 
+		SET item_remain = #{item_remain}
+		WHERE item_name = #{item_name} 
+	</update>
   	
   </mapper>

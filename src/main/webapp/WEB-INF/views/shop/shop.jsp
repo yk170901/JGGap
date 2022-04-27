@@ -103,30 +103,7 @@
 		    </div>
 	    </main>
     
-    <%@ include file="/WEB-INF/views/basic/footer.jsp"%>
-
+<%@ include file="/WEB-INF/views/basic/footer.jsp"%>
+<script src="/resources/js/shop.js"></script>
 </body>
-<script type="text/javascript">
-$(function() { $('.apply').on("click", function() {
-		$.ajax({ 
-			url : "/shop/apply.do", 
-			type : "POST", 
-			data : {
-				item_name : $(this).parents(".shop-apply").children(".item_name").text(),
-				item_point : $(this).parents(".shop-apply").children(".point-amount").text().split('P')[0],
-				item_per : $(this).parents(".shop-apply-btn").children(".point-per").text().split(': ')[1]
-			},
-			dataType: "text",
-			success: function(data) {		
-				console.log(data);
-				location.href = "/shop/shop.do";
-			},
-			error: function(err) {
-				alert("에러" + err)
-			}
-		})
-	})
-})
-</script>
-
 </html>

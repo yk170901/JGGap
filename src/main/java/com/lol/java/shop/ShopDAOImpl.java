@@ -35,6 +35,7 @@ public class ShopDAOImpl implements ShopDAO{
 	@Override
 	public void insertApply(ShopVO vo) {
 		mybatis.insert("ShopDAO.insertApply", vo);
+		mybatis.update("ShopDAO.updateItem", vo);
 	}
 
 }

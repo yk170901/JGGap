@@ -5,9 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 // 상점페이지
@@ -27,24 +25,23 @@ public class ShopController {
 		model.addAttribute("usablePoints", shopService.getUsablePoints(vo));
 		for(ShopVO vo : shopService.getUsablePoints(vo)) {
 			System.out.println(vo.getUsable_points());
-		}
-			
+		}			
 		model.addAttribute("items", shopService.getItems());
 		model.addAttribute("applied", shopService.getCounts(vo));
-		System.out.println("완료");
+		System.out.println("진입완료");
 	}
 	
 	// 응모버튼 클릭시
-	@ResponseBody
+	
 	@RequestMapping("/apply.do")
-	public ShopVO shopApply(HttpSession session, ShopVO vo) {
+	public @ResponseBody ShopVO shopApply(HttpSession session, ShopVO vo) {
 		int user_no = (int) session.getAttribute("user_no");
 		vo.setUser_no(user_no);
+		System.out.println("apply 컨트롤러");
 		for(ShopVO shop : shopService.getUsablePoints(vo)) {
 			vo.setUsable_points(shop.getUsable_points());
-		}		
+		}
 		shopService.insertApply(vo);
-		System.out.println(vo);
 		return vo;				
 	}
 	
