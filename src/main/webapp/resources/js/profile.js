@@ -27,8 +27,29 @@ function honor_rate_cancle() {
 }
 
 
-/* 비밀번호 변경 */
+$(document).ready(function(){
+	
+	$("input[name=current-password]").keydown(function (key) {
+		if(key.keyCode == 13) {
+			$("input[name=form-submit]").click();
+		}
+	})
+	
+	$("input[name=new-password]").keydown(function (key) {
+		if(key.keyCode == 13) {
+			$("input[name=form-submit]").click();
+		}
+	})
+	
+	$("input[name=new-password2]").keydown(function (key) {
+		if(key.keyCode == 13) {
+			$("input[name=form-submit]").click();
+		}
+	})
+})
 
+
+/* 비밀번호 변경 */
 function chg_pwd(form){
 		
 	if (form.elements["current-password"].value=="") {
@@ -69,6 +90,7 @@ function chg_pwd(form){
 		})
 		form.elements["new-password"].value="";
 		form.elements["new-password2"].value="";
+		form.elements["new-password"].focus();
 		return;
 	}
 	
@@ -80,6 +102,7 @@ function chg_pwd(form){
 		})
 		form.elements["new-password"].value="";
 		form.elements["new-password2"].value="";
+		form.elements["new-password"].focus();
 		return;
 	}
 	
@@ -92,6 +115,7 @@ function chg_pwd(form){
 		})
 		form.elements["new-password"].value="";
 		form.elements["new-password2"].value="";
+		form.elements["new-password"].focus();
 		return;
 	}
 	
@@ -104,6 +128,7 @@ function chg_pwd(form){
 		})
 		form.elements["new-password"].value="";
 		form.elements["new-password2"].value="";
+		form.elements["new-password"].focus();
 		return;
 	}
 	
@@ -113,6 +138,7 @@ function chg_pwd(form){
 			confirmButtonColor: '#F46119',
 			text: "현재 비밀번호가 틀렸습니다.",
 		})
+		form.elements["current-password"].focus();
 		return;
 	}
 	
@@ -165,7 +191,7 @@ function chg_icon() {
 // 채택 해제
 $(function() {
 	
-		var choice_user_no;
+	var choice_user_no;
 	
 	$('.choices_check').on("click", function() {
 		
