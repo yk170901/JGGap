@@ -55,8 +55,10 @@
 			
 			<!-- 이건 c if문으로, session의 user_no가 글쓴이의 user_no와 같을 때만 보여주기  -->
 			<div id="writer-post-button">
-				<a class="detail-big-btn modify-post" href="../board_detail/updateBoard.do?post_no=<c:out value="${board.post_no }"/>"style=" padding-left: 20px; padding-right: 20px;">수정</a>
-				<button class="detail-big-btn" onclick="confirmDelete()">삭제</button>
+				<a class="detail-big-btn modify-post" href="../board_detail/updateBoard.do?post_no=<c:out value="${board.post_no }"/>" style=" padding-left: 20px; padding-right: 20px;">수정</a>
+				<form method="post" >
+					<button class="detail-big-btn" id="post-delete" onsubmit="return confirmPostDelete()">삭제</button>
+				</form>
 			</div>
 		</div>
 		
@@ -71,7 +73,7 @@
 							
 							<div class="user-info"><img src="../resources/imgs/tier/${reply.replier.solo_tier }.png" id="tier-img"></div>
 							<span class="replier-info-separator">|</span>
-							<div class="user-info">&nbsp;<c:out value="${reply.replier.solo_tier_grade }" /></div>
+							<div class="user-info">&nbsp;<c:out value="${fn:toUpperCase(reply.replier.solo_tier) } ${reply.replier.solo_tier_grade }" /></div>
 							<span class="replier-info-separator">|</span>
 							<div class="user-info">${reply.replier.site_level }&emsp;</div>
 							<div class="user-info">${reply.replier.summoner_id }</div>
