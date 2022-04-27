@@ -14,13 +14,13 @@
 	</insert>
 	
 	<select id="idCheck_Login" parameterType="user" resultType="user">
-	SELECT USER_NO, BAN
+	SELECT USER_NO, BAN, SUMMONER_ID
 	FROM USER_INFO
 	WHERE USER_ID = #{user_id} AND USER_PWD = #{user_pwd}
 	</select>
 	
 	<select id="userIdCheck" parameterType="String" resultType="String">
-	SELECT COUNT(*)
+	SELECT USER_ID
 	FROM USER_INFO
 	WHERE USER_ID = #{user_id}
 	</select>
