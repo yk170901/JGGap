@@ -9,5 +9,11 @@ public class RecordDAOImpl implements RecordDAO{
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
+
+	// 전적 회원,롤 정보 가져오기
+	@Override
+	public Object record_info(RecordVO recordVO) {
+		return mybatis.selectOne("RecordDAO.record_info",recordVO);
+	}
 	
 }

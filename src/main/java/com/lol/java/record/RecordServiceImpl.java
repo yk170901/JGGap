@@ -8,5 +8,11 @@ public class RecordServiceImpl implements RecordService{
 
 	@Autowired
 	RecordDAO recordDAO;
+
+	// 전적 회원,롤 정보 가져오기
+	@Override
+	public Object record_info(RecordVO recordVO) {
+		return recordDAO.record_info(recordVO);
+	}
 	
 }

@@ -27,15 +27,15 @@
 						<span class="profile-icon-text" onclick="chg_profile_icon()">변경</span>
 					</div>
 					<div class="profile-user">
-						<div class="profile-user-title">${profile_info.summoner_id }</div>
+						<div class="profile-user-title"> <img class="profile-user-level" src="/resources/imgs/level_icon/${profile_info.site_level }.gif" alt="level"> ${profile_info.summoner_id }</div>
 						<div class="profile-user-text">명예지수 : ${profile_info.honor_rate } / 5.0</div>
 					</div>
 				</div>
 				<div class="profile-button-body">
-					<a class="profile-button" href="#!" onclick="chg_password()"><span
-						class="profile-button-text">비밀번호 변경</span></a> <a
-						class="profile-button" href="#!"><span
-						class="profile-button-text">전적 보기</span></a>
+					<a class="profile-button" href="#!" onclick="chg_password()">
+						<span class="profile-button-text">비밀번호 변경</span></a>
+					<a class="profile-button" href="/record/record.do?user_no=${sessionScope.user_no}">
+						<span class="profile-button-text">전적 보기</span></a>
 				</div>
 			</div>
 			<!-- 뱃지 목록 -->
@@ -73,12 +73,9 @@
 										<tr>
 									</c:if>
 									<td class="td-line td-tier"><img class="choice-tiers"src="/resources/imgs/tier/${choice.solo_tier }.png" alt="tier">${choice.solo_tier } ${choice.solo_tier_grade }</td>
-									<td class="td-line td-sitelevel">${choice.site_level }</td>
 									<td class="td-line td-honorrate">${choice.honor_rate } / 5.0</td>
-									<td class="td-line td-summonerid">${choice.summoner_id }</td>
-									<td class="td-line td-checked choices_check"><img
-										src="../resources/imgs/post_detail/checked.png"
-										value="${choice.choice_user_no }"></td>
+									<td class="td-line td-summonerid"><img class="choice-level" src="/resources/imgs/level_icon/${choice.site_level }.gif" alt="level"> <a class="choice-record" href="/record/record.do?user_no=${choice.choice_user_no}">${choice.summoner_id }</a></td>
+									<td class="td-line td-checked choices_check"><img src="../resources/imgs/post_detail/checked.png" value="${choice.choice_user_no }"></td>
 									<td class="td-empty"></td>
 									<c:if test="${i%j == j-1}">
 										</tr>
