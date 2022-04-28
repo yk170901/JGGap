@@ -24,6 +24,9 @@ public class Board_list_ServiceImpl implements Board_list_Service{
 
 	@Override
 	public List<Board_list_VO> selectBoard(Paging_VO vo) {
+		
+		
+		
 		return board_list_DAO.selectBoard(vo);
 	}
 

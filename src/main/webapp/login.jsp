@@ -22,8 +22,7 @@ int num = (int) (Math.random() * 4 + 1);
 <link rel="stylesheet" href="resources/css/libs.min.css">
 <link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/login.css">
-<script
-	src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style type="text/css">
 .repair {
@@ -58,9 +57,9 @@ a {
 </style>
 </head>
 
-<body class="page-login">
+<body class="page-login" style="background-color: black;">
 
-	<div class="page-wrapper">
+	<div class="page-wrapper" style="background-color: black;">
 
 		<!-- 	로그인 화면 영상 -->
 		<video muted autoplay loop>
@@ -79,7 +78,7 @@ a {
 								<span>ㅈㄱㅊㅇ</span>
 							</div>
 							<!-- 로그인 폼 -->
-							<form method="get" action="user/login_ok.do">
+							<form method="POST" action="user/login_ok.do">
 								<div class="uk-margin">
 									<input class="uk-input" name="user_id" type="text"
 										 onkeyup="chkCharCode(event)" placeholder="아이디">
@@ -89,8 +88,9 @@ a {
 										placeholder="비밀번호">
 								</div>
 								<div class="uk-margin">
+								<div id="result"></div>
 									<button type="submit"
-										class="uk-button uk-button-danger uk-width-1-1" id="submit">로그인</button>
+										class="uk-button uk-button-danger uk-width-1-1" id="login" id="submit">로그인</button>
 								</div>
 								<div class="uk-margin uk-text-center">
 									<a href="#">또 잊어먹음?</a>
@@ -124,7 +124,7 @@ a {
 
 					<!-- 회원가입 폼 -->
 					<div>
-						<form method="get" action="user/sign_up.do"
+						<form method="POST" action="user/sign_up.do"
 							onsubmit="return confirm();">
 							<div class="uk-margin">
 								<input class="uk-input" id="user_id" name="user_id" type="text"
@@ -148,7 +148,7 @@ a {
 								<input class="uk-input" name="phone_number" type="text"
 									placeholder="연락처" required>
 							</div>
-							<div style="padding-top: 5px;">
+							<div style="padding-top: 10px;">
 								<ul>
 									<li><input type="checkbox" name="chkAll" id="chk"
 										class="chkAll" /> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
@@ -176,7 +176,7 @@ a {
 </body>
 
 <script src="resources/js/login.js"/>
-<script src="resources/js/libs.js"></script>
+<script src="resources/js/lib.js"></script>
 <!-- <script src="resources/js/main.js"></script> -->
 <script src="resources/js/index.js?ver=1"></script>
 

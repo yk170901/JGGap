@@ -49,3 +49,21 @@ function Frameset(page) {
 		
 
 	}
+	
+function testDate(){
+	const dbdate = new Date(document.getElementById("dbdate").value);
+	const nowdate = new Date(document.getElementById("nowdate").value);
+
+	console.log("db저장된 시간 : "+ dbdate);
+	console.log("현재 시간 : "+nowdate);
+	
+	const diffDate = dbdate.getTime() - nowdate.getTime();
+	
+	const dateDays = Math.abs(diffDate / (1000 * 3600));
+	
+	console.log(dateDays);
+	
+	document.getElementById("target_name").value = dateDays;
+//	localStorage.setItem('date', dateDays);
+	
+}
