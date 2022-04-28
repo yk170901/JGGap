@@ -57,9 +57,9 @@ $("#summoner_id").blur(function() {
 			summoner_id: summoner_id
 		},
 		datatype: "text",
-		success: function(data1) {
+		success: function(data) {
 
-			if (data1 == 1) {
+			if (data == 1) {
 
 				$("#summoner_check").text("사용중인 아이디입니다.");
 				$("#summoner_check").css("color", "red");
@@ -84,14 +84,13 @@ function confirm() {
 	let p2 = document.getElementById('user_pwd_chk').value;
 	let c1 = document.getElementById("chk1").checked;
 	let c2 = document.getElementById("chk2").checked;
-
-
+	
 	if (c1 == false || c2 == false) {
 		Swal.fire("이용약관, 개인정보 수집 및 이용에 동의해주세요.");
 		return false;
 	}
 
-	if (p1.length < 6 && p1.length > 15) {
+	if (p1.length < 6 || p1.length > 15) {
 		Swal.fire('비밀번호는 영문과 숫자 6~15자리만 가능합니다');
 		return false;
 	}
@@ -114,3 +113,42 @@ function chkCharCode(event) {
 		ele.value = ele.value.replace(regExp, '');
 	}
 };
+
+function login_ck(form){
+	if (form.elements["current-password"].value=="") {
+		Swal.fire({
+			icon: 'error',
+			confirmButtonColor: '#F46119',
+			text: "아이디 또는 비밀번호가 틀렸습니다.",
+		})
+		form.elements["user_id"].focus();
+		return;
+	}
+}
+
+
+//$("#login").click(function() {
+//	let id = $("#user_id").val();
+//	let pwd = $("#user_pwd").val();
+//	
+//	$.ajax({
+//		type : 'post',
+//		url : 'user/login_ok.do',
+//		data : 'user_id='+id+'&user_pwd='+pwd,
+//		dataType : 'text',
+//		success : function(data){
+//			 
+//			 if(data == 0){
+//				$("#result").text("아이디 또는 비밀번호가 틀렸거나 존재하지 않는 아이디 입니다.");
+//				$("#result").css("color", "red");
+//			}else if(data == 1){
+//				$("#result").text("밴처리  회원입니다");
+//				$("#result").css("color", "red");
+//			}
+//			
+//			
+//		}, error: function(){
+//			console.log('실패');
+//		}
+//	})
+//})
