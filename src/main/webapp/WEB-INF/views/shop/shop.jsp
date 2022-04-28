@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +14,7 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
 	<link rel="stylesheet" href="/resources/css/shop.css" type="text/css">
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="page-store">
@@ -31,7 +30,7 @@
 	   					<span class="shop-explain-color"><c:forEach items="${usablePoints }" var="point">${point.usable_points }</c:forEach></span> Point
 	   				</div>
 	   				<div id="shop-explain">
-	   					<img src="/resources/imgs/info.jpeg">
+	   					<img src="/resources/imgs/info.png">
 			   			<div class="shop-explain-wrapper">
 					    	<h2 style="margin-bottom: 15px;">포인트 획득 방법</h2>
 					    	<div>소환사협곡(2인,5인) - 승리시 <span class="shop-explain-color">10</span>P / 패배시 <span class="shop-explain-color">5</span>P</div>
@@ -61,7 +60,7 @@
 							    		</c:if>								    			    		
 							    	</c:forEach>
 							    </div>
-					    		<div class="point-per" hidden="true">당첨확률 : ${item.item_per }</div>
+					    		<div class="point-per">당첨확률 : ${item.item_per }%</div>
 					    		<div class="item-remain">남은 상품 : ${item.item_remain }/${item.item_total }</div>
 				    		</div>
 				    		<button class="apply">응모하기</button>

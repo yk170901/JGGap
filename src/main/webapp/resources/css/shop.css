@@ -59,6 +59,10 @@
 	position: relative;
 }
 
+#shop-explain > img {
+	background: transparent;
+}
+
 #shop-explain > img:hover + .shop-explain-wrapper {
 	display: block;
 }
@@ -79,8 +83,9 @@
 	margin: 20px 30px;
 }
 
-.shop-apply-off {
-	
+.shop-apply:hover {
+	box-shadow: 0px 0px 20px #F46119;
+	transition: 0.5s all;
 }
 
 .shop-apply-off button {
@@ -168,8 +173,8 @@
 }
 
 .shop-apply-btn > button:hover, .shop-buy-btn > button:hover {	
-	transform: scale(1.1);
-	transition: transform .35s;
+	transform: scale(1.05);
+	transition: transform .2s;
 }
 
 .shop-line {
