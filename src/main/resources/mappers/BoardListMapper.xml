@@ -8,7 +8,8 @@
   
   	<!-- 관리자 게시판 조회 기능 -->
   	<select id="admin_boardList" resultType="board_list">
-  		SELECT post_no, user_no, board_title, board_date FROM admin_board ORDER BY post_no DESC
+  		SELECT post_no, user_no, board_title, TO_CHAR(board_date,'MM-DD') as board_date
+  		FROM admin_board ORDER BY post_no DESC
   	</select>  	
   	
   	<!-- 게시글 카운터 -->
@@ -64,7 +65,6 @@
 			SELECT ROWNUM RN, A.* FROM (
 				SELECT DISTINCT
 					a.SITE_LEVEL,
-					a.SUMMONER_ID,
 					a.HONOR_RATE,
 					b.SOLO_TIER,
 					b.FREE_TIER,
@@ -72,11 +72,16 @@
 					b.FREE_TIER_GRADE,
 					c.POST_NO,
 					c.BOARD_TITLE,
-					c.BOARD_DATE,
+					DECODE(( TO_CHAR(CURRENT_DATE,'YYYYMMDD')-TO_CHAR(c.BOARD_DATE,'YYYYMMDD')),  
+					        1, TO_CHAR(c.BOARD_DATE,'HH24:MI'),
+					        0, TO_CHAR(c.BOARD_DATE,'HH24:MI'),
+					        TO_CHAR(c.BOARD_DATE,'MM-DD') ) AS BOARD_DATE,
+<!--  					TO_CHAR(c.BOARD_DATE) as BOARD_DATE, -->
 					c.CRU_MAX,
 					c.CRU_PRE,
 					c.GAME_MODE,
-					c.GAME_MAP
+					c.GAME_MAP,
+					c.SUMMONER_ID
 					FROM USER_INFO a, LOL_INFO b, BOARD c
 					<where>
 						a.USER_NO = b.USER_NO AND b.USER_NO = c.USER_NO
@@ -108,7 +113,7 @@
 						
 						<!-- 검색 키워드 null 체크 -->
 						<if test="searchKeyword != null">
-							${searchCondition} LIKE '%'||#{searchKeyword}||'%'
+							c.${searchCondition} LIKE '%'||#{searchKeyword}||'%'
 				  		</if>
 				  		
 				  		AND DELETED=0

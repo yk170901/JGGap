@@ -155,6 +155,11 @@ body {
     line-height: 1.35;
 }
 
+.profile-user-level {
+	width: 35px;
+	height: 28px;
+}
+
 .profile-user-text {
     margin-top: 6px;
     color: #353535;
@@ -283,16 +288,22 @@ body {
 	width: 160px;
 }
 
-.td-sitelevel {
-	width: 50px;
-}
-
 .td-honnorrate{
 	width: 70px;
 }
 
 .td-summonerid {
-	width: 180px;
+	width: 230px;
+}
+
+
+.choice-level {
+	width: 30px;
+	height: 22px;
+}
+
+.choice-record {
+	color: black;
 }
 
 .td-checked {
@@ -315,8 +326,8 @@ body {
 	display: none;
 	position: absolute;
 	font-size: 14px;
-	top: -50px;
-	right: -100px;
+	top: -75px;
+	right: -50px;
 	z-index: 1;
 	background: #F46119;
 	padding: 10px 0 10px 0;
