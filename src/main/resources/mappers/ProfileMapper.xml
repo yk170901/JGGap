@@ -8,7 +8,7 @@
   
 	<!-- 마이페이지 유저 정보 불러오기 -->
   	<select id="profile_info" resultType="profile" parameterType="Object">
-  		SELECT summoner_id, trunc(honor_rate/user_info.honor_cnt,1) as honor_rate, profile_icon, user_pwd
+  		SELECT summoner_id, trunc(honor_rate/user_info.honor_cnt,1) as honor_rate, profile_icon, user_pwd, site_level
   		FROM user_info
   		WHERE user_no = #{user_no}
   	</select>
