@@ -63,10 +63,11 @@ public class Board_list_Controller {
 						System.out.println(vo.getSearch_check_mode()[i]);
 					}
 				}
+				
 				model.addAttribute("admin_list", board_list_Service.admin_boardList());
 				model.addAttribute("paging", vo);
 				model.addAttribute("list", board_list_Service.selectBoard(vo));
-				
+				System.out.println(board_list_Service.selectBoard(vo));
 				return "/board_list/board_list";
 			}
 		}
