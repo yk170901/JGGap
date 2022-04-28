@@ -19,5 +19,6 @@ public class RecordController {
 	@RequestMapping("/record.do")
 	public void profile(Model model, RecordVO recordVO) {
 		model.addAttribute("record", recordService.record_info(recordVO));
+		model.addAttribute("score", recordService.record_score(recordVO));
 	}
 }

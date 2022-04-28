@@ -78,7 +78,8 @@ body {
 }
 
 .summoner-info-body,
-.summoner-stats-body {
+.summoner-stats-body,
+.summoner-record-body {
 	padding: 20px 30px;
     border-radius: 10px;
     margin-top: 30px;
@@ -165,9 +166,14 @@ hr{
 .summoner-stats-tier-detail {
 	text-align: right;
 	color:white;
+	width: 130px;
 }
 
 .summoner-stats-tier-text {
 	margin-top: 5px;
 	font-size: 22px;
+}
+
+.summoner-stats-lp-text {
+	font-size: 14px;
 }

@@ -69,7 +69,7 @@
 							<c:choose>
 								<c:when test="${profile_choice != null}">
 									<c:forEach items="${profile_choice}" var="choice">
-									<c:if test="{i%j == 0}">
+									<c:if test="${i%j == 0}">
 										<tr>
 									</c:if>
 									<td class="td-line td-tier"><img class="choice-tiers"src="/resources/imgs/tier/${choice.solo_tier }.png" alt="tier">${choice.solo_tier } ${choice.solo_tier_grade }</td>

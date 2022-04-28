@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,6 +55,32 @@
 					~시각화 보류~<br>
 					선호 포지션
 				</div>
+			</div >
+			<div class="summoner-record-body">
+				<c:set var="cnt" value="4" />
+				<c:forEach items="${score}" var="score" varStatus="score_length">
+					<div>
+						${score.record_no }<br>
+						<img style="width:70px; height:70px;"src="http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/Viego.png"><br>
+					</div>
+					<c:if test="${score_length.index == cnt }">
+						<c:if test="${score_length.index > 4 }"> 비밀닫기<br> </c:if>
+						더보기</br>
+						비밀열기
+					</c:if>
+					<c:if test="${score_length.index== cnt+1 }">
+						<c:set var="cnt" value="${cnt+5}" />
+					</c:if>
+					<c:if test="${score_length.last }">
+						비밀닫기
+					</c:if>
+	
+				</c:forEach>
+				
+				
+				
+				
+				
 			</div>
 
 

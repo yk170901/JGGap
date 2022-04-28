@@ -22,5 +22,7 @@ public class RecordVO {
 		private int free_win;
 		private int free_lose;
 		private int free_lp;
-	
+		
+	// LOL_Record
+		private int record_no;
 }

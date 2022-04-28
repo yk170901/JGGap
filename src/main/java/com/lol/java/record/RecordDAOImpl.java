@@ -1,5 +1,7 @@
 package com.lol.java.record;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,6 +16,12 @@ public class RecordDAOImpl implements RecordDAO{
 	@Override
 	public Object record_info(RecordVO recordVO) {
 		return mybatis.selectOne("RecordDAO.record_info",recordVO);
+	}
+	
+	// 롤 전적 가져오기
+	@Override
+	public List<RecordVO> record_score(RecordVO recordVO) {
+		return mybatis.selectList("RecordDAO.record_score",recordVO);
 	}
 	
 }
