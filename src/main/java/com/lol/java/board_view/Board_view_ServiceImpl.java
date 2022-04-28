@@ -1,5 +1,6 @@
 package com.lol.java.board_view;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,18 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 	@Override
 	public void insertReply(Board_view_VO_reply vo) {
 		board_view_DAO.insertReply(vo);
+	}
+
+	@Override
+	public boolean replyAlreadyChosen(HashMap<String, Integer> map) {
+		int count_chosen_user = board_view_DAO.selectUserChoNo(map);
+		
+		if(count_chosen_user == 1) {
+			return true;
+		}else {
+			System.out.println(count_chosen_user);
+		}
+		return false;
 	}
 
 }

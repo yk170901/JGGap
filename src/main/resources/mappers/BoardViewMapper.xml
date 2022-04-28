@@ -47,7 +47,7 @@
  
 	<insert id="insertReply" parameterType="board_view_reply">
 		INSERT INTO re_board(user_re_no, post_no, re_text, re_date, user_no)
-			VALUES(user_re_no.NEXTVAL, #{post_no}, #{re_text}, sysdate, #{user_no})
+			VALUES(user_re_no.NEXTVAL, #{post_no}, #{re_text}, current_date, #{user_no})
 	</insert>
 
 	<select id="selectBoard" resultMap="BoardMap" parameterType="int" resultType="board_view" >
@@ -76,6 +76,20 @@
 					AND re.user_no = u_re.USER_NO 
 					AND l_re.USER_NO = re.USER_NO
 			ORDER BY re.re_date
+	</select>
+	
+	<insert id="insertChosenUser" parameterType="hashmap">
+		INSERT INTO choice
+			VALUES(user_cho_no.NEXTVAL, #{user_no}, #{choice_user_no})
+	</insert>
+	
+	<select id="selectUserChoNo" parameterType="hashMap" resultType="int">
+		SELECT count(*)
+			FROM choice
+			WHERE user_no = #{user_no}
+				AND choice_user_no = (SELECT user_no
+										FROM re_board
+										WHERE user_re_no = #{user_re_no})
 	</select>
   
   </mapper>

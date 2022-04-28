@@ -10,7 +10,9 @@
 	<meta charset="UTF-8">
 	<title>구인 게시글 상세 페이지</title>
     <link href="../resources/css/post_detail.css" rel="stylesheet" type="text/css">
-    <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
+    <link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
@@ -23,6 +25,7 @@
 				<!-- 포스트 넘버 임의로 줌 -->
 				<input type="hidden" name="post_no" value="72">
 				<h1 class="post-header-top"><c:out value="${board.board_title }" /></h1>
+				<input type="hidden" value=<c:out value="${board.writer.user_no }" /> id="writer_no"/>
 				<div class="post-header-bottom">
 					
 					<div class="user-info writer-info">
@@ -69,6 +72,8 @@
 			<div id="reply-content">
 				<c:forEach var="reply" items="${reply}">
 					<div class="reply-content-repeat">
+						<input type="hidden" class="user_re_no" value=${reply.user_re_no }>
+						<input type="hidden" id="click_user_no" value="${sessionScope.user_no}" />
 						<div class="user-info">
 							
 							<div class="user-info"><img src="../resources/imgs/tier/${reply.replier.solo_tier }.png" id="tier-img"></div>
@@ -81,16 +86,16 @@
 							<div class="user-info">${reply.replier.honor_rate }</div>
 							<button class="follow">팔로우</button>
 							<span id="reply-date">( <c:out value="${reply.re_date }" /> )</span>
+							
+							<!-- 아래는 for if문으로, 댓글 작성자가 아니면 신고가, 작성자면 삭제가 보이게 하기. -->
 							<button class="report">신고</button>
+							<button class="delete-reply" style="color: darkred;">삭제</button>
 							
 						</div>
 						
 						<div>
 							<span class="reply-content"><c:out value="${reply.re_text }" /></span>
-							<!-- <button class="detail-small-btn delete-reply">삭제</button> -->
-							<!-- <form action="" method="post" onsubmit="return checkUser()" id="user-check-form"> -->
-								<button id="select-user-to-play-with" type="submit" onclick="checkUser()"><img src="../resources/imgs/post_detail/unchecked.png" class="check-img"></button>
-							<!-- </form> -->
+							<button class="choose-user"><img src="../resources/imgs/post_detail/unchecked.png" class="check-img"></button>
 						</div>
 					</div>
 				</c:forEach>
@@ -111,4 +116,5 @@
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 
 </body>
+    <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
 </html>

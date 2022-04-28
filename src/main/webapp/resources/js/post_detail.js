@@ -50,7 +50,7 @@ function checkValidation(){
 	}
 	else if(cru_max_value=="none"){
 		alert("모집 인원을 선택해주세요");
-		return false;
+		return false;W
 	}
 }
 
@@ -73,13 +73,73 @@ function cancelPostInsert(){
 	}
 }
 
+// 채택 버튼 눌렀을 때
+$(function() { $('.choose-user').on("click", function() {
+		// 누른 것이 글쓴이인지 확인
+		if(!isWriter()){
+			return;
+		}
+		
+		// 채택을 위해 누른 거라면
+		if(!alreadyChosen()){	
+			alert('올레디쵸슨 결과 확인 진입 - 이번이 채택임')
+			alert('채택되는 유저 넘버 = '+document.getElementById('user_re_no').value)
+			$.ajax({
+				url:'/board_view/chooseUser.do',
+				type : "POST",
+				data : {
+					writer_no :  document.getElementById('writer_no').value,
+					chosen_user_no : document.getElementsByClassName('user_re_no').value
+				},
+			})
+			alert("올레디쵸슨 채택 끝남")
+			/*document.getElementsByClassName("check-img").src = "../resources/imgs/post_detail/checked.png";*/
+		// 채택 해제를 위해 누른 거라면
+		}else{
+			alert('올레디쵸슨 결과 확인 진입 - 이미 채택됐었음')
+			/*document.getElementsByClassName("check-img").src = "../resources/imgs/post_detail/unchecked.png";*/
+		}
+		
+	})
+});
 
-function checkUser(){
-	var check_img = document.getElementsByClassName("check-img").src;
-	alert(document.getElementsByClassName("check-img").length);
-	if(check_img === "../resources/imgs/post_detail/checked.png"){
-		document.getElementsByClassName("check-img").src = "../resources/imgs/post_detail/unchecked.png";
-	}else{
-		document.getElementsByClassName("check-img").src = "../resources/imgs/post_detail/checked.png";
+// 채택 버튼 누른 이가 글쓴이인가 확인
+function isWriter(){
+	if(document.getElementById('writer_no').value === document.getElementById('click_user_no').value){
+		return true;
 	}
+	
+	alert('해당 글에 대한 채택 권한이 없으십니다.')
+	return false;
 }
+
+// 채택이 이미 돼 있던 댓글의 채택 버튼을 누른 것인가 확인
+function alreadyChosen(){
+	alert("올레디쵸슨 진입");
+	alert(document.getElementsByClassName('user_re_no').value);
+	
+	$.ajax({
+		url:'/board_view/checkReplyIfChosen.do'
+		, type : "post"
+		, data : {
+			"user_no" : document.getElementById('writer_no').value,
+			"user_re_no" : document.getElementsByClassName('user_re_no').value
+		}
+		, dataType: "text"
+		, sucess : function(resp){
+			alert('올레디쵸슨 결과 : '+resp);
+			if(resp == false){
+				alert(resp);
+			}else{
+				alert(resp);
+			}
+			return resp;
+		}
+		, error : function(data, request, err){
+			alert(data+" code = "+ request.status+"\n error = " +err);						
+		}
+		
+	})
+	
+}
+	

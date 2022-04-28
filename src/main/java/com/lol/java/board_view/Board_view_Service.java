@@ -1,5 +1,6 @@
 package com.lol.java.board_view;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface Board_view_Service {
@@ -9,4 +10,6 @@ public interface Board_view_Service {
 	public Board_view_VO viewBoard(Board_view_VO vo);
 	
 	public List<Board_view_VO_reply> viewReplyList(int post_no);
+	
+	public boolean replyAlreadyChosen(HashMap<String, Integer> map);
 }
