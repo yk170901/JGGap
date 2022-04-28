@@ -17,6 +17,7 @@
 		<typeAlias alias="paging" type="com.lol.java.board_list.Paging_VO"/>
 		<typeAlias alias="chat" type="com.lol.java.chat.ChatVO"/>
 		<typeAlias alias="profile" type="com.lol.java.profile.ProfileVO"/>
+		<typeAlias alias="record" type="com.lol.java.record.RecordVO"/>
 		<typeAlias alias="shop" type="com.lol.java.shop.ShopVO"/>
 		<typeAlias alias="user" type="com.lol.java.user.UserVO"/>
 		
