@@ -26,13 +26,13 @@
 	                </div>
 	            </div>
 	            <div class="page-header__action">
-	            	<a class="profile" href="/profile/profile.do"><img src="/resources/imgs/profile_icon/5.png" alt="profile"></a>
-	            	<div><span>${sessionScope.user_no}</span></div>
+	            	<a class="profile" href="/profile/profile.do"><img src="#" id="profile_img"></a>
+	            	<div><span id="profile_summoner_id"></span></div>
 	            	<div id="profile_dropdown">
 	            		<div class="profile_point"><span class="profile_point_value" style="color: white;"></span></div>
-	            		<a href="#" class="profile_dropdown_list" style="color: white;">내 전적</a>
+	            		<a href="javascript:alert('준비중입니다.');" class="profile_dropdown_list" style="color: white;">내 전적</a>
 	            		<a href="/profile/profile.do" class="profile_dropdown_list" style="color: white;">회원정보</a>
-	            		<a href="#" class="profile_dropdown_list" style="color: white;">고객센터</a>
+	            		<a href="javascript:alert('준비중입니다.');" class="profile_dropdown_list" style="color: white;">고객센터</a>
 	            		<a href="/user/logout.do" class="profile_dropdown_list" style="color: white;">로그아웃</a>
 	            	</div>
 	            </div>

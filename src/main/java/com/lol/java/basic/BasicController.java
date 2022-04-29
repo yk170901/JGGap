@@ -1,7 +1,5 @@
 package com.lol.java.basic;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +15,14 @@ public class BasicController {
 
 	@Autowired
 	private BasicService basicService;
+	BasicVO vo = new BasicVO();
 	
 	
-	// 헤더 포인트
-	@ResponseBody
+	// 헤더 포인트		
 	@RequestMapping("/point.do")
-	public String header_point(Model model, HttpSession session) {
-		Object user_no = session.getAttribute("user_no");
-		String point = String.valueOf(basicService.header_point(user_no));
-		return point;
-		
-	
+	public @ResponseBody BasicVO header_point(Model model, HttpSession session) {
+		Object user_no = session.getAttribute("user_no");	
+		return basicService.header_point(user_no);
 	}
 		
 

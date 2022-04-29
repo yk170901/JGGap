@@ -4,8 +4,7 @@ import lombok.Data;
 
 @Data
 public class BasicVO {
-	
-	private int usable_point;
-	
-	
+	private String summoner_id;
+	private int usable_point;	
+	private int site_level;
 }
