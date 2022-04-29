@@ -26,12 +26,12 @@ $("#user_id").blur(function() {
 				$("#sign_up_submit").attr("disabled", true);
 			} else {
 
-				 if (user_id.length < 6 || user_id.length > 15) {
+				if (user_id.length < 6 || user_id.length > 15) {
 
 					$('#id_check').text("아이디는 영문과 숫자 6~15자리만 가능합니다 :) :)");
 					$('#id_check').css('color', 'red');
 					$("#sign_up_submit").attr("disabled", true);
-				}else if (data != user_id) {
+				} else if (data != user_id) {
 					// 0 : 아이디 길이 / 문자열 검사
 					$("#id_check").text("사용가능한 아이디 입니다.");
 					$("#id_check").css("color", "green");
@@ -84,7 +84,7 @@ function confirm() {
 	let p2 = document.getElementById('user_pwd_chk').value;
 	let c1 = document.getElementById("chk1").checked;
 	let c2 = document.getElementById("chk2").checked;
-	
+
 	if (c1 == false || c2 == false) {
 		Swal.fire("이용약관, 개인정보 수집 및 이용에 동의해주세요.");
 		return false;
@@ -105,7 +105,7 @@ function confirm() {
 
 }
 
-//              아이디칸 한글 입력 방지
+// 아이디칸 한글 입력 방지
 function chkCharCode(event) {
 	const regExp = /[^0-9a-zA-Z]/g;
 	const ele = event.target;
@@ -114,41 +114,18 @@ function chkCharCode(event) {
 	}
 };
 
-function login_ck(form){
-	if (form.elements["current-password"].value=="") {
-		Swal.fire({
-			icon: 'error',
-			confirmButtonColor: '#F46119',
-			text: "아이디 또는 비밀번호가 틀렸습니다.",
-		})
-		form.elements["user_id"].focus();
-		return;
-	}
-}
-
-
-//$("#login").click(function() {
-//	let id = $("#user_id").val();
-//	let pwd = $("#user_pwd").val();
-//	
-//	$.ajax({
-//		type : 'post',
-//		url : 'user/login_ok.do',
-//		data : 'user_id='+id+'&user_pwd='+pwd,
-//		dataType : 'text',
-//		success : function(data){
-//			 
-//			 if(data == 0){
-//				$("#result").text("아이디 또는 비밀번호가 틀렸거나 존재하지 않는 아이디 입니다.");
-//				$("#result").css("color", "red");
-//			}else if(data == 1){
-//				$("#result").text("밴처리  회원입니다");
-//				$("#result").css("color", "red");
-//			}
-//			
-//			
-//		}, error: function(){
-//			console.log('실패');
-//		}
-//	})
-//})
+// 로그인 버튼 엔터 적용
+$(document).ready(function(){
+	
+	$("input[name=user_id]").keydown(function (key) {
+		if(key.keyCode == 13) {
+			$("input[name=login]").click();
+		}
+	})
+	
+	$("input[name=user_pwd]").keydown(function (key) {
+		if(key.keyCode == 13) {
+			$("input[name=login]").click();
+		}
+	})
+})
