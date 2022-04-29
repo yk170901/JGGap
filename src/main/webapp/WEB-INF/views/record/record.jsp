@@ -57,30 +57,76 @@
 				</div>
 			</div >
 			<div class="summoner-record-body">
-				<c:set var="cnt" value="4" />
+				<c:set var="cnt" value="9" />
 				<c:forEach items="${score}" var="score" varStatus="score_length">
-					<div>
-						${score.record_no }<br>
-						<img style="width:70px; height:70px;"src="http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/Viego.png"><br>
+					<div class="summoner-record record-lose">
+						<div class="summoner-record-result result-lose"></div>
+						<div class="summoner-record-content">
+							<div class="summoner-record-info">
+								<span class="info-game-result game-lose">패배</span>
+								<span class="info-game-mode">칼바람 나락</span>
+								<span class="info-game-time">17:12</span>
+								<span class="info-game-past">6일 전</span>
+							</div>
+							<div class="summoner-record-stat">
+								<div class="stat-champion">
+									<div class="stat-champion-icon">
+										<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/Viego.png">
+										<div class="champion-level">15</div>
+									</div>
+									<div class="stat-champion-spells">
+										<div class="stat-champion-spell">
+											<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/spell/SummonerSnowball.png">
+										</div>
+										<div class="stat-champion-spell">
+											<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/spell/SummonerFlash.png">
+										</div>
+									</div>
+									<div class="stat-champion-runes">
+										<div class="stat-champion-rune">
+											<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/spell/SummonerExhaust.png">
+										</div>
+										<div class="stat-champion-rune">
+											<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/spell/SummonerExhaust.png">
+										</div>
+									</div>
+								</div>
+								<div class="stat-kda">
+									<div class="stat-k-d-a">
+										<span>11</span> / <span class="stat-d">4</span> / <span>9</span>
+									</div>
+									<div class="stat-ratio">
+										<span>5.00</span> 평점
+									</div>
+									<div class="stat-multikill multikill-penta">더블킬</div>
+								</div>
+								<div class="stat-stats">
+									CS <span>21 (1.6)</span><br>
+									킬관여 <span class="stat-stats-kill">51%</span><br>
+									시야점수 <span>0</span><br>
+									제어와드 <span>0</span>
+								</div>
+							</div>
+							<div class="summoner-record-item"></div>
+							<div class="summoner-record-participants"></div>
+						</div>
 					</div>
+					
 					<c:if test="${score_length.index == cnt }">
-						<c:if test="${score_length.index > 4 }"> 비밀닫기<br> </c:if>
-						더보기</br>
-						비밀열기
+						<c:if test="${score_length.index > 9 }"> </div> </c:if>
+						<a class="summoner-record-more">더보기</a>
+						<div class="summoner-record-hide">
 					</c:if>
 					<c:if test="${score_length.index== cnt+1 }">
-						<c:set var="cnt" value="${cnt+5}" />
+						<c:set var="cnt" value="${cnt+10}" />
 					</c:if>
 					<c:if test="${score_length.last }">
-						비밀닫기
+						</div>
 					</c:if>
 	
 				</c:forEach>
 				
-				
-				
-				
-				
+
 			</div>
 
 

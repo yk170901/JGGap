@@ -11,5 +11,10 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
-
+	
+	@RequestMapping("/admin_page.do")
+	public String admin() {
+		
+		return "/admin/admin_page";
+	}
 }

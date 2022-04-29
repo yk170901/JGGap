@@ -1,6 +1,26 @@
 // 댓글 쓸 때, 이미 db에 해당 user_no 있으면 막기.
 // 채택 버튼을 누를 경우, 글쓴이가 아니면 아무런 이벤트도 나타나지 않게 하기
 
+// 모달
+
+var reportBtn = document.querySelector('.report-btn');
+var modalBg = document.querySelector('.modal-bg');
+var modalClose = document.querySelector('.modal-close');
+
+$('.report-btn').on("click", function() {
+	modalBg.classList.add('bg-active');
+})
+
+$('.modal-close').on("click", function() {
+	modalBg.classList.remove('bg-active');
+})
+
+/*modalClose.addEventListener('click',function(){
+	modalBg.classList.remove('bg-active');
+})*/
+
+
+
 // 수정 페이지 로드 될 때 자동 실행 함수
 function get_chosen_options(){
 	
@@ -50,7 +70,7 @@ function checkValidation(){
 	}
 	else if(cru_max_value=="none"){
 		alert("모집 인원을 선택해주세요");
-		return false;
+		return false;W
 	}
 }
 
@@ -73,13 +93,76 @@ function cancelPostInsert(){
 	}
 }
 
+// 채택 버튼 눌렀을 때
+$(function() { 
+	$('.choose-user').on("click", function() {
+		
+		var writer_no = document.getElementById('writer_no').value;
+		var reply_user_no = $(this).children().attr('value'); // 댓글 단 유저 user_no
+			
+			// 채택을 위해 누른 거라면
+			if(!alreadyChosen(reply_user_no)){	
+				alert('올레디쵸슨 결과 확인 진입 - 이번이 채택임')
+				alert('채택되는 유저 넘버 ='+ reply_user_no) // 0
+				$.ajax({
+					url:'/board_view/chooseUser.do',
+					type : "POST",
+					data : {
+						writer_no :  writer_no,
+						chosen_user_no : reply_user_no
+					},
+				})
+				alert("올레디쵸슨 채택 끝남")
+				$(this).children().attr('src', '../resources/imgs/post_detail/checked.png');
+			// 채택 해제를 위해 누른 거라면
+			}else{
+				alert('올레디쵸슨 결과 확인 진입 - 이미 채택됐었음')
+				$(this).children().attr('src', '../resources/imgs/post_detail/unchecked.png');
+			}
+		
+	})
+});
 
-function checkUser(){
-	var check_img = document.getElementsByClassName("check-img").src;
-	alert(document.getElementsByClassName("check-img").length);
-	if(check_img === "../resources/imgs/post_detail/checked.png"){
-		document.getElementsByClassName("check-img").src = "../resources/imgs/post_detail/unchecked.png";
-	}else{
-		document.getElementsByClassName("check-img").src = "../resources/imgs/post_detail/checked.png";
+// 채택이 이미 돼 있던 댓글의 채택 버튼을 누른 것인가 확인
+function alreadyChosen(reply_user_no){
+	
+	alert("reply_user_no: "+reply_user_no);
+	
+	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
+	
+	for(var i = 0; i< chosen_user_no; i++){	
+		alert("reply_user_no: "+reply_user_no);
+		if(reply_user_no ==document.getElementsByClassName('chosen-users')[i].value){
+			return true;
+		}
 	}
+	
+	return false;
+	
+	/* 버려진 코드 ㅠ 
+	
+		$.ajax({
+		url:'/board_view/checkReplyIfChosen.do'
+		, type : "post"
+		, data : {
+			"writer_no" : writer_no,
+			"chosen_user_no" : reply_user_no
+		}
+		, dataType: "text"
+		, sucess : function(resp){
+			alert('올레디쵸슨 결과 : '+resp);
+			if(resp == false){
+				alert(resp);
+			}else{
+				alert(resp);
+			}
+			return resp;
+		}
+		, error : function(data, request, err){
+			alert(data+" code = "+ request.status+"\n error = " +err);						
+		}
+		
+	})*/
+	
 }
+	

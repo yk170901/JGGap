@@ -13,6 +13,7 @@
 		<typeAlias alias="board_view_writer" type="com.lol.java.board_view.Board_view_VO_writer"/>
 		<typeAlias alias="board_view_reply" type="com.lol.java.board_view.Board_view_VO_reply"/>
 		<typeAlias alias="board_view_replier" type="com.lol.java.board_view.Board_view_VO_replier"/>
+		<typeAlias alias="board_view_report" type="com.lol.java.board_view.Board_view_VO_report"/>
 		<typeAlias alias="board_list" type="com.lol.java.board_list.Board_list_VO"/>
 		<typeAlias alias="paging" type="com.lol.java.board_list.Paging_VO"/>
 		<typeAlias alias="chat" type="com.lol.java.chat.ChatVO"/>

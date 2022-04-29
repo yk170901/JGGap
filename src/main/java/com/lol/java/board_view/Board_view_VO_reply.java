@@ -17,10 +17,7 @@ public class Board_view_VO_reply {
 	private Date re_date;
 	
 	Board_view_VO_replier replier;
-	
+	 
 	/* 댓글 개수 */
 	private int reply_count;
-	
-	/* 채택된 댓글 수 */
-
 }

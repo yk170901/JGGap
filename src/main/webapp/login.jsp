@@ -1,7 +1,7 @@
 <%@page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<!-- 배경영상 랜덤재생 -->
 <%
 int num = (int) (Math.random() * 4 + 1);
 %>
@@ -22,7 +22,8 @@ int num = (int) (Math.random() * 4 + 1);
 <link rel="stylesheet" href="resources/css/libs.min.css">
 <link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/login.css">
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script
+	src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style type="text/css">
 .repair {
@@ -57,7 +58,8 @@ a {
 </style>
 </head>
 
-<body class="page-login" style="background-color: black;">
+<body class="page-login"
+	style="background-color: black; width: 100%; overflow-x: hidden; overflow-y: hidden;">
 
 	<div class="page-wrapper" style="background-color: black;">
 
@@ -81,16 +83,16 @@ a {
 							<form method="POST" action="user/login_ok.do">
 								<div class="uk-margin">
 									<input class="uk-input" name="user_id" type="text"
-										 onkeyup="chkCharCode(event)" placeholder="아이디">
+										onkeyup="chkCharCode(event)" placeholder="아이디">
 								</div>
 								<div class="uk-margin">
 									<input class="uk-input" name="user_pwd" type="password"
 										placeholder="비밀번호">
 								</div>
 								<div class="uk-margin">
-								<div id="result"></div>
+									<div id="result"></div>
 									<button type="submit"
-										class="uk-button uk-button-danger uk-width-1-1" id="login" id="submit">로그인</button>
+										class="uk-button uk-button-danger uk-width-1-1" id="login" name="login">로그인</button>
 								</div>
 								<div class="uk-margin uk-text-center">
 									<a href="#">또 잊어먹음?</a>
@@ -99,6 +101,7 @@ a {
 							</form>
 							<div class="uk-text-center">
 								<span>계정이 없으신가요?</span>
+							<!-- 클릭시 회원가입 모달 작동 -->
 								<button class="uk-margin-small-left" id="modal_on"
 									onclick="init()">회원가입</button>
 							</div>
@@ -175,7 +178,7 @@ a {
 
 </body>
 
-<script src="resources/js/login.js"/>
+<script src="resources/js/login.js" />
 <script src="resources/js/lib.js"></script>
 <!-- <script src="resources/js/main.js"></script> -->
 <script src="resources/js/index.js?ver=1"></script>
