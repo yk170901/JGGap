@@ -99,7 +99,7 @@ $(function() {
 		
 		var writer_no = document.getElementById('writer_no').value;
 		var reply_user_no = $(this).children().attr('value'); // 댓글 단 유저 user_no
-			
+			/*alert(alreadyChosen(reply_user_no));*/
 			// 채택을 위해 누른 거라면
 			if(!alreadyChosen(reply_user_no)){	
 				alert('올레디쵸슨 결과 확인 진입 - 이번이 채택임')
@@ -126,13 +126,10 @@ $(function() {
 // 채택이 이미 돼 있던 댓글의 채택 버튼을 누른 것인가 확인
 function alreadyChosen(reply_user_no){
 	
-	alert("reply_user_no: "+reply_user_no);
-	
 	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
 	
-	for(var i = 0; i< chosen_user_no; i++){	
-		alert("reply_user_no: "+reply_user_no);
-		if(reply_user_no ==document.getElementsByClassName('chosen-users')[i].value){
+	for(var i = 0; i< chosen_user_no; i++){
+		if(reply_user_no === document.getElementsByClassName('chosen-users')[i].value){
 			return true;
 		}
 	}

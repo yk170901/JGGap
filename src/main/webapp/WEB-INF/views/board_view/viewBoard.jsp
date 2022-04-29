@@ -124,9 +124,16 @@
 							<div>
 								<span class="reply-content"><c:out value="${reply.re_text }" /></span>
 								<button class="choose-user">
-								<!-- c foreach문으로 채택된 유저들 전부 가져온 뒤 value 속의 user_no과 c if문으로 비교. -->
-								<img src="../resources/imgs/post_detail/unchecked.png" class="check-img" value="${reply.user_no }">
-								
+									<img src="../resources/imgs/post_detail/unchecked.png" class="check-img" value="${reply.user_no }">
+									<%-- <c:forEach items="${choice}" var="choiceList">
+										<c:when test="${reply.user_no =! 0}">
+											<img src="../resources/imgs/post_detail/unchecked.png" class="check-img" value="${reply.user_no }">
+										</c:when>
+																		
+										<c:otherwise>
+											<img src="../resources/imgs/post_detail/unchecked.png" class="check-img" value="${reply.user_no }">
+										</c:otherwise>
+									</c:forEach> --%>
 								</button>
 							</div>
 						</div>

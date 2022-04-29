@@ -48,7 +48,7 @@ public class Board_view_Controller {
 		
 		reply_vo.setUser_no(Integer.parseInt(String.valueOf(session.getAttribute("user_no"))));
 		
-		// 댓글 넣기
+		// 댓글 넣기 
 		board_view_Service.insertReply(reply_vo);
 		
 		// 넣은 후 댓글들 보여주는 메소드 -- 아래에서 리다이렉트 할 때 자연스럽게 새로고침되지 않을까 싶어서 이게 필요한가 의문
