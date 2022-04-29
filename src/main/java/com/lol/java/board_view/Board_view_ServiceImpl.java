@@ -13,13 +13,14 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 	Board_view_DAO board_view_DAO;
 
 	@Override
-	public Board_view_VO viewBoard(Board_view_VO vo) {
-		// 게시글 정보를 받는 메소드
-		vo = board_view_DAO.selectBoard(vo.getPost_no());
-
-		System.out.println("viewBoard 셀렉트 보드" +  vo);
-		return vo;	
+	public Board_view_VO viewBoard(int post_no) {
+		return board_view_DAO.selectBoard(post_no);
 	}
+
+	@Override
+	public List<Integer> viewChoiceList(int user_no) {
+		return board_view_DAO.selectChoiceList(user_no);
+	};
 	
 	@Override
 	public List<Board_view_VO_reply> viewReplyList(int post_no) {

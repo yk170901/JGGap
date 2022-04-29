@@ -22,8 +22,15 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	// 글 상세 보기
 	@Override
 	public Board_view_VO selectBoard(int post_no) {
+		System.out.println("ㅅㅂ"+mybatis.selectOne("Board_view_DAO.selectBoard",post_no));
 		return mybatis.selectOne("Board_view_DAO.selectBoard",post_no);
 	}
+
+	// 채택 유저 가져오기
+	@Override
+	public List<Integer> selectChoiceList(int user_no) {
+		return mybatis.selectList("Board_view_DAO.selectChoiceList",user_no);
+	};
 	
 	// 댓글 리스트 보기
 	@Override
