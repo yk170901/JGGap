@@ -80,11 +80,10 @@
 			</div>
 		</div>
 		
-		<div class="chosen-user-list" style="display:hidden;">
+		<div class="chosen-user-list" style="display: hidden;">
 			<c:forEach items="${choice}" var="choiceList" varStatus="status">
-				${status.count }
-				<c:out value="${choiceList }" />
-				<br/>
+				<%-- ${status.count }  --%>
+				<input value="<c:out value="${choiceList }" />" class="chosen-users">
 			</c:forEach>
 		</div>
 		

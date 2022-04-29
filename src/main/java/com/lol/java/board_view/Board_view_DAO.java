@@ -12,5 +12,5 @@ public interface Board_view_DAO {
 	
 	public List<Board_view_VO_reply> selectReplyList(int post_no);
 	
-	public int selectUserChoNo(HashMap<String, Integer> map);
+	/* public int selectUserChoNo(HashMap<String, Integer> map); */
 }

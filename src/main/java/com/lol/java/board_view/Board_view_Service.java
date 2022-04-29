@@ -13,5 +13,5 @@ public interface Board_view_Service {
 	
 	public List<Board_view_VO_reply> viewReplyList(int post_no);
 	
-	public boolean replyAlreadyChosen(HashMap<String, Integer> map);
+	/* public boolean replyAlreadyChosen(HashMap<String, Integer> map); */
 }

@@ -22,7 +22,6 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	// 글 상세 보기
 	@Override
 	public Board_view_VO selectBoard(int post_no) {
-		System.out.println("ㅅㅂ"+mybatis.selectOne("Board_view_DAO.selectBoard",post_no));
 		return mybatis.selectOne("Board_view_DAO.selectBoard",post_no);
 	}
 
@@ -44,9 +43,9 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 		mybatis.insert("insertChosenUser", map);
 	}
 
-	@Override
-	public int selectUserChoNo(HashMap<String, Integer> map) {
-		return mybatis.selectOne("selectUserChoNo", map);
-	}
+	/*
+	 * @Override public int selectUserChoNo(HashMap<String, Integer> map) { return
+	 * mybatis.selectOne("selectUserChoNo", map); }
+	 */
 
 }

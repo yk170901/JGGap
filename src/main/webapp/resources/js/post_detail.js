@@ -101,7 +101,7 @@ $(function() {
 		var reply_user_no = $(this).children().attr('value'); // 댓글 단 유저 user_no
 			
 			// 채택을 위해 누른 거라면
-			if(!alreadyChosen(writer_no, reply_user_no)){	
+			if(!alreadyChosen(reply_user_no)){	
 				alert('올레디쵸슨 결과 확인 진입 - 이번이 채택임')
 				alert('채택되는 유저 넘버 ='+ reply_user_no) // 0
 				$.ajax({
@@ -124,10 +124,24 @@ $(function() {
 });
 
 // 채택이 이미 돼 있던 댓글의 채택 버튼을 누른 것인가 확인
-function alreadyChosen(writer_no, reply_user_no){
-	alert("올레디쵸슨 진입");
+function alreadyChosen(reply_user_no){
 	
-	$.ajax({
+	alert("reply_user_no: "+reply_user_no);
+	
+	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
+	
+	for(var i = 0; i< chosen_user_no; i++){	
+		alert("reply_user_no: "+reply_user_no);
+		if(reply_user_no ==document.getElementsByClassName('chosen-users')[i].value){
+			return true;
+		}
+	}
+	
+	return false;
+	
+	/* 버려진 코드 ㅠ 
+	
+		$.ajax({
 		url:'/board_view/checkReplyIfChosen.do'
 		, type : "post"
 		, data : {
@@ -148,7 +162,7 @@ function alreadyChosen(writer_no, reply_user_no){
 			alert(data+" code = "+ request.status+"\n error = " +err);						
 		}
 		
-	})
+	})*/
 	
 }
 	

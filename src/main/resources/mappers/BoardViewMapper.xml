@@ -8,6 +8,7 @@
   
   	<resultMap type="board_view" id="BoardMap">
   		<id property="post_no" column="post_no"></id>
+ 		<result property="user_no" column="user_no"/>
  		<result property="board_title" column="board_title"/>
  		<result property="board_text" column="board_text"/>
  		<result property="game_map" column="game_map"/>
@@ -51,9 +52,9 @@
 	</insert>
 
 	<select id="selectBoard" resultMap="BoardMap" parameterType="int" resultType="board_view" >
-		SELECT DISTINCT u.honor_rate, u.summoner_id, b.user_no, u.site_level,
+		SELECT DISTINCT u.honor_rate, u.summoner_id, u.site_level,
 					l.solo_tier, l.solo_tier_grade,
-					b.post_no, b.board_title, b.board_text, b.game_map, b.game_mode, b.board_date, b.cru_pre, b.cru_max
+					b.post_no, b.board_title, b.board_text, b.game_map, b.game_mode, b.board_date, b.cru_pre, b.cru_max, b.user_no
 			FROM user_info u,
 					lol_info l,
 					board b
@@ -65,13 +66,15 @@
 	<select id="selectChoiceList" parameterType="int" resultType="int" >
 		SELECT choice_user_no
 			FROM choice
-			WHERE user_no = #{value}
+			WHERE user_no = (SELECT user_no
+								FROM board
+								WHERE post_no = #{value})
 	</select>
 	
 	<select id="selectReplyList" resultMap="ReplyListMap" parameterType="int" resultType="board_view_reply">
-		SELECT b.post_no,
+		SELECT b.post_no, b.user_no,
 				re.user_re_no, re.re_text, re.re_date, re.user_no,
-					u_re.honor_rate, u_re.summoner_id, b.user_no, u_re.site_level,
+					u_re.honor_rate, u_re.summoner_id, u_re.site_level,
 					l_re.solo_tier, l_re.solo_tier_grade
 			FROM board b,
 					re_board re,
@@ -89,13 +92,13 @@
 			VALUES(user_cho_no.NEXTVAL, #{user_no}, #{choice_user_no})
 	</insert>
 	
-	<select id="selectUserChoNo" parameterType="hashMap" resultType="int">
+	<!-- <select id="selectUserChoNo" parameterType="hashMap" resultType="int">
 		SELECT count(*)
 			FROM choice
 			WHERE user_no = #{writer_no}
 				AND choice_user_no = (SELECT user_no
 										FROM re_board
 										WHERE user_re_no = #{reply_user_no})
-	</select>
+	</select> -->
   
   </mapper>
