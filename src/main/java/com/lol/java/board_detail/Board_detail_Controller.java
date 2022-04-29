@@ -31,8 +31,6 @@ public class Board_detail_Controller {
 
 		vo.setUser_no(Integer.parseInt(String.valueOf(session.getAttribute("user_no"))));
 
-		System.out.println(session.getAttribute("user_no"));
-		
 		board_detail_Service.insertPost(vo);
 		
 		// 유저 번호를 사용해, 그 유저의 최신 작성글 번호 post_no 가져오기
@@ -43,7 +41,6 @@ public class Board_detail_Controller {
 	
 	@RequestMapping("/updateBoard.do")
 	public void getBoardToUpdate(Board_detail_VO vo, Model model) {
-
 		model.addAttribute("update", board_detail_Service.getBoard(vo.getPost_no()));
 	}
 	

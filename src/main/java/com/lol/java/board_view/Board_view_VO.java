@@ -19,6 +19,10 @@ public class Board_view_VO {
 	private int cru_pre;
 	private int cru_max;
 	private Date board_date;
+
+	/* 댓글 수 & 채택된 댓글 수 */
+	private int reply_amount;
+	private int chosen_reply_amount;
 	
 	Board_view_VO_writer writer;
 }
