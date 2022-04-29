@@ -75,6 +75,7 @@
    			</div>
 		    <div class="shop-buy-wrapper">
 		    	<div class="shop-buy">
+		    		<div class="item_name">누누와 윌럼프 봇 스킨</div>
 		    		<div class="point-amount"><p>5000P</p></div>
 		    		<div class="shop-buy-img">
 			    		<img src="/resources/imgs/shop_items/shop_nunuskin.jpg">
@@ -84,6 +85,7 @@
 			    	</div>
 		    	</div>
 		    	<div class="shop-buy">
+		    		<div class="item_name">누누와 윌럼프 봇 스킨</div>
 		    		<div class="point-amount"><p>5000P</p></div>
 		    		<div class="shop-buy-img">
 			    		<img src="/resources/imgs/shop_items/shop_nunuskin.jpg">
@@ -93,6 +95,7 @@
 			    	</div>
 		    	</div>
 		    	<div class="shop-buy">
+		    		<div class="item_name">누누와 윌럼프 봇 스킨</div>
 		    		<div class="point-amount"><p>5000P</p></div>
 		    		<div class="shop-buy-img">
 			    		<img src="/resources/imgs/shop_items/shop_nunuskin.jpg">

@@ -7,8 +7,8 @@
   <mapper namespace="BasicDAO">
   	
   	<!-- 헤더 포인트 -->
-  	<select id="header_point" resultType="String" parameterType="Object">
-  		SELECT usable_point
+  	<select id="header_point" resultType="basic" parameterType="Object">
+  		SELECT usable_point, summoner_id, site_level
   		FROM user_info
   		WHERE user_no = #{user_no}
   	</select>

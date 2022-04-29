@@ -5,7 +5,8 @@
   <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
   
 <mapper namespace="userMapper">
-
+	
+	<!-- 회원가입 -->
 	<insert id="sign_up" parameterType="user">
 	INSERT INTO
 	USER_INFO
@@ -13,18 +14,21 @@
 	(USER_NO.NEXTVAL, #{summoner_id}, #{user_id}, #{user_pwd}, #{phone_number}, 1, 0, 0, 0, null, 0, current_date, null, 0)
 	</insert>
 	
+	<!-- 로그인 -->
 	<select id="idCheck_Login" parameterType="user" resultType="user">
 	SELECT USER_NO, BAN, SUMMONER_ID
 	FROM USER_INFO
 	WHERE USER_ID = #{user_id} AND USER_PWD = #{user_pwd}
 	</select>
 	
+	<!-- ajax 아이디 중복 확인 -->
 	<select id="userIdCheck" parameterType="String" resultType="String">
 	SELECT USER_ID
 	FROM USER_INFO
 	WHERE USER_ID = #{user_id}
 	</select>
 	
+	<!-- ajax 서머너 아이디 중복 확인 -->
 	<select id="summonerIdCheck" parameterType="String" resultType="String">
 	SELECT COUNT(*)
 	FROM USER_INFO

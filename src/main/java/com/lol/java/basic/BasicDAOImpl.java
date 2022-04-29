@@ -1,5 +1,7 @@
 package com.lol.java.basic;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,7 +13,7 @@ public class BasicDAOImpl implements BasicDAO{
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public String header_point(Object user_no) {
+	public BasicVO header_point(Object user_no) {
 		return mybatis.selectOne("BasicDAO.header_point", user_no);
 	}
 	

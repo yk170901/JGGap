@@ -30,7 +30,7 @@ $(function() { $('.apply').on("click", function() {
 						title: '당첨!',
 						confirmButtonText: '네!!!'
 					})
-					item_remain -= 1;
+					item_remain = item_remain - 1;
 				}
 				$.ajax({
 					url : "/shop/apply.do",
@@ -42,46 +42,22 @@ $(function() { $('.apply').on("click", function() {
 						item_remain : item_remain
 					},
 					success: function(data) {
+						Swal.mixin().fire({
+							toast: true,
+							position: 'center-center',
+							showConfirmButton: false,
+							timer: 1300,
+							timerProgressBar: true,
+							icon: 'success',
+							title: 'loading...'
+						})
 						location.href = "/shop/shop.do";
 					},
 					error : function(request, status, err){
 						alert("code = "+ request.status+"\n error = " +err);						
 					}
-					, beforeSend: function () {
-			              var width = 0;
-			              var height = 0;
-			              var left = 0;
-			              var top = 0;
-			
-			              width = 50;
-			              height = 50;
-			
-			
-			              top = ( $(window).height() - height ) / 2 + $(window).scrollTop();
-			              left = ( $(window).width() - width ) / 2 + $(window).scrollLeft();
-			
-			 
-			
-			              if($("#div_ajax_load_image").length != 0) {
-			                     $("#div_ajax_load_image").css({
-			                            "top": top+"px",
-			                            "left": left+"px"
-			                     });
-			                     $("#div_ajax_load_image").show();
-			              }
-			              else {
-			                     $('body').append('<div id="div_ajax_load_image" style="position:absolute; top:' + top + 'px; left:' + left + 'px; width:' + width + 'px; height:' + height + 'px; z-index:9999; background:#f0f0f0; filter:alpha(opacity=50); opacity:alpha*0.5; margin:auto; padding:0; "><img src="/resources/imgs/shop_etc/loading.gif" style="width:100%; height:100%;"></div>');
-			              }
-			
-				       }
-				       , complete: function () {
-				                     $("#div_ajax_load_image").hide();
-				       }
-
 					})	
 				}
-			}
-
-		
+			}		
 	})
 })
