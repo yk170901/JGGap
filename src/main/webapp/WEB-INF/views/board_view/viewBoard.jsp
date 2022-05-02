@@ -13,11 +13,10 @@
     <link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
     
 </head>
-<body>
+<body onload="checkChosenUsers();">
 	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
 	
 	<!-- 라이터 넘버로 관리자 여부 보는 게 아니라 ban 넘버로 보기 -->
-	
 	<div class="modal-bg">
 		<div class="modal">
 			<h3 class="modal-title">신고 작성</h3>
@@ -36,9 +35,9 @@
 		<div class="post-content">
 			<div class="post-header">
 				<!-- 포스트 넘버 임의로 줌 -->
-				<input type="hidden" name="post_no" value="72">
+				<input type="hidden" name="post_no" value=<c:out value="${board.post_no }" /> id="post-no">
 				<h1 class="post-header-top"><c:out value="${board.board_title }" /></h1>
-				<input type="hidden" value=<c:out value="${board.writer.user_no }" /> id="writer_no"/>
+				<input type="hidden" value=<c:out value="${board.writer.user_no }" /> id="writer-no"/>
 				<div class="post-header-bottom">
 					<c:if test="${board.writer.user_no  != 10028}">
 					
@@ -82,7 +81,6 @@
 		
 		<div class="chosen-user-list" style="display: hidden;">
 			<c:forEach items="${choice}" var="choiceList" varStatus="status">
-				<%-- ${status.count }  --%>
 				<input value="<c:out value="${choiceList }" />" class="chosen-users">
 			</c:forEach>
 		</div>
@@ -111,7 +109,7 @@
 								
 								<!-- 본인이 작성한 댓글이면 삭제 버튼이, 아니면 신고 버튼이 보임. -->
 								<c:choose>
-								    <c:when test="${sessionScope.user_no != reply.user_no}">
+								    <c:when test="${sessqionScope.user_no != reply.user_no}">
 										<button class="report-btn" value="${reply.user_no }">신고</button>
 								    </c:when>    
 								    <c:otherwise>
@@ -125,15 +123,6 @@
 								<span class="reply-content"><c:out value="${reply.re_text }" /></span>
 								<button class="choose-user">
 									<img src="../resources/imgs/post_detail/unchecked.png" class="check-img" value="${reply.user_no }">
-									<%-- <c:forEach items="${choice}" var="choiceList">
-										<c:when test="${reply.user_no =! 0}">
-											<img src="../resources/imgs/post_detail/unchecked.png" class="check-img" value="${reply.user_no }">
-										</c:when>
-																		
-										<c:otherwise>
-											<img src="../resources/imgs/post_detail/unchecked.png" class="check-img" value="${reply.user_no }">
-										</c:otherwise>
-									</c:forEach> --%>
 								</button>
 							</div>
 						</div>

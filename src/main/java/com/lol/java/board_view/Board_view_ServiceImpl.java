@@ -32,6 +32,16 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 		board_view_DAO.insertReply(vo);
 	}
 
+	@Override
+	public void chooseUser(HashMap<String, Integer> map) {
+		board_view_DAO.insertChosenUser(map);
+	}
+
+	@Override
+	public void cancelUser(HashMap<String, Integer> map) {
+		board_view_DAO.deleteChosenUser(map);
+	}
+
 	/*
 	 * @Override public boolean replyAlreadyChosen(HashMap<String, Integer> map) {
 	 * int count_chosen_user = board_view_DAO.selectUserChoNo(map);

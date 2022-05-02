@@ -76,7 +76,40 @@ public class Board_view_Controller {
 	// 댓글 채택
 	@ResponseBody
 	@RequestMapping("/chooseUser.do")
-	public void chooseUser(int writer_no, int chosen_user_no) {
+	public void chooseUser(int writer_no, int chosen_user_no, int post_no, Model model) {
 		System.out.println("chooseUser 들어옴"+writer_no+" " + chosen_user_no);
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		System.out.println("해쉬맵 만듦");
+		
+		map.put("writer_no", writer_no);
+		System.out.println("writer_no 만듦");
+		map.put("chosen_user_no", chosen_user_no);
+		System.out.println("chosen_user_no 만듦");
+		
+		board_view_Service.chooseUser(map);
+		System.out.println("post_no = "+post_no);
+
+		/* jsp 파일 내의 chosen-users 갱신을 위해 새로고침/새로 넣기 필요 */
+		model.addAttribute("reply", board_view_Service.viewChoiceList(post_no));
+	}
+	
+	// 댓글 채택
+	@ResponseBody
+	@RequestMapping("/cancelUser.do")
+	public void cancelUser(int writer_no, int chosen_user_no, int post_no, Model model) {
+		System.out.println("chooseUser 들어옴"+writer_no+" " + chosen_user_no);
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		System.out.println("해쉬맵 만듦");
+		
+		map.put("writer_no", writer_no);
+		map.put("chosen_user_no", chosen_user_no);
+		
+		board_view_Service.cancelUser(map);
+		
+		
+		/* jsp 파일 내의 chosen-users 갱신을 위해 새로고침/새로 넣기 필요 */
+		model.addAttribute("reply", board_view_Service.viewChoiceList(post_no));
 	}
 }
