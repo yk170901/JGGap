@@ -196,7 +196,7 @@ $(function() {
 	$('.choices_check').on("click", function() {
 		
 		choice_user_no = $(this).children().attr('value');
-		var summoner_id = $(this).parents('tr').children()[3].innerHTML;
+		var summoner_id = $(this).prev().children('a').text();
 		
 		document.getElementsByClassName("honor-modal-title")[0].innerHTML = summoner_id;
 		

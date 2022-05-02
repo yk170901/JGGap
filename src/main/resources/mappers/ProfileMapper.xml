@@ -31,10 +31,14 @@
   	
   	<!-- 마이페이지 게시글 목록 불러오기 -->
   	<select id="profile_board" resultType="profile" parameterType="Object">
-  		SELECT post_no, board_title, TO_CHAR(board_date,'YYYY-MM-DD HH:MM') as board_date
-  		FROM board
-  		WHERE user_no = #{user_no} AND deleted = 0
-  		ORDER BY post_no DESC
+  		SELECT post_no, a.*
+		FROM (
+			SELECT post_no, board_title, TO_CHAR(board_date,'YYYY-MM-DD HH:MM') as board_date
+			FROM board
+			WHERE user_no= #{user_no} AND DELETED =0
+			ORDER BY POST_NO DESC
+		) a
+		<![CDATA[where rownum <= 10]]>
   	</select>
   	
   	<!-- 비밀번호 변경 -->

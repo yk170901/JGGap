@@ -56,8 +56,9 @@
 					선호 포지션
 				</div>
 			</div >
+			
+			
 			<div class="summoner-record-body">
-				<c:set var="cnt" value="9" />
 				<c:forEach items="${score}" var="score" varStatus="score_length">
 					<div class="summoner-record record-lose">
 						<div class="summoner-record-result result-lose"></div>
@@ -71,7 +72,7 @@
 							<div class="summoner-record-stat">
 								<div class="stat-champion">
 									<div class="stat-champion-icon">
-										<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/Viego.png">
+										<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/${score.champion_name}.png">
 										<div class="champion-level">15</div>
 									</div>
 									<div class="stat-champion-spells">
@@ -104,28 +105,61 @@
 									CS <span>21 (1.6)</span><br>
 									킬관여 <span class="stat-stats-kill">51%</span><br>
 									시야점수 <span>0</span><br>
-									제어와드 <span>0</span>
 								</div>
 							</div>
-							<div class="summoner-record-item"></div>
-							<div class="summoner-record-participants"></div>
+							<div class="summoner-record-item">
+								<div class="item-item-boxs">
+									<div class="item-item-box">
+										<c:forEach begin="1" end="6">
+											<div class="item">
+												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.6.1/img/item/3211.png">
+											</div>
+										</c:forEach>
+									</div>
+									<div class="item-item-box2">
+										<div class="item">
+											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.6.1/img/item/3363.png">
+										</div>
+										<div class="item">
+											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.6.1/img/item/2055.png">
+											<div class="ward-cnt">3</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="summoner-record-summoners">
+								<div class="summoners-box">
+									<c:forEach begin="1" end="5">
+										<div class="summoners-summoner">
+											<div class="summoner-img">
+												<img alt="LeeSin" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/LeeSin.png">
+											</div>
+											<div class="summoner-name">
+												<a>네네스노윙순살</a>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+								<div class="summoners-box">
+									<c:forEach begin="1" end="5">
+										<div class="summoners-summoner">
+											<div class="summoner-img">
+												<img alt="summoner" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/Teemo.png">
+											</div>
+											<div class="summoner-name">
+												<a>병원항구성당묘지</a>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+							
+							</div>
 						</div>
+						<div class="summoner-record-result2 result-lose"></div>
 					</div>
-					
-					<c:if test="${score_length.index == cnt }">
-						<c:if test="${score_length.index > 9 }"> </div> </c:if>
-						<a class="summoner-record-more">더보기</a>
-						<div class="summoner-record-hide">
-					</c:if>
-					<c:if test="${score_length.index== cnt+1 }">
-						<c:set var="cnt" value="${cnt+10}" />
-					</c:if>
-					<c:if test="${score_length.last }">
-						</div>
-					</c:if>
 	
 				</c:forEach>
-				
+				<a class="summoner-record-more">더보기</a>
 
 			</div>
 
@@ -140,6 +174,6 @@
 		</div>
 	</main>
 
-
+	<script type="text/javascript" src="/resources/js/record.js"></script>
 </body>
 </html>
