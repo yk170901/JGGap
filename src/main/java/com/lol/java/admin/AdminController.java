@@ -29,22 +29,22 @@ public class AdminController {
 		}
 		else {
 			System.out.println("컨트롤 접속");
-//			/* 게시글 총 갯수 카운트*/
-//			int total = 0;
-//			
-//			// 리스트에 개수 보여주는 기능
-//			if (nowPage == null && cntPerPage == null) {
-//				nowPage = "1";
-//				cntPerPage = "10";
-//			} else if (nowPage == null) {
-//				nowPage = "1";
-//			} else if (cntPerPage == null) { 
-//				cntPerPage = "10";
-//			}
-//			System.out.println("토탈 계산 끝 : " + total);
-//			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			/* 회원 총 인원 카운트*/
+			int total = adminService.member_count();
 			
-//			model.addAttribute("paging", vo);
+			// 리스트에 개수 보여주는 기능
+			if (nowPage == null && cntPerPage == null) {
+				nowPage = "1";
+				cntPerPage = "10";
+			} else if (nowPage == null) {
+				nowPage = "1";
+			} else if (cntPerPage == null) { 
+				cntPerPage = "10";
+			}
+			System.out.println("토탈 계산 끝 : " + total);
+			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			
+			model.addAttribute("paging", vo);
 			model.addAttribute("list", adminService.user_list());
 			System.out.println(adminService.user_list());
 		}
