@@ -10,12 +10,7 @@ public class Paging_VO {
 	// 현재페이지, 시작페이지, 끝페이지, 게시글 총 갯수, 페이지당 글 갯수, 마지막페이지, SQL쿼리에 쓸 start, end
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
 	private int cntPage = 5;
-	private String searchCondition;
-	private String searchKeyword;
-	
-	private String[] search_check_map;
-	private String[] search_check_mode;
-		
+
 	public Paging_VO() {
 	}
 	
@@ -55,7 +50,7 @@ public class Paging_VO {
 	public String toString() {
 		return "PagingVO [nowPage=" + nowPage + ", startPage=" + startPage + ", endPage=" + endPage + ", total=" + total
 				+ ", cntPerPage=" + cntPerPage + ", lastPage=" + lastPage + ", start=" + start + ", end=" + end
-				+ ", cntPage=" + cntPage + ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", search_check_map=" + search_check_map + ", search_check_mode=" + search_check_mode + "]";
+				+ ", cntPage=" + cntPage + "]";
 	}
 }
 

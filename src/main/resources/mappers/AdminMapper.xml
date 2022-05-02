@@ -6,10 +6,10 @@
   
   <mapper namespace="AdminDAO">
   	<!-- 유저 조회 -->
-  	<select id="user_join" resultType="admin">
-  		SELECT USER_ID, SUMMONER_ID, PHONE_NUMBER, SITE_LEVEL, USABLE_POINT, HONOR_RATE, PROFILE_ICON, BAN, JOINDATE
+  	<select id="user_list" resultType="admin">
+  		SELECT USER_NO, USER_ID, SUMMONER_ID, PHONE_NUMBER, SITE_LEVEL, USABLE_POINT, HONOR_RATE, BAN, JOIN_DATE
   		FROM USER_INFO
-  		WHERE BAN = 1 OR BAN = 0
+  		WHERE 1=1
   	</select>
   
   </mapper>

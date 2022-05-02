@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% Object ban = session.getAttribute("ban"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,6 +50,14 @@
                 <li><a href="/shop/shop.do"><i class="ico_store"></i><span>포인트샵</span></a></li>
                 
                 <li><a href="/record/record.do"><i class="ico_profile"></i><span>전적검색</span></a></li>
+                
+                <% if ((int)ban == 3) { %>
+                <li><a href="/admin/admin_page.do"><i class="ico_profile"></i><span>회원 정보 관리</span></a></li>
+                
+                <li><a href="/admin/admin_page.do"><i class="ico_profile"></i><span>업적 부여</span></a></li>
+                
+                <li><a href="/admin/admin_page.do"><i class="ico_profile"></i><span>신고 내역</span></a></li>	
+              <%   }%>
             </ul>
             <div class="uk-nav">
             </div>

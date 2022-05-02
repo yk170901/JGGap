@@ -8,7 +8,7 @@
   	
   	<!-- 헤더 포인트 -->
   	<select id="header_point" resultType="basic" parameterType="Object">
-  		SELECT usable_point, summoner_id, site_level
+  		SELECT usable_point, summoner_id, site_level, ban
   		FROM user_info
   		WHERE user_no = #{user_no}
   	</select>
