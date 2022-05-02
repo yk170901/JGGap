@@ -46,8 +46,6 @@ function Frameset(page) {
 		document.title = "구인 게시판";
 		document.close();
 		
-		
-
 	}
 	
 function testDate(){

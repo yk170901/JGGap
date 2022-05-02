@@ -7,4 +7,5 @@ public class BasicVO {
 	private String summoner_id;
 	private int usable_point;	
 	private int site_level;
+	private int ban;
 }

@@ -30,6 +30,7 @@
   	  
   	<resultMap type="board_view_reply" id="ReplyListMap">
   		<id property="user_re_no" column="user_re_no"></id>
+ 		<result property="user_no" column="user_no"/>
  		<result property="post_no" column="post_no"/>
  		<result property="re_text" column="re_text"/>
  		<result property="re_date" column="re_date"/>
@@ -72,8 +73,8 @@
 	</select>
 	
 	<select id="selectReplyList" resultMap="ReplyListMap" parameterType="int" resultType="board_view_reply">
-		SELECT b.post_no, b.user_no,
-				re.user_re_no, re.re_text, re.re_date, re.user_no,
+		SELECT b.post_no, 
+				re.user_re_no, re.re_text, re.re_date, re.user_no, re.user_no,
 					u_re.honor_rate, u_re.summoner_id, u_re.site_level,
 					l_re.solo_tier, l_re.solo_tier_grade
 			FROM board b,
@@ -89,8 +90,15 @@
 	
 	<insert id="insertChosenUser" parameterType="hashmap">
 		INSERT INTO choice
-			VALUES(user_cho_no.NEXTVAL, #{user_no}, #{choice_user_no})
+			VALUES(user_cho_no.NEXTVAL, #{writer_no}, #{chosen_user_no})
 	</insert>
+	
+	
+	<delete id="deleteChosenUser" parameterType="hashmap">
+		DELETE FROM choice
+			WHERE user_no =  #{writer_no}
+			AND   choice_user_no = #{chosen_user_no}
+	</delete>
 	
 	<!-- <select id="selectUserChoNo" parameterType="hashMap" resultType="int">
 		SELECT count(*)

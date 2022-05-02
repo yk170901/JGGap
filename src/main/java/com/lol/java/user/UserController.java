@@ -49,6 +49,9 @@ public class UserController {
 			System.out.println("정지당한 회원");
 			return "user/ban";
 		} else if(result.getBan() == 3) {
+			session.setAttribute("user_no", result.getUser_no());
+			session.setAttribute("summoner_id", result.getSummoner_id());
+			session.setAttribute("ban", result.getBan());
 			return "redirect:/admin/admin_page.do";
 		} else {
 			session.setAttribute("user_no", result.getUser_no());

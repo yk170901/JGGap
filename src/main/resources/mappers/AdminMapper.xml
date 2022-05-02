@@ -5,11 +5,17 @@
   <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
   
   <mapper namespace="AdminDAO">
-  	<!-- 유저 조회 -->
-  	<select id="user_join" resultType="admin">
-  		SELECT USER_ID, SUMMONER_ID, PHONE_NUMBER, SITE_LEVEL, USABLE_POINT, HONOR_RATE, PROFILE_ICON, BAN, JOINDATE
+  	<!-- 회원 정보 조회 -->
+  	<select id="user_list" resultType="admin">
+  		SELECT USER_NO, USER_ID, SUMMONER_ID, PHONE_NUMBER, SITE_LEVEL, USABLE_POINT, HONOR_RATE, BAN, JOIN_DATE
   		FROM USER_INFO
-  		WHERE BAN = 1 OR BAN = 0
+  		WHERE 1=1
   	</select>
+  	
+  	<!-- 회원 카운터 -->
+  	<select id="member_count" resultType="int">
+		SELECT COUNT(*)
+		FROM USER_INFO
+	</select>
   
   </mapper>
