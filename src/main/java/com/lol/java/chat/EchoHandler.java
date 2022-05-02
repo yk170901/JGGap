@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -61,9 +60,10 @@ public class EchoHandler extends TextWebSocketHandler{
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
     	Map<String,Object> map = session.getAttributes();
     	System.out.println(map);
-    	
     	String user_no = (String)map.get("user_no");
     	String summoner_id = (String)map.get("summoner_id");
+    	
+    	
     	
     	sessionList.remove(session);
         

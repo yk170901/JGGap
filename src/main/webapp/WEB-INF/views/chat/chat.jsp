@@ -14,7 +14,6 @@
 	<div id="messageArea"></div>
 	<input type="text" id="message" />
 	<input type="button" id="sendBtn" value="submit"/>
-	
 </body>
 <script type="text/javascript">
 	$("#sendBtn").click(function() {
@@ -25,15 +24,20 @@
 	sock = new SockJS("http://192.168.1.82:8080/chat/echo");
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
+	
+	
 	// 메시지 전송
 	function sendMessage() {
-		sock.send($("#message").val());
+		var summoner_id = '${summoner_id}';
+		sock.send(summoner_id + " : " + $("#message").val());
 	}
+	
 	// 서버로부터 메시지를 받았을 때
 	function onMessage(msg) {
 		var data = msg.data;
 		$("#messageArea").append(data + "<br/>");
 	}
+	
 	// 서버와 연결을 끊었을 때
 	function onClose(evt) {
 		$("#messageArea").append("연결 끊김");
