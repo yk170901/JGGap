@@ -1,15 +1,21 @@
 package com.lol.java.chat;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-// 채팅방 페이지
 @Controller
 @RequestMapping("/chat")
 public class ChatController {
-
-	@Autowired
-	private ChatService chatService;
-
+	private Logger logger = LoggerFactory.getLogger(ChatController.class);
+	
+	@RequestMapping("/chat.do")
+	public String chat(Model model) {
+		logger.info("[Controller] : chat.do");
+		
+		
+		return "chat/chat";
+	}
 }
