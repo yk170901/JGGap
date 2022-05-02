@@ -45,7 +45,7 @@
             <ul class="uk-nav">
                 <li class="uk-active"><a href="/board_list/board_list.do"><i class="ico_home"></i><span>구인게시판</span></a></li>
 
-                <li><a href="http://192.168.1.82:8080/chat/chat.do"><i class="ico_chats"></i><span>채팅</span></a></li>
+                <li><a href="http://192.168.1.82:8080/chat/chat.do?user_no=<%= session.getAttribute("user_no")%>&summoner_id=<%=session.getAttribute("summoner_id")%>"><i class="ico_chats"></i><span>채팅</span></a></li>
 
                 <li><a href="/shop/shop.do"><i class="ico_store"></i><span>포인트샵</span></a></li>
                 
@@ -59,6 +59,7 @@
                 <li><a href="/admin/admin_page.do"><i class="ico_profile"></i><span>신고 내역</span></a></li>	
               <%   }%>
             </ul>
+            
             <div class="uk-nav">
             </div>
         </div>

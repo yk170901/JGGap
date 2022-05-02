@@ -28,9 +28,9 @@
 	<websocket:handlers>
 		<websocket:mapping handler="echoHandler" path="/chat/echo" />
 		<websocket:handshake-interceptors>
-		<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
 		</websocket:handshake-interceptors>
-		<websocket:sockjs  websocket-enabled="true"/>
+		<websocket:sockjs/>
 	</websocket:handlers>
     
 	<beans:bean id="echoHandler" class="com.lol.java.chat.EchoHandler">
