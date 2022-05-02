@@ -39,8 +39,15 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	}
 	
 	// 댓글 채택
+	@Override
 	public void insertChosenUser(HashMap<String, Integer> map) {
 		mybatis.insert("insertChosenUser", map);
+	}
+
+	@Override
+	public void deleteChosenUser(HashMap<String, Integer> map) {
+		mybatis.delete("deleteChosenUser", map);
+		
 	}
 
 	/*

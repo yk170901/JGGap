@@ -11,6 +11,10 @@ public interface Board_view_DAO {
 	public List<Integer> selectChoiceList(int user_no);
 	
 	public List<Board_view_VO_reply> selectReplyList(int post_no);
+
+	public void insertChosenUser(HashMap<String, Integer> map);
+
+	public void deleteChosenUser(HashMap<String, Integer> map);
 	
 	/* public int selectUserChoNo(HashMap<String, Integer> map); */
 }
