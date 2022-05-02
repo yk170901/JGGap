@@ -14,6 +14,7 @@
 	<div id="messageArea"></div>
 	<input type="text" id="message" />
 	<input type="button" id="sendBtn" value="submit"/>
+	
 </body>
 <script type="text/javascript">
 	$("#sendBtn").click(function() {

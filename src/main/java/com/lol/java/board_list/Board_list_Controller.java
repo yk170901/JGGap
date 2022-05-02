@@ -68,6 +68,8 @@ public class Board_list_Controller {
 				model.addAttribute("paging", vo);
 				model.addAttribute("list", board_list_Service.selectBoard(vo));
 				System.out.println(board_list_Service.selectBoard(vo));
+				System.out.println(session.getAttribute("user_no"));
+				System.out.println(session.getAttribute("summoner_id"));
 				return "/board_list/board_list";
 			}
 		}
