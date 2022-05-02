@@ -6,4 +6,6 @@ public interface AdminDAO {
 	
 	public List<AdminVO> user_list();
 
+	public int member_count();
+
 }

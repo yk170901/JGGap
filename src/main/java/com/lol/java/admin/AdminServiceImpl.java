@@ -16,6 +16,14 @@ public class AdminServiceImpl implements AdminService{
 
 		return adminDAO.user_list();
 	}
+
+	@Override
+	public int member_count() {
+		
+		return adminDAO.member_count();
+	}
+	
+	
 	
 	
 }

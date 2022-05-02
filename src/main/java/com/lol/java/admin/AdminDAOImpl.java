@@ -14,8 +14,14 @@ public class AdminDAOImpl implements AdminDAO{
 
 	@Override
 	public List<AdminVO> user_list() {
-		System.out.println("다오임플");
+		
 		return mybatis.selectList("AdminDAO.user_list");
+	}
+
+	@Override
+	public int member_count() {
+		
+		return mybatis.selectOne("AdminDAO.member_count");
 	}
 	
 }
