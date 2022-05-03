@@ -201,12 +201,9 @@ hr{
 }
 
 .summoner-record-more {
-	background: blue;
+	background: white;
 }
 
-.summoner-record-hide {
-	background: orange;
-}
 
 .record-lose {
 	background: #fef9f9;

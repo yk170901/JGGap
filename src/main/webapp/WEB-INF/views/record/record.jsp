@@ -8,6 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>[]~(￣▽￣)~*</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/record.css" type="text/css">
 </head>
 <body>
@@ -79,7 +82,7 @@
 									<span class="info-game-result game-lose">패배</span>
 								</c:if>
 								<span class="info-game-mode">${score.game_mode}</span>
-								<span class="info-game-time">${score.game_duration }</span>
+								<span class="info-game-time">${score.game_duration}</span>
 								<c:set var="timestamp" value="${score.game_timestamp}" />
 								<% long hour = Math.round( ( (System.currentTimeMillis() / 1000) - Integer.parseInt(String.valueOf(pageContext.getAttribute("timestamp"))) )/3600);
 									long day = 0;

@@ -35,7 +35,6 @@ public class RecordController {
 		record.put("user_no", session.getAttribute("user_no"));
 		record.put("begin_num", begin_num);
 		List<RecordVO> recordVO = recordService.record_more(record);
-		System.out.println(recordVO);
 		return recordVO;
 		
 	}
