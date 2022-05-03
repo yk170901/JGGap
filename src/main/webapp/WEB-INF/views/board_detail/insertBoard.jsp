@@ -33,14 +33,14 @@
 						<div class="category-wrap">
 							<div class="category-content">
 								<div class="category-title">맵 분류</div>
-								<select class="category-map" id="category-map" name="game_map">
+								<select class="category-map" id="category-map" name="game_map" onclick="gameModeDisappear()"> 
 									<option value="none">선택해주세요.</option>
 									<option value="소환사의 협곡">소환사의 협곡</option>
 									<option value="칼바람 나락">칼바람 나락</option>
 								</select>
 							</div>
 							
-							<div class="category-content">
+							<div class="category-content game-mode">
 								<div class="category-title">게임 분류</div>
 								<select class="category-game" id="category-game" name="game_mode">
 									<option value="none">선택해주세요.</option>
@@ -79,4 +79,5 @@
 	
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
+    <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
 </html>

@@ -1,47 +1,93 @@
 // 댓글 쓸 때, 이미 db에 해당 user_no 있으면 막기.
 // 채택 버튼을 누를 경우, 글쓴이가 아니면 아무런 이벤트도 나타나지 않게 하기
 
-// 모달
+// 칼바람 나락 선택 시 게임 옵션 사라지게 하기
+$('#category-map').on('change',function(){
 
+	var map = document.getElementById('category-map');
+	
+	if(map.options[map.selectedIndex].value=='칼바람 나락'){
+		document.querySelector('div.game-mode').setAttribute('hidden','');	
+	}else{
+		document.querySelector('div.game-mode').removeAttribute('hidden');	
+	}
+})
+
+
+$('.follow').on('click', function(){
+	alert($(this).val())
+	
+})
+
+// 모달
 var reportBtn = document.querySelector('.report-btn');
 var modalBg = document.querySelector('.modal-bg');
 var modalClose = document.querySelector('.modal-close');
 
 $('.report-btn').on("click", function() {
-	var report_target = $(this).val()
-	/* var reporter는 컨트롤러에서 받아오기 */
 	modalBg.classList.add('bg-active');
-	
-	
+	document.querySelector('#report-target').setAttribute('value',$(this).val())
 })
+
 
 $('.modal-close').on("click", function() {
 	modalBg.classList.remove('bg-active');
 	
 })
 
-/*modalClose.addEventListener('click',function(){
+$('#submitReport').on("click", function() {
+	// reporter의 user_no은 컨트롤러에서 세션으로 얻어오기
+	var report_title = document.querySelector('#report-title').value
+	var report_content = document.querySelector('#report-content').value
+	var report_target = document.querySelector('#report-target').value
+	var post_no = document.querySelector('#post-no').value
+		
+	$.ajax({
+		url:'/board_view/submitReport.do',
+		type : "POST",
+		data : {
+			report_title : report_title,
+			report_content : report_content,
+			report_target : report_target,
+			post_no : post_no
+		}
+	})
+	
+	alert('신고 접수가 완료되었습니다.')
 	modalBg.classList.remove('bg-active');
-})*/
+});
 
 
+// 문제
+$('.delete-reply').on("click", function() {
+			
+	$.ajax({
+		url:'/board_view/deleteReply.do',
+		type : "POST",
+		data : {
+			user_re_no : $(this).val()
+		}
+	})
+	
+	alert('댓글이 삭제되었습니다.');
+});
 
 // 수정 페이지 로드 될 때 자동 실행 함수
 function get_chosen_options(){
 	
 	/* 유저가 일전에 입력했던 값 */
-	var game_map_chosen = document.getElementById("game-map-chosen").value
-	var game_mode_chosen = document.getElementById("game-mode-chosen").value
-	var cru_max_chosen = document.getElementById("cru-max-chosen").value
+	var game_map_chosen = document.getElementById("game-map-chosen").value;
+	var game_mode_chosen = document.getElementById("game-mode-chosen").value;
+	var cru_max_chosen = document.getElementById("cru-max-chosen").value;
 	
-	var map = document.getElementById('category-map').options.len;
+	var map = document.getElementById('category-map');
 	var game = document.getElementById('category-game');
 	var cru_max = document.getElementById('category-cru-max');
 	
 	map.value = game_map_chosen;
 	game.value = game_mode_chosen;
 	cru_max.value = cru_max_chosen;
-}
+};
 
 
 function checkValidation(){
@@ -67,7 +113,7 @@ function checkValidation(){
 		alert("맵을 선택해주세요");
 		return false;
 	}
-	else if(game_value=="none"){
+	else if(!(map_value=="칼바람 나락") && (game_value=="none")){
 		alert("게임 모드를 선택해주세요");
 		return false;
 	}
@@ -105,9 +151,8 @@ $(function() {
 		var reply_user_no = $(this).children().attr('value'); // 댓글 단 유저 user_no
 		
 			// 채택을 위해 누른 거라면
-			if(!alreadyChosen(reply_user_no)){	
+			if(!alreadyChosen(reply_user_no)){
 				alert('올레디쵸슨 결과 확인 진입 - 이번이 채택임')
-				alert('채택되는 유저 넘버 ='+ reply_user_no) // 0
 				$.ajax({
 					url:'/board_view/chooseUser.do',
 					type : "POST",
@@ -115,10 +160,9 @@ $(function() {
 						writer_no :  writer_no,
 						chosen_user_no : reply_user_no,
 						post_no : post_no
-					},
+					}
 				})
-				alert("올레디쵸슨 채택 끝남")
-				$(this).children().attr('src', '../resources/imgs/post_detail/checked.png');
+				$('.chosen-user-list').append('<input class="chosen-users" value="'+reply_user_no+'">');
 			// 채택 해제를 위해 누른 거라면
 			}else{
 				alert('올레디쵸슨 결과 확인 진입 - 이미 채택됐었음')
@@ -131,9 +175,10 @@ $(function() {
 						post_no : post_no
 					},
 				})
+				deleteChosenUser(reply_user_no);
 				$(this).children().attr('src', '../resources/imgs/post_detail/unchecked.png');
 			}
-		
+			checkChosenUsers()
 	})
 });
 
@@ -150,44 +195,32 @@ function alreadyChosen(reply_user_no){
 	
 	return false;
 	
-	/* 버려진 코드 ㅠ 
-	
-		$.ajax({
-		url:'/board_view/checkReplyIfChosen.do'
-		, type : "post"
-		, data : {
-			"writer_no" : writer_no,
-			"chosen_user_no" : reply_user_no
-		}
-		, dataType: "text"
-		, sucess : function(resp){
-			alert('올레디쵸슨 결과 : '+resp);
-			if(resp == false){
-				alert(resp);
-			}else{
-				alert(resp);
-			}
-			return resp;
-		}
-		, error : function(data, request, err){
-			alert(data+" code = "+ request.status+"\n error = " +err);						
-		}
-		
-	})*/
-	
 }
 	
 function checkChosenUsers(){
 	
-	var chosen_user_no = document.getElementsByClassName('chosen-users');
-	var reply_user_no = document.getElementsByClassName('user_re_no');
+	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
+	var reply_user_no = document.getElementsByClassName('reply-content-repeat').length;
 	
-	for(var i = 0; i< reply_user_no.length; i++){
-		for(var ii = 0; i< chosen_user_no.length; ii++){
-			if(reply_user_no[i].value === chosen_user_no[ii].value){
-				document.querySelector('check-img')[i].setAttribute('src','../resources/imgs/post_detail/checked.png');
-				return;
+	for(var i = 1; (i-1) < reply_user_no; i++){
+		for(var ii = 1; (ii-1)< chosen_user_no; ii++){
+			if(document.querySelector(".reply-content-repeat:nth-child("+i+") > input").value == document.querySelector("div.chosen-user-list > input:nth-child("+ii+")").value){
+				document.getElementsByClassName('check-img')[i-1].setAttribute('src','../resources/imgs/post_detail/checked.png');
 			}
+		}
+	}
+	
+}
+
+
+	
+function deleteChosenUser(reply_user_no){
+	
+	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
+	
+	for(var i = 1; (i-1) < chosen_user_no; i++){
+		if(reply_user_no == document.querySelector("div.chosen-user-list > input:nth-child("+i+")").value){
+			document.querySelector("div.chosen-user-list > input:nth-child("+i+")").remove();
 		}
 	}
 	

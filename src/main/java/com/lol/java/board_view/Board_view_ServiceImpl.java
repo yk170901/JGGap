@@ -42,12 +42,13 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 		board_view_DAO.deleteChosenUser(map);
 	}
 
-	/*
-	 * @Override public boolean replyAlreadyChosen(HashMap<String, Integer> map) {
-	 * int count_chosen_user = board_view_DAO.selectUserChoNo(map);
-	 * 
-	 * if(count_chosen_user == 1) { return true; }else {
-	 * System.out.println(count_chosen_user); } return false; }
-	 */
+	@Override
+	public void submitReport(HashMap<String, String> map) {
+		board_view_DAO.insertReport(map);
+	}
 
+	@Override
+	public void deleteReply(int user_re_no) {
+		board_view_DAO.deleteReply(user_re_no);
+	}
 }
