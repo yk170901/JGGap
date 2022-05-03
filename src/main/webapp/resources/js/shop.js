@@ -28,6 +28,7 @@ $(function() { $('.apply').on("click", function() {
 					Swal.fire({
 						imageUrl: '/resources/imgs/shop_etc/happy_imoji.png',
 						title: '당첨!',
+						html: '상품코드 : KREQWQEITKDB<br/>등록기간 : 7/22 23:59까지<br/>기간만료시 사용불가',
 						confirmButtonText: '네!!!'
 					})
 					item_remain = item_remain - 1;
