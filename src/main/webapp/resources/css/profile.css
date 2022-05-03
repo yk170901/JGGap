@@ -66,10 +66,10 @@ body {
     -moz-appearance: none !important;
     display: inline-block;
     position: relative;
-    padding: 45px;
+    margin : 120px 45px;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 1250px;
+    width: 1160px;
     margin-left: 300px;
 }
 

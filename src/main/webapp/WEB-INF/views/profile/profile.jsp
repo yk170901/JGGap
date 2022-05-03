@@ -107,7 +107,7 @@
 							<th width="860px">제목</th>
 							<th width="150px">등록일</th>
 						</tr>
-						<c:forEach items="${profile_board }" var="board" end="10">
+						<c:forEach items="${profile_board }" var="board">
 							<tr>
 								<td>${board.post_no }</td>
 								<td><a href="/board_view/viewBoard.do?post_no=${board.post_no }">${board.board_title }</a></td>
