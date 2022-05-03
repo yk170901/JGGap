@@ -11,4 +11,7 @@ public interface UserService {
 	public String idCheck(String user_id);
 	
 	public String summoner_idCheck(String summoner_id);
+	
+	public String tier_info(int user_no);
+	
 }

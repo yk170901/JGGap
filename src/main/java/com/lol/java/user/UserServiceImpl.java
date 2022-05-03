@@ -38,6 +38,12 @@ public class UserServiceImpl implements UserService{
 		
 		return userDAO.summoner_idCheck(user_id);
 	}
+
+	@Override
+	public String tier_info(int user_no) {
+		
+		return userDAO.tier_info(user_no);
+	}
 	
 	
 }

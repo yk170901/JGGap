@@ -75,30 +75,30 @@
    			</div>
 		    <div class="shop-buy-wrapper">
 		    	<div class="shop-buy">
-		    		<div class="item_name">누누와 윌럼프 봇 스킨</div>
+		    		<div class="item_name">컴퓨터+모니터 세트</div>
 		    		<div class="point-amount"><p>5000P</p></div>
 		    		<div class="shop-buy-img">
-			    		<img src="/resources/imgs/shop_items/shop_nunuskin.jpg">
+			    		<img src="/resources/imgs/shop_items/shop_computer.jpg">
 			    	</div>
 			    	<div class="shop-buy-btn">
 			    		<button>구매하기</button>
 			    	</div>
 		    	</div>
 		    	<div class="shop-buy">
-		    		<div class="item_name">누누와 윌럼프 봇 스킨</div>
+		    		<div class="item_name">LG 트롬 워시타워</div>
 		    		<div class="point-amount"><p>5000P</p></div>
 		    		<div class="shop-buy-img">
-			    		<img src="/resources/imgs/shop_items/shop_nunuskin.jpg">
+			    		<img src="/resources/imgs/shop_items/shop_washer.jpg">
 			    	</div>
 			    	<div class="shop-buy-btn">
 			    		<button>구매하기</button>
 			    	</div>
 		    	</div>
 		    	<div class="shop-buy">
-		    		<div class="item_name">누누와 윌럼프 봇 스킨</div>
+		    		<div class="item_name">삼성 비스포크 냉장고</div>
 		    		<div class="point-amount"><p>5000P</p></div>
 		    		<div class="shop-buy-img">
-			    		<img src="/resources/imgs/shop_items/shop_nunuskin.jpg">
+			    		<img src="/resources/imgs/shop_items/shop_fridge.jpg">
 			    	</div>
 			    	<div class="shop-buy-btn">
 			    		<button>구매하기</button>
