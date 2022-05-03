@@ -384,12 +384,12 @@ hr{
 
 .multikill-double {
 	color: white;
-	background: 1px solid rgb(35,206,111);
+	background: rgb(35,206,111);
 }
 
 .multikill-triple {
 	color: white;
-	background: 1px solid rgb(83,131,232);
+	background: rgb(83,131,232);
 }
 
 .multikill-quadra {

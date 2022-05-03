@@ -60,27 +60,38 @@
 			
 			<div class="summoner-record-body">
 				<c:forEach items="${score}" var="score" varStatus="score_length">
-					<div class="summoner-record record-lose">
-						<div class="summoner-record-result result-lose"></div>
+					<c:if test="${score.win == 'True'}">
+						<div class="summoner-record record-win">
+							<div class="summoner-record-result result-win"></div>
+					</c:if>
+					<c:if test="${score.win == 'False'}">
+						<div class="summoner-record record-lose">
+							<div class="summoner-record-result result-lose"></div>
+					</c:if>
 						<div class="summoner-record-content">
 							<div class="summoner-record-info">
-								<span class="info-game-result game-lose">패배</span>
-								<span class="info-game-mode">칼바람 나락</span>
-								<span class="info-game-time">17:12</span>
+								<c:if test="${score.win == 'True'}">
+									<span class="info-game-result game-win">승리</span>
+								</c:if>
+								<c:if test="${score.win == 'False'}">
+									<span class="info-game-result game-lose">패배</span>
+								</c:if>
+								<span class="info-game-mode">${score.game_mode}</span>
+								<span class="info-game-time">${score.game_duration }</span>
 								<span class="info-game-past">6일 전</span>
 							</div>
 							<div class="summoner-record-stat">
 								<div class="stat-champion">
 									<div class="stat-champion-icon">
-										<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/${score.champion_name}.png">
-										<div class="champion-level">15</div>
+										<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.champion_name}.png">
+										<div class="champion-level">${score.champion_level}</div>
 									</div>
 									<div class="stat-champion-spells">
 										<div class="stat-champion-spell">
-											<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/spell/SummonerSnowball.png">
+											<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/spell/${score.spell_fir}.png">
 										</div>
 										<div class="stat-champion-spell">
-											<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/spell/SummonerFlash.png">
+											<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/spell/${score.spell_sec}.png">
 										</div>
 									</div>
 									<div class="stat-champion-runes">
@@ -94,25 +105,31 @@
 								</div>
 								<div class="stat-kda">
 									<div class="stat-k-d-a">
-										<span>11</span> / <span class="stat-d">4</span> / <span>9</span>
+										<span>${score.kills}</span> / <span class="stat-d">${score.deaths}</span> / <span>${score.assists}</span>
 									</div>
 									<div class="stat-ratio">
-										<span>5.00</span> 평점
+										<c:set var="kda" value="${(score.kills+score.assists)/score.deaths}"/>
+										<span>${kda }</span> 평점
 									</div>
-									<div class="stat-multikill multikill-penta">더블킬</div>
+									<c:choose>
+										<c:when test="${score.multi_killed == 'penta'}"><div class="stat-multikill multikill-penta">펜타킬</div></c:when>
+										<c:when test="${score.multi_killed == 'quadra'}"><div class="stat-multikill multikill-quadra">쿼드라킬</div></c:when>
+										<c:when test="${score.multi_killed == 'triple'}"><div class="stat-multikill multikill-triple">트리플킬</div></c:when>
+										<c:when test="${score.multi_killed == 'double'}"><div class="stat-multikill multikill-double">더블킬</div></c:when>
+									</c:choose>									
 								</div>
 								<div class="stat-stats">
-									CS <span>21 (1.6)</span><br>
+									CS <span>${score.eaten_minions} (${score.eaten_minions/20})</span><br>
 									킬관여 <span class="stat-stats-kill">51%</span><br>
-									시야점수 <span>0</span><br>
+									시야점수 <span>${score.vision_point}</span><br>
 								</div>
 							</div>
 							<div class="summoner-record-item">
 								<div class="item-item-boxs">
 									<div class="item-item-box">
-										<c:forEach begin="1" end="6">
+										<c:forEach begin="0" end="5" varStatus="num">
 											<div class="item">
-												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.6.1/img/item/3211.png">
+												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.6.1/img/item/${score.item${num.index }}.png">
 											</div>
 										</c:forEach>
 									</div>
