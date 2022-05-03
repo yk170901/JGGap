@@ -1,5 +1,6 @@
 package com.lol.java.record;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface RecordDAO {
@@ -9,4 +10,7 @@ public interface RecordDAO {
 	
 	// 롤 전적 가져오기
 	List<RecordVO> record_score(RecordVO recordVO);
+
+	// 전적 더보기 버튼
+	List<RecordVO> record_more(HashMap<String, Object> record);
 }
