@@ -18,6 +18,9 @@ public class ChatController {
 	public String chat(HttpSession session, Model model, HttpServletRequest request) {
 		session.setAttribute("user_no", request.getParameter("user_no"));
 		session.setAttribute("summoner_id", request.getParameter("summoner_id"));
+		model.addAttribute("user_no", request.getParameter("user_no"));
+		model.addAttribute("summoner_id", request.getParameter("summoner_id"));
+		System.out.println(request.getParameter("summoner_id"));
 		logger.info("[Controller] : chat.do");
 		
 		
