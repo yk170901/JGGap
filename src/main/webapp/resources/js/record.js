@@ -2,11 +2,14 @@ $(function() {
 	var begin_num = 6;
 	
 	$('.summoner-record-more').on("click", function() {
+		
+		var user_no =$('.summoner-summoner-id').attr('value')
 
 		$.ajax({
 			url: "/record/record_more.do",
 			type: "post",
-			data: { begin_num: begin_num },
+			data: { begin_num: begin_num,
+					user_no: user_no },
 			dataType: "json",
 			success: function(data) {
 				if (data == "") {
@@ -35,9 +38,6 @@ $(function() {
 
 		var content = "";
 		for (var record in data) {
-			console.log(data[record].win)
-//			console.log(content)
-			// 생각해보니 jsp 조건생기면 값이 바뀜 나중
 			if(data[record].win == 'True') {
 content += '					<div class="summoner-record record-win">';
 content += '						<div class="summoner-record-result result-win"></div>';

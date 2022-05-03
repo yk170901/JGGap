@@ -21,7 +21,7 @@
 			<!-- 소환사 정보 -->
 			<div class="summoner-info-body">
 				<div><img class="summoner-profile-icon" src="/resources/imgs/profile_icon/${record.profile_icon }.png"></div>
-				<div class="summoner-summoner-id">${record.summoner_id }</div>
+				<div class="summoner-summoner-id" value="${record.user_no }">${record.summoner_id }</div>
 				<a class="summoner-button" href="#!" ><span class="summoner-button-text">전적 갱신</span></a>
 			</div>
 			<hr>
@@ -62,7 +62,7 @@
 				</div>
 			</div >
 			
-			
+			<!-- 소환사 전적 -->
 			<div class="summoner-record-body">
 				<c:forEach items="${score}" var="score" varStatus="score_length">
 					<c:if test="${score.win == 'True'}">

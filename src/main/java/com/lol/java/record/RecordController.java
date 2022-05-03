@@ -29,10 +29,10 @@ public class RecordController {
 	// 전적 더보기 버튼
 	@ResponseBody
 	@RequestMapping("/record_more.do")
-	public Object record_more(int begin_num, HttpSession session) {
+	public Object record_more(int begin_num, int user_no, HttpSession session) {
 		
 		HashMap<String,Object> record = new HashMap<String, Object>();
-		record.put("user_no", session.getAttribute("user_no"));
+		record.put("user_no", user_no);
 		record.put("begin_num", begin_num);
 		List<RecordVO> recordVO = recordService.record_more(record);
 		return recordVO;
