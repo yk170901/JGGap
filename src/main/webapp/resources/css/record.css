@@ -459,7 +459,7 @@ hr{
 
 .ward-cnt {
 	position: absolute;
-	font-size: 6px;
+	font-size: 8px;
 	background: rgba(0,0,0,.4);
 	color: white;
 	bottom: 0;
@@ -506,14 +506,17 @@ hr{
 	display: inline-block;
 	position: relative;
 	vertical-align: top;
+	
 }
 
 .summoner-name > a {
+	display:block;
 	font-size: 12px;
-	white-space:nowrap;
-	overflow:hidden;
-	vertical-align: top;
 	color: darkgrey;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	
 	
 }
 

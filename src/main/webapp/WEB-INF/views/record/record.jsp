@@ -1,3 +1,5 @@
+<%@page import="java.time.ZoneId"%>
+<%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -78,7 +80,26 @@
 								</c:if>
 								<span class="info-game-mode">${score.game_mode}</span>
 								<span class="info-game-time">${score.game_duration }</span>
-								<span class="info-game-past">6일 전</span>
+								<c:set var="timestamp" value="${score.game_timestamp}" />
+								<% long hour = Math.round( ( (System.currentTimeMillis() / 1000) - Integer.parseInt(String.valueOf(pageContext.getAttribute("timestamp"))) )/3600);
+									long day = 0;
+									if (hour >= 24) { day = hour/24; }
+									LocalDate now = LocalDate.now();
+								%>
+								
+								<c:if test="<%=day == 0%>">
+									<span class="info-game-past"><%=hour %> 시간 전</span>
+								</c:if>
+								<c:if test="<%=day != 0%>">
+									<c:if test="<%=day <=6 %>">
+										<span class="info-game-past"><%=day %> 일 전</span>
+									</c:if>
+									<c:if test="<%=day > 6 %>">
+										<span class="info-game-past"><%=now.minusDays(7).getMonthValue() %>월 <%=now.minusDays(7).getDayOfMonth() %>일</span>
+									</c:if>
+								</c:if>
+								
+								
 							</div>
 							<div class="summoner-record-stat">
 								<div class="stat-champion">
@@ -120,59 +141,149 @@
 								</div>
 								<div class="stat-stats">
 									CS <span>${score.eaten_minions} (${score.eaten_minions/20})</span><br>
-									킬관여 <span class="stat-stats-kill">51%</span><br>
-									시야점수 <span>${score.vision_point}</span><br>
+									킬관여 <span class="stat-stats-kill">${Math.round((score.kills+score.assists) / score.team_total_kills * 100)} </span>%<br>
+									
+									<c:if test="${score.game_mode != '칼바람 나락' }">
+										시야점수 <span>${score.vision_point}</span><br>
+									</c:if>
 								</div>
 							</div>
 							<div class="summoner-record-item">
 								<div class="item-item-boxs">
 									<div class="item-item-box">
-										<c:forEach begin="0" end="5" varStatus="num">
+										
 											<div class="item">
-												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.6.1/img/item/${score.item${num.index }}.png">
+												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item0}.png">
 											</div>
-										</c:forEach>
+											<div class="item">
+												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item1}.png">
+											</div>
+											<div class="item">
+												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item2}.png">
+											</div>
+											<div class="item">
+												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item3}.png">
+											</div>
+											<div class="item">
+												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item4}.png">
+											</div>
+											<div class="item">
+												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item5 }.png">
+											</div>
+										
 									</div>
 									<div class="item-item-box2">
 										<div class="item">
-											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.6.1/img/item/3363.png">
+											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item6}.png">
 										</div>
-										<div class="item">
-											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.6.1/img/item/2055.png">
-											<div class="ward-cnt">3</div>
-										</div>
+										<c:if test="${score.game_mode != '칼바람 나락' }">
+											<div class="item">
+												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/2055.png">
+												<div class="ward-cnt">${score.ward_cnt }</div>
+											</div>
+										</c:if>
+										
 									</div>
 								</div>
 							</div>
 							<div class="summoner-record-summoners">
 								<div class="summoners-box">
-									<c:forEach begin="1" end="5">
-										<div class="summoners-summoner">
-											<div class="summoner-img">
-												<img alt="LeeSin" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/LeeSin.png">
-											</div>
-											<div class="summoner-name">
-												<a>네네스노윙순살</a>
-											</div>
+									
+									<div class="summoners-summoner">
+										<div class="summoner-img">
+											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.blue_champion1 }.png">
 										</div>
-									</c:forEach>
+										<div class="summoner-name">
+											<a>${score.blue_summonerid1 }</a>
+										</div>
+									</div>
+									<div class="summoners-summoner">
+										<div class="summoner-img">
+											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.blue_champion2 }.png">
+										</div>
+										<div class="summoner-name">
+											<a>${score.blue_summonerid2 }</a>
+										</div>
+									</div>
+									<div class="summoners-summoner">
+										<div class="summoner-img">
+											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.blue_champion3 }.png">
+										</div>
+										<div class="summoner-name">
+											<a>${score.blue_summonerid3 }</a>
+										</div>
+									</div>
+									<div class="summoners-summoner">
+										<div class="summoner-img">
+											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.blue_champion4 }.png">
+										</div>
+										<div class="summoner-name">
+											<a>${score.blue_summonerid4 }</a>
+										</div>
+									</div>
+									<div class="summoners-summoner">
+										<div class="summoner-img">
+											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.blue_champion5 }.png">
+										</div>
+										<div class="summoner-name">
+											<a>${score.blue_summonerid5 }</a>
+										</div>
+									</div>
+										
+									
 								</div>
 								<div class="summoners-box">
-									<c:forEach begin="1" end="5">
-										<div class="summoners-summoner">
-											<div class="summoner-img">
-												<img alt="summoner" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/Teemo.png">
-											</div>
-											<div class="summoner-name">
-												<a>병원항구성당묘지</a>
-											</div>
+									<div class="summoners-summoner">
+										<div class="summoner-img">
+											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.red_champion1 }.png">
 										</div>
-									</c:forEach>
+										<div class="summoner-name">
+											<a>${score.red_summonerid1 }</a>
+										</div>
+									</div>
+									<div class="summoners-summoner">
+										<div class="summoner-img">
+											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.red_champion2 }.png">
+										</div>
+										<div class="summoner-name">
+											<a>${score.red_summonerid2 }</a>
+										</div>
+									</div>
+									<div class="summoners-summoner">
+										<div class="summoner-img">
+											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.red_champion3 }.png">
+										</div>
+										<div class="summoner-name">
+											<a>${score.red_summonerid3 }</a>
+										</div>
+									</div>
+									<div class="summoners-summoner">
+										<div class="summoner-img">
+											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.red_champion4 }.png">
+										</div>
+										<div class="summoner-name">
+											<a>${score.red_summonerid4 }</a>
+										</div>
+									</div>
+									<div class="summoners-summoner">
+										<div class="summoner-img">
+											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.red_champion5 }.png">
+										</div>
+										<div class="summoner-name">
+											<a>${score.red_summonerid5 }</a>
+										</div>
+									</div>
 								</div>
 							
 							</div>
 						</div>
-						<div class="summoner-record-result2 result-lose"></div>
+						
+						<c:if test="${score.win == 'True'}">
+							<div class="summoner-record-result2 result-win"></div>
+						</c:if>
+						<c:if test="${score.win == 'False'}">
+							<div class="summoner-record-result2 result-lose"></div>
+						</c:if>
 					</div>
 	
 				</c:forEach>

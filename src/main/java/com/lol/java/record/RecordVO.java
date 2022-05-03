@@ -27,7 +27,6 @@ public class RecordVO {
 		private int record_no;
 		private String champion_name;
 		private int champion_level;
-		private int team;
 		private int primary_perk;
 		private int sub_perk;
 		private int item0;
@@ -46,13 +45,13 @@ public class RecordVO {
 		private int gameid;
 		private String lane;
 		private String game_duration;
-		private String game_start_timestamp;
-		private String game_end_timestamp;
+		private String game_timestamp;
 		private String multi_killed;
 		private String game_mode;
 		private int eaten_minions;
 		private int vision_point;
 		private int ward_cnt;
+		private int team_total_kills;
 		private String blue_champion1;
 		private String blue_summonerid1;
 		private String blue_champion2;
