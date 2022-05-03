@@ -16,5 +16,10 @@ public class BasicServiceImpl implements BasicService{
 	public BasicVO header_point(Object user_no) {
 		return basicDAO.header_point(user_no);
 	}
+
+	@Override
+	public List<BasicVO> follower(Object user_no) {
+		return basicDAO.follower(user_no);
+	}
 	
 }

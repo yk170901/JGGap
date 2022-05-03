@@ -15,6 +15,13 @@ $(document).ready(function() {
 
 	})
 
-
-
 });
+
+$(function() { $('#CSC').on("click", function() {
+		Swal.fire({
+				title : "구현되지 않은 기능입니다.",
+				icon : 'warning',
+				confirmButtonText: '확인'
+			})
+	})
+})
