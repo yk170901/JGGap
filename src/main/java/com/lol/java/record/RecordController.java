@@ -29,7 +29,7 @@ public class RecordController {
 	// 전적 더보기 버튼
 	@ResponseBody
 	@RequestMapping("/record_more.do")
-	public Object record_more(int begin_num, int user_no, HttpSession session) {
+	public Object record_more(int begin_num, int user_no) {
 		
 		HashMap<String,Object> record = new HashMap<String, Object>();
 		record.put("user_no", user_no);
@@ -37,6 +37,15 @@ public class RecordController {
 		List<RecordVO> recordVO = recordService.record_more(record);
 		return recordVO;
 		
+	}
+	
+	// 시각화를 위한 데이터 가져오기
+	@ResponseBody
+	@RequestMapping("/record_chart.do")
+	public List<RecordVO> record_chart(int user_no) {
+		List<RecordVO> recordVO = recordService.record_chart(user_no);
+		System.out.println(recordVO);
+		return recordVO;
 	}
 	
 }

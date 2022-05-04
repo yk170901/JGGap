@@ -29,5 +29,11 @@ public class RecordServiceImpl implements RecordService{
 	public List<RecordVO> record_more(HashMap<String, Object> record) {
 		return recordDAO.record_more(record);
 	}
+
+	// 시각화를 위한 데이터 가져오기
+	@Override
+	public List<RecordVO> record_chart(int user_no) {
+		return recordDAO.record_chart(user_no);
+	}
 	
 }

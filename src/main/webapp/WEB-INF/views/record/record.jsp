@@ -10,6 +10,7 @@
 <title>[]~(￣▽￣)~*</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/record.css" type="text/css">
 </head>
@@ -48,9 +49,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="summoner-stats-donut">
-					~시각화 보류~<br>
-					도넛차트
+				<div class="summoner-stats-doughnut">
+					<div class="doughnut-title"></div>
+					<div class="doughnut-body">
+						<canvas id="doughnut-chart" width="100" height="100"></canvas>
+					</div>
+					<div class="doughnut-kda">
+						<div class="doughnut-k-d-a"></div>
+						<div class="doughnut-ratio"></div>
+					</div>
+
 				</div>
 				<div class="summoner-stats-champion">
 					~시각화 보류~<br>
@@ -132,7 +140,7 @@
 										<span>${score.kills}</span> / <span class="stat-d">${score.deaths}</span> / <span>${score.assists}</span>
 									</div>
 									<div class="stat-ratio">
-										<c:set var="kda" value="${(score.kills+score.assists)/score.deaths}"/>
+										<c:set var="kda" value="${Math.round((score.kills+score.assists)/score.deaths * 10)/10}"/>
 										<span>${kda }</span> 평점
 									</div>
 									<c:choose>

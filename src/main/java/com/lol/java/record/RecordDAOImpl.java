@@ -30,5 +30,11 @@ public class RecordDAOImpl implements RecordDAO{
 	public List<RecordVO> record_more(HashMap<String, Object> record) {
 		return mybatis.selectList("RecordDAO.record_more", record);
 	}
+
+	// 시각화를 위한 데이터 가져오기
+	@Override
+	public List<RecordVO> record_chart(int user_no) {
+		return mybatis.selectList("RecordDAO.record_chart", user_no);
+	}
 	
 }

@@ -41,6 +41,18 @@
 		WHERE num BETWEEN #{begin_num} AND #{begin_num} +4
 	</select>
 	
+	<!-- 시각화를 위한 데이터 가져오기 -->
+	<select id="record_chart" parameterType="int" resultType="record">
+		SELECT a.*
+		FROM (
+			SELECT win,kills, deaths, assists,lane,champion_name,team_total_kills
+			FROM lol_record
+			WHERE user_no=#{user_no}
+			order by record_no desc
+			) a
+		<![CDATA[where rownum <= 20]]>
+	</select>
+	
 	
 	
 	

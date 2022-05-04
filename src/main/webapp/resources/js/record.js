@@ -1,9 +1,9 @@
 $(function() {
-	var begin_num = 6;
 	
+	// 전적 더보기 버튼 클릭시
+	var begin_num = 6;
+	var user_no =$('.summoner-summoner-id').attr('value')
 	$('.summoner-record-more').on("click", function() {
-		
-		var user_no =$('.summoner-summoner-id').attr('value')
 
 		$.ajax({
 			url: "/record/record_more.do",
@@ -33,7 +33,7 @@ $(function() {
 
 	})
 	
-	
+	// 전적 더보기 버튼 클릭시
 	function record_more(data) {
 
 		var content = "";
@@ -108,7 +108,7 @@ content += '								<div class="stat-k-d-a">'
 content += '									<span>'+ data[record].kills +'</span> / <span class="stat-d">'+ data[record].deaths +'</span> / <span>'+ data[record].assists +'</span>'
 content += '								</div>'
 content += '								<div class="stat-ratio">'
-			var kda = (data[record].kills + data[record].assists) / data[record].deaths;
+			var kda = Math.round((data[record].kills + data[record].assists) / data[record].deaths * 10) / 10;
 content += '									<span>'+ kda +'</span> 평점'
 content += '								</div>'
 			switch(data[record].multi_killed) {
@@ -275,8 +275,80 @@ content += '				</div>'
 		
 	}
 	
+	$(document).ready(function() {
+		// 시각화
+		$.ajax({
+			url: "/record/record_chart.do",
+			type: "post",
+			data: { user_no: user_no },
+			dataType: "json",
+			success: function(data) {
+				
+				var games = 0;
+				var win = 0;
+				var kills = 0;
+				var deaths = 0;
+				var assists = 0;
+				var team_total_kills = 0;
+				
+				
+				for (var record in data) {
+
+					games++;
+					if (data[record].win == 'True') {
+						win++;
+					}
+					kills += data[record].kills;
+					deaths += data[record].deaths;
+					assists += data[record].assists;
+					team_total_kills += data[record].team_total_kills;
+
+				}
+				kills_late = Math.round((kills+assists) / team_total_kills * 100 );
+				kills /= data.length;
+				deaths /= data.length;
+				assists /= data.length;
+				
+				
+					$('.doughnut-title')[0].innerHTML = games + '전 ' + win + '승 ' + (games-win) + '패';
+					$('.doughnut-k-d-a')[0].innerHTML = '<span>'+kills+'</span> / <span class="stat-d">'+deaths+'</span> / <span>'+assists+'</span>'
+					$('.doughnut-ratio')[0].innerHTML = '<span>' + (Math.round((kills + assists) / deaths * 10) / 10) + ' : 1</span> <span class="stat-stats-kill">('+kills_late+'%)</span>'
+					doughnut_chart(games, win)
+					
+			},
+			error: function(err) {
+				alert("에러" + err)
+			}
 
 
+		})
+
+	});
 	
+	function doughnut_chart(games, win) {
+		
+		// 도넛 차트
+		new Chart(document.getElementById("doughnut-chart"), {
+			type: 'doughnut',
+			data: {
+				datasets: [{
+						backgroundColor: ["rgb(237,103,103)", "rgb(83,147,202)"],
+						data: [win,(games-win)]
+					}],
+					labels: ['승','패']
+			},
+			options: {
+				responsive: false,
+				legend: {
+					display: false
+				},
+				display: true
+			}
+		})
+	}
+	
+
+
+
 
 })
