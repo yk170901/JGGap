@@ -23,5 +23,11 @@ public class AdminDAOImpl implements AdminDAO{
 		
 		return mybatis.selectOne("AdminDAO.member_count");
 	}
+
+	@Override
+	public List<String> achievement() {
+		
+		return mybatis.selectList("AdminDAO.achievement");
+	}
 	
 }

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 페이지</title>
+<title>신고 내역</title>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -24,16 +24,12 @@
 			<div id="user_list_table">
 				<table border="1" class="list">
 					<tr>
-						<th width="110px">아이디</th>
-						<th width="110px">아이디 고유 번호</th>
-						<th width="110px">닉네임</th>
-						<th width="110px">연락처</th>
-						<th width="110px">사이트 레벨</th>
-						<th width="110px">Point</th>
-						<th width="110px">아이콘 고유 번호</th>
-						<th width="110px">명예 점수</th>
-						<th width="110px">가입 날짜</th>
-						<th width="110px">밴</th>
+						<th width="110px">신고자</th>
+						<th width="110px">대상</th>
+						<th width="110px">URL</th>
+						<th width="110px">제목</th>
+						<th width="110px">신고 내용</th>
+						<th width="110px">처리상황</th>
 					</tr>
 					<c:forEach items="${list}" var="list">
 						<tr id="test">
@@ -44,9 +40,6 @@
 							<td><c:out value="${list.site_level}"/></td>
 							<td><c:out value="${list.usable_point}"/></td>
 							<td><c:out value="${list.profile_icon}"/></td>
-							<td><c:out value="${list.honor_rate}"/></td>
-							<td><fmt:formatDate pattern="yyyy/MM/dd" value="${list.join_date}"/></td>
-							<td><c:out value="${list.ban}"/></td>
 						</tr>
 					</c:forEach>
 				</table>
