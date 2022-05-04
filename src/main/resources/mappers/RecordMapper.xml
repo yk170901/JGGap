@@ -23,7 +23,7 @@
 			WHERE user_no=#{user_no}
 			order by record_no desc
 			) a
-		<![CDATA[where rownum <= 5]]>
+		<![CDATA[where rownum <= 10]]>
 	</select>
 	
 	<!-- 전적 더보기 버튼 -->
@@ -38,23 +38,49 @@
 				ORDER BY RECORD_NO desc 
 			) a
 		)
-		WHERE num BETWEEN #{begin_num} AND #{begin_num} +4
+		WHERE num BETWEEN #{begin_num} AND #{begin_num} +9
 	</select>
 	
 	<!-- 시각화를 위한 데이터 가져오기 -->
+	<!-- 20판 전체승률 -->
 	<select id="record_chart" parameterType="int" resultType="record">
-		SELECT a.*
-		FROM (
-			SELECT win,kills, deaths, assists,lane,champion_name,team_total_kills
-			FROM lol_record
-			WHERE user_no=#{user_no}
-			order by record_no desc
-			) a
-		<![CDATA[where rownum <= 20]]>
+			SELECT SUM(a.kills) AS kills,SUM(a.deaths) AS deaths,SUM(a.assists) AS assists,SUM(a.team_total_kills) AS team_total_kills, count(CASE WHEN win='True' THEN 1 END) AS win_cnt, count(CASE WHEN win='False' THEN 1 END) AS lose_cnt
+			FROM (
+				SELECT win,kills, deaths, assists,team_total_kills
+				FROM lol_record
+				WHERE user_no=#{user_no}
+				order by record_no desc
+				) a
+			<![CDATA[where rownum <= 20]]>
 	</select>
 	
+	<!-- 20판 챔피언별승률 -->
+	<select id="record_champion_rate" parameterType="int" resultType="record">
+		SELECT count(a.champion_name) AS champion_cnt, a.champion_name, count(CASE WHEN win='True' THEN 1 END) AS win_cnt, sum(a.kills) AS kills, sum(a.deaths) AS deaths, sum(a.assists) AS assists
+		FROM (
+			SELECT champion_name, win, kills, deaths, assists
+			FROM LOL_RECORD
+			WHERE USER_NO =#{user_no}
+			ORDER BY RECORD_NO DESC
+		) a
+		<![CDATA[where rownum <= 20]]>
+		GROUP BY a.CHAMPION_NAME 
+		ORDER BY champion_cnt desc
+	</select>
 	
-	
+	<!-- 20판 라인별승률 -->
+	<select id="record_lane_rate" parameterType="int" resultType="record">
+		SELECT count(a.lane) AS lane_cnt, a.lane, count(CASE WHEN win='True' THEN 1 END) AS win_cnt
+		FROM (
+			SELECT lane, win,game_mode
+			FROM LOL_RECORD
+			WHERE USER_NO =#{user_no}
+			ORDER BY RECORD_NO DESC
+		) a
+		<![CDATA[where rownum <= 20]]> AND a.game_mode != '칼바람 나락'
+		GROUP BY a.lane
+		ORDER BY lane_cnt desc
+	</select>
 	
 	
 </mapper>

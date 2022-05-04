@@ -61,12 +61,14 @@
 
 				</div>
 				<div class="summoner-stats-champion">
-					~시각화 보류~<br>
-					챔피언
+					<div class="stats-champions">
+						
+					</div>
 				</div>
 				<div class="summoner-stats-position">
-					~시각화 보류~<br>
-					선호 포지션
+					<div class="stats-positions">
+						
+					</div>
 				</div>
 			</div >
 			
@@ -312,6 +314,7 @@
 
 		</div>
 	</main>
+	<%@ include file="/WEB-INF/views/basic/footer.jsp"%>
 
 	<script type="text/javascript" src="/resources/js/record.js"></script>
 </body>

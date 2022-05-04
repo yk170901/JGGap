@@ -72,4 +72,10 @@ public class RecordVO {
 		private String red_summonerid4;
 		private String red_champion5;
 		private String red_summonerid5;
+		
+		// count
+		private int champion_cnt;
+		private int lane_cnt;
+		private int win_cnt;
+		private int lose_cnt;
 }

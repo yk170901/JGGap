@@ -42,10 +42,16 @@ public class RecordController {
 	// 시각화를 위한 데이터 가져오기
 	@ResponseBody
 	@RequestMapping("/record_chart.do")
-	public List<RecordVO> record_chart(int user_no) {
-		List<RecordVO> recordVO = recordService.record_chart(user_no);
-		System.out.println(recordVO);
-		return recordVO;
+	public HashMap<String, List<RecordVO>> record_chart(int user_no) {
+		List<RecordVO> recordVO1 = recordService.record_chart(user_no);
+		List<RecordVO> recordVO2 = recordService.record_champion_rate(user_no);
+		List<RecordVO> recordVO3 = recordService.record_lane_rate(user_no);
+		
+		HashMap<String, List<RecordVO>> chart = new HashMap<String, List<RecordVO>>();
+		chart.put("chart", recordVO1);
+		chart.put("champion_rate", recordVO2);
+		chart.put("lane_rate", recordVO3);
+		return chart;
 	}
 	
 }

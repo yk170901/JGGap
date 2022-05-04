@@ -1,7 +1,7 @@
 $(function() {
 	
 	// 전적 더보기 버튼 클릭시
-	var begin_num = 6;
+	var begin_num = 11;
 	var user_no =$('.summoner-summoner-id').attr('value')
 	$('.summoner-record-more').on("click", function() {
 
@@ -271,7 +271,7 @@ content += '						<div class="summoner-record-result2 result-lose"></div>';
 content += '				</div>'
 		}
 		$('.summoner-record-body').children('a').prev().after(content);
-		begin_num += 5;
+		begin_num += 10;
 		
 	}
 	
@@ -283,37 +283,19 @@ content += '				</div>'
 			data: { user_no: user_no },
 			dataType: "json",
 			success: function(data) {
-				
-				var games = 0;
-				var win = 0;
-				var kills = 0;
-				var deaths = 0;
-				var assists = 0;
-				var team_total_kills = 0;
-				
-				
-				for (var record in data) {
 
-					games++;
-					if (data[record].win == 'True') {
-						win++;
-					}
-					kills += data[record].kills;
-					deaths += data[record].deaths;
-					assists += data[record].assists;
-					team_total_kills += data[record].team_total_kills;
-
-				}
-				kills_late = Math.round((kills+assists) / team_total_kills * 100 );
-				kills /= data.length;
-				deaths /= data.length;
-				assists /= data.length;
+				kills_late = Math.round((data.chart[0].kills+data.chart[0].assists) / data.chart[0].team_total_kills * 100 );
 				
-				
-					$('.doughnut-title')[0].innerHTML = games + '전 ' + win + '승 ' + (games-win) + '패';
-					$('.doughnut-k-d-a')[0].innerHTML = '<span>'+kills+'</span> / <span class="stat-d">'+deaths+'</span> / <span>'+assists+'</span>'
-					$('.doughnut-ratio')[0].innerHTML = '<span>' + (Math.round((kills + assists) / deaths * 10) / 10) + ' : 1</span> <span class="stat-stats-kill">('+kills_late+'%)</span>'
-					doughnut_chart(games, win)
+					
+					$('.doughnut-title')[0].innerHTML = (data.chart[0].win_cnt +data.chart[0].lose_cnt)  + '전 ' + data.chart[0].win_cnt + '승 ' + (data.chart[0].lose_cnt) + '패';
+					$('.doughnut-k-d-a')[0].innerHTML = '<span>'+Math.round(data.chart[0].kills/(data.chart[0].win_cnt +data.chart[0].lose_cnt) * 10) / 10+'</span> / <span class="stat-d">'+Math.round(data.chart[0].deaths/(data.chart[0].win_cnt +data.chart[0].lose_cnt) * 10) / 10+'</span> / <span>'+Math.round(data.chart[0].assists/(data.chart[0].win_cnt +data.chart[0].lose_cnt) * 10) / 10+'</span>'
+					$('.doughnut-ratio')[0].innerHTML = '<span>' + (Math.round((data.chart[0].kills + data.chart[0].assists) / data.chart[0].deaths * 10) / 10) + ' : 1</span> <span class="stat-stats-kill">('+kills_late+'%)</span>'
+					doughnut_chart((data.chart[0].win_cnt +data.chart[0].lose_cnt), data.chart[0].win_cnt)
+					
+					record_champion_rate(data.champion_rate);
+					record_lane_rate(data.lane_rate);
+					
+					
 					
 			},
 			error: function(err) {
@@ -325,6 +307,7 @@ content += '				</div>'
 
 	});
 	
+	// 도넛차트
 	function doughnut_chart(games, win) {
 		
 		// 도넛 차트
@@ -347,8 +330,61 @@ content += '				</div>'
 		})
 	}
 	
+	// 챔피언별 승률
+	function record_champion_rate(data) {
+		
+		var content = "";
+		for(var i = 0; i< data.length;i++) {
+			if(i == 3) {
+				$('.stats-champions').append(content);
+				return;
+			}
+			
+			
+			content+='<div class="stats-champion-body">';
+			content+='	<div class="stats-champion-imgs"><img class="stats-champion-img" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+data[i].champion_name+'.png"></div>';
+			content+='	<div class="stats-champion-info">';
+			content+='		<div class="stats-champion-name">'+data[i].champion_name+'</div>';
+			content+='		<div class="stats-champion-win-rate"><span>' + Math.round(data[i].win_cnt / data[i].champion_cnt * 100)+'%</span><span> ('+data[i].win_cnt+'승 '+(data[i].champion_cnt - data[i].win_cnt)+'패)</span></div>';
+			content+='		<div class="stats-champion-kda">'+Math.round((data[i].kills +data[i].assists) / data[i].deaths * 10) / 10 +' 평점</div>';
+			content+='	</div>';
+			content+='</div>';
+
+			
+			
+			
+		}
+		
+	}
+	
+	// 라인별 승률
+	function record_lane_rate(data) {
+		
+		var total = 0;
+		var content = "";
+		for(var lane in data) {
+			total += data[lane].lane_cnt;
+		}
+
+		for(var i = 0; i< data.length;i++) {
+			if(i == 2) {
+				$('.stats-positions').append(content);
+				return;
+			}
+			
+			content+='<div class="stats-position-body">'
+			content+='	<div class="stats-position-imgs"><img class="stats-position-img" src="/resources/imgs/position/'+data[i].lane+'.png"></div>'
+			content+='	<div class="stats-position-info">'
+			content+='		<div class="stats-position-name">'+data[i].lane+'</div>'
+			content+='		<div class="stats-position-pick-rate"><span>'+Math.round(data[i].lane_cnt / total * 100)+'%</span></div>'
+			content+='		<div class="stats-position-win-rates">승률 '+Math.round(data[i].win_cnt / data[i].lane_cnt * 100)+'%</div>'
+			content+='	</div>'
+			content+='</div>'
+		
+			console.log(content)
+	}
 
 
-
+}
 
 })
