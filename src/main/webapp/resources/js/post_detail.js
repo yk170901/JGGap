@@ -14,11 +14,66 @@ $('#category-map').on('change',function(){
 })
 
 
-$('.follow').on('click', function(){
-	alert($(this).val())
+// 친구 추가 기능
+
+$('.befriend').on('click', function(){
 	
+	$.ajax({
+		url:'/board_view/befriend.do',
+		type : "POST",
+		data : {
+			asked_user_id : $(this).val()
+		}
+	})
+	alert('친구 신청이 완료되었습니다.')
 })
 
+
+$('.chg-friend-status').on('click', function(){
+	
+	var reply_value = $(this).val()
+	var reply_index = $(this).index('.friend-btn') // +1 해야하남
+	var action = $(this).attr('action')
+	var reply_user_no = document.getElementsByClassName('user_re_no')[reply_index].value;
+	var user_no;
+	var friend;
+	
+	/* 최초 친추자가 내가 아닌 상대일 때 */
+	if(reply_value == reply_user_no){
+		user_no = reply_value;
+		friend = document.getElementById('session-summoner-id').value
+	}else{
+		user_no = document.getElementById('session-user-no').value
+		friend = reply_value;
+	}
+	
+	$.ajax({
+		url:'/board_view/chgFriendStatus.do',
+		type : "POST",
+		data : {
+			action : action,
+			user_no : user_no,
+			friend : friend
+		}
+	})
+	
+	alertOnStatus(action);
+	location.reload();
+})
+
+function alertOnStatus(action){
+	if(action == 'deleteFriend'){
+		alert('친구 삭제가 완료되었습니다.')
+	}else if(action == 'beFriendAgain'){
+		alert('친구 신청이 완료되었습니다.')
+	}else if(action == 'cancelFriendRequest'){
+		alert('친구 신청이 취소되었습니다.')
+	}else if(action == 'cancelBan'){
+		alert('차단이 취소되었습니다.')
+	}else if(action == 'acceptFriendRequest'){
+		alert('친구 신청이 수락되었습니다.')
+	}
+}
 // 모달
 var reportBtn = document.querySelector('.report-btn');
 var modalBg = document.querySelector('.modal-bg');
@@ -70,6 +125,8 @@ $('.delete-reply').on("click", function() {
 	})
 	
 	alert('댓글이 삭제되었습니다.');
+	// 이거 부분 눈속임 hidden으로 바꿀까
+	window.location.reload();
 });
 
 // 수정 페이지 로드 될 때 자동 실행 함수
@@ -197,6 +254,20 @@ function alreadyChosen(reply_user_no){
 	
 }
 	
+	
+function deleteChosenUser(reply_user_no){
+	
+	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
+	
+	for(var i = 1; (i-1) < chosen_user_no; i++){
+		if(reply_user_no == document.querySelector("div.chosen-user-list > input:nth-child("+i+")").value){
+			document.querySelector("div.chosen-user-list > input:nth-child("+i+")").remove();
+		}
+	}
+	
+}
+
+
 function checkChosenUsers(){
 	
 	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
@@ -209,19 +280,28 @@ function checkChosenUsers(){
 			}
 		}
 	}
+}
+
+function checkReplyValidation(){
+	if(document.getElementById('new-reply-text').value == ""){
+		alert('댓글 내용을 작성해주세요.')
+		return false;
+	}
+	
+	var reply_user_no = document.getElementsByClassName('reply-content-repeat').length;
+	
+	for(var i = 1; (i-1) < reply_user_no; i++){
+		if(document.getElementById('session-user-no').value == document.querySelector(".reply-content-repeat:nth-child("+i+") > input").value){
+			alert('이미 신청 댓글을 작성하셨습니다.')
+			return false;
+		}
+	}
 	
 }
 
 
-	
-function deleteChosenUser(reply_user_no){
-	
-	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
-	
-	for(var i = 1; (i-1) < chosen_user_no; i++){
-		if(reply_user_no == document.querySelector("div.chosen-user-list > input:nth-child("+i+")").value){
-			document.querySelector("div.chosen-user-list > input:nth-child("+i+")").remove();
-		}
-	}
-	
+// 로드 시 실행.
+// 이후 viewBoard.jsp만을 위한 js를 만들어 따로 분리시키기.
+window.onload = function() {
+	checkChosenUsers()
 }

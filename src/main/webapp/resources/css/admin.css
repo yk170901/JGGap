@@ -106,9 +106,80 @@ td {
 
 #main-page {
 	width: 1160px;
-	margin-left: 300px;
+	margin-left: 350px;
 	margin-top: 75px;
-	background-color: yellow;
+	height: 600px;
+	display: flex;
+}
+
+#input_achievements, #icon_select {position:relative}
+.absolute {position:absolute;bottom:0;right:0}
+
+#input_achievements {
+	width: 250px;
+	height: 600px;
+	display: flex;
+}
+
+#icon_select {
+	width: 700px;
 	height: 600px;
 	
+}
+
+.fixed_position {
+	width: 250px;
+	height: 150px;
+	margin: auto;
+	padding: auto;
+}
+
+#icon_payments {
+	width: 250px;
+	height: 50px;
+	outline: none;
+	border-radius: 10px;
+	
+}
+
+#payments_button_wrap{
+	margin-top: 20px;
+	text-align: center;
+}
+
+#payments_button {
+	width: 150px;
+	height: 50px;
+	background-color: white;
+	color: #F46119;
+	outline: none;
+	text-decoration: none;
+	border-radius: 10px;
+	
+}
+
+.modal-profile-icon-body {
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	margin: 10px 23px;
+}
+
+.modal-profile-icon {
+	border-radius: 50%;
+}
+
+.modal-profile-icon:hover {
+	cursor:pointer;
+}
+
+.profile-icon-radio {
+	display:none;
+}
+
+#achievements_select {
+	width: 100%;
+	height: 500px;
+	margin: auto;
+	background-color: black;
 }

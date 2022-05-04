@@ -17,5 +17,10 @@
 		SELECT COUNT(*)
 		FROM USER_INFO
 	</select>
+	
+	<select id="achievement" resultType="String">
+		SELECT BADGE_NAME
+		FROM BADGE
+	</select>
   
   </mapper>

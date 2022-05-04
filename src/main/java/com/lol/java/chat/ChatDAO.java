@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface ChatDAO {
 
-	public List<ChatVO> user_info(ChatVO vo);
+	public String user_info(ChatVO vo);
 
 }
