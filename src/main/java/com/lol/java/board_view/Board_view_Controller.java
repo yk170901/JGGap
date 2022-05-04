@@ -56,22 +56,6 @@ public class Board_view_Controller {
 		
 		return "redirect:/board_view/viewBoard.do?post_no="+reply_vo.getPost_no();
 	}
-	
-	/*
-	 * // 댓글 채택 시 이미 채택됐던 댓글인가 보기
-	 * 
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping("checkReplyIfChosen.do") public boolean
-	 * checkReplyIfChosen(int writer_no, int reply_user_no) {
-	 * System.out.println("ajax 요청 도착 " + writer_no + "  " + reply_user_no);
-	 * HashMap<String, Integer> map = new HashMap<String, Integer>();
-	 * 
-	 * map.put("writer_no", writer_no); map.put("user_re_no", reply_user_no);
-	 * 
-	 * boolean diis = board_view_Service.replyAlreadyChosen(map);
-	 * System.out.println(diis); return diis; }
-	 */
 
 	// 댓글 채택
 	@ResponseBody
@@ -91,17 +75,16 @@ public class Board_view_Controller {
 		System.out.println("post_no = "+post_no);
 
 		/* jsp 파일 내의 chosen-users 갱신을 위해 새로고침/새로 넣기 필요 */
-		model.addAttribute("reply", board_view_Service.viewChoiceList(post_no));
+		model.addAttribute("choice", board_view_Service.viewChoiceList(post_no));
 	}
-	
-	// 댓글 채택
+
+	// 댓글 채택 취소
 	@ResponseBody
 	@RequestMapping("/cancelUser.do")
 	public void cancelUser(int writer_no, int chosen_user_no, int post_no, Model model) {
 		System.out.println("chooseUser 들어옴"+writer_no+" " + chosen_user_no);
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		System.out.println("해쉬맵 만듦");
 		
 		map.put("writer_no", writer_no);
 		map.put("chosen_user_no", chosen_user_no);
@@ -110,6 +93,34 @@ public class Board_view_Controller {
 		
 		
 		/* jsp 파일 내의 chosen-users 갱신을 위해 새로고침/새로 넣기 필요 */
-		model.addAttribute("reply", board_view_Service.viewChoiceList(post_no));
+		model.addAttribute("choice", board_view_Service.viewChoiceList(post_no));
 	}
+
+	// 신고
+	@ResponseBody
+	@RequestMapping("/submitReport.do")
+	public void submitReport(String report_title, String report_content, String report_target, String post_no, HttpSession session) {
+		System.out.println("submitReport 들어옴"+(int)session.getAttribute("user_no")+""+report_title+" " + report_content + " " + report_target + " " + post_no);
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		map.put("report_title", report_title);
+		map.put("report_content", report_content);
+		map.put("reporter", String.valueOf(session.getAttribute("user_no")));
+		map.put("report_target", report_target);
+		map.put("report_url", post_no);
+		
+		board_view_Service.submitReport(map);
+	}
+	
+
+	// 댓글 삭제
+	@ResponseBody
+	@RequestMapping("/deleteReply.do")
+	public void deleteReply(int user_re_no, Model model, Board_view_VO_reply reply_vo) {
+		board_view_Service.deleteReply(user_re_no);
+		model.addAttribute("reply", board_view_Service.viewReplyList(reply_vo.getPost_no()));
+	}
+	
+
 }

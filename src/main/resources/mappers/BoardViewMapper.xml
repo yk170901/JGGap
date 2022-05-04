@@ -100,13 +100,16 @@
 			AND   choice_user_no = #{chosen_user_no}
 	</delete>
 	
-	<!-- <select id="selectUserChoNo" parameterType="hashMap" resultType="int">
-		SELECT count(*)
-			FROM choice
-			WHERE user_no = #{writer_no}
-				AND choice_user_no = (SELECT user_no
-										FROM re_board
-										WHERE user_re_no = #{reply_user_no})
-	</select> -->
   
+	<insert id="insertReport" parameterType="hashmap">
+		INSERT INTO manager_report (report_no, reporter, report_target, report_url, report_title, report_content)
+			VALUES(report_no.NEXTVAL, ${reporter}, ${report_target}, #{report_url}, #{report_title}, #{report_content})
+	</insert>
+	
+	
+	<delete id="deleteReply" parameterType="int">
+		DELETE FROM re_board 
+			WHERE user_re_no = #{value}
+	</delete>
+	
   </mapper>
