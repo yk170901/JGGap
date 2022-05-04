@@ -10,9 +10,28 @@ $(document).ready(function() {
 			$('#profile_img').attr("src", "/resources/imgs/level_icon/"+data.site_level+".gif");
 		},
 		error: function(err) {
-			alert("에러" + err)
+			alert("point에러" + err)
 		}
 
+	})
+	
+	$.ajax({
+		url: "/basic/friend.do",
+		type: "post",
+		dataType: 'json',
+		success: function(data) {
+			$(data).each(function(index){
+				$(".friend").append("<li class='friend-li'><p>"+this.friend+"</p></li>");
+				if(this.login_or_not == 1){
+					$(".friend-li:nth-child("+(index+1)+")").append("<div class='friend-login'></div>");
+				} else{
+					$(".friend-li:nth-child("+(index+1)+")").append("<div class='friend-not-login'></div>");
+				}
+			})
+		},
+		error: function(err) {
+			alert("friend에러" + err)
+		}
 	})
 
 });

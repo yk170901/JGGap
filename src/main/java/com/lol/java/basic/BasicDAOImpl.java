@@ -18,8 +18,8 @@ public class BasicDAOImpl implements BasicDAO{
 	}
 
 	@Override
-	public List<BasicVO> follower(Object user_no) {
-		return mybatis.selectList("BasicDAO.header_follower", user_no);
+	public List<BasicVO> getfriends(Object user_no) {
+		return mybatis.selectList("BasicDAO.header_friends", user_no);
 	}
 	
 }

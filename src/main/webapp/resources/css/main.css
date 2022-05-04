@@ -5085,3 +5085,21 @@ body.dark-theme #modal-help ul li {
 	font-weight: 600;
 	font-size: 20px;
 }
+
+.friend-li{
+	
+}
+
+.friend-login{
+	background: green; 
+	border-radius: 50%; 
+	width: 10px; 
+	height: 10px;
+}
+
+.friend-not-login{
+	background: gray; 
+	border-radius: 50%; 
+	width: 10px; 
+	height: 10px;
+}

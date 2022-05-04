@@ -8,5 +8,6 @@ public class BasicVO {
 	private int usable_point;	
 	private int site_level;
 	private int ban;
-	private String follower;
+	private String friend;
+	private int login_or_not;
 }

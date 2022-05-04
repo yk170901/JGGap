@@ -13,9 +13,9 @@
   		WHERE user_no = #{user_no}
   	</select>
   	
-  	<select id="header_follower" resultType="basic" parameterType="Object">
-  		SELECT follow
-  		FROM follow
+  	<select id="header_friends" resultType="basic" parameterType="Object">
+  		SELECT friend
+  		FROM friend
   		WHERE user_no = #{user_no}
   	</select>
   	
