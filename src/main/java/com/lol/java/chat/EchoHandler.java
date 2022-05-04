@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -28,7 +27,6 @@ public class EchoHandler extends TextWebSocketHandler{
     	
     	String user_no = (String)map.get("user_no");
     	String summoner_id = (String)map.get("summoner_id");
-    	
     	
     	System.out.println("로그인 한 아이디 : " + user_no);
     	System.out.println("소환사 아이디 : " + summoner_id);
