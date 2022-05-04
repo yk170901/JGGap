@@ -63,14 +63,18 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	}
 
 	@Override
-	public void insertFriendRequest(HashMap<String, Integer> map) {
+	public void insertFriendRequest(HashMap<String, String> map) {
 		mybatis.insert("insertFriendRequest", map);
-		System.out.println("하싲말ㄹ");
 		
 	}
 
 	@Override
 	public List<Board_view_VO_friend> selectFriendsAndStatuses(int user_no) {
 		return mybatis.selectList("Board_view_DAO.selectFriendsAndStatuses",user_no);
+	}
+
+	@Override
+	public void updateFriendStatus(HashMap<String, String> map) {
+		mybatis.update("Board_view_DAO.updateFriendStatus", map);
 	}
 }

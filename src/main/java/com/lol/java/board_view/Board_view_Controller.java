@@ -101,26 +101,38 @@ public class Board_view_Controller {
 	} 
 	
 
-	// 댓글 삭제
+	// 댓글 삭제   
 	@ResponseBody
 	@RequestMapping("/deleteReply.do")
 	public void deleteReply(int user_re_no, Model model, Board_view_VO_reply reply_vo) {
 		board_view_Service.deleteReply(user_re_no);
 	}
-	
+
 
 	// 친구 신청
 	@ResponseBody
 	@RequestMapping("/befriend.do")
-	public void befriend(int asked_user_no, HttpSession session) {
-		System.out.println("친구 신청 들어옴");
+	public void befriend(String asked_user_id, HttpSession session) {
+		
+		HashMap<String, String> map = new HashMap<String, String>();
 
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-
-		map.put("asking_user_no", (int)session.getAttribute("user_no"));
-		map.put("asked_user_no", asked_user_no);
+		map.put("asking_user_no", String.valueOf(session.getAttribute("user_no")));
+		map.put("asked_user_id", asked_user_id);
 		
 		board_view_Service.befriend(map);
+	}
+
+	// 친구 상태 수정
+	@ResponseBody
+	@RequestMapping("/chgFriendStatus.do")
+	public void chgFriendStatus(String action, String user_no, String friend) {
+		HashMap<String, String> map = new HashMap<String, String>();
+
+		map.put("action", action);
+		map.put("user_no", user_no);
+		map.put("friend", friend);
+		
+		board_view_Service.chgFriendStatus(map);
 	}
 	
 }

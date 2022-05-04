@@ -125,10 +125,7 @@
   
 	<insert id="insertFriendRequest" parameterType="hashmap">
 		INSERT INTO friend
-			VALUES(user_friend_no.NEXTVAL, #{asking_user_no}, (SELECT summoner_id 
-															FROM user_info 
-															WHERE user_no = #{asked_user_no})
-															, '대기')
+			VALUES(user_friend_no.NEXTVAL, ${asking_user_no}, #{asked_user_id}, '대기')
 	</insert>
 	
 	<select id="selectFriendsAndStatuses" parameterType="int" resultType="board_view_friend">
@@ -139,5 +136,20 @@
 								FROM user_info
 								WHERE user_no = #{value})
 	</select>
+	
+	<update id="updateFriendStatus" parameterType="hashmap">
+		UPDATE friend
+			SET status = 
+				<choose>
+					<when test='action_result == null'>
+						NULL
+					</when>
+					<otherwise>
+						#{action_result}
+					</otherwise>
+				</choose>
+			WHERE user_no = ${user_no}
+				AND friend = #{friend}
+	</update>
 	
   </mapper>
