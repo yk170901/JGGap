@@ -41,11 +41,13 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	// 댓글 채택
 	@Override
 	public void insertChosenUser(HashMap<String, Integer> map) {
+		mybatis.update("increaseCruPre", map.get("writer_no"));
 		mybatis.insert("insertChosenUser", map);
 	}
 
 	@Override
 	public void deleteChosenUser(HashMap<String, Integer> map) {
+		mybatis.update("decreaseCruPre", map.get("writer_no"));
 		mybatis.delete("deleteChosenUser", map);
 		
 	}
@@ -58,5 +60,17 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	@Override
 	public void deleteReply(int user_re_no) {
 		mybatis.delete("deleteReply", user_re_no);
+	}
+
+	@Override
+	public void insertFriendRequest(HashMap<String, Integer> map) {
+		mybatis.insert("insertFriendRequest", map);
+		System.out.println("하싲말ㄹ");
+		
+	}
+
+	@Override
+	public List<Board_view_VO_friend> selectFriendsAndStatuses(int user_no) {
+		return mybatis.selectList("Board_view_DAO.selectFriendsAndStatuses",user_no);
 	}
 }

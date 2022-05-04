@@ -19,4 +19,8 @@ public interface Board_view_DAO {
 	public void insertReport(HashMap<String, String> map);
 	
 	public void deleteReply(int user_re_no);
+	
+	public void insertFriendRequest(HashMap<String, Integer> map);
+	
+	public List<Board_view_VO_friend> selectFriendsAndStatuses(int user_no);
 }

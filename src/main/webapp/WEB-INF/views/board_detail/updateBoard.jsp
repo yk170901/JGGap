@@ -9,7 +9,7 @@
     <link href="../resources/css/post_detail.css" rel="stylesheet" type="text/css">
     <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
 </head>
-<body onload="get_chosen_options()">
+<body onload="get_chosen_options()"> <!-- 여기에 옵션이 칼바람 나락이면 모드 안 보이게 하는 거로 바꾸기 -->
 <%@ include file="/WEB-INF/views/basic/header.jsp" %>
 	
 	<hr><br>
@@ -34,7 +34,7 @@
 								</select>
 							</div>
 							
-							<div class="category-content">
+							<div class="category-content game-mode">
 								<div class="category-title">게임 분류</div>
 								<select class="category-game" id="category-game" name="game_mode">
 									<option value="${update.game_mode }">${update.game_mode }</option>

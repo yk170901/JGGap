@@ -100,6 +100,17 @@
 			AND   choice_user_no = #{chosen_user_no}
 	</delete>
 	
+	<update id="increaseCruPre" parameterType="int">
+		UPDATE board
+			SET cru_pre = cru_pre+1
+			WHERE user_no = #{value}
+	</update>
+	
+	<update id="decreaseCruPre" parameterType="int">
+		UPDATE board
+			SET cru_pre = cru_pre-1
+			WHERE user_no = #{value}
+	</update>
   
 	<insert id="insertReport" parameterType="hashmap">
 		INSERT INTO manager_report (report_no, reporter, report_target, report_url, report_title, report_content)
@@ -111,5 +122,22 @@
 		DELETE FROM re_board 
 			WHERE user_re_no = #{value}
 	</delete>
+  
+	<insert id="insertFriendRequest" parameterType="hashmap">
+		INSERT INTO friend
+			VALUES(user_friend_no.NEXTVAL, #{asking_user_no}, (SELECT summoner_id 
+															FROM user_info 
+															WHERE user_no = #{asked_user_no})
+															, '대기')
+	</insert>
+	
+	<select id="selectFriendsAndStatuses" parameterType="int" resultType="board_view_friend">
+		SELECT *
+			FROM friend
+			WHERE user_no = #{value}
+				OR friend = (SELECT summoner_id
+								FROM user_info
+								WHERE user_no = #{value})
+	</select>
 	
   </mapper>

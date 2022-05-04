@@ -14,9 +14,66 @@ $('#category-map').on('change',function(){
 })
 
 
-$('.follow').on('click', function(){
-	alert($(this).val())
+// 친구 추가 기능
+
+$('.befriend').on('click', function(){
 	
+	$.ajax({
+		url:'/board_view/befriend.do',
+		type : "POST",
+		data : {
+			asked_user_no : $(this).val()
+		}
+	})
+	alert('친구 신청이 완료되었습니다.')
+})
+
+$('.deleteFriend').on('click', function(){
+	
+	$.ajax({
+		url:'/board_view/deleteFriend.do',
+		type : "POST",
+		data : {
+			asked_user_no : $(this).val()
+		}
+	})
+	alert('친구 신청이 완료되었습니다.')
+})
+
+$('.cancelFriendRequest').on('click', function(){
+	
+	$.ajax({
+		url:'/board_view/cancelFriendRequest.do',
+		type : "POST",
+		data : {
+			asked_user_no : $(this).val()
+		}
+	})
+	alert('친구 신청을 취소하셨습니다.')
+})
+
+$('.cancelBan').on('click', function(){
+	
+	$.ajax({
+		url:'/board_view/cancelBan.do',
+		type : "POST",
+		data : {
+			asked_user_no : $(this).val()
+		}
+	})
+	alert('차단을 해제하셨습니다.')
+})
+
+$('.acceptFriendRequest').on('click', function(){
+	
+	$.ajax({
+		url:'/board_view/acceptFriendRequest.do',
+		type : "POST",
+		data : {
+			asked_user_no : $(this).val()
+		}
+	})
+	alert('친구 신청을 수락하셨습니다.')
 })
 
 // 모달
@@ -70,6 +127,8 @@ $('.delete-reply').on("click", function() {
 	})
 	
 	alert('댓글이 삭제되었습니다.');
+	// 이거 부분 눈속임 hidden으로 바꿀까
+	window.location.reload();
 });
 
 // 수정 페이지 로드 될 때 자동 실행 함수
@@ -197,6 +256,20 @@ function alreadyChosen(reply_user_no){
 	
 }
 	
+	
+function deleteChosenUser(reply_user_no){
+	
+	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
+	
+	for(var i = 1; (i-1) < chosen_user_no; i++){
+		if(reply_user_no == document.querySelector("div.chosen-user-list > input:nth-child("+i+")").value){
+			document.querySelector("div.chosen-user-list > input:nth-child("+i+")").remove();
+		}
+	}
+	
+}
+
+
 function checkChosenUsers(){
 	
 	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
@@ -209,19 +282,16 @@ function checkChosenUsers(){
 			}
 		}
 	}
-	
 }
 
 
+function checkFriends(){
 	
-function deleteChosenUser(reply_user_no){
-	
-	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
-	
-	for(var i = 1; (i-1) < chosen_user_no; i++){
-		if(reply_user_no == document.querySelector("div.chosen-user-list > input:nth-child("+i+")").value){
-			document.querySelector("div.chosen-user-list > input:nth-child("+i+")").remove();
-		}
-	}
-	
+}
+
+// 로드 시 실행.
+// 이후 viewBoard.jsp만을 위한 js를 만들어 따로 분리시키기.
+window.onload = function() {
+	checkChosenUsers()
+	checkFriends();
 }

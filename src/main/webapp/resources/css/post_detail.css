@@ -88,11 +88,31 @@
 	color: blue;
 }
 
-.follow{
+.befriend,
+.cancelFriendRequest,
+.falseBefriend,
+.cancelBan,
+.deleteFriend,
+.acceptFriendRequest,
+.befriendAgain{
 	margin-left:15px;
 	border-radius: 5px;
 	font-size: 11px;
-	border: gray solid 1px;
+	border: black solid 1px;
+}
+
+.cancelFriendRequest,
+.deleteFriend{
+	background-color: #f46119;
+	color: white;
+}
+
+.acceptFriendRequest{
+	background-color: gold;
+}
+
+.banned{
+	background-color: red;
 }
 
 .report-btn,
