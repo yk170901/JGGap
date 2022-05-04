@@ -20,13 +20,10 @@
 	<div class="modal-bg">
 		<div class="modal">
 			<h3 class="modal-title">신고 작성</h3>
-			reporter님, report_target님을 신고하시겠습니까?
-			<label for="report_title">신고 제목:</label>
-			<input type="text" name="report_title">
-			<label for="report_content">신고 내용:</label>
-			<textarea name="report_content"></textarea>
-			<input type="hidden" name="report_url">
-			<button>신고하기</button>
+			신고 제목 : <input type="text" name="report_title" id="report-title">
+			신고 내용 : <textarea name="report_content" id="report-content" style="color: black;"></textarea>
+			<input type="hidden" name="report_target" id="report-target" value="">
+			<button id="submitReport">신고하기</button>
 			<span class="modal-close">&times;</span>
 		</div>
 	</div>
@@ -51,7 +48,10 @@
 							<div class="user-info"><c:out value="${board.writer.summoner_id }" /></div>
 							<span class="writer-info-separator">|</span>
 							<div class="user-info"><c:out value="${board.writer.honor_rate }" /></div>
-							<button class="follow">팔로우</button>
+							
+						    <c:if test="${sessionScope.user_no != board.writer.user_no}">
+								<button class="follow" value="${board.writer.user_no }">팔로우</button>
+							</c:if>
 						</div>
 						
 						<div class="post-info">
@@ -59,7 +59,9 @@
 							<div class="post-info">게임 분류 : <span class="post-info-detail"><c:out value="${board.game_mode }" /></span></div>
 							<div class="post-info">모집인원 : <span class="post-info-detail"><c:out value="${board.cru_pre } / ${board.cru_max }" /></span></div>
 							<div class="post-info">작성날짜 : <c:out value="${board.board_date }" /></div>
-							<button class="report-btn" value="${board.writer.user_no }">신고</button>
+							<c:if test="${sessionScope.user_no != board.writer.user_no }">
+								<button class="report-btn" value="${board.writer.user_no }">신고</button>
+							</c:if>
 						</div>
 						
 					</c:if>
@@ -70,19 +72,21 @@
 			
 			<div><span id="post-content"><c:out value="${board_view_reply.reply_count }" />${board.board_text }</span></div>
 			
-			<!-- 이건 c if문으로, session의 user_no가 글쓴이의 user_no와 같을 때만 보여주기  -->
-			<div id="writer-post-button">
-				<a class="detail-big-btn modify-post" href="../board_detail/updateBoard.do?post_no=<c:out value="${board.post_no }"/>" style=" padding-left: 20px; padding-right: 20px;">수정</a>
-				<form method="post" action="../board_detail/postDelete.do?post_no=<c:out value="${board.post_no }"/>" style="display: inline-block;" onsubmit="return confirmPostDelete()">
-					<button class="detail-big-btn" type="submit">삭제</button>
-				</form>
-			</div>
+			<c:if test="${sessionScope.user_no == board.writer.user_no }">
+				<div id="writer-post-button">
+					<a class="detail-big-btn modify-post" href="../board_detail/updateBoard.do?post_no=<c:out value="${board.post_no }"/>" style=" padding-left: 20px; padding-right: 20px;">수정</a>
+					<form method="post" action="../board_detail/postDelete.do?post_no=<c:out value="${board.post_no }"/>" style="display: inline-block;" onsubmit="return confirmPostDelete()">
+						<button class="detail-big-btn" type="submit">삭제</button>
+					</form>
+				</div>
+			</c:if>
 		</div>
 		
 		<div class="chosen-user-list" style="display: hidden;">
 			<c:forEach items="${choice}" var="choiceList" varStatus="status">
 				<input value="<c:out value="${choiceList }" />" class="chosen-users">
 			</c:forEach>
+			
 		</div>
 		
 		<!-- 관리자가 쓴 글에서는 댓글 작성/조회 불가 -->
@@ -93,7 +97,7 @@
 				<div id="reply-content">
 					<c:forEach var="reply" items="${reply}">
 						<div class="reply-content-repeat">
-							<input type="hidden" class="user_re_no" value=${reply.user_re_no }>
+							<input class="user_re_no" value=${reply.user_no }>
 							<div class="user-info">
 								
 								<div class="user-info"><img src="../resources/imgs/tier/${reply.replier.solo_tier }.png" id="tier-img"></div>
@@ -104,16 +108,19 @@
 								<div class="user-info">${reply.replier.summoner_id }</div>
 								<span class="replier-info-separator">|</span>
 								<div class="user-info">${reply.replier.honor_rate }</div>
-								<button class="follow">팔로우</button>
+								
+							    <c:if test="${sessionScope.user_no != reply.user_no}">
+									<button class="follow" value="${reply.user_no }">팔로우</button>
+								</c:if>
 								<span id="reply-date">( <c:out value="${reply.re_date }" /> )</span>
 								
 								<!-- 본인이 작성한 댓글이면 삭제 버튼이, 아니면 신고 버튼이 보임. -->
 								<c:choose>
-								    <c:when test="${sessqionScope.user_no != reply.user_no}">
+								    <c:when test="${sessionScope.user_no != reply.user_no}">
 										<button class="report-btn" value="${reply.user_no }">신고</button>
 								    </c:when>    
 								    <c:otherwise>
-										<button class="delete-reply" style="color: darkred;">삭제</button>
+										<button class="delete-reply" style="color: red;" value="${reply.user_re_no }">삭제</button>
 								    </c:otherwise>
 								</c:choose>
 								
@@ -121,9 +128,11 @@
 							
 							<div>
 								<span class="reply-content"><c:out value="${reply.re_text }" /></span>
-								<button class="choose-user">
-									<img src="../resources/imgs/post_detail/unchecked.png" class="check-img" value="${reply.user_no }">
-								</button>
+								<c:if test="${sessionScope.user_no == board.writer.user_no }">
+									<button class="choose-user">
+										<img src="../resources/imgs/post_detail/unchecked.png" class="check-img" value="${reply.user_no }">
+									</button>
+								</c:if>
 							</div>
 						</div>
 					</c:forEach>

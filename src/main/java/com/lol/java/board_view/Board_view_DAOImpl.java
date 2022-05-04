@@ -50,9 +50,13 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 		
 	}
 
-	/*
-	 * @Override public int selectUserChoNo(HashMap<String, Integer> map) { return
-	 * mybatis.selectOne("selectUserChoNo", map); }
-	 */
+	@Override
+	public void insertReport(HashMap<String, String> map) {
+		mybatis.insert("insertReport", map);
+	}
 
+	@Override
+	public void deleteReply(int user_re_no) {
+		mybatis.delete("deleteReply", user_re_no);
+	}
 }

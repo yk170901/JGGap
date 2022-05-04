@@ -8,9 +8,18 @@
  
   	<insert id="insertPost" parameterType="board_detail">
 		INSERT INTO board(post_no, user_no, board_title, board_text, game_map, game_mode, board_date, cru_max, summoner_id)
-			VALUES (post_no.NEXTVAL, #{user_no}, #{board_title},#{board_text},#{game_map},#{game_mode}, current_date, #{cru_max}, (SELECT summoner_id
-																																		FROM user_info
-																																		WHERE user_no = #{user_no}))
+			VALUES (post_no.NEXTVAL, #{user_no}, #{board_title},#{board_text},#{game_map},
+			 <choose>
+				<when test = 'game_map == "소환사의 협곡"'>
+					 #{game_mode}
+				</when>
+				<otherwise>
+					NULL
+				</otherwise>
+			</choose>
+			, current_date, #{cru_max}, (SELECT summoner_id
+											FROM user_info
+											WHERE user_no = #{user_no}))
   	</insert>
   	
   	<insert id="insertAdminPost" parameterType="board_detail">

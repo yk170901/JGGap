@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 실패</title>
+<title>중복 로그인</title>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <script type="text/javascript">
 Swal.fire({
 	icon: 'error',
-	title: '로그인 실패',
-	text: '아이디가 존재하지 않거나, 아이디 또는 비밀번호가 틀렸습니다.',   }).then(function(){
+	title: '중복 로그인',
+	text: '이미 로그인 된 상태 입니다 로그아웃 시킵니다.',   }).then(function(){
 	location.href='../../login.jsp';
 	})
 </script>
