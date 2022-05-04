@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	
 	$.ajax({
 		url: "/basic/point.do",
 		type: "post",
@@ -14,19 +13,21 @@ $(document).ready(function() {
 		}
 
 	})
-	
 	$.ajax({
 		url: "/basic/friend.do",
 		type: "post",
 		dataType: 'json',
 		success: function(data) {
 			$(data).each(function(index){
-				$(".friend").append("<li class='friend-li'><p>"+this.friend+"</p></li>");
+				content = "";
+				content += "<li class='friend-li'><div>"+this.friend;				
 				if(this.login_or_not == 1){
-					$(".friend-li:nth-child("+(index+1)+")").append("<div class='friend-login'></div>");
+					content += "<div class='friend-login'></div>";					
 				} else{
-					$(".friend-li:nth-child("+(index+1)+")").append("<div class='friend-not-login'></div>");
+					content += "<div class='friend-not-login'></div>";
 				}
+				content += "</div></li>"
+				$(".friend").append(content);
 			})
 		},
 		error: function(err) {

@@ -38,8 +38,12 @@ public class BasicController {
 		Object user_no = session.getAttribute("user_no");
 		List<BasicVO> friendList = basicService.getfriends(user_no);
 		List<BasicVO> loginedList = new ArrayList<BasicVO>();
+		System.out.println(friendList);
+		System.out.println(sessionList);
 		for(HttpSession s : sessionList) {
 			for(BasicVO f : friendList) {
+				System.out.println(s.getAttribute("summoner_id"));
+				System.out.println(f.getFriend());
 				if(s.getAttribute("summoner_id").equals(f.getFriend())) {
 					f.setLogin_or_not(1);
 				} else {
