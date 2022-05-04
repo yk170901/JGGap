@@ -19,14 +19,14 @@
 <link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/admin.css" type="text/css">
 </head>
-<body>
+<body style="background-color: white">
 
 	<%@ include file="/WEB-INF/views/basic/header.jsp"%>
 	<main class="page-main">
 		<div class="page-body">
 			<div id="user_list_table">
 				<table border="1" class="list">
-					<tr style="background-color: lightgray;">
+					<tr>
 						<th width="110px">아이디</th>
 						<th width="110px">아이디 고유 번호</th>
 						<th width="110px">닉네임</th>
@@ -39,7 +39,7 @@
 						<th width="110px">밴</th>
 					</tr>
 					<c:forEach items="${list}" var="list">
-						<tr>
+						<tr id="test">
 							<td><c:out value="${list.user_id}"/></td>
 							<td><c:out value="${list.user_no}"/></td>
 							<td><c:out value="${list.summoner_id}"/></td>

@@ -18,7 +18,7 @@ public class AdminController {
 	private AdminService adminService;
 	
 	@RequestMapping("/admin_page.do")
-	public String admin(Paging_VO vo, Model model
+	public String member_info(Paging_VO vo, Model model
 			, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage
 			, HttpSession session
@@ -49,5 +49,11 @@ public class AdminController {
 			System.out.println(adminService.user_list());
 		}
 		return "/admin/admin_page";
+	}
+	
+	@RequestMapping("/achievement_grant.do")
+	public String achievement_grant() {
+		
+		return "/admin/achievement_grant";
 	}
 }
