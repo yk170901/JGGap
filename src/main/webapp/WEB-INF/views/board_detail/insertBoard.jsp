@@ -33,7 +33,7 @@
 						<div class="category-wrap">
 							<div class="category-content">
 								<div class="category-title">맵 분류</div>
-								<select class="category-map" id="category-map" name="game_map" onclick="gameModeDisappear()"> 
+								<select class="category-map" id="category-map" name="game_map"> 
 									<option value="none">선택해주세요.</option>
 									<option value="소환사의 협곡">소환사의 협곡</option>
 									<option value="칼바람 나락">칼바람 나락</option>

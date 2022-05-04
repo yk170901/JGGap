@@ -27,7 +27,7 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 		return board_view_DAO.selectReplyList(post_no);
 	}
 
-	@Override
+	@Override 
 	public void insertReply(Board_view_VO_reply vo) {
 		board_view_DAO.insertReply(vo);
 	}
@@ -50,5 +50,37 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 	@Override
 	public void deleteReply(int user_re_no) {
 		board_view_DAO.deleteReply(user_re_no);
+	}
+
+	@Override
+	public void befriend(HashMap<String, String> map) {
+		board_view_DAO.insertFriendRequest(map);
+	}
+
+	@Override
+	public List<Board_view_VO_friend> getFriends(int user_no) {
+		return board_view_DAO.selectFriendsAndStatuses(user_no);
+	}
+
+	@Override
+	public void chgFriendStatus(HashMap<String, String> map) {
+		switch (map.get("action")) {
+		case "cancelBan":
+		case "deleteFriend":
+		case "cancelFriendRequest":
+			map.put("action_result", null);
+			break;
+		case "befriendAgain":
+			map.put("action_result", "대기");
+			break;
+		case "acceptFriendRequest":
+			map.put("action_result", "수락");
+			break;
+		default:
+			System.out.println("chgFriendStatus action 에러 발생");
+			break;
+		}
+		System.out.println(map);
+		board_view_DAO.updateFriendStatus(map);
 	}
 }
