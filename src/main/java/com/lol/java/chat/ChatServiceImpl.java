@@ -12,7 +12,7 @@ public class ChatServiceImpl implements ChatService{
 	ChatDAO chatDAO;
 
 	@Override
-	public List<ChatVO> user_info(ChatVO vo) {
+	public String user_info(ChatVO vo) {
 		return chatDAO.user_info(vo);
 	}
 	

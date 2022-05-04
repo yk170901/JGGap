@@ -13,8 +13,8 @@ public class ChatDAOImpl implements ChatDAO{
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public List<ChatVO> user_info(ChatVO vo) {
-		return mybatis.selectList("ChatDAO.user_info", vo);
+	public String user_info(ChatVO vo) {
+		return mybatis.selectOne("ChatDAO.user_info", vo);
 	}	
 	
 }
