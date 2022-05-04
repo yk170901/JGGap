@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>채2방2</title>
+    <title>채1방2</title>
     <meta content="Templines" name="author">
     <meta content="TeamHost" name="description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,29 +20,74 @@
 </head>
 <style>
 /* 보내는 사람 */
-.total_test_div {
-	display:inline-block;
+.total_my_div {
 	width: 100%;
 	height: auto;
 	display: flex;
 	flex-direction: row-reverse;
-    align-items: flex-end;}
+    align-items: flex-end;
+}
 
-.total_test_div::after {
+.total_you_div {
+	width: 100%;
+	height: auto;
+	display: flex;
+}
+
+.total_you_thir_div{
+	display: flex;
+	flex-direction: column;
+}
+
+.total_you_sec_div{
+	display: flex;
+}
+
+.you_img_div {
+	width: 45px;
+	height: 45px;
+	margin-right: 7px;
+	margin-top: 3px;
+}
+
+.profile_img {
+	border-radius: 30px;
+}
+
+.you_name_p {
+	margin-left: 3px;
+}
+
+
+.total_my_div::after {
 	clear: both;
 }
 
-.clock_test_div {
+.total_you_div::after {
+	clear: both;
+}
+
+.clock_my_div {
 	width: 33px;
-	float:right;
+	float: right;
 	color: black;
 	margin-bottom: 5px;
 	font-size: 12px;
-	
+}
+
+.clock_you_div {
+	display: flex;
+	width: 33px;
+	float: right;
+	color: black;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	font-size: 12px;
+	flex-direction: column-reverse;
 }
 
 
-.pTag_my{
+.message_my{
 /* 	text-align: right; */
 /* 	display:inline-block; */
 /* 	clear:both; */
@@ -62,12 +107,11 @@
 	
 }
 
-.pTag_you{
+.message_you{
 	display:inline-block;
 	clear:both;
 	float:left;
 	font-size: 15px;
-/* 	border: 1px solid black; */
 	padding: 10px 15px 10px 15px;
 	border-radius: 10px;
 	background-color: rgb(245,245,245);
@@ -171,7 +215,7 @@
                                         
                                         	<!-- 메시지 보내는 textbox -->
                                         	<input class="chat-messages-input" type="text" placeholder="메시지를 입력해주세요." id="message">
-                                        	<input type="button" id="sendBtn" value="보내기"/>
+<!--                                         	<input type="button" id="sendBtn" value="보내기"/> -->
                                         </div>
                                         <div class="chat-messages-form-btn">
                                         	<button class="ico_microphone" type="button"></button>
@@ -190,15 +234,25 @@
 <%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
 <script type="text/javascript">
-	$("#sendBtn").click(function() {
-		if($('#message').val() == ''){
-			return false;
+	// 프로필 아이콘 숫자 가져오기
+	var profile_icon = '${profile_icon}';
+	
+	$(function() {
+		$("#message").on('keydown',function(e) {
+		if(e.keyCode == 13) {
+			if($('#message').val() == ''){
+				return false;
+			}
+			sendMessage();
+			$('#message').val('');
+			
 		}
-		sendMessage();
-		$('#message').val('')
+	})
 	});
+	
 // 	let sock = new SockJS("<c:url value="/echo"/>");
-	sock = new SockJS("http://192.168.1.82:8080/chat/echo");
+	sock = new SockJS("/chat/echo");
+	
 // 	sock = new SockJS("localhost:8080/chat/echo");
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
@@ -207,63 +261,85 @@
 	// 메시지 전송
 	function sendMessage() {
 		var summoner_id = '${summoner_id}';
-		
-		sock.send(summoner_id + " : " + $("#message").val());
+		sock.send(profile_icon + " : " + summoner_id + " : " + $("#message").val());
 	}
 	
 	// 서버로부터 메시지를 받았을 때
 	function onMessage(msg) {
 		var data = msg.data;
+		
 		// 컨트롤러에서 가져온 summoner_id
-		var summoner_id = '${summoner_id}';
+		var summoner_id = '${summoner_id}';	
+		let [a, b , c]  = data.split(" : ");
+		// a - 프로필 아이콘
+		// b - 소환사 id
+		// c - 내용
 		
-		
-		
-		let [a, b]  = data.split(" : "); // :기준으로 a-소환사ID  b-내용
-
-		
+		// 메시지를 생성할 div 생성
 		let messageArea = document.getElementById('messageArea');
+				
+		// 본인이 보낼 경우 div 생성
+		let total_my = document.createElement('div');
+		let clock_my = document.createElement('div');
 		let new_pTag_my = document.createElement('div');
+		
+		// 상대가 보낼 경우 div 생성
+		let total_you = document.createElement('div');
+		let total_you_sec = document.createElement('div');
+		let you_img = document.createElement('div');
+		let you_name = document.createElement('div');
 		let new_pTag_you = document.createElement('div');
+		let clock_you = document.createElement('div');
+		let total_you_thir = document.createElement('div');
+			
+		// 현재 시간 구하기
+		var today = new Date();
+		var hours = ('0' + today.getHours()).slice(-2);
+		var minutes = ('0' + today.getMinutes()).slice(-2);
 		
-		let total = document.createElement('div');
-		let clock = document.createElement('div');
 		
-		if(summoner_id == a) {
-			// 일치
-// 			messageArea.append("꾹");
-			total.setAttribute('class', 'total_test_div');
-			clock.setAttribute('class', 'clock_test_div');
-			new_pTag_my.setAttribute('class', 'pTag_my');
+		// 조건
+		if(summoner_id == b) {
+			// 본인이 보낼경우
+			total_my.setAttribute('class', 'total_my_div'); // 토탈 div
+			clock_my.setAttribute('class', 'clock_my_div'); // 시간
+			new_pTag_my.setAttribute('class', 'message_my'); // 내용
 			
-			// 현재 시간 구하기
-			let today = new Date();
-			let hour = today.getHours();
-			let minutes = today.getMinutes()
-
-			// 현재 시간 구하기2
-			let time = today.toLocaleTimeString()
+			clock_my.innerHTML = hours + ":" + minutes;
+			new_pTag_my.innerHTML = c; // 내용 넣기
 			
-			clock.innerHTML = hour + ":" + minutes;
-			new_pTag_my.innerHTML = b;
+			messageArea.appendChild(total_my);
 			
-			messageArea.appendChild(total)
-			
-			total.appendChild(new_pTag_my);
-			total.appendChild(clock);
-			
-			alert("내 아이디 : " + a);
+			total_my.appendChild(new_pTag_my);
+			total_my.appendChild(clock_my);
 			
 		} else {
-			// 불일치
-			new_pTag_you.setAttribute('class', 'pTag_you');
-			new_pTag_you.innerHTML = data;
-			messageArea.appendChild(new_pTag_you);
+				
+			// 상대방이 보낼경우
+			total_you.setAttribute('class', 'total_you_div'); // 토탈 div
+			total_you_sec.setAttribute('class', 'total_you_sec_div'); // 이름+내용 담긴 div
+			you_img.setAttribute('class', 'you_img_div'); // 이미지 담긴 값
+			you_name.setAttribute('class', 'you_name_p'); // 이름 담긴 값
+			new_pTag_you.setAttribute('class', 'message_you'); // 내용
+			clock_you.setAttribute('class', 'clock_you_div'); // 시간
+			total_you_thir.setAttribute('class', 'total_you_thir_div'); // 시간
+
+			// a-아이디
+			// b-받은내용
+			you_img.innerHTML = "<img class='profile_img' src=/resources/imgs/profile_icon/"+a+".png>"; // 아이콘 넘버 넣기
+			you_name.innerHTML = b; // 아이디
+			new_pTag_you.innerHTML = c; // 내용 넣기
+			clock_you.innerHTML = hours + ":" + minutes;
 			
-			alert("상대방 아이디 : " + a);
+			messageArea.appendChild(total_you); // 토탈 div 생성
+			total_you.appendChild(you_img); // 아이콘 넘버
+			total_you.appendChild(total_you_thir); // 감싸는 div
+			total_you_thir.appendChild(you_name);// 아이디
+			total_you_thir.appendChild(total_you_sec); // 두번째 토탈 div
+			total_you_sec.appendChild(new_pTag_you); // 채팅 내용
+			total_you_sec.appendChild(clock_you);// 시간	
+			
 		}
-		
-		
 	}
 	
 	// 서버와 연결을 끊었을 때
