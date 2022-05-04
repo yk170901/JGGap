@@ -13,4 +13,10 @@
   		WHERE user_no = #{user_no}
   	</select>
   	
+  	<select id="header_follower" resultType="basic" parameterType="Object">
+  		SELECT follow
+  		FROM follow
+  		WHERE user_no = #{user_no}
+  	</select>
+  	
   </mapper>

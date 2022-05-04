@@ -25,4 +25,5 @@ public class RecordVO {
 		
 	// LOL_Record
 		private int record_no;
+		private String champion_name;
 }

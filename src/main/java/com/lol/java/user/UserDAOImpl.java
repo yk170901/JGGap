@@ -33,4 +33,10 @@ public class UserDAOImpl implements UserDAO{
 		
 		return mybatis.selectOne("userMapper.summonerIdCheck",summoner_id);
 	}
+
+	@Override
+	public String tier_info(int user_no) {
+		
+		return mybatis.selectOne("userMapper.tier_info", user_no);
+	}
 }

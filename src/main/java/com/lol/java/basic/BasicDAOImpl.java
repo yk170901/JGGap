@@ -16,5 +16,10 @@ public class BasicDAOImpl implements BasicDAO{
 	public BasicVO header_point(Object user_no) {
 		return mybatis.selectOne("BasicDAO.header_point", user_no);
 	}
+
+	@Override
+	public List<BasicVO> follower(Object user_no) {
+		return mybatis.selectList("BasicDAO.header_follower", user_no);
+	}
 	
 }

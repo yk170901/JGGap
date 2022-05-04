@@ -16,8 +16,33 @@
 	
 	<!-- 롤 전적 가져오기 -->
 	<select id="record_score" parameterType="record" resultType="record">
-		SELECT *
-		FROM lol_record
-		WHERE user_no=#{user_no}
+		SELECT a.*
+		FROM (
+			SELECT *
+			FROM lol_record
+			WHERE user_no=#{user_no}
+			order by record_no desc
+			) a
+		<![CDATA[where rownum <= 5]]>
 	</select>
+	
+	<!-- 전적 더보기 버튼 -->
+	<select id="record_more" parameterType="hashmap" resultType="record">
+		SELECT *
+		FROM (
+			SELECT rownum num, a.*
+			FROM (
+				SELECT *
+				FROM LOL_RECORD
+				WHERE USER_NO = #{user_no}
+				ORDER BY RECORD_NO desc 
+			) a
+		)
+		WHERE num BETWEEN #{begin_num} AND #{begin_num} +4
+	</select>
+	
+	
+	
+	
+	
 </mapper>

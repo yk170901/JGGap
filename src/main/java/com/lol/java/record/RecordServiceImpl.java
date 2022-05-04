@@ -1,5 +1,6 @@
 package com.lol.java.record;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,12 @@ public class RecordServiceImpl implements RecordService{
 	@Override
 	public List<RecordVO> record_score(RecordVO recordVO) {
 		return recordDAO.record_score(recordVO);
+	}
+	
+	// 전적 더보기 버튼
+	@Override
+	public List<RecordVO> record_more(HashMap<String, Object> record) {
+		return recordDAO.record_more(record);
 	}
 	
 }

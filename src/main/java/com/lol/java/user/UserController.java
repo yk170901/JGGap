@@ -38,7 +38,9 @@ public class UserController {
 		String encryPassword = UserSHA.encrypt(vo.getUser_pwd());
 		vo.setUser_pwd(encryPassword);
 		UserVO result = userService.idCheck_Login(vo);
+		String tier = userService.tier_info(result.getUser_no());
 		System.out.println("login 컨트롤러 호출");
+		System.out.println(tier);
 		
 		if (result == null) {
 			
@@ -52,11 +54,13 @@ public class UserController {
 			session.setAttribute("user_no", result.getUser_no());
 			session.setAttribute("summoner_id", result.getSummoner_id());
 			session.setAttribute("ban", result.getBan());
+			session.setAttribute("solo_tier", tier);
 			return "redirect:/admin/admin_page.do";
 		} else {
 			session.setAttribute("user_no", result.getUser_no());
 			session.setAttribute("summoner_id", result.getSummoner_id());
 			session.setAttribute("ban", result.getBan());
+			session.setAttribute("solo_tier", tier);
 			return "redirect:/board_list/board_list.do";
 		}
 	}

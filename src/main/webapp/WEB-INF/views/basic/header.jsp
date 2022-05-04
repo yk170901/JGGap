@@ -31,9 +31,9 @@
 	            	<div><span id="profile_summoner_id"></span></div>
 	            	<div id="profile_dropdown">
 	            		<div class="profile_point"><span class="profile_point_value" style="color: white;"></span></div>
-	            		<a href="javascript:alert('준비중입니다.');" class="profile_dropdown_list" style="color: white;">내 전적</a>
+	            		<a href="#" class="profile_dropdown_list" style="color: white;">내 전적</a>
 	            		<a href="/profile/profile.do" class="profile_dropdown_list" style="color: white;">회원정보</a>
-	            		<a href="javascript:alert('준비중입니다.');" class="profile_dropdown_list" style="color: white;">고객센터</a>
+	            		<a class="profile_dropdown_list" style="color: white;" id="CSC">고객센터</a>
 	            		<a href="/user/logout.do" class="profile_dropdown_list" style="color: white;">로그아웃</a>
 	            	</div>
 	            </div>
