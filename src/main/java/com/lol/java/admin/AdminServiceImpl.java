@@ -22,6 +22,12 @@ public class AdminServiceImpl implements AdminService{
 		
 		return adminDAO.member_count();
 	}
+
+	@Override
+	public List<String> achievement() {
+		
+		return adminDAO.achievement();
+	}
 	
 	
 	

@@ -52,7 +52,13 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/achievement_grant.do")
-	public String achievement_grant() {
+	public String achievement_grant(HttpSession session) {
+		
+		if (session.getAttribute("user_no") == null || (int)session.getAttribute("ban") != 3) {
+			return "redirect:/login.jsp";
+		}
+		
+		
 		
 		return "/admin/achievement_grant";
 	}
