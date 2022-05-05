@@ -32,11 +32,7 @@ public class Board_detail_DAOImpl implements Board_detail_DAO{
 	
 	@Override
 	public void updatePost(Board_detail_VO vo) {
-		if(vo.getUser_no() == 10028) {
-			mybatis.update("updateAdminPost", vo);
-		}else {
-			mybatis.update("updatePost", vo);
-		}
+		mybatis.update("updatePost", vo);
 	}
 	
 	@Override

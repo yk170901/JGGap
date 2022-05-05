@@ -32,17 +32,7 @@
   	<update id="updatePost" parameterType="board_detail">
   		UPDATE board
   			SET board_title = #{board_title},
-  				board_text = #{board_text},
-  				game_map = #{game_map},
-  				game_mode = #{game_mode},
-  				cru_max = #{cru_max}
-  			WHERE post_no = #{post_no}
-  	</update>
-  	
-  	  <update id="updateAdminPost" parameterType="board_detail">
-  		UPDATE board
-  			SET board_title = #{board_title},
-  				board_text = #{board_text},
+  				board_text = #{board_text}
   			WHERE post_no = #{post_no}
   	</update>
   	

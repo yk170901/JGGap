@@ -30,17 +30,11 @@ public class Board_detail_Controller {
 	public String insertPost(Board_detail_VO vo, HttpSession session) {
 
 		vo.setUser_no(Integer.parseInt(String.valueOf(session.getAttribute("user_no"))));
-
-		System.out.println("*********************");
-		System.out.println(vo.getUser_no());
 		
 		board_detail_Service.insertPost(vo);
 		
 		// 유저 번호를 사용해, 그 유저의 최신 작성글 번호 post_no 가져오기
 		int post_no = board_detail_Service.getPost_no(vo.getUser_no());
-		
-		System.out.println(post_no);
-		System.out.println("*********************");
 		
 		return "redirect:/board_view/viewBoard.do?post_no="+post_no;
 	}
@@ -53,19 +47,13 @@ public class Board_detail_Controller {
 
 	@RequestMapping("/postUpdate.do")
 	public String updateBoard(Board_detail_VO vo) {
-
-		System.out.println("PostUpdate");
-		System.out.println(vo.getPost_no());
 		board_detail_Service.updatePost(vo);
-		System.out.println(vo.getPost_no());
-		
 		return "redirect:/board_view/viewBoard.do?post_no="+vo.getPost_no();
 		
 	}
 	
 	@RequestMapping("/postDelete.do")
 	public String deleteBoard(int post_no, HttpServletResponse response) throws IOException {
-		System.out.println(post_no);
 		
 		board_detail_Service.deletePost(post_no);
 		

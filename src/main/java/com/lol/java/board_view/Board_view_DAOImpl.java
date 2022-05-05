@@ -34,32 +34,46 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	// 댓글 리스트 보기
 	@Override
 	public List<Board_view_VO_reply> selectReplyList(int post_no) {
-		// 댓글의 정보, 댓글쓴이의 정보를 가져올 것. 여러 사람이 댓글을 달 수 있기에 List의 형태로 줌.
 		return mybatis.selectList("Board_view_DAO.selectReplyList",post_no);
-	}
-	
-	// 댓글 채택
-	@Override
-	public void insertChosenUser(HashMap<String, Integer> map) {
-		mybatis.update("increaseCruPre", map.get("writer_no"));
-		mybatis.insert("insertChosenUser", map);
 	}
 
 	@Override
+	public int selectReplyAmount(int post_no) {
+		return mybatis.selectOne("Board_view_DAO.selectReplyAmount",post_no);
+	}
+	
+	// 채택
+	@Override
+	public void insertChosenUser(HashMap<String, Integer> map) {
+		mybatis.insert("insertChosenUser", map);
+	}
+	
+	// 채택 취소
+	@Override
 	public void deleteChosenUser(HashMap<String, Integer> map) {
-		mybatis.update("decreaseCruPre", map.get("writer_no"));
 		mybatis.delete("deleteChosenUser", map);
+	}
+
+	@Override
+	public void deleteReply(int user_re_no) {
+		mybatis.delete("deleteReply", user_re_no);
+	}
+
+	@Override
+	public void increaseCruPre(int writer_no) {
+		mybatis.update("increaseCruPre", writer_no);
+		
+	}
+
+	@Override
+	public void decreaseCruPre(int writer_no) {
+		mybatis.update("decreaseCruPre", writer_no);
 		
 	}
 
 	@Override
 	public void insertReport(HashMap<String, String> map) {
 		mybatis.insert("insertReport", map);
-	}
-
-	@Override
-	public void deleteReply(int user_re_no) {
-		mybatis.delete("deleteReply", user_re_no);
 	}
 
 	@Override
@@ -77,4 +91,5 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	public void updateFriendStatus(HashMap<String, String> map) {
 		mybatis.update("Board_view_DAO.updateFriendStatus", map);
 	}
+
 }
