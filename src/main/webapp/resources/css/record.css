@@ -185,7 +185,7 @@ hr{
 .summoner-stats-tier-detail {
 	padding-left: 15px;
 	text-align: left;
-	width: 110px;
+	width: 130px;
 	color: black;
 }
 
@@ -199,6 +199,11 @@ hr{
 
 .summoner-stats-lp-text {
 	font-size: 12px;
+}
+
+.summoner-no-data {
+	text-align: center;
+    margin: 35% 0%;
 }
 
 .doughnut-title {

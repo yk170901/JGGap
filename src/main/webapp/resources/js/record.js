@@ -283,17 +283,38 @@ content += '				</div>'
 			data: { user_no: user_no },
 			dataType: "json",
 			success: function(data) {
-
-				kills_late = Math.round((data.chart[0].kills+data.chart[0].assists) / data.chart[0].team_total_kills * 100 );
 				
+				console.log(data.chart[0].team_total_kills)
+				
+				if(data.chart[0].team_total_kills == 0) {
+					var content = '<div class="summoner-no-data"> 데이터가 없습니다.</div>'
 					
-					$('.doughnut-title')[0].innerHTML = (data.chart[0].win_cnt +data.chart[0].lose_cnt)  + '전 ' + data.chart[0].win_cnt + '승 ' + (data.chart[0].lose_cnt) + '패';
-					$('.doughnut-k-d-a')[0].innerHTML = '<span>'+Math.round(data.chart[0].kills/(data.chart[0].win_cnt +data.chart[0].lose_cnt) * 10) / 10+'</span> / <span class="stat-d">'+Math.round(data.chart[0].deaths/(data.chart[0].win_cnt +data.chart[0].lose_cnt) * 10) / 10+'</span> / <span>'+Math.round(data.chart[0].assists/(data.chart[0].win_cnt +data.chart[0].lose_cnt) * 10) / 10+'</span>'
-					$('.doughnut-ratio')[0].innerHTML = '<span>' + (Math.round((data.chart[0].kills + data.chart[0].assists) / data.chart[0].deaths * 10) / 10) + ' : 1</span> <span class="stat-stats-kill">('+kills_late+'%)</span>'
-					doughnut_chart((data.chart[0].win_cnt +data.chart[0].lose_cnt), data.chart[0].win_cnt)
+					$('.summoner-stats-doughnut').append(content);
+					$('.summoner-stats-champion').append(content);
+					$('.summoner-stats-position').append(content);
+					return;
+				}
+				if(data.lane_rate)
+				
+				var content =""
+				
+				kills_late = Math.round((data.chart[0].kills+data.chart[0].assists) / data.chart[0].team_total_kills * 100 );
 					
-					record_champion_rate(data.champion_rate);
-					record_lane_rate(data.lane_rate);
+				content += ' <div class="doughnut-title">'+(data.chart[0].win_cnt +data.chart[0].lose_cnt)+'전 ' + data.chart[0].win_cnt + '승 ' + (data.chart[0].lose_cnt) + '패</div>'
+				content += ' 	<div class="doughnut-body">'
+				content += ' 		<canvas id="doughnut-chart" width="100" height="100">+ </canvas>'
+				content += ' 	</div>'
+				content += ' 	<div class="doughnut-kda">'
+				content += ' 		<div class="doughnut-k-d-a"><span>'+Math.round(data.chart[0].kills/(data.chart[0].win_cnt +data.chart[0].lose_cnt) * 10) / 10+'</span> / <span class="stat-d">'+Math.round(data.chart[0].deaths/(data.chart[0].win_cnt +data.chart[0].lose_cnt) * 10) / 10+'</span> / <span>'+Math.round(data.chart[0].assists/(data.chart[0].win_cnt +data.chart[0].lose_cnt) * 10) / 10+'</span></div>'
+				content += ' 		<div class="doughnut-ratio"><span>' + (Math.round((data.chart[0].kills + data.chart[0].assists) / data.chart[0].deaths * 10) / 10) + ' : 1</span> <span class="stat-stats-kill">('+kills_late+'%)</span></div>'
+				content += ' 	</div>'
+					
+				$('.summoner-stats-doughnut').append(content);
+				
+				doughnut_chart((data.chart[0].win_cnt +data.chart[0].lose_cnt), data.chart[0].win_cnt)
+					
+				record_champion_rate(data.champion_rate);
+				record_lane_rate(data.lane_rate);
 					
 					
 					
@@ -333,22 +354,22 @@ content += '				</div>'
 	// 챔피언별 승률
 	function record_champion_rate(data) {
 		
-		var content = "";
+		var content = '<div class="stats-champions">';
 		for(var i = 0; i< data.length;i++) {
 			if(i == 3) {
-				$('.stats-champions').append(content);
+				content+='</div>'
+				$('.summoner-stats-champion').append(content);
 				return;
 			}
 			
-			
-			content+='<div class="stats-champion-body">';
-			content+='	<div class="stats-champion-imgs"><img class="stats-champion-img" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+data[i].champion_name+'.png"></div>';
-			content+='	<div class="stats-champion-info">';
-			content+='		<div class="stats-champion-name">'+data[i].champion_name+'</div>';
-			content+='		<div class="stats-champion-win-rate"><span>' + Math.round(data[i].win_cnt / data[i].champion_cnt * 100)+'%</span><span> ('+data[i].win_cnt+'승 '+(data[i].champion_cnt - data[i].win_cnt)+'패)</span></div>';
-			content+='		<div class="stats-champion-kda">'+Math.round((data[i].kills +data[i].assists) / data[i].deaths * 10) / 10 +' 평점</div>';
+			content+='	<div class="stats-champion-body">';
+			content+='		<div class="stats-champion-imgs"><img class="stats-champion-img" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+data[i].champion_name+'.png"></div>';
+			content+='		<div class="stats-champion-info">';
+			content+='			<div class="stats-champion-name">'+data[i].champion_name+'</div>';
+			content+='			<div class="stats-champion-win-rate"><span>' + Math.round(data[i].win_cnt / data[i].champion_cnt * 100)+'%</span><span> ('+data[i].win_cnt+'승 '+(data[i].champion_cnt - data[i].win_cnt)+'패)</span></div>';
+			content+='			<div class="stats-champion-kda">'+Math.round((data[i].kills +data[i].assists) / data[i].deaths * 10) / 10 +' 평점</div>';
+			content+='		</div>';
 			content+='	</div>';
-			content+='</div>';
 
 			
 			
@@ -360,28 +381,53 @@ content += '				</div>'
 	// 라인별 승률
 	function record_lane_rate(data) {
 		
+		if (data=='') {
+			$('.summoner-stats-position').append('<div class="summoner-no-data"> 데이터가 없습니다.</div>');
+			return;
+		}
+		
 		var total = 0;
-		var content = "";
+		var content = '<div class="stats-positions">';
+		var lane = "";
 		for(var lane in data) {
 			total += data[lane].lane_cnt;
 		}
+		
 
 		for(var i = 0; i< data.length;i++) {
 			if(i == 2) {
-				$('.stats-positions').append(content);
+				content+='</div>'
+				$('.summoner-stats-position').append(content);
 				return;
 			}
+			switch (data[i].lane) {
+				case 'Top':
+					lane = "탑";
+					break;
+				case 'Jungle':
+					lane = "정글"
+					break;
+				case 'Mid':
+					lane = "미드"
+					break;
+				case 'Bot':
+					lane = "원딜"
+					break;
+				case 'Support':
+					lane = "서포터"
+					break;
+					
+			}
 			
-			content+='<div class="stats-position-body">'
-			content+='	<div class="stats-position-imgs"><img class="stats-position-img" src="/resources/imgs/position/'+data[i].lane+'.png"></div>'
-			content+='	<div class="stats-position-info">'
-			content+='		<div class="stats-position-name">'+data[i].lane+'</div>'
-			content+='		<div class="stats-position-pick-rate"><span>'+Math.round(data[i].lane_cnt / total * 100)+'%</span></div>'
-			content+='		<div class="stats-position-win-rates">승률 '+Math.round(data[i].win_cnt / data[i].lane_cnt * 100)+'%</div>'
+			content+='	<div class="stats-position-body">'
+			content+='		<div class="stats-position-imgs"><img class="stats-position-img" src="/resources/imgs/position/'+data[i].lane+'.png"></div>'
+			content+='		<div class="stats-position-info">'
+			content+='			<div class="stats-position-name">'+lane+'</div>'
+			content+='			<div class="stats-position-pick-rate"><span>'+Math.round(data[i].lane_cnt / total * 100)+'%</span></div>'
+			content+='			<div class="stats-position-win-rates">승률 '+Math.round(data[i].win_cnt / data[i].lane_cnt * 100)+'%</div>'
+			content+='		</div>'
 			content+='	</div>'
-			content+='</div>'
 		
-			console.log(content)
 	}
 
 

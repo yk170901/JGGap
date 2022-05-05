@@ -70,7 +70,8 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     width: 1160px;
-    margin-left: 300px;
+    margin-left: 250px;
+    padding-left: 50px;
 }
 
 .page-body {

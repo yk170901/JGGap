@@ -35,7 +35,9 @@
 						<div class="summoner-stats-tier-detail">
 							<div class="summoner-stats-rank-text">솔로 랭크</div>
 							<div class="summoner-stats-tier-text">${record.solo_tier } ${record.solo_tier_grade }</div>
-							<div class="summoner-stats-lp-text">${record.solo_lp } LP / ${record.solo_win }승 ${record.solo_lose }패</div>
+							<c:if test="${record.solo_tier != 'unranked'}">
+								<div class="summoner-stats-lp-text">${record.solo_lp } LP / ${record.solo_win }승 ${record.solo_lose }패</div>
+							</c:if>
 						</div>
 					</div>
 					<div class="summoner-stats-tier-free">
@@ -45,30 +47,20 @@
 						<div class="summoner-stats-tier-detail">
 							<div class="summoner-stats-rank-text">자유 랭크</div>
 							<div class="summoner-stats-tier-text">${record.free_tier } ${record.free_tier_grade }</div>
-							<div class="summoner-stats-lp-text">${record.free_lp } LP / ${record.free_win }승 ${record.free_lose }패</div>
+							<c:if test="${record.solo_tier != 'unranked'}">
+								<div class="summoner-stats-lp-text">${record.free_lp } LP / ${record.free_win }승 ${record.free_lose }패</div>	
+							</c:if>
 						</div>
 					</div>
 				</div>
 				<div class="summoner-stats-doughnut">
-					<div class="doughnut-title"></div>
-					<div class="doughnut-body">
-						<canvas id="doughnut-chart" width="100" height="100"></canvas>
-					</div>
-					<div class="doughnut-kda">
-						<div class="doughnut-k-d-a"></div>
-						<div class="doughnut-ratio"></div>
-					</div>
 
 				</div>
 				<div class="summoner-stats-champion">
-					<div class="stats-champions">
-						
-					</div>
+					
 				</div>
 				<div class="summoner-stats-position">
-					<div class="stats-positions">
-						
-					</div>
+					
 				</div>
 			</div >
 			
