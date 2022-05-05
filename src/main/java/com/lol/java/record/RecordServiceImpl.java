@@ -29,5 +29,24 @@ public class RecordServiceImpl implements RecordService{
 	public List<RecordVO> record_more(HashMap<String, Object> record) {
 		return recordDAO.record_more(record);
 	}
+
+	// 시각화를 위한 데이터 가져오기
+	// 20판 전체승률
+	@Override
+	public List<RecordVO> record_chart(int user_no) {
+		return recordDAO.record_chart(user_no);
+	}
+
+	// 20판 챔피언별승률
+	@Override
+	public List<RecordVO> record_champion_rate(int user_no) {
+		return recordDAO.record_champion_rate(user_no);
+	}
+
+	// 20판 라인별승률
+	@Override
+	public List<RecordVO> record_lane_rate(int user_no) {
+		return recordDAO.record_lane_rate(user_no);
+	}
 	
 }

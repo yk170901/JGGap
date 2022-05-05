@@ -79,13 +79,19 @@ body {
 }
 
 .summoner-info-body,
-.summoner-stats-body,
 .summoner-record-body {
 	padding: 10px 10px;
     border-radius: 10px;
     margin-top: 30px;
     align-items: center;
     justify-content: space-between;
+    background: rgb(224, 224 ,224);
+}
+.summoner-stats-body {
+	padding: 10px 10px;
+    border-radius: 10px;
+    margin-top: 30px;
+    align-items: center;
     background: rgb(224, 224 ,224);
 }
 
@@ -149,18 +155,21 @@ hr{
 }
 
 .summoner-stats-body > div {
-	background: skyblue;
-	width: 280px;
-	margin: 0px 5px;
+	width: 25%;
+	margin: 0px;
 	padding: 0px 5px;
 	height: 220px;
+	border: 1px solid darkgray;
+}
+
+.summoner-stats-tier{
+	border-left: 1px solid darkgray;
 }
 
 .summoner-stats-tier-solo,
 .summoner-stats-tier-free {
 	width:245px;
 	margin: 6.5px 5px;
-	background: purple;
 	height: 100px;
 	display: flex;
     align-items: center;
@@ -174,21 +183,132 @@ hr{
 }
 
 .summoner-stats-tier-detail {
+	padding-left: 15px;
 	text-align: left;
-	color:white;
-	width: 110px;
+	width: 130px;
+	color: black;
 }
 
 .summoner-stats-rank-text {
-	font-size: 12px;
+	font-size: 13px;
 }
 .summoner-stats-tier-text {
 	margin-top: 5px;
-	font-size: 16px;
+	font-size: 17px;
 }
 
 .summoner-stats-lp-text {
 	font-size: 12px;
+}
+
+.summoner-no-data {
+	text-align: center;
+    margin: 35% 0%;
+}
+
+.doughnut-title {
+	height: 75px;
+	padding: 28px 0px 14px 0px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.doughnut-body {
+	padding-left: 14px;
+	width: 120px;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.doughnut-kda {
+	padding-top: 20px;
+	width: 135px;
+	height: 100px;
+	display:inline-block;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.doughnut-k-d-a {
+	height: 12px;
+	font-size: 12px;
+}
+.doughnut-ratio {
+	margin-top: 5px;
+	height: 20px;
+	font-size: 20px;
+}
+
+.stats-champions,
+.stats-positions {
+	margin: 15px 0px 15px 10px;
+	width: 95%;
+	height: 90%;
+}
+.stats-positions {
+	align-items: center;
+	display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+.stats-champion-body,
+.stats-position-body {
+	width: 100%;
+	height: 30%;
+	margin-bottom:3%;
+	display: flex;
+	align-items: center;
+}
+
+.stats-champion-imgs,
+.stats-position-imgs {
+	width: 20%;
+	height: 100%;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.stats-champion-img,
+.stats-position-img {
+	border-radius: 50%;
+}
+.stats-champion-info,
+.stats-position-info {
+	width: 75%;
+	margin-left: 5%;
+	height: 90%;
+}
+
+.stats-champion-name,
+.stats-position-name {
+	height:45%;
+	display:block;
+}
+
+.stats-champion-win-rate {
+	width:50%;
+	height:45%;
+	font-size: 14px;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.stats-position-pick-rate {
+	width:15%;
+	height:45%;
+	font-size: 14px;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.stats-champion-kda,
+.stats-position-win-rates {
+	margin-left:5%;
+	width:40%;
+	height: 45%;
+	font-size: 14px;
+	display:inline-block;
+	vertical-align: middle;
 }
 
 .summoner-record {
@@ -201,12 +321,9 @@ hr{
 }
 
 .summoner-record-more {
-	background: blue;
+	background: white;
 }
 
-.summoner-record-hide {
-	background: orange;
-}
 
 .record-lose {
 	background: #fef9f9;
@@ -384,12 +501,12 @@ hr{
 
 .multikill-double {
 	color: white;
-	background: 1px solid rgb(35,206,111);
+	background: rgb(35,206,111);
 }
 
 .multikill-triple {
 	color: white;
-	background: 1px solid rgb(83,131,232);
+	background: rgb(83,131,232);
 }
 
 .multikill-quadra {
@@ -459,7 +576,7 @@ hr{
 
 .ward-cnt {
 	position: absolute;
-	font-size: 6px;
+	font-size: 8px;
 	background: rgba(0,0,0,.4);
 	color: white;
 	bottom: 0;
@@ -506,14 +623,17 @@ hr{
 	display: inline-block;
 	position: relative;
 	vertical-align: top;
+	
 }
 
 .summoner-name > a {
+	display:block;
 	font-size: 12px;
-	white-space:nowrap;
-	overflow:hidden;
-	vertical-align: top;
 	color: darkgrey;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	
 	
 }
 
