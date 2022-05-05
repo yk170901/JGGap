@@ -51,7 +51,7 @@
 							</div>
 							
 							<div class="category-content">
-								<div class="category-title">모집인원</div>
+								<div class="category-title">플레이 인원</div>
 								<select class="category-cru-max" id="category-cru-max" name="cru_max">
 									<option value="none">선택해주세요.</option>
 									<option value="2">2</option>

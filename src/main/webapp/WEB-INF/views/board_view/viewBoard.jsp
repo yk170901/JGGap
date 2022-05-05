@@ -39,25 +39,100 @@
 					<c:if test="${board.writer.user_no != 10028}">
 					
 						<div class="user-info writer-info">
-							<div class="user-info"><img src="../resources/imgs/tier/${board.writer.solo_tier }.png" id="tier-img"></div>
+							<div class="user-info">
+								<c:if test="${board.game_mode == '일반' or board.game_mode == '솔로 랭크' or board.game_map == '칼바람 나락'}">
+									<img src="../resources/imgs/tier/${board.writer.solo_tier}.png" class="tier-img">
+								</c:if>
+								
+								<c:if test="${board.game_mode == '자유 랭크'}">
+									<img src="../resources/imgs/tier/${board.writer.free_tier}.png" class="tier-img">
+								</c:if>					
+							</div>
 							<span class="writer-info-separator">|</span>
 							<div class="user-info"><c:out value="${fn:toUpperCase(board.writer.solo_tier) } ${board.writer.solo_tier_grade }" /></div>
 							
 							<span class="writer-info-separator">|</span>
-							<div class="user-info"><c:out value="${board.writer.site_level }" />&nbsp;</div>
+							<div class="user-info"><img src="../resources/imgs/level_icon/${board.writer.site_level}.gif">&emsp;</div>
 							<div class="user-info"><c:out value="${board.writer.summoner_id }" /></div>
 							<span class="writer-info-separator">|</span>
 							<div class="user-info"><c:out value="${board.writer.honor_rate }" /></div>
 							
 						    <c:if test="${sessionScope.user_no != board.writer.user_no}">
-								<button class="befriend" value="${board.writer.user_no }">친구 추가</button>
+						    
+						    	<c:set var="loopOver" value="false"/>
+								<c:forEach var="friend" items="${friends}">
+								
+							     <%-- loopOver가 반대가 되면 break --%>
+							     	<c:if test="${not loopOver}">
+							       	 	<c:choose>
+							       	 		<%-- 내가 상대에게 최초로 친추를 했을 때 --%>
+								          	<c:when test="${friend.friend eq board.writer.summoner_id}">
+								          		<c:choose>
+										        	<c:when test="${friend.status =='수락'}">
+														<button class="friend-btn chg-friend-status" action="deleteFriend" value="${board.writer.summoner_id}">친구 삭제</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+										        	<c:when test="${friend.status =='차단'}">
+														<button class="friend-btn falseBefriend" onclick="alert('친구 신청이 완료되었습니다.')">친구 추가</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+										        	<c:when test="${friend.status =='대기'}">
+														<button class="friend-btn chg-friend-status" action="cancelFriendRequest" value="${board.writer.summoner_id}">대기 중</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+										        	<c:when test="${friend.status =='거절'}">
+														<button class="friend-btn chg-friend-status" action="befriendAgain" value="${board.writer.summoner_id}">친구 추가</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+										        	<c:when test="${empty friend.status}">
+														<button class="friend-btn chg-friend-status" action="befriendAgain" value="${board.writer.summoner_id}">친구 추가</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+										        </c:choose>
+								           	</c:when>
+								           	
+							       	 		<%-- 상대가 내게 최초로 친추를 했을 때 --%>
+								           	<c:when test="${friend.user_no eq board.writer.user_no}">
+								          		<c:choose>
+										        	<c:when test="${friend.status =='수락'}">
+														<button class="friend-btn chg-friend-status" action="deleteFriend" value="${board.writer.user_no }">친구 삭제</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+								           			<%--내가 상대를 차단함 --%>
+										        	<c:when test="${friend.status =='차단'}">
+														<button class="friend-btn chg-friend-status" action="cancelBan" value="${board.writer.user_no }">차단 풀기</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+										        	<c:when test="${friend.status =='대기'}">
+														<button class="friend-btn chg-friend-status" action="acceptFriendRequest" value="${board.writer.user_no}">친구 수락</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+										        	<c:when test="${friend.status =='거절'}">
+														<button class="friend-btn chg-friend-status" action="befriendAgain" value="${board.writer.user_no }">친구 추가</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+										        	<c:when test="${empty friend.status}">
+														<button class="friend-btn chg-friend-status" action="befriendAgain" value="${board.writer.user_no}">친구 추가</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+										        </c:choose>
+								           	</c:when>
+							       		</c:choose>	
+							    	</c:if>    	
+								</c:forEach>
+						    	
+				       	 		<%-- 친추한 적이 없거나 친구삭제/차단해제 등을 해서 무관한 관계가 되었을 때 --%>
+						     	<c:if test="${not loopOver}">
+									<button class="friend-btn befriend" value="${board.writer.summoner_id }">친구 추가</button>
+						     	</c:if>
 							</c:if>
 						</div>
 						
 						<div class="post-info">
 							<div class="post-info">맵 분류 : <span class="post-info-detail"><c:out value="${board.game_map }" /></span></div>
 							<div class="post-info">게임 분류 : <span class="post-info-detail"><c:out value="${board.game_mode }" /></span></div>
-							<div class="post-info">모집인원 : <span class="post-info-detail"><c:out value="${board.cru_pre } / ${board.cru_max }" /></span></div>
+							<div class="post-info">플레이 인원 : <span class="post-info-detail"><c:out value="${board.cru_pre } / ${board.cru_max }" /></span></div>
+							<input type="hidden" id="cru-max" value=" ${board.cru_max }">
 							<div class="post-info">작성날짜 : <c:out value="${board.board_date }" /></div>
 							<c:if test="${sessionScope.user_no != board.writer.user_no }">
 								<button class="report-btn" value="${board.writer.user_no }">신고</button>
@@ -97,18 +172,26 @@
 		<c:if test="${board.writer.user_no != 10028}">
 			<hr>
 			<div class="reply_wrap">
-				<div id="reply-header"><img src="../resources/imgs/post_detail/message.png" id="message-img">댓글 <c:out value="${board_view_reply.reply_count }" /></div>
+				<div id="reply-header"><img src="../resources/imgs/post_detail/message.png" id="message-img">댓글 <c:out value="${board.reply_amount }" /></div>
 				<div id="reply-content">
 					<c:forEach var="reply" items="${reply}">
 						<div class="reply-content-repeat">
 							<input class="user_re_no" value=${reply.user_no }>
 							<div class="user-info">
 								
-								<div class="user-info"><img src="../resources/imgs/tier/${reply.replier.solo_tier }.png" id="tier-img"></div>
+								<div class="user-info">
+									<c:if test="${board.game_mode == '일반' or board.game_mode == '솔로 랭크' or board.game_map == '칼바람 나락'}">
+										<img src="../resources/imgs/tier/${reply.replier.solo_tier}.png" class="tier-img">
+									</c:if>
+									
+									<c:if test="${board.game_mode == '자유 랭크'}">
+										<img src="../resources/imgs/tier/${reply.replier.free_tier}.png" class="tier-img">
+									</c:if>
+								</div>
 								<span class="replier-info-separator">|</span>
 								<div class="user-info">&nbsp;<c:out value="${fn:toUpperCase(reply.replier.solo_tier) } ${reply.replier.solo_tier_grade }" /></div>
 								<span class="replier-info-separator">|</span>
-								<div class="user-info">${reply.replier.site_level }&emsp;</div>
+								<div class="user-info"><img src="../resources/imgs/level_icon/${reply.replier.site_level}.gif">&emsp;</div>
 								<div class="user-info">${reply.replier.summoner_id }</div>
 								<span class="replier-info-separator">|</span>
 								<div class="user-info">${reply.replier.honor_rate }</div>

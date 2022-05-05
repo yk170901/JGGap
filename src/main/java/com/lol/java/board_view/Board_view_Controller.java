@@ -29,6 +29,11 @@ public class Board_view_Controller {
 	@RequestMapping("/viewBoard.do")
 	public void viewBoard(Board_view_VO board_vo, Board_view_VO_reply reply_vo, Model model, HttpSession session) {
 
+		/*
+		 * if (session.getAttribute("user_no") == null) { return "redirect:/login.jsp";
+		 * }
+		 */
+		
 		int post_no = board_vo.getPost_no();
 		
 		// 글 & 글쓴이 보여주는 메소드
@@ -49,7 +54,7 @@ public class Board_view_Controller {
 	@RequestMapping("/insertReply.do")
 	public String insertReply(Board_view_VO_reply reply_vo, HttpSession session, Model model){
 		
-		reply_vo.setUser_no(Integer.parseInt(String.valueOf(session.getAttribute("user_no"))));
+		reply_vo.setUser_no((int)session.getAttribute("user_no"));
 		
 		// 댓글 넣기 
 		board_view_Service.insertReply(reply_vo);
@@ -87,7 +92,6 @@ public class Board_view_Controller {
 	@ResponseBody
 	@RequestMapping("/submitReport.do")
 	public void submitReport(String report_title, String report_content, String report_target, String post_no, HttpSession session) {
-		System.out.println("submitReport 들어옴"+(int)session.getAttribute("user_no")+""+report_title+" " + report_content + " " + report_target + " " + post_no);
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		

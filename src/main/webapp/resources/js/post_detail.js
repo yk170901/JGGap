@@ -115,7 +115,7 @@ $('#submitReport').on("click", function() {
 
 // 문제
 $('.delete-reply').on("click", function() {
-			
+
 	$.ajax({
 		url:'/board_view/deleteReply.do',
 		type : "POST",
@@ -128,24 +128,6 @@ $('.delete-reply').on("click", function() {
 	// 이거 부분 눈속임 hidden으로 바꿀까
 	window.location.reload();
 });
-
-// 수정 페이지 로드 될 때 자동 실행 함수
-function get_chosen_options(){
-	
-	/* 유저가 일전에 입력했던 값 */
-	var game_map_chosen = document.getElementById("game-map-chosen").value;
-	var game_mode_chosen = document.getElementById("game-mode-chosen").value;
-	var cru_max_chosen = document.getElementById("cru-max-chosen").value;
-	
-	var map = document.getElementById('category-map');
-	var game = document.getElementById('category-game');
-	var cru_max = document.getElementById('category-cru-max');
-	
-	map.value = game_map_chosen;
-	game.value = game_mode_chosen;
-	cru_max.value = cru_max_chosen;
-};
-
 
 function checkValidation(){
 	var title = document.getElementById('title').value;
@@ -202,7 +184,10 @@ function cancelPostInsert(){
 // 채택 버튼 눌렀을 때
 $(function() { 
 	$('.choose-user').on("click", function() {
-		
+		if(!canChooseMore()){
+			alert('이미 모집된 인원이 플레이 인원을 충족하였습니다.')
+			return;
+		}
 		var post_no = document.getElementById('post-no').value;
 		var writer_no = document.getElementById('writer-no').value;
 		var reply_user_no = $(this).children().attr('value'); // 댓글 단 유저 user_no
@@ -267,6 +252,15 @@ function deleteChosenUser(reply_user_no){
 	
 }
 
+function canChooseMore() {
+	//ajax로 올라가는 chosen-users를 선택하는 게, 새로 고침해야 오르는 cru-pre보다 낫다
+	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
+	
+	if((chosen_user_no + 1) >= document.getElementById('cru-max').value){
+		document.querySelector('.choose-user').setAttribute('disabled','');
+		return false;
+	}
+}
 
 function checkChosenUsers(){
 	
@@ -297,11 +291,13 @@ function checkReplyValidation(){
 		}
 	}
 	
+	// 중복 작성 방지
+	document.querySelector('.submit-reply').setAttribute('disabled','');	
 }
-
 
 // 로드 시 실행.
 // 이후 viewBoard.jsp만을 위한 js를 만들어 따로 분리시키기.
 window.onload = function() {
-	checkChosenUsers()
+	checkChosenUsers();
+	canChooseMore();
 }
