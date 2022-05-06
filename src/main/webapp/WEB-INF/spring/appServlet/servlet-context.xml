@@ -25,15 +25,42 @@
 	
 	<context:component-scan base-package="com.lol.java" />
 	
+	<!-- 1번 -->
 	<websocket:handlers>
-		<websocket:mapping handler="echoHandler" path="/chat/echo" />
+		<websocket:mapping handler="echoHandler1" path="/chat/echo1" />
 		<websocket:handshake-interceptors>
 			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
 		</websocket:handshake-interceptors>
 		<websocket:sockjs/>
 	</websocket:handlers>
     
-	<beans:bean id="echoHandler" class="com.lol.java.chat.EchoHandler">
+	<beans:bean id="echoHandler1" class="com.lol.java.chat.EchoHandler1">
+	
+	</beans:bean>
+	
+	<!-- 2번 -->
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler2" path="/chat/echo2" />
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+		<websocket:sockjs/>
+	</websocket:handlers>
+    
+	<beans:bean id="echoHandler2" class="com.lol.java.chat.EchoHandler2">
+	
+	</beans:bean>
+	
+	<!-- 3번 -->
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler3" path="/chat/echo3" />
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
+		<websocket:sockjs/>
+	</websocket:handlers>
+    
+	<beans:bean id="echoHandler3" class="com.lol.java.chat.EchoHandler3">
 	
 	</beans:bean>
 	
