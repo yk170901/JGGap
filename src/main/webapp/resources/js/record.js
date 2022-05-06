@@ -365,7 +365,7 @@ content += '				</div>'
 			content+='	<div class="stats-champion-body">';
 			content+='		<div class="stats-champion-imgs"><img class="stats-champion-img" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+data[i].champion_name+'.png"></div>';
 			content+='		<div class="stats-champion-info">';
-			content+='			<div class="stats-champion-name">'+data[i].champion_name+'</div>';
+			content+='			<div class="stats-champion-name">'+data[i].champion_name_KR+'</div>';
 			content+='			<div class="stats-champion-win-rate"><span>' + Math.round(data[i].win_cnt / data[i].champion_cnt * 100)+'%</span><span> ('+data[i].win_cnt+'승 '+(data[i].champion_cnt - data[i].win_cnt)+'패)</span></div>';
 			content+='			<div class="stats-champion-kda">'+Math.round((data[i].kills +data[i].assists) / data[i].deaths * 10) / 10 +' 평점</div>';
 			content+='		</div>';

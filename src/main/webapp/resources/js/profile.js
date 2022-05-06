@@ -271,9 +271,86 @@ $(function() {
 			alert("에러" + err)
 		}
 
+		})
+		
 	})
 		
+	
+		
+	// 친구 신청
+	$('.friends_check').on("click", function() { 
+		var friend_user_no = $(this).children('img').attr('value');
+		var friend_summoner_name = $(this).prev().children('a').text();
+		var status = "";
+		var friend_arr = [];
+		
+		
+		
+		Swal.fire({
+			title: friend_summoner_name + " 님의 친구 신청을 수락하시겠습니까?",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#F46119',
+			cancelButtonColor: 'lightgray',
+			confirmButtonText: '수락',
+			cancelButtonText: '거절'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				status = '친구'
+				friend_arr = [friend_user_no,friend_summoner_name,status]
+				friend_status(friend_arr)
+			}
+			else if (result.isDismissed) {
+				Swal.fire({
+					title: friend_summoner_name + " 님을 차단하시겠습니까?",
+					icon: 'warning',
+					showCancelButton: true,
+					confirmButtonColor: '#F46119',
+					cancelButtonColor: 'lightgray',
+					confirmButtonText: '차단',
+					cancelButtonText: '취소'
+				}).then((result) => {
+					if (result.isConfirmed) {
+						status = '차단'
+						friend_arr = [friend_user_no,friend_summoner_name,status]
+						friend_status(friend_arr)
+					}
+					else if (result.isDismissed) {
+						status = "취소"
+						friend_arr = [friend_user_no,friend_summoner_name,status]
+						friend_status(friend_arr)
+					}
+
+				})
+			}
+			// 이프문 끝
 		})
+
+		
+	})
+	
+	// 친구 신청
+	function friend_status(friend_arr) {
+		$.ajax({
+		url: "/profile/friend_status.do",
+		type: "post",
+		data: { friend_user_no:friend_arr[0],
+				friend_summoner_name:friend_arr[1],
+				status:friend_arr[2]
+		},
+		dataType: "text",
+		success: function(data) {
+			alert('성공')
+		},
+		error: function(err) {
+			alert("에러" + err)
+		}
+
+	})
+	}
+	
+	
+	
 	
 	
 })

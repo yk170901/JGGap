@@ -38,6 +38,57 @@
 						<span class="profile-button-text">전적 보기</span></a>
 				</div>
 			</div>
+			<!-- 친구 신청 목록 -->
+			<c:set var="friends" value="${profile_friend }" />
+			<c:if test="${friends != '[]' }">
+			<div class="friends-box">
+				<div class="friends-head">
+					<h2 class="friends-title">친구 신청 목록</h2>
+				</div>
+				<div class="friends-body">
+						<c:set var="i" value="0" />
+						<c:set var="j" value="2" />
+						<table border=1 class="friends-list">
+							<c:choose>
+								<c:when test="${friends != null}">
+									<c:forEach items="${friends}" var="friends" varStatus="friends_index">
+									<c:if test="${i%j == 0}">
+										<tr>
+									</c:if>
+									<td class="td-line td-profile-icon"><img class="friends-profile-icon"src="/resources/imgs/profile_icon/${friends.profile_icon }.png" alt="profile_icon"></td>
+									<td class="td-line td-honorrate">${friends.honor_rate } / 5.0</td>
+									<td class="td-line td-summonerid"><img class="friends-level" src="/resources/imgs/level_icon/${friends.site_level }.gif" alt="level"> <a class="choice-record" href="/record/record.do?user_no=${friends.user_no}">${friends.friend}</a></td>
+									<td class="td-line td-checked friends_check"><img src="../resources/imgs/post_detail/checked.png" value="${friends.user_no }"></td>
+									<td class="td-empty"></td>
+									<c:if test="${i%j == j-1}">
+										</tr>
+									</c:if>
+									<c:if test="${friends_index.last }">
+										<c:if test="${i%j != j-1}">
+										<td class="td-profile-icon"></td>
+										<td class="td-honorrate"></td>
+										<td class="td-summonerid"></td>
+										<td class="td-checked friends_check"></td>
+										<td class="td-empty"></td>
+										</c:if>
+									</c:if>
+									<c:set var="i" value="${i+1}" />
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td>존재하지 않습니다.</td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
+						</table>
+
+
+				</div>
+			</div>
+			</c:if>
+			
+			
 			<!-- 뱃지 목록 -->
 			<div class="badges-box">
 				<div class="badges-head">
@@ -60,7 +111,7 @@
 			<!-- 채택 목록 -->
 			<div class="choices-box">
 				<div class="choices-head">
-					<h2 class="choices-title">채택 목록<small></small></h2>
+					<h2 class="choices-title">채택 목록</h2>
 				</div>
 				<div class="choices-body">
 						<c:set var="i" value="0" />
@@ -68,7 +119,7 @@
 						<table border=1 class="choices-list">
 							<c:choose>
 								<c:when test="${profile_choice != null}">
-									<c:forEach items="${profile_choice}" var="choice">
+									<c:forEach items="${profile_choice}" var="choice" varStatus="choice_index">
 									<c:if test="${i%j == 0}">
 										<tr>
 									</c:if>
@@ -79,6 +130,15 @@
 									<td class="td-empty"></td>
 									<c:if test="${i%j == j-1}">
 										</tr>
+									</c:if>
+									<c:if test="${choice_index.last }">
+										<c:if test="${i%j != j-1}">
+										<td class="td-tier"></td>
+										<td class="td-honorrate"></td>
+										<td class="td-summonerid"></td>
+										<td class="td-checked choices_check"></td>
+										<td class="td-empty"></td>
+										</c:if>
 									</c:if>
 									<c:set var="i" value="${i+1}" />
 									</c:forEach>

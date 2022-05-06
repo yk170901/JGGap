@@ -12,6 +12,9 @@ public class ProfileVO {
 	private float honor_rate;
 	private String profile_icon;
 	
+	// Friend
+	private String friend;
+	
 	// Badge
 	private int badge_no;
 	private String badge_name;

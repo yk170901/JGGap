@@ -21,6 +21,12 @@ public class ProfileServiceImpl implements ProfileService{
 		return profileDAO.mypage_info(user_no);
 	}
 	
+	// 마이페이지 친구 신청 목록 불러오기
+	@Override
+	public List<ProfileVO> mypage_friend(Object user_no) {
+		return profileDAO.mypage_friend(user_no);
+		}
+	
 	// 마이페이지 뱃지 목록 불러오기
 	@Override
 	public List<ProfileVO> mypage_badge(Object user_no) {
@@ -55,15 +61,14 @@ public class ProfileServiceImpl implements ProfileService{
 	@Override
 	public void delete_choice(ProfileVO profileVO) {
 		profileDAO.delete_choice(profileVO);
-		
 	}
 
 	// 명예 점수
 	@Override
 	public void honor_rate(ProfileVO profileVO) {
 		profileDAO.honor_rate(profileVO);
-		
 	}
+
 	
 
 	

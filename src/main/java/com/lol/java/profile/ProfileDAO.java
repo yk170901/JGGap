@@ -11,6 +11,9 @@ public interface ProfileDAO {
 	// 마이페이지 유저 정보 불러오기
 	Object mypage_info(Object user_no);
 	
+	// 마이페이지 친구 신청 목록 불러오기
+	List<ProfileVO> mypage_friend(Object user_no);
+	
 	// 마이페이지 뱃지 목록 불러오기
 	List<ProfileVO> mypage_badge(Object user_no);
 	
