@@ -12,13 +12,13 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-@RequestMapping("/echo")
-public class EchoHandler extends TextWebSocketHandler{
+@RequestMapping("/echo1")
+public class EchoHandler1 extends TextWebSocketHandler{
 	
     //세션 리스트
     private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
     
-    private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
+    private static Logger logger = LoggerFactory.getLogger(EchoHandler1.class);
 
     //클라이언트가 연결 되었을 때 실행
     @Override
@@ -28,10 +28,10 @@ public class EchoHandler extends TextWebSocketHandler{
     	String user_no = (String)map.get("user_no");
     	String summoner_id = (String)map.get("summoner_id");
     	
-    	System.out.println("로그인 한 아이디 : " + user_no);
-    	System.out.println("소환사 아이디 : " + summoner_id);
+    	System.out.println("방 1번 로그인 한 아이디 : " + user_no);
+    	System.out.println("방 1번 소환사 아이디 : " + summoner_id);
     	sessionList.add(session);
-        
+    	
         logger.info("세션 아이디:{}연결됨", session.getId());
         System.out.println("접속한 user_no:"+ user_no +" 소환사명:"+ summoner_id);
         
