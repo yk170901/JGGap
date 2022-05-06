@@ -27,9 +27,13 @@ public class ChatController {
 		else {
 			session.setAttribute("user_no", request.getParameter("user_no"));
 			session.setAttribute("summoner_id", request.getParameter("summoner_id"));
+			session.setAttribute("ban", Integer.parseInt(request.getParameter("ban")));
+			
+			System.out.println("벤 : " + request.getParameter("ban"));
 			
 			model.addAttribute("user_no", request.getParameter("user_no"));
 			model.addAttribute("summoner_id", request.getParameter("summoner_id"));
+//			model.addAttribute("ban", request.getParameter("ban"));
 
 			model.addAttribute("profile_icon", chatService.user_info(vo));
 

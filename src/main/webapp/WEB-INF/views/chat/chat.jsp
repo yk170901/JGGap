@@ -147,7 +147,7 @@
                                             <div class="user-item --active">
                                                 <div class="user-item__avatar"><img src="assets/img/user-list-1.png" alt="user"></div>
                                                 <div class="user-item__desc">
-                                                    <div class="user-item__name">Iron Bronze Silver</div>
+                                                    <div class="user-item__name"><a href="#">Iron Bronze Silver</a></div>
 <%--                                                     <div>${profile_icon}</div> --%>
 <!--                                                     <div class="user-item__text">Let’s play now!</div> -->
                                                 </div>
