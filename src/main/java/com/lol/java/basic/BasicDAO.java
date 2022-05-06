@@ -6,6 +6,9 @@ public interface BasicDAO {
 
 	// 헤더 포인트
 	BasicVO header_point(Object user_no);
-	// 헤더 팔로워
+	// 헤더 친구
 	List<BasicVO> getfriends(Object user_no);
+	// 헤더 차단
+	List<BasicVO> getbanned(Object user_no);
+	
 }

@@ -13,10 +13,16 @@
   		WHERE user_no = #{user_no}
   	</select>
   	
-  	<select id="header_friends" resultType="basic" parameterType="Object">
-  		SELECT friend
-  		FROM friend
-  		WHERE user_no = #{user_no}
+  	<select id="header_friends" resultType="basic" parameterType="Object">  			
+  		select friend, site_level, USER_NO 
+		from friend NATURAL JOIN user_info
+		where user_no = #{user_no} and status='친구'
+  	</select>
+  	
+  	<select id="header_banned" resultType="basic" parameterType="Object">
+  		select friend, site_level, USER_NO 
+		from friend NATURAL JOIN user_info
+		where user_no = #{user_no} and status='차단'
   	</select>
   	
   </mapper>
