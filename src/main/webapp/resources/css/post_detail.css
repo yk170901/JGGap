@@ -204,10 +204,12 @@
 
 .post-header-top{
 	color:#f46119;
+	margin-top:75px;
 }
 
 .post-wrap{
 	margin:auto;
+	padding-top: 20px;
 	width: 80%;
 	padding-left: 200px; 
 }
