@@ -147,19 +147,33 @@
 								WHERE user_no = #{value})
 	</select>
 	
-	<update id="updateFriendStatus" parameterType="hashmap">
+	<update id="acceptFriendRequest" parameterType="hashmap">
 		UPDATE friend
-			SET status = 
-				<choose>
-					<when test='action_result == null'>
-						NULL
-					</when>
-					<otherwise>
-						#{action_result}
-					</otherwise>
-				</choose>
-			WHERE user_no = ${user_no}
-				AND friend = #{friend}
+			SET status = '친구'
+			WHERE user_no = (SELECT user_no
+								FROM user_info
+								WHERE summoner_id = #{friend})
+				AND friend = (SELECT summoner_id
+								FROM user_info
+								WHERE user_no = ${user_no})
 	</update>
+	
+	<insert id="insertFriendAfterAcceptance" parameterType="hashmap">
+		INSERT INTO friend
+			VALUES(user_friend_no.NEXTVAL, ${user_no}, #{friend}, '친구')
+	</insert>
+	
+	<delete id="deleteFriend" parameterType="hashmap">
+		DELETE friend
+			WHERE ( user_no = ${user_no} AND friend = #{friend} )
+				OR ( user_no = (SELECT user_no
+									FROM user_info
+									WHERE summoner_id = #{friend})
+					AND
+					 friend = (SELECT summoner_id
+					 				FROM user_info
+					 				WHERE user_no = ${user_no})
+					 )
+	</delete>
 	
   </mapper>

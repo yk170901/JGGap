@@ -18,6 +18,8 @@ $('#category-map').on('change',function(){
 
 $('.befriend').on('click', function(){
 	
+	alert($(this).val())
+	
 	$.ajax({
 		url:'/board_view/befriend.do',
 		type : "POST",
@@ -31,29 +33,15 @@ $('.befriend').on('click', function(){
 
 $('.chg-friend-status').on('click', function(){
 	
-	var reply_value = $(this).val()
-	var reply_index = $(this).index('.friend-btn') // +1 해야하남
-	var action = $(this).attr('action')
-	var reply_user_no = document.getElementsByClassName('user_re_no')[reply_index].value;
-	var user_no;
-	var friend;
-	
-	/* 최초 친추자가 내가 아닌 상대일 때 */
-	if(reply_value == reply_user_no){
-		user_no = reply_value;
-		friend = document.getElementById('session-summoner-id').value
-	}else{
-		user_no = document.getElementById('session-user-no').value
-		friend = reply_value;
-	}
+	alert("sdad")
 	
 	$.ajax({
 		url:'/board_view/chgFriendStatus.do',
 		type : "POST",
 		data : {
-			action : action,
-			user_no : user_no,
-			friend : friend
+			action : $(this).attr('action'),
+			user_no : document.getElementById('session-user-no').value,
+			friend : $(this).val()
 		}
 	})
 	
@@ -64,8 +52,6 @@ $('.chg-friend-status').on('click', function(){
 function alertOnStatus(action){
 	if(action == 'deleteFriend'){
 		alert('친구 삭제가 완료되었습니다.')
-	}else if(action == 'beFriendAgain'){
-		alert('친구 신청이 완료되었습니다.')
 	}else if(action == 'cancelFriendRequest'){
 		alert('친구 신청이 취소되었습니다.')
 	}else if(action == 'cancelBan'){
