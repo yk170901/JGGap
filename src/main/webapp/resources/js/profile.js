@@ -158,8 +158,9 @@ function chg_pwd(form){
 					timerProgressBar: true,
 					icon: 'success',
 					title: '비밀번호 변경이 완료 되었습니다.'
+				}).then(function(){
+					location.href = "/profile/profile.do";
 				})
-				location.href = "/profile/profile.do";
 			},
 			error: function(err) {
 				alert("에러" + err)
@@ -225,11 +226,9 @@ $(function() {
 							timerProgressBar: true,
 							icon: 'success',
 							title: '해제중 입니다'
-						})
-						
-						setTimeout(function(){
-							honor_rate();
-						}, 1000)
+						}).then(function(){
+							location.href = "/profile/profile.do";
+				})
 						
 					},
 					error: function(err) {
@@ -261,10 +260,9 @@ $(function() {
 				timerProgressBar: true,
 				icon: 'success',
 				title: '투표해 주셔서 감사합니다'
-			})
-			setTimeout(function() {
-				location.href = "/profile/profile.do";
-			}, 1500)
+			}).then(function(){
+					location.href = "/profile/profile.do";
+				})
 			
 		},
 		error: function(err) {
@@ -335,12 +333,40 @@ $(function() {
 		url: "/profile/friend_status.do",
 		type: "post",
 		data: { friend_user_no:friend_arr[0],
-				friend_summoner_name:friend_arr[1],
+				friend_summoner_id:friend_arr[1],
 				status:friend_arr[2]
 		},
 		dataType: "text",
 		success: function(data) {
-			alert('성공')
+			
+			var text = ""
+			
+			switch (friend_arr[2]) {
+				case '친구':
+					text = friend_arr[1] + '님과 친구가 되었습니다.';
+					break;
+				case '차단':
+					text = friend_arr[1] + '님을 차단하였습니다.';
+					break;
+				case '취소':
+					text = friend_arr[1] + '님의 친구신청을 취소하였습니다.';
+					break;
+			}
+
+			Swal.mixin().fire({
+				toast: true,
+				position: 'center-center',
+				showConfirmButton: false,
+				timer: 1500,
+				timerProgressBar: true,
+				icon: 'success',
+				title: text
+			}).then(function() {
+				location.href = "/profile/profile.do";
+			})
+
+				
+
 		},
 		error: function(err) {
 			alert("에러" + err)

@@ -69,6 +69,27 @@ public class ProfileServiceImpl implements ProfileService{
 		profileDAO.honor_rate(profileVO);
 	}
 
+	// 친구 신청 수락
+	@Override
+	public void friend_add(Map<String, Object> friend) {
+		profileDAO.friend_add(friend);
+		
+	}
+
+	// 친구 신청 차단
+	@Override
+	public void friend_block(Map<String, Object> friend) {
+		profileDAO.friend_block(friend);
+		
+	}
+
+	// 친구 신청 취소
+	@Override
+	public void friend_cancle(Map<String, Object> friend) {
+		profileDAO.friend_cancle(friend);
+		
+	}
+
 	
 
 	

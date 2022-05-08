@@ -35,6 +35,15 @@ public interface ProfileDAO {
 	// 명예 점수
 	void honor_rate(ProfileVO profileVO);
 	
+	// 친구 신청 수락
+	void friend_add(Map<String, Object> friend);
+
+	// 친구 신청 차단
+	void friend_block(Map<String, Object> friend);
+
+	// 친구 신청 취소
+	void friend_cancle(Map<String, Object> friend);
+	
 	
 	
 	

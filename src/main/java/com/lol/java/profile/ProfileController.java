@@ -68,18 +68,17 @@ public class ProfileController {
 	public void friend_status(@RequestParam Map<String, Object> friend, HttpSession session) {
 		friend.put("my_user_no", session.getAttribute("user_no"));
 		friend.put("my_summoner_id", session.getAttribute("summoner_id"));
-		System.out.println(friend);
-//		switch (status) {
-//			case "친구":
-////				profileService.friend_add();
-//				break;
-//			case "차단":
-//				System.out.println("차단");
-//				break;
-//			case "취소":
-//				System.out.println("취소");
-//				break;
-//		}
+		switch ((String)friend.get("status")) {
+			case "친구":
+				profileService.friend_add(friend);
+				break;
+			case "차단":
+				profileService.friend_block(friend);
+				break;
+			case "취소":
+				profileService.friend_cancle(friend);
+				break;
+		}
 	}
 	
 	
