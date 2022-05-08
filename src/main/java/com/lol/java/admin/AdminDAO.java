@@ -8,5 +8,11 @@ public interface AdminDAO {
 
 	public int member_count();
 	
-	public List<String> achievement();
+	public void grant(AdminVO vo);
+	
+	public int conversion(String user_id);
+	
+	public int report_count();
+	
+	public List<AdminVO> report_list();
 }

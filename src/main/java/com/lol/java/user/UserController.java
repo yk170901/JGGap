@@ -80,8 +80,6 @@ public class UserController {
 	@ResponseBody
 	public String idCheck(String user_id) {
 
-		String x = userService.idCheck(user_id);
-
 		return userService.idCheck(user_id);
 	}
 	
@@ -89,8 +87,6 @@ public class UserController {
 	@RequestMapping(value = "/summoner_Check.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String summoner_idCheck(String summoner_id) {
-		
-		String x = userService.summoner_idCheck(summoner_id);
 		
 		return userService.summoner_idCheck(summoner_id);
 	}

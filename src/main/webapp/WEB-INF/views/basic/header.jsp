@@ -54,9 +54,9 @@
                 <% if ((int)ban == 3) { %>
                 <li><a href="/admin/admin_page.do"><i class="ico_profile"></i><span>회원 정보 관리</span></a></li>
                 
-                <li><a href="/admin/admin_achievement_grant.do"><i class="ico_profile"></i><span>업적 부여</span></a></li>
-                
-                <li><a href="/admin/admin_page.do"><i class="ico_profile"></i><span>신고 내역</span></a></li>	
+                <li><a href="/admin/achievement_grant.do"><i class="ico_profile"></i><span>업적 부여</span></a></li>
+
+                <li><a href="/admin/report_history.do"><i class="ico_profile"></i><span>신고 내역</span></a></li>	
               <%   }%>
               	<li>
               		<span>FRIENDS</span>
