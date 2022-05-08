@@ -147,7 +147,7 @@
 	});
 	
 // 	let sock = new SockJS("<c:url value="/echo"/>");
-	sock = new SockJS("/chat/echo2");
+	sock = new SockJS("/chat/echo4");
 	
 // 	sock = new SockJS("localhost:8080/chat/echo");
 	sock.onmessage = onMessage;

@@ -1,0 +1,126 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI.woff") format("woff"), url("../fonts/SegoeUI.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 400;
+}
+
+ a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: rgb(244, 97, 25); text-decoration: none;}
+
+	.chat-user-list:before{
+		font-family: "SegoeUI";
+		font-weight: 400;
+	}
+	
+/* 보내는 사람 */
+.total_my_div {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: row-reverse;
+    align-items: flex-end;
+}
+
+.total_you_div {
+	width: 100%;
+	height: auto;
+	display: flex;
+}
+
+.total_you_thir_div{
+	display: flex;
+	flex-direction: column;
+}
+
+.total_you_sec_div{
+	display: flex;
+}
+
+.you_img_div {
+	width: 45px;
+	height: 45px;
+	margin-right: 7px;
+	margin-top: 3px;
+}
+
+.profile_img {
+	border-radius: 30px;
+}
+
+.you_name_p {
+	margin-left: 3px;
+}
+
+
+.total_my_div::after {
+	clear: both;
+}
+
+.total_you_div::after {
+	clear: both;
+}
+
+.clock_my_div {
+	width: 33px;
+	float: right;
+	color: black;
+	margin-bottom: 5px;
+	font-size: 12px;
+}
+
+.clock_you_div {
+	display: flex;
+	width: 33px;
+	float: right;
+	color: black;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	font-size: 12px;
+	flex-direction: column-reverse;
+}
+
+
+.message_my{
+	float:right;
+	font-size: 15px;
+	padding: 10px 15px 10px 15px;
+	border-radius: 10px;
+	background-color: #f46119;
+	max-width: 300px;
+	word-wrap: break-word;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	color: white;
+	position: relative;
+	
+}
+
+.message_you{
+	display:inline-block;
+	clear:both;
+	float:left;
+	font-size: 15px;
+	padding: 10px 15px 10px 15px;
+	border-radius: 10px;
+	background-color: rgb(245,245,245);
+	max-width: 400px;
+	word-wrap: break-word;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.test_info{
+	border-bottom: 2px solid rgb(244, 97, 25);
+}
+
+.summoner_id_info {
+	font-weight: bold;
+	
+}
+
+
