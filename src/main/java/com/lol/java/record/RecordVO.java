@@ -72,6 +72,7 @@ public class RecordVO {
 		private String red_summonerid4;
 		private String red_champion5;
 		private String red_summonerid5;
+		private String champion_name_KR;
 		
 		// count
 		private int champion_cnt;

@@ -1,5 +1,6 @@
 package com.lol.java.profile;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,12 @@ public class ProfileServiceImpl implements ProfileService{
 	public Object mypage_info(Object user_no) {
 		return profileDAO.mypage_info(user_no);
 	}
+	
+	// 마이페이지 친구 신청 목록 불러오기
+	@Override
+	public List<ProfileVO> mypage_friend(HashMap<String, Object> friend) {
+		return profileDAO.mypage_friend(friend);
+		}
 	
 	// 마이페이지 뱃지 목록 불러오기
 	@Override
@@ -55,15 +62,35 @@ public class ProfileServiceImpl implements ProfileService{
 	@Override
 	public void delete_choice(ProfileVO profileVO) {
 		profileDAO.delete_choice(profileVO);
-		
 	}
 
 	// 명예 점수
 	@Override
 	public void honor_rate(ProfileVO profileVO) {
 		profileDAO.honor_rate(profileVO);
+	}
+
+	// 친구 신청 수락
+	@Override
+	public void friend_add(Map<String, Object> friend) {
+		profileDAO.friend_add(friend);
 		
 	}
+
+	// 친구 신청 차단
+	@Override
+	public void friend_block(Map<String, Object> friend) {
+		profileDAO.friend_block(friend);
+		
+	}
+
+	// 친구 신청 취소
+	@Override
+	public void friend_cancle(Map<String, Object> friend) {
+		profileDAO.friend_cancle(friend);
+		
+	}
+
 	
 
 	

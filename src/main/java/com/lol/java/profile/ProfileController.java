@@ -1,13 +1,16 @@
 package com.lol.java.profile;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 
@@ -23,10 +26,18 @@ public class ProfileController {
 	@RequestMapping("/profile.do")
 	public void profile(Model model, HttpSession session) {
 		Object user_no = session.getAttribute("user_no");
+		Object summoner_id = session.getAttribute("summoner_id");
+		
+		HashMap<String,Object> friend = new HashMap<String, Object>();
+		friend.put("user_no", user_no);
+		friend.put("summoner_id", summoner_id);
+		
 		model.addAttribute("profile_info", profileService.mypage_info(user_no));
+		model.addAttribute("profile_friend", profileService.mypage_friend(friend));
 		model.addAttribute("profile_badge", profileService.mypage_badge(user_no));
 		model.addAttribute("profile_choice", profileService.mypage_choice(user_no));
 		model.addAttribute("profile_board", profileService.mypage_board(user_no));
+		
 	}
 	
 	// 비밀번호 변경
@@ -56,6 +67,25 @@ public class ProfileController {
 	@RequestMapping("/honor_rate.do")
 	public void honor_rate(ProfileVO profileVO) {
 		profileService.honor_rate(profileVO);
+	}
+	
+	// 친구 신청
+	@ResponseBody
+	@RequestMapping("/friend_status.do")
+	public void friend_status(@RequestParam Map<String, Object> friend, HttpSession session) {
+		friend.put("my_user_no", session.getAttribute("user_no"));
+		friend.put("my_summoner_id", session.getAttribute("summoner_id"));
+		switch ((String)friend.get("status")) {
+			case "친구":
+				profileService.friend_add(friend);
+				break;
+			case "차단":
+				profileService.friend_block(friend);
+				break;
+			case "취소":
+				profileService.friend_cancle(friend);
+				break;
+		}
 	}
 	
 	
