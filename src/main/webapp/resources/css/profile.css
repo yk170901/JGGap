@@ -66,12 +66,14 @@ body {
     -moz-appearance: none !important;
     display: inline-block;
     position: relative;
-    margin : 120px 295px;
+    margin : 120px auto;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 75%;
+    width: 100%;
     padding: 0px 50px;
     height: 100%;
+    max-width: 1160px;
+    min-width: 1160px;
 }
 
 .page-body {
@@ -200,7 +202,10 @@ body {
 .profile-button:hover,
 .profile-button:focus,
 .profile-button:active {
-    background: #d04b0a;
+    text-decoration: none;
+    color:white;
+    transform: scale(1.05);
+	transition: transform .2s;
 }
 .profile-button-text {
     text-align: center;
@@ -465,9 +470,8 @@ body {
 
 .form-submit:hover {
 	background: #d04b0a;
-	color: rgb(15,110,205);
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* 프로필 아이콘 변경 부분 모달 */
