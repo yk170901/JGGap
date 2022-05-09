@@ -88,8 +88,18 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	}
 
 	@Override
-	public void updateFriendStatus(HashMap<String, String> map) {
-		mybatis.update("Board_view_DAO.updateFriendStatus", map);
+	public void acceptFriendRequest(HashMap<String, String> map) {
+		mybatis.update("Board_view_DAO.acceptFriendRequest", map);
+	}
+
+	@Override
+	public void insertFriendAfterAcceptance(HashMap<String, String> map) {
+		mybatis.insert("Board_view_DAO.insertFriendAfterAcceptance", map);
+	}
+
+	@Override
+	public void deleteFriend(HashMap<String, String> map) {
+		mybatis.delete("Board_view_DAO.deleteFriend", map);
 	}
 
 }

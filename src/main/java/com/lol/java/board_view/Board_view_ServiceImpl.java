@@ -73,19 +73,15 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 		case "cancelBan":
 		case "deleteFriend":
 		case "cancelFriendRequest":
-			map.put("action_result", null);
-			break;
-		case "befriendAgain":
-			map.put("action_result", "대기");
+			board_view_DAO.deleteFriend(map);
 			break;
 		case "acceptFriendRequest":
-			map.put("action_result", "수락");
+			board_view_DAO.acceptFriendRequest(map);
+			board_view_DAO.insertFriendAfterAcceptance(map);
 			break;
 		default:
 			System.out.println("chgFriendStatus action 에러 발생");
 			break;
 		}
-		
-		board_view_DAO.updateFriendStatus(map);
 	}
 }

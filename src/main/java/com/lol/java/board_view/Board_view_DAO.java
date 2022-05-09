@@ -30,5 +30,9 @@ public interface Board_view_DAO {
 	
 	public List<Board_view_VO_friend> selectFriendsAndStatuses(int user_no);
 
-	public void updateFriendStatus(HashMap<String, String> map);
+	public void acceptFriendRequest(HashMap<String, String> map);
+
+	public void insertFriendAfterAcceptance(HashMap<String, String> map);
+	
+	public void deleteFriend(HashMap<String, String> map);
 }

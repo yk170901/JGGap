@@ -18,7 +18,6 @@
 	<script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 	<script type="text/javascript" src="/resources/js/chat.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="page-chats">
 <!-- <div class="page-wrapper"> -->
@@ -168,7 +167,7 @@
 	
 	
 // 	let sock = new SockJS("<c:url value="/echo"/>");
-	sock = new SockJS("/chat/echo2");
+	sock = new SockJS("/chat/echo1");
 	
 // 	sock = new SockJS("localhost:8080/chat/echo");
 	sock.onmessage = onMessage;

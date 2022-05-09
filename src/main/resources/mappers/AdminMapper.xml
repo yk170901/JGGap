@@ -18,9 +18,28 @@
 		FROM USER_INFO
 	</select>
 	
-	<select id="achievement" resultType="String">
-		SELECT BADGE_NAME
-		FROM BADGE
-	</select>
-  
+	<insert id="grant" parameterType="admin">
+		INSERT INTO
+		USER_BADGE
+		VALUES 
+		('45', #{user_no}, #{badge_file} )
+	</insert>
+  	
+  	<select id="conversion" parameterType="String" resultType="int">
+  		SELECT USER_NO
+  		FROM USER_INFO
+  		WHERE USER_ID = #{user_id}
+  	</select>
+  	
+  	<select id="report_count" resultType="int">
+  	 	SELECT COUNT(*)
+  	 	FROM MANAGER_REPORT
+  	</select>
+  	
+  	<select id="report_list" resultType="admin">
+  		SELECT REPORT_NO, REPORTER, REPORT_TARGET, REPORT_URL, REPORT_TITLE, REPORT_CONTENT, REPORT_RESULT
+  		FROM MANAGER_REPORT
+  		WHERE 1=1
+  	</select>
+ 
   </mapper>

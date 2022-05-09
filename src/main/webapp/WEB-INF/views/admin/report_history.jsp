@@ -24,6 +24,7 @@
 			<div id="user_list_table">
 				<table border="1" class="list">
 					<tr>
+						<th width="110px">신고 번호</th>
 						<th width="110px">신고자</th>
 						<th width="110px">대상</th>
 						<th width="110px">URL</th>
@@ -33,13 +34,13 @@
 					</tr>
 					<c:forEach items="${list}" var="list">
 						<tr id="test">
-							<td><c:out value="${list.user_id}"/></td>
-							<td><c:out value="${list.user_no}"/></td>
-							<td><c:out value="${list.summoner_id}"/></td>
-							<td><c:out value="${list.phone_number}"/></td>
-							<td><c:out value="${list.site_level}"/></td>
-							<td><c:out value="${list.usable_point}"/></td>
-							<td><c:out value="${list.profile_icon}"/></td>
+							<td><c:out value="${list.report_no}"/></td>
+							<td><c:out value="${list.reporter}"/></td>
+							<td><c:out value="${list.report_target}"/></td>
+							<td><c:out value="${list.report_url}"/></td>
+							<td><c:out value="${list.report_title}"/></td>
+							<td><c:out value="${list.report_content}"/></td>
+							<td><c:out value="${list.report_result}"/></td>
 						</tr>
 					</c:forEach>
 				</table>
