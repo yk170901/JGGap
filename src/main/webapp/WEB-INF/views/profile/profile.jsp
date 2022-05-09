@@ -57,7 +57,7 @@
 									</c:if>
 									<td class="td-line td-profile-icon"><img class="friends-profile-icon"src="/resources/imgs/profile_icon/${friends.profile_icon }.png" alt="profile_icon"></td>
 									<td class="td-line td-honorrate">${friends.honor_rate } / 5.0</td>
-									<td class="td-line td-summonerid"><img class="friends-level" src="/resources/imgs/level_icon/${friends.site_level }.gif" alt="level"> <a class="choice-record" href="/record/record.do?user_no=${friends.user_no}">${friends.friend}</a></td>
+									<td class="td-line td-summonerid"><img class="friends-level" src="/resources/imgs/level_icon/${friends.site_level }.gif" alt="level"> <a class="choice-record" href="/record/record.do?user_no=${friends.user_no}">${friends.summoner_id}</a></td>
 									<td class="td-line td-checked friends_check"><img src="../resources/imgs/post_detail/checked.png" value="${friends.user_no }"></td>
 									<td class="td-empty"></td>
 									<c:if test="${i%j == j-1}">
@@ -68,7 +68,7 @@
 										<td class="td-profile-icon"></td>
 										<td class="td-honorrate"></td>
 										<td class="td-summonerid"></td>
-										<td class="td-checked friends_check"></td>
+										<td class="td-checked"></td>
 										<td class="td-empty"></td>
 										</c:if>
 									</c:if>
@@ -163,9 +163,9 @@
 				<div class="boardlist-body">
 					<table border="1" class="board-list">
 						<tr>
-							<th width="100px">No</th>
-							<th width="860px">제목</th>
-							<th width="150px">등록일</th>
+							<th width="11%">No</th>
+							<th width="76%">제목</th>
+							<th width="13%">등록일</th>
 						</tr>
 						<c:forEach items="${profile_board }" var="board">
 							<tr>

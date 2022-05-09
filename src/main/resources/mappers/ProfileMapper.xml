@@ -15,9 +15,13 @@
   	
   	<!-- 마이페이지 친구 신청 목록 불러오기 -->
   	<select id="profile_friend" resultType="profile" parameterType="Object">
-  	select friend.friend, user_info.site_level,user_info.USER_NO ,trunc(user_info.honor_rate/user_info.honor_cnt,1) as honor_rate, user_info.profile_icon, user_info.user_no
-	from friend,user_info
-	where user_info.SUMMONER_ID = friend.friend AND friend.user_no = #{user_no} AND status='대기'
+  	SELECT user_info.site_level,user_info.USER_NO ,trunc(user_info.honor_rate/user_info.honor_cnt,1) as honor_rate, user_info.profile_icon, user_info.SUMMONER_ID 
+	FROM friend, USER_INFO 
+	WHERE friend.friend  = #{summoner_id} AND status='대기' AND user_info.user_no = friend.user_no  AND user_info.SUMMONER_ID NOT in (
+		SELECT FRIEND 
+		FROM friend
+		WHERE user_no= #{user_no}
+		AND status='차단')
   	</select>
   	
   	<!-- 마이페이지 뱃지 목록 불러오기 -->
@@ -80,12 +84,12 @@
   	<update id="friend_add1" parameterType="hashmap">
   		update friend
 		set status = #{status}
-		where user_no = #{my_user_no} and friend = #{friend_summoner_id}
+		where user_no = #{friend_user_no} and friend = #{my_summoner_id}
   	</update>
   	
   	<insert id="friend_add2" parameterType="hashmap">
   		insert into friend
-		values (user_friend_no.NEXTVAL, #{friend_user_no}, #{my_summoner_id}, #{status})
+		values (user_friend_no.NEXTVAL, #{my_user_no}, #{friend_summoner_id}, #{status})
   	</insert>
   	
   	<!-- 친구 신청 차단 -->

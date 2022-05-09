@@ -1,5 +1,6 @@
 package com.lol.java.profile;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -25,8 +26,14 @@ public class ProfileController {
 	@RequestMapping("/profile.do")
 	public void profile(Model model, HttpSession session) {
 		Object user_no = session.getAttribute("user_no");
+		Object summoner_id = session.getAttribute("summoner_id");
+		
+		HashMap<String,Object> friend = new HashMap<String, Object>();
+		friend.put("user_no", user_no);
+		friend.put("summoner_id", summoner_id);
+		
 		model.addAttribute("profile_info", profileService.mypage_info(user_no));
-		model.addAttribute("profile_friend", profileService.mypage_friend(user_no));
+		model.addAttribute("profile_friend", profileService.mypage_friend(friend));
 		model.addAttribute("profile_badge", profileService.mypage_badge(user_no));
 		model.addAttribute("profile_choice", profileService.mypage_choice(user_no));
 		model.addAttribute("profile_board", profileService.mypage_board(user_no));

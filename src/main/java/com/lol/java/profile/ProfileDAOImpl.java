@@ -1,5 +1,6 @@
 package com.lol.java.profile;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +25,8 @@ public class ProfileDAOImpl implements ProfileDAO{
 
 	// 마이페이지 친구 신청 목록 불러오기
 	@Override
-	public List<ProfileVO> mypage_friend(Object user_no) {
-		return mybatis.selectList("ProfileDAO.profile_friend", user_no);
+	public List<ProfileVO> mypage_friend(HashMap<String, Object> friend) {
+		return mybatis.selectList("ProfileDAO.profile_friend", friend);
 	}
 	
 	// 마이페이지 뱃지 목록 불러오기

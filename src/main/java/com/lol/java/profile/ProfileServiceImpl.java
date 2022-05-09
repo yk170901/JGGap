@@ -1,5 +1,6 @@
 package com.lol.java.profile;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,8 +24,8 @@ public class ProfileServiceImpl implements ProfileService{
 	
 	// 마이페이지 친구 신청 목록 불러오기
 	@Override
-	public List<ProfileVO> mypage_friend(Object user_no) {
-		return profileDAO.mypage_friend(user_no);
+	public List<ProfileVO> mypage_friend(HashMap<String, Object> friend) {
+		return profileDAO.mypage_friend(friend);
 		}
 	
 	// 마이페이지 뱃지 목록 불러오기
