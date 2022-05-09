@@ -18,6 +18,7 @@
 	<script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 	<script type="text/javascript" src="/resources/js/chat.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="page-chats">
 <!-- <div class="page-wrapper"> -->
@@ -35,43 +36,42 @@
                                 
                                 <div class="chat-user-list__body">
                                     <ul>
-                                    	<li class="test_info">
-                                    		<div class="user-item --active">
-                                    			<div class="user-item__avatar"><img src="/resources/imgs/profile_icon/${profile_icon }.png" alt="user"></div>
+                                    	<li>
+                                    		<div class="user-item --active" style="margin-top: 10px; margin-bottom: 20px;">
                                     			<div class="user-item__desc summoner_id_info">
-                                    				${summoner_id }
+                                    				<span class="messages_class">메시지</span>
                                     			</div>
                                     		</div>
                                     	</li>
-                                        <li>
+                                        <li class="test_info">
                                             <div class="user-item --active">
                                                 <div class="user-item__avatar"><img src="/resources/imgs/tier/UNRANKED.png" alt="user"></div>
                                                 <div class="user-item__desc">
-                                                    <div class="user-item__name"><a href="javascript:FramesetUn('chatUnrank.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">Unranked</a></div>
+                                                    <div class="user-item__name"><a class="context_font" href="javascript:FramesetUn('chatUnrank.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">언랭크</a></div>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="test_info">
                                             <div class="user-item --active">
                                                 <div class="user-item__avatar"><img src="/resources/imgs/tier/iron_bronze_silver.png" alt="user"></div>
                                                 <div class="user-item__desc">
-                                                    <div class="user-item__name"><a href="javascript:FramesetBr('chatBronze.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">Iron Bronze Silver</a></div>
+                                                    <div class="user-item__name"><a class="context_font" href="javascript:FramesetBr('chatBronze.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">아이언 | 브론즈 | 실버</a></div>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="test_info">
                                             <div class="user-item --active">
                                                 <div class="user-item__avatar"><img src="/resources/imgs/tier/gold_platinum_diamond.png" alt="user"></div>
 	                                                <div class="user-item__desc">
-	                                                    <div class="user-item__name"><a href="javascript:FramesetGo('chatGold.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">Gold Platinum Diamond</a></div>
+	                                                    <div class="user-item__name"><a class="context_font" href="javascript:FramesetGo('chatGold.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">골드 | 플래티넘 | 다이아몬드</a></div>
 	                                                </div>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="test_info">
                                             <div class="user-item">
                                                 <div class="user-item__avatar"><img src="/resources/imgs/tier/master_grandmaster_challenger.png" alt="user"></div>
 	                                                <div class="user-item__desc">
-	                                                    <div class="user-item__name"><a href="javascript:FramesetMa('chatMaster.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">Master GrandMaster Challenger</a></div>
+	                                                    <div class="user-item__name"><a class="context_font" href="javascript:FramesetMa('chatMaster.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">마스터 | 그랜드마스터 | 챌린저</a></div>
 	                                                </div>
                                             </div>
                                         </li>
@@ -87,12 +87,13 @@
                      <!-- 채팅 대화목록 -->
                     <div class="uk-width-2-3@l" style="width: 600px; height: 600px; margin-top: 7%;">
                         <div class="chat-messages-box">
-                            <div class="chat-messages-head">
-									<span>접속한 티어 방 이름</span>
+                            <div class="chat-messages-head" style="padding: 13px;">
+									<span style="text-align: center; color: rgb(244, 97, 25); font-weight: bold;">바른 말 고운 말 사용하여주세요!</span>
                             </div>
                             
                             <!-- 대화 오고가는 곳 -->
-                            <div class="chat-messages-body">
+                            <!-- 스크롤 div -->
+                            <div class="chat-messages-body" id="chat">
                                 <div id="messageArea">
                                 	<!-- 메시지 append 되는 구간 -->
                                 </div>
@@ -104,17 +105,24 @@
 <!--                                 <form action="#!"> -->
                                     <div class="chat-messages-form">
                                         <div class="chat-messages-form-btns">
-                                        	<button class="ico_emoji-happy"></button>
-                                        	<button class="ico_gallery"></button></div>
+<!--                                         	<button class="ico_emoji-happy"></button> -->
+<!--                                         	<button class="ico_gallery"></button></div> -->
+												<img src="/resources/imgs/profile_icon/${profile_icon }.png" style="width:45px; height: 45px; border-radius: 30px;">
+												&ensp;
                                         <div class="chat-messages-form-controls">
                                         
                                         	<!-- 메시지 보내는 textbox -->
-                                        	<input class="chat-messages-input" type="text" placeholder="메시지를 입력해주세요." id="message">
-<!--                                         	<input type="button" id="sendBtn" value="보내기"/> -->
+                                        	<input class="chat-messages-input" type="text" placeholder="메시지를 입력해주세요." id="message" size=50>
+                                        	
                                         </div>
-                                        <div class="chat-messages-form-btn">
-                                        	<button class="ico_microphone" type="button"></button>
+                                        &ensp;&ensp;
+                                        <div>
+                                        
+                                        <input type="button" id="sendBtn" value="전 송"/>
                                         </div>
+<!--                                         <div class="chat-messages-form-btn"> -->
+<!--                                         	<button class="ico_microphone" type="button"></button> -->
+<!--                                         </div> -->
                                     </div>
 <!--                                 </form> -->
                             </div>
@@ -126,7 +134,8 @@
                     
                     
                 </div>
-            </main>
+               </div>
+           </main>
 <%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
 <script type="text/javascript">
@@ -135,16 +144,28 @@
 	
 	$(function() {
 		$("#message").on('keydown',function(e) {
-		if(e.keyCode == 13) {
-			if($('#message').val() == ''){
-				return false;
+			if(e.keyCode == 13) {
+				if($('#message').val() == ''){
+					return false;
+				}
+				sendMessage();
+				$('#message').val('');
 			}
-			sendMessage();
-			$('#message').val('');
-			
-		}
-	})
+		})
 	});
+	
+	$("#sendBtn").click(function() {
+		if($('#message').val() == ''){
+			return false;
+		}
+		sendMessage();
+		$('#message').val('')
+		document.getElementById("message").focus();
+		
+		let chat = document.querySelector('#chat');
+        chat.scrollTop = chat.scrollHeight;
+	});
+	
 	
 // 	let sock = new SockJS("<c:url value="/echo"/>");
 	sock = new SockJS("/chat/echo4");
@@ -236,6 +257,8 @@
 			total_you_sec.appendChild(clock_you);// 시간	
 			
 		}
+		let chat = document.querySelector('#chat');
+		chat.scrollTop = chat.scrollHeight;
 	}
 	
 	// 서버와 연결을 끊었을 때

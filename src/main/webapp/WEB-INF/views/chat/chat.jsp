@@ -18,6 +18,7 @@
 	<script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 	<script type="text/javascript" src="/resources/js/chat.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="page-chats">
 <!-- <div class="page-wrapper"> -->
@@ -35,53 +36,53 @@
                                 
                                 <div class="chat-user-list__body">
                                     <ul>
-                                    	<li class="test_info">
-                                    		<div class="user-item --active">
-                                    			<div class="user-item__avatar"><img src="/resources/imgs/profile_icon/${profile_icon }.png" alt="user"></div>
+                                    	<li>
+                                    		<div class="user-item --active" style="margin-top: 10px; margin-bottom: 20px;">
                                     			<div class="user-item__desc summoner_id_info">
-                                    				${summoner_id }
+                                    				<span class="messages_class">메시지</span>
                                     			</div>
                                     		</div>
                                     	</li>
-                                        <li>
+                                        <li class="test_info">
                                             <div class="user-item --active">
                                                 <div class="user-item__avatar"><img src="/resources/imgs/tier/UNRANKED.png" alt="user"></div>
                                                 <div class="user-item__desc">
-                                                    <div class="user-item__name"><a href="javascript:FramesetUn('chatUnrank.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">Unranked</a></div>
+                                                    <div class="user-item__name"><a class="context_font" href="javascript:FramesetUn('chatUnrank.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">언랭크</a></div>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="test_info">
                                             <div class="user-item --active">
                                                 <div class="user-item__avatar"><img src="/resources/imgs/tier/iron_bronze_silver.png" alt="user"></div>
                                                 <div class="user-item__desc">
-                                                    <div class="user-item__name"><a href="javascript:FramesetBr('chatBronze.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">Iron Bronze Silver</a></div>
+                                                    <div class="user-item__name"><a class="context_font" href="javascript:FramesetBr('chatBronze.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">아이언 | 브론즈 | 실버</a></div>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="test_info">
                                             <div class="user-item --active">
                                                 <div class="user-item__avatar"><img src="/resources/imgs/tier/gold_platinum_diamond.png" alt="user"></div>
 	                                                <div class="user-item__desc">
-	                                                    <div class="user-item__name"><a href="javascript:FramesetGo('chatGold.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">Gold Platinum Diamond</a></div>
+	                                                    <div class="user-item__name"><a class="context_font" href="javascript:FramesetGo('chatGold.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">골드 | 플래티넘 | 다이아몬드</a></div>
 	                                                </div>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li class="test_info">
                                             <div class="user-item">
                                                 <div class="user-item__avatar"><img src="/resources/imgs/tier/master_grandmaster_challenger.png" alt="user"></div>
 	                                                <div class="user-item__desc">
-	                                                    <div class="user-item__name"><a href="javascript:FramesetMa('chatMaster.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">Master GrandMaster Challenger</a></div>
+	                                                    <div class="user-item__name"><a class="context_font" href="javascript:FramesetMa('chatMaster.do?user_no=<%= request.getParameter("user_no") %>&summoner_id=<%= request.getParameter("summoner_id") %>&ban=<%= request.getParameter("ban") %>&solo_tier=<%= request.getParameter("solo_tier")%>')">마스터 | 그랜드마스터 | 챌린저</a></div>
 	                                                </div>
                                             </div>
                                         </li>
                                     </ul>
-                                </div>          
+                                    
+                                </div>     
                             </div>
                         </div>
                     </div>
-                </div>
-            </main>
+               </div>
+           </main>
 <%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
 </html>

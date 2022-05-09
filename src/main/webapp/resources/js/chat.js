@@ -11,7 +11,12 @@ function FramesetUn(page) {
 		}
 		else
 		{
-			alert('채팅방에 적합하지 않는 티어 입니다.');
+			Swal.fire({
+				html: "<b>채팅방에 적합하지 않는 티어 입니다.</b>",
+				icon: "error",
+				confirmButtonColor: "#F46119",
+				color: "black"
+			})
 			return false;
 		}
 		
@@ -30,7 +35,12 @@ function FramesetBr(page) {
 		}
 		else
 		{
-			alert('채팅방에 적합하지 않는 티어 입니다.');
+			Swal.fire({
+				html: "<b>채팅방에 적합하지 않는 티어 입니다.</b>",
+				icon: "error",
+				confirmButtonColor: "#F46119",
+				color: "black"
+			})
 			return false;
 		}
 	}
@@ -48,7 +58,12 @@ function FramesetGo(page) {
 		}
 		else
 		{
-			alert('채팅방에 적합하지 않는 티어 입니다.');
+			Swal.fire({
+				html: "<b>채팅방에 적합하지 않는 티어 입니다.</b>",
+				icon: "error",
+				confirmButtonColor: "#F46119",
+				color: "black"
+			})
 			return false;
 		}
 	}
@@ -66,7 +81,15 @@ function FramesetMa(page) {
 		}
 		else
 		{
-			alert('채팅방에 적합하지 않는 티어 입니다.');
+			Swal.fire({
+				html: "<b>채팅방에 적합하지 않는 티어 입니다.</b>",
+				icon: "error",
+				confirmButtonColor: "#F46119",
+				color: "black"
+			})
 			return false;
 		}
 	}
+	
+	
+//$('html,body').animate({ scrollTop: $('.chat-messages-body').offset().top }, 500);
