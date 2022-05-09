@@ -54,17 +54,7 @@ public class Board_detail_Controller {
 	
 	@RequestMapping("/postDelete.do")
 	public String deleteBoard(int post_no, HttpServletResponse response) throws IOException {
-		
 		board_detail_Service.deletePost(post_no);
-		
-		/* 게시글이 삭제되었습니다 alert 문
-		 * response.setContentType("text/html; charset=UTF-8"); PrintWriter writer =
-		 * response.getWriter();
-		 * 
-		 * writer.println("<script language='javascript'>'+alert('게시글이 삭제되었습니다.')+</script>");
-		 * 
-		 * writer.flush();
-		 */
 		
 		return "redirect:/board_list/board_list.do";
 	}
