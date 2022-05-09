@@ -57,7 +57,7 @@ body {
     font-style: normal;
     font-weight: normal;
     line-height: 1.31;
-    height: 3000px;
+    text-align:center;
 }
 
 .page-main {
@@ -66,11 +66,12 @@ body {
     -moz-appearance: none !important;
     display: inline-block;
     position: relative;
-    margin: 100px 45px;
+    margin: 100px auto;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 1160px;
-    margin-left: 300px;
+    width: 100%;
+    max-width:1160px;
+    min-width:1160px;
 }
 
 .page-body {
@@ -137,8 +138,9 @@ body {
 }
 
 .summoner-button:hover {
-	background: rgb(30,114,179);
-	color:white;
+	text-decoration: none;
+	transform: scale(1.05);
+	transition: transform .2s;
 }
 
 .summoner-button-text {
@@ -160,6 +162,7 @@ hr{
 	padding: 0px 5px;
 	height: 220px;
 	border: 1px solid darkgray;
+	text-align:left;
 }
 
 .summoner-stats-tier{
@@ -589,6 +592,7 @@ hr{
 	vertical-align: middle;
 	display: inline-block;
 	position: relative;
+	text-align:left;
 }
 
 .summoners-box {
