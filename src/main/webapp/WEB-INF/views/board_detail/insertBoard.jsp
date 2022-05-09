@@ -19,7 +19,7 @@
 		<form method="post" action="postInsert.do" onsubmit="return checkValidation();">
 			<div class="post-header">
 			<c:choose>
-			    <c:when test="${sessionScope.user_no == 10028}">
+			    <c:when test="${sessionScope.ban == 3}">
 					<h1 class="post-header-top">관리자 글 작성</h1>
 			    </c:when>    
 			    <c:otherwise>
@@ -27,9 +27,11 @@
 			    </c:otherwise>
 			</c:choose>
 				<div class="post-header-bottom">
+					<input type="hidden" name="ban" id="ban" value="${sessionScope.ban}">
 					<input type="text" id="title" placeholder="제목을 입력해주세요" name="board_title" maxlength=30>
 					
-					<c:if test="${sessionScope.user_no != 10028}">
+					<%--관리자가 쓰는 글에서는 게임 정보를 입력할 수 없다. --%>
+					<c:if test="${sessionScope.ban != 3}">
 						<div class="category-wrap">
 							<div class="category-content">
 								<div class="category-title">맵 분류</div>

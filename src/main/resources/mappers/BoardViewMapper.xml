@@ -26,6 +26,7 @@
   			<result property="free_tier" column="free_tier"/>
   			<result property="free_tier_grade" column="free_tier_grade"/>
   			<result property="site_level" column="site_level"/>
+  			<result property="ban" column="ban"/>
   		</association>
   	</resultMap>
   	
@@ -57,9 +58,9 @@
 	</insert>
 
 	<select id="selectBoard" resultMap="BoardMap" parameterType="int" resultType="board_view" >
-		SELECT DISTINCT u.honor_rate, u.summoner_id, u.site_level,
+		SELECT DISTINCT u.honor_rate, u.summoner_id, u.site_level, u.ban,
 					l.solo_tier, l.solo_tier_grade, l.free_tier, l.free_tier_grade,
-					b.post_no, b.board_title, b.board_text, b.game_map, b.game_mode, TO_CHAR(b.board_date, 'MM-DD-HH24:MI') as board_date, b.cru_pre, b.cru_max, b.user_no
+					b.post_no, b.board_title, b.board_text, b.game_map, b.game_mode, TO_CHAR(b.board_date, 'YYYY/MM/DD/HH24:MI') as board_date, b.cru_pre, b.cru_max, b.user_no
 			FROM user_info u,
 					lol_info l,
 					board b
@@ -78,7 +79,7 @@
 	
 	<select id="selectReplyList" resultMap="ReplyListMap" parameterType="int" resultType="board_view_reply">
 		SELECT b.post_no, 
-				re.user_re_no, re.re_text, TO_CHAR(re.re_date, 'MM-DD-HH24:MI') as re_date, re.user_no, re.user_no,
+				re.user_re_no, re.re_text, TO_CHAR(re.re_date, 'YYYY/MM/DD/HH24:MI') as re_date, re.user_no, re.user_no,
 					u_re.honor_rate, u_re.summoner_id, u_re.site_level,
 					l_re.solo_tier, l_re.solo_tier_grade, l_re.free_tier, l_re.free_tier_grade
 			FROM board b,

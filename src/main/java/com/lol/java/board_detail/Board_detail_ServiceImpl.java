@@ -11,12 +11,20 @@ public class Board_detail_ServiceImpl implements Board_detail_Service{
 
 	@Override
 	public void insertPost(Board_detail_VO vo) {
-		board_detail_DAO.insertPost(vo);
+		if(vo.getBan()==3) {
+			board_detail_DAO.insertAdminPost(vo);
+		}else {
+			board_detail_DAO.insertPost(vo);
+		}
 	}
 	
 	@Override
 	public void updatePost(Board_detail_VO vo) {
-		board_detail_DAO.updatePost(vo);
+		if(vo.getBan()==3) {
+			board_detail_DAO.updatePost(vo);
+		}else {
+			board_detail_DAO.updatePost(vo);
+		}
 	}
 
 	@Override

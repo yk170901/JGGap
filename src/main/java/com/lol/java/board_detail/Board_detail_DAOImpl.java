@@ -11,14 +11,15 @@ public class Board_detail_DAOImpl implements Board_detail_DAO{
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public void insertPost(Board_detail_VO vo) {		
-		if(vo.getUser_no() == 10028) {
-			mybatis.insert("Board_detail_DAO.insertAdminPost", vo);	
-		}else {
-			mybatis.insert("Board_detail_DAO.insertPost", vo);	
-		}
+	public void insertPost(Board_detail_VO vo) {
+		mybatis.insert("Board_detail_DAO.insertPost", vo);
 	}
 
+	@Override
+	public void insertAdminPost(Board_detail_VO vo) {
+		mybatis.insert("Board_detail_DAO.insertAdminPost", vo);	
+	};
+	
 	@Override
 	public int getPost_no(int user_no) {
 		return mybatis.selectOne("Board_detail_DAO.getPost_no", user_no);
@@ -38,5 +39,6 @@ public class Board_detail_DAOImpl implements Board_detail_DAO{
 	@Override
 	public void deletePost(int post_no) {
 		mybatis.update("deletePost",post_no);
-	};
+	}
+
 }
