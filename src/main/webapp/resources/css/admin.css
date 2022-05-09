@@ -119,10 +119,11 @@ td {
 	width: 250px;
 	height: 600px;
 	display: flex;
+	margin-top: 75px;
 }
 
 #icon_select {
-	width: 700px;
+	width: 720px;
 	height: 600px;
 	
 }
@@ -160,9 +161,9 @@ td {
 
 .modal-profile-icon-body {
 	display: inline-block;
-	width: 120px;
-	height: 120px;
-	margin: 10px 23px;
+	width: 100px;
+	height: 100px;
+	margin: 20px 23px;
 }
 
 .modal-profile-icon {
@@ -177,9 +178,14 @@ td {
 	display:none;
 }
 
+.profile-icon-radio:checked + label img {
+	border: 5px groove #F46119;
+}
+
 #achievements_select {
-	width: 100%;
+	width: 450px;
 	height: 500px;
 	margin: auto;
 	background-color: black;
+	margin-left: 60px;
 }
