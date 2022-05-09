@@ -170,3 +170,4 @@ function init() {
 	window.addEventListener('keyup', modalCloseHandler)
 
 }
+
