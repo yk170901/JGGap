@@ -46,6 +46,12 @@ public class AdminServiceImpl implements AdminService{
 		
 		return adminDAO.report_list();
 	}
+
+	@Override
+	public int overlap_check(AdminVO vo) {
+		
+		return adminDAO.overlap_check(vo);
+	}
 	
 	
 	

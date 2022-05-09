@@ -22,8 +22,14 @@
 		INSERT INTO
 		USER_BADGE
 		VALUES 
-		('45', #{user_no}, #{badge_file} )
+		(badge_no.nextval, #{user_no}, #{badge_file} )
 	</insert>
+	
+	<select id="overlap_check" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM USER_BADGE
+		WHERE USER_NO = #{user_no} AND BADGE_FILE = #{badge_file}
+	</select>
   	
   	<select id="conversion" parameterType="String" resultType="int">
   		SELECT USER_NO

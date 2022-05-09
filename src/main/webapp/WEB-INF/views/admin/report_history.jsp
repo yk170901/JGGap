@@ -22,7 +22,7 @@
 	<main class="page-main">
 		<div class="page-body">
 			<div id="user_list_table">
-				<table border="1" class="list">
+				<table class="list">
 					<tr>
 						<th width="110px">신고 번호</th>
 						<th width="110px">신고자</th>

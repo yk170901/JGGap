@@ -15,4 +15,6 @@ public interface AdminDAO {
 	public int report_count();
 	
 	public List<AdminVO> report_list();
+	
+	public int overlap_check(AdminVO vo);
 }

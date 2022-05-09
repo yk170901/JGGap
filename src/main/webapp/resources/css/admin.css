@@ -70,20 +70,17 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     width: 1250px;
-    margin-left: 250px;
+    margin-left: 160px;
 }
 
-td:not(:first-child),
+/* td:not(:first-child),
 td:not(:last-child),
 th:not(:first-child),
 th:not(:last-child) {
 	border-left: none;
 	
-}
+} */
 
-th {
-	padding: 14px 0px;
-}
 
 .page-body {
     width: 100%;
@@ -91,21 +88,25 @@ th {
 }
 
 #user_list_table {
+	width: 100%;
 	padding: 50px;
-	height: 500px;
 	margin-top: 75px;
 }
 
 .list {
+	width: 100%;
 	text-align: center;
+	border: 1px solid #444444;
+    border-collapse: collapse;
 }
 
-td {
-	height: 50px;
-}
+th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+ }
 
 #main-page {
-	width: 1160px;
+	width: 100%;
 	margin-left: 350px;
 	margin-top: 75px;
 	height: 600px;
@@ -163,7 +164,7 @@ td {
 	display: inline-block;
 	width: 100px;
 	height: 100px;
-	margin: 20px 23px;
+	margin: 18px 20px;
 }
 
 .modal-profile-icon {
@@ -183,9 +184,11 @@ td {
 }
 
 #achievements_select {
-	width: 450px;
+	width: 470px;
 	height: 500px;
 	margin: auto;
-	background-color: black;
+	background-color: lightgray;
 	margin-left: 60px;
+	border: 15px solid #F46119;
+	border-radius: 5%;
 }

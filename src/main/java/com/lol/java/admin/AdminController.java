@@ -64,9 +64,17 @@ public class AdminController {
 	public String grant(AdminVO vo) {
 		
 		vo.setUser_no(adminService.conversion(vo.getUser_id()));
-	
-		adminService.grant(vo);
-		return "/admin/achievement_grant";
+		
+		if(adminService.overlap_check(vo) > 0) {
+			
+			return "/admin/overlap";
+			
+		}else {
+			
+			adminService.grant(vo);
+			return "/admin/success";
+		}
+		
 	}
 	
 	@RequestMapping("/report_history.do")
