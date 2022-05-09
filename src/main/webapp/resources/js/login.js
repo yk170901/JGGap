@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$('.chkAll').click(function() {
 		$('.chk').prop('checked', this.checked);
 	});
-});
+});   
 
 // 아이디 유효성 검사(1 = 중복 / 0 != 중복)
 $("#user_id").blur(function() {

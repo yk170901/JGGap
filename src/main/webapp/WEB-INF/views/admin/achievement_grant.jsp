@@ -13,7 +13,7 @@
 <body>
 <%@ include file="/WEB-INF/views/basic/header.jsp"%>
 <div id="main-page">
-	<form method="get" action="grant.do" onsubmit="return grant();">
+	<form method="get" action="grant.do">
 		<div id="input_achievements">
 			<div class="fixed_position">
 				<input id="icon_payments" name="user_id" type="text" placeholder="유저 아이디" required/>

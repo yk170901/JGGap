@@ -22,16 +22,16 @@
 	<main class="page-main">
 		<div class="page-body">
 			<div id="user_list_table">
-				<table border="1" class="list">
+				<table class="list">
 					<tr>
-						<th width="110px">아이디</th>
+						<th width="200px">아이디</th>
 						<th width="110px">아이디 고유 번호</th>
-						<th width="110px">닉네임</th>
+						<th width="300px">닉네임</th>
 						<th width="110px">연락처</th>
-						<th width="110px">사이트 레벨</th>
-						<th width="110px">Point</th>
+						<th width="100px">사이트 레벨</th>
+						<th width="100px">Point</th>
 						<th width="110px">아이콘 고유 번호</th>
-						<th width="110px">명예 점수</th>
+						<th width="80px">명예 점수</th>
 						<th width="110px">가입 날짜</th>
 						<th width="110px">밴</th>
 					</tr>
