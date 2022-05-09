@@ -93,13 +93,6 @@ public class UserController {
 		String x = userService.summoner_idCheck(summoner_id);
 		
 		return userService.summoner_idCheck(summoner_id);
-	}
-
-	// 로그아웃
-	@RequestMapping("/logout.do")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/login.jsp";
-	}
+	}	
 
 }

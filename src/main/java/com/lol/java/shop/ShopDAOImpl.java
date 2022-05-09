@@ -39,4 +39,9 @@ public class ShopDAOImpl implements ShopDAO{
 		mybatis.update("ShopDAO.updateUser", vo);
 	}
 
+	@Override
+	public void buyItem(ShopVO vo) {
+		mybatis.update("ShopDAO.updateUser", vo);
+	}
+
 }

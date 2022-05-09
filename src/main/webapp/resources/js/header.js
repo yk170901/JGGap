@@ -34,14 +34,37 @@ $(document).ready(function() {
 			alert("friend에러" + err)
 		}
 	})
-
+	$.ajax({
+		url: "/basic/banned.do",
+		type: "post",
+		dataType: 'json',
+		success: function(data) {
+			$(data).each(function(index){
+				content = "";
+				content += "<li class='banned-li'><div>"+this.friend;
+				content += "</div></li>"
+				$(".banned").append(content);
+			})
+		},
+		error: function(err) {
+			alert("banned에러" + err)
+		}
+	})
 });
 
 $(function() { $('#CSC').on("click", function() {
 		Swal.fire({
-				title : "구현되지 않은 기능입니다.",
-				icon : 'warning',
-				confirmButtonText: '확인'
-			})
+			title : "구현되지 않은 기능입니다.",
+			icon : 'warning',
+			confirmButtonText: '확인'
+		})
 	})
 })
+
+$(window).bind("beforeunload", function (e){
+	$.ajax({
+		url: "/basic/logoutESC.do",
+		type: "post"
+	})
+});
+

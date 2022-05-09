@@ -34,7 +34,7 @@
 	            		<a href="#" class="profile_dropdown_list" style="color: white;">내 전적</a>
 	            		<a href="/profile/profile.do" class="profile_dropdown_list" style="color: white;">회원정보</a>
 	            		<a class="profile_dropdown_list" style="color: white;" id="CSC">고객센터</a>
-	            		<a href="/user/logout.do" class="profile_dropdown_list" style="color: white;">로그아웃</a>
+	            		<a href="/basic/logout.do" class="profile_dropdown_list" style="color: white;">로그아웃</a>
 	            	</div>
 	            </div>
 	        </div>
@@ -43,26 +43,30 @@
     <aside class="sidebar is-show">
         <div class="sidebar-box">
             <ul class="uk-nav">
-                <li class="uk-active"><a href="/board_list/board_list.do"><i class="ico_home"></i><span>구인게시판</span></a></li>
+                <li class="uk-active"><a href="http://localhost:8080/board_list/board_list.do"><i class="ico_home"></i><span>구인게시판</span></a></li>
 
-                <li><a href="http://192.168.1.82:8080/chat/chat.do?user_no=<%= session.getAttribute("user_no")%>&summoner_id=<%=session.getAttribute("summoner_id")%>&ban=<%= session.getAttribute("ban")%>&id=1"><i class="ico_chats"></i><span>채팅</span></a></li>
+                <li><a href="http://192.168.1.82:8080/chat/chat.do?user_no=<%= session.getAttribute("user_no")%>&summoner_id=<%=session.getAttribute("summoner_id")%>&ban=<%= session.getAttribute("ban")%>&solo_tier=<%=session.getAttribute("solo_tier")%>"><i class="ico_chats"></i><span>채팅</span></a></li>
 
                 <li><a href="/shop/shop.do"><i class="ico_store"></i><span>포인트샵</span></a></li>
+
+                <li><a href="http://localhost:8080/shop/shop.do"><i class="ico_store"></i><span>포인트샵</span></a></li>
                 
-                <li><a href="/record/record.do"><i class="ico_profile"></i><span>전적검색</span></a></li>
+                <li><a href="http://localhost:8080/record/record.do"><i class="ico_profile"></i><span>전적검색</span></a></li>
                 
                 <% if ((int)ban == 3) { %>
-                <li><a href="/admin/admin_page.do"><i class="ico_profile"></i><span>회원 정보 관리</span></a></li>
+                <li><a href="http://localhost:8080/admin/admin_page.do"><i class="ico_profile"></i><span>회원 정보 관리</span></a></li>
                 
-                <li><a href="/admin/admin_achievement_grant.do"><i class="ico_profile"></i><span>업적 부여</span></a></li>
+                <li><a href="http://localhost:8080/admin/achievement_grant.do"><i class="ico_profile"></i><span>업적 부여</span></a></li>
                 
-                <li><a href="/admin/admin_page.do"><i class="ico_profile"></i><span>신고 내역</span></a></li>	
+                <li><a href="http://localhost:8080/admin/report_history.do"><i class="ico_profile"></i><span>신고 내역</span></a></li>	
               <%   }%>
               	<li>
               		<span>FRIENDS</span>
-              		<ul class="friend">
-              			
+              		<ul class="friend">              			
               		</ul>              	
+              		<span>BANNED</span>
+              		<ul class="banned">              		
+              		</ul>
               	</li>	
             </ul>
             

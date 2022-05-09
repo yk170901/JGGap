@@ -2973,7 +2973,7 @@ a:hover {
     display: block;
     position: relative;
     height: 100%;
-    padding: 20px;
+    padding: 1px 20px 20px 20px;
     border-radius: 10px;
     background: #fff;
 }
@@ -3074,21 +3074,6 @@ a:hover {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-}
-
-.user-item__avatar:after {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    right: 2px;
-    bottom: 2px;
-    width: 10px;
-    height: 10px;
-    border: 1.5px solid #FFFFFF;
-    border-radius: 50%;
-    background: #D6D6D6;
-    content: '';
 }
 
 .user-item__avatar img {
@@ -3246,6 +3231,8 @@ a:hover {
     justify-content: space-between;
     padding-right: 24px;
     border-bottom: 1px solid #e2e2e2;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
 }
 
 .chat-messages-head a {
@@ -5082,7 +5069,7 @@ body.dark-theme #modal-help ul li {
 	font-size: 20px;
 }
 
-.friend-li{
+.friend-li, banned-li{
 	position: relative;
 }
 

@@ -13,4 +13,6 @@ public interface ShopService {
 	List<ShopVO> getCounts(ShopVO vo);
 	// 응모버튼 클릭
 	void insertApply(ShopVO vo);
+	// 구매버튼 클릭
+	void buyItem(ShopVO vo);
 }

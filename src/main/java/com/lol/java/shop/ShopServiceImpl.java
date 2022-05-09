@@ -35,5 +35,10 @@ public class ShopServiceImpl implements ShopService{
 	public void insertApply(ShopVO vo) {
 		shopDAO.insertApply(vo);
 	}
+
+	@Override
+	public void buyItem(ShopVO vo) {
+		shopDAO.buyItem(vo);		
+	}
 	
 }
