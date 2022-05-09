@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-import requests, json
+import cx_Oracle
+import requests, json, sys
+import cx_Oracle as oci # 오라클 클라이언트를 사용하는 모듈
+
+
 
 def crawling(name):
     api_key = "RGAPI-f2e8aba1-e75d-47c8-8829-e097207ecd61"
@@ -33,7 +37,6 @@ def crawling(name):
                    , "Xayah": "자야", "Xerath": "제라스", "XinZhao": "신 짜오", "Yasuo": "야스오", "Yone": "요네", "Yorick": "요릭"
                    , "Yuumi": "유미", "Zac": "자크", "Zed": "제드", "Zeri": "제리", "Ziggs": "직스", "Zilean": "질리언", "Zoe": "조이"
                    , "Zyra": "자이라"}
-
 
     URL = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+name
     res = requests.get(URL, headers={"X-Riot-Token": api_key})
@@ -141,7 +144,47 @@ def lol_info(name):
     else:
         # 코드가 200이 아닐때(즉 찾는 닉네임이 없을때)
         print("소환사가 존재하지 않습니다")
+    return name
+
+def DBConn(data):
+    import os
+    import sys
+    import jpype
+    import jaydebeapi as jp
+
+
+    # oracle jdbc 파일 경로 및 class 경로 설정
+    JDBC_Driver = 'C:/Users/grood/Desktop/JGGapProject/ojdbc10-full/ojdbc10.jar'
+    jar = r'C:/Users/grood/Desktop/JGGapProject/ojdbc10-full/ojdbc10.jar'
+    args = '-Djava.class.path=%s' % jar
+
+    # 환경 변수 출력
+    print('Python Version : ', sys.version)
+    print('JAVA_HOME : ', os.environ["JAVA_HOME"])
+    print('JDBC_Driver Path : ', JDBC_Driver)
+    print('Jpype Default JVM Path : ', jpype.getDefaultJVMPath())
+
+    # java class path 설정
+    jpype.startJVM(jpype.getDefaultJVMPath(), args)
+
+    # oracle 접근
+    conn = jp.connect('oracle.jdbc.driver.OracleDriver','jdbc:oracle:thin:@dbjunglegap_high?TNS_ADMIN=C:/Users/grood/Desktop/JGGapProject/Wallet_DBJungleGap', ["admin", "Ab1234567890"], JDBC_Driver)
+    cursor = conn.cursor()
+
+    # Select Query 실행
+    sql = "insert into "
+    cursor.execute(sql)
+    datas = cursor.fetchall()
+    for i in datas:
+        print(i)
+
+    cursor.close()
+    conn.close()
+
+
+
+
+
 
 if __name__ == "__main__":
-    print(crawling("네네스노윙순살"))
-    print(lol_info("네네스노윙순살"))
+    crawling()

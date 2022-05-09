@@ -10,5 +10,6 @@ public interface BasicDAO {
 	List<BasicVO> getfriends(Object user_no);
 	// 헤더 차단
 	List<BasicVO> getbanned(Object user_no);
-	
+	// 레벨 포인트
+	String level_point(Object user_no);
 }

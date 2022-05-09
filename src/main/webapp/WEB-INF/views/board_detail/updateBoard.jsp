@@ -18,10 +18,12 @@
 			<div class="post-header">
 				<h1 class="post-header-top">글 수정</h1>
 				<div class="post-header-bottom">
+					<input type="hidden" name="ban" id="ban" value="${sessionScope.ban}">
 					<input type="hidden" name="post_no" id="post_no" value="${update.post_no}">
 					<input type="text" id="title" name="board_title" maxlength=30 value="${update.board_title }">
 					
-					<c:if test="${update.user_no  != 10028}">
+					<%--관리자가 쓴 글에서는 게임 정보가 안 보임 --%>
+					<c:if test="${sessionScope.ban != 3}">
 						<div class="category-wrap">
 							<div class="category-content">
 								<div class="category-title">맵 분류 : </div> ${update.game_map }

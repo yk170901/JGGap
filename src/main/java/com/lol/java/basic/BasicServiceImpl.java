@@ -27,4 +27,9 @@ public class BasicServiceImpl implements BasicService{
 		return basicDAO.getbanned(user_no);
 	}
 	
+	@Override
+	public String level_point(Object user_no) {
+	    return basicDAO.level_point(user_no);
+	}
+	
 }

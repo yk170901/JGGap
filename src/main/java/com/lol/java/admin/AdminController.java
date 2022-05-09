@@ -34,11 +34,11 @@ public class AdminController {
 			// 리스트에 개수 보여주는 기능
 			if (nowPage == null && cntPerPage == null) {
 				nowPage = "1";
-				cntPerPage = "10";
+				cntPerPage = "3";
 			} else if (nowPage == null) {
 				nowPage = "1";
 			} else if (cntPerPage == null) { 
-				cntPerPage = "10";
+				cntPerPage = "3";
 			}
 			System.out.println("토탈 계산 끝 : " + total);
 			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
@@ -64,9 +64,17 @@ public class AdminController {
 	public String grant(AdminVO vo) {
 		
 		vo.setUser_no(adminService.conversion(vo.getUser_id()));
-	
-		adminService.grant(vo);
-		return "/admin/achievement_grant";
+		
+		if(adminService.overlap_check(vo) > 0) {
+			
+			return "/admin/overlap";
+			
+		}else {
+			
+			adminService.grant(vo);
+			return "/admin/success";
+		}
+		
 	}
 	
 	@RequestMapping("/report_history.do")
@@ -86,11 +94,11 @@ public class AdminController {
 			// 리스트에 개수 보여주는 기능
 			if (nowPage == null && cntPerPage == null) {
 				nowPage = "1";
-				cntPerPage = "10";
+				cntPerPage = "3";
 			} else if (nowPage == null) {
 				nowPage = "1";
 			} else if (cntPerPage == null) { 
-				cntPerPage = "10";
+				cntPerPage = "3";
 			}
 			System.out.println("토탈 계산 끝 : " + total);
 			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));

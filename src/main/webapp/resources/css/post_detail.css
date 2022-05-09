@@ -60,9 +60,7 @@
 	color: #f46119;
 }
 
-
-
-
+/* 모달 */
 
 #reply-header{
 	margin: 10px 0;
@@ -94,20 +92,6 @@
 	font-size: 11px;
 	border: black solid 1px;
 }
-
-/* .cancelFriendRequest,
-.deleteFriend{
-	background-color: #f46119;
-	color: white;
-}
-
-.acceptFriendRequest{
-	background-color: gold;
-}
-
-.banned{
-	background-color: red;
-} */
 
 .report-btn,
 .delete-reply{
@@ -215,7 +199,7 @@
 }
 
 input#title{
-	width: 45%;
+	width: 45%; 
 	height: 30px;
 	padding: 5px;
 }

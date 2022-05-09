@@ -13,6 +13,17 @@
   		WHERE user_no = #{user_no}
   	</select>
   	
+  	<!-- 마이페이지 친구 신청 목록 불러오기 -->
+  	<select id="profile_friend" resultType="profile" parameterType="Object">
+  	SELECT user_info.site_level,user_info.USER_NO ,trunc(user_info.honor_rate/user_info.honor_cnt,1) as honor_rate, user_info.profile_icon, user_info.SUMMONER_ID 
+	FROM friend, USER_INFO 
+	WHERE friend.friend  = #{summoner_id} AND status='대기' AND user_info.user_no = friend.user_no  AND user_info.SUMMONER_ID NOT in (
+		SELECT FRIEND 
+		FROM friend
+		WHERE user_no= #{user_no}
+		AND status='차단')
+  	</select>
+  	
   	<!-- 마이페이지 뱃지 목록 불러오기 -->
   	<select id="profile_badge" resultType="profile" parameterType="Object">
   		SELECT *
@@ -68,5 +79,30 @@
 		SET HONOR_RATE = HONOR_RATE + #{honor_rate}, honor_cnt = honor_cnt + 1
 		WHERE USER_NO = #{choice_user_no}
   	</update>
-  	 
+  	
+  	<!--  친구 신청 수락 -->
+  	<update id="friend_add1" parameterType="hashmap">
+  		update friend
+		set status = #{status}
+		where user_no = #{friend_user_no} and friend = #{my_summoner_id}
+  	</update>
+  	
+  	<insert id="friend_add2" parameterType="hashmap">
+  		insert into friend
+		values (user_friend_no.NEXTVAL, #{my_user_no}, #{friend_summoner_id}, #{status})
+  	</insert>
+  	
+  	<!-- 친구 신청 차단 -->
+  	 <insert id="friend_block" parameterType="hashmap">
+  		insert into friend
+		values (user_friend_no.NEXTVAL, #{my_user_no}, #{friend_summoner_id}, #{status})
+  	</insert>
+  	
+  	<!-- 친구 신청 취소 -->
+  	<delete id="friend_cancle" parameterType="hashmap">
+  		delete
+		from friend
+		where user_no = #{my_user_no} and friend=#{friend_summoner_id} and status = '대기'
+  	</delete>
+  	
   </mapper>

@@ -16,7 +16,7 @@
 <body>
 	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
 	
-	<!-- 라이터 넘버로 관리자 여부 보는 게 아니라 ban 넘버로 보기 -->
+	<%--신고 모달 --%>
 	<div class="modal-bg">
 		<div class="modal">
 			<h3 class="modal-title">신고 작성</h3>
@@ -32,12 +32,12 @@
 		<div class="post-content">
 			<div class="post-header">
 				<h1 class="post-header-top"><c:out value="${board.board_title }" /></h1>
-				<!-- 포스트 넘버 임의로 줌 -->
 				<input type="hidden" name="post_no" value=<c:out value="${board.post_no }" /> id="post-no">
 				
 				<input type="hidden" value=<c:out value="${board.writer.user_no }" /> id="writer-no"/>
 				<div class="post-header-bottom">
-					<c:if test="${board.writer.user_no != 10028}">
+					<%-- 관리자가 쓴 글에서는 게임 정보가 안 보임 --%>
+					<c:if test="${board.writer.ban != 3}">
 					
 						<div class="user-info writer-info">
 							<div class="user-info">
@@ -58,47 +58,40 @@
 							<span class="writer-info-separator">|</span>
 							<div class="user-info"><c:out value="${board.writer.honor_rate }" /></div>
 							
+							
+							<%-- 글 작성자에게는 본인 친구추가 버튼이 안 보임--%>
 						    <c:if test="${sessionScope.user_no != board.writer.user_no}">
 						    
 						    	<c:set var="loopOver" value="false"/>
 								<c:forEach var="friend" items="${friends}">
 								
-							     <%-- loopOver가 반대가 되면 break --%>
+							     <%-- loopOver가 반대가 되면 break --%> 
 								     	<c:if test="${not loopOver}">
 								       	 	<c:choose>
 									           	<c:when test="${friend.user_no eq sessionScope.user_no and friend.friend == board.writer.summoner_id}">
 									          		<c:choose>
 											        	<c:when test="${friend.status =='친구'}">
-															<button class="friend-btn chg-friend-status" action="deleteFriend" value="${board.writer.summoner_id }">친구 삭제</button>
+															<button class="friend-btn chg-friend-status" action="deleteFriend" value="${board.writer.summoner_id }" style="background-color: #f46119; color: white;">친구 삭제</button>
 									           				<c:set var="loopOver" value="true" />
 									           			</c:when>
 									           			<%--내가 상대를 차단함 --%>
 											        	<c:when test="${friend.status =='차단'}">
-															<button class="friend-btn chg-friend-status" action="cancelBan" value="${board.writer.summoner_id }">차단 풀기</button>
+															<button class="friend-btn chg-friend-status" action="cancelBan" value="${board.writer.summoner_id }" style="color: red;">차단 풀기</button>
 									           				<c:set var="loopOver" value="true" />
 									           			</c:when>
 											        	<c:when test="${friend.status =='대기'}">
-															<button class="friend-btn chg-friend-status" action="cancelFriendRequest" value="${board.writer.summoner_id }">대기 중</button>
+															<button class="friend-btn chg-friend-status" action="cancelFriendRequest" value="${board.writer.summoner_id }" style="background-color: #f46119; color: white;">대기 중</button>
 									           				<c:set var="loopOver" value="true" />
 									           			</c:when>
 											        </c:choose>
 									           	</c:when>
 									        	<%--상대방이 내게 친구 신청을 걸었는데 내가 아직 응답하지 않았을 때 --%>
 									        	<c:when test="${friend.user_no eq board.writer.user_no and friend.friend == sessionScope.summoner_id and status=='대기'}">
-														<button class="friend-btn chg-friend-status" action="acceptFriendRequest" value="${board.writer.summoner_id}">친구 수락</button>
+														<button class="friend-btn chg-friend-status" action="acceptFriendRequest" value="${board.writer.summoner_id}" style="color: gold;">친구 수락</button>
 							           				<c:set var="loopOver" value="true" />
 							           			</c:when>
 								       		</c:choose>
 								    	</c:if>
-								    	<%-- <div>
-								    	**********************************************
-									    	<input value="${friend.user_no}">
-									    	<input value="${friend.friend}">
-									    	<input value="${reply.replier.summoner_id}">
-									    	<input value="${friend.status}">
-								    	**********************************************
-								    	</div> --%>
-								    	
 									</c:forEach>
 							    	
 					       	 		<%-- 친추한 적이 없거나 친구삭제/차단해제 등을 해서 무관한 관계가 되었을 때 --%>
@@ -115,6 +108,8 @@
 							<div class="post-info">플레이 인원 : <span class="post-info-detail"><c:out value="${board.cru_pre } / ${board.cru_max }" /></span></div>
 							<input type="hidden" id="cru-max" value=" ${board.cru_max }">
 							<div class="post-info">작성날짜 : <c:out value="${board.board_date }" /></div>
+							
+							<%--글 작성자에게는 작성자 신고 버튼이 안 보임 --%>
 							<c:if test="${sessionScope.user_no != board.writer.user_no }">
 								<button class="report-btn" value="${board.writer.user_no }">신고</button>
 							</c:if>
@@ -128,6 +123,7 @@
 			
 			<div><span id="post-content"><c:out value="${board_view_reply.reply_count }" />${board.board_text }</span></div>
 			
+			<%--작성자에게만 글 수정/삭제 버튼이 보임 --%>
 			<c:if test="${sessionScope.user_no == board.writer.user_no }">
 				<div id="writer-post-button">
 					<a class="detail-big-btn modify-post" href="../board_detail/updateBoard.do?post_no=<c:out value="${board.post_no }"/>" style=" padding-left: 20px; padding-right: 20px;">수정</a>
@@ -138,26 +134,26 @@
 			</c:if>
 		</div>
 		
-		<div class="chosen-user-list" style="display: hidden;">
+		<div class="chosen-user-list" hidden="hidden">
 			<c:forEach items="${choice}" var="choiceList">
 				<input value="<c:out value="${choiceList }" />" class="chosen-users">
 			</c:forEach>
 		</div>
 		
-		<div class="session-info">
+		<div class="session-info" hidden="hidden">
 			<input id="session-user-no" value="<c:out value="${sessionScope.user_no }"/>">
 			<input id="session-summoner-id" value="<c:out value="${sessionScope.summoner_id }"/>">
 		</div>
 		
-		<!-- 관리자가 쓴 글에서는 댓글 작성/조회 불가 -->
-		<c:if test="${board.writer.user_no != 10028}">
+		<%-- 관리자가 쓴 글에서는 댓글 작성/조회 불가 --%>
+		<c:if test="${board.writer.ban != 3}">
 			<hr>
 			<div class="reply_wrap">
 				<div id="reply-header"><img src="../resources/imgs/post_detail/message.png" id="message-img">댓글 <c:out value="${board.reply_amount }" /></div>
 				<div id="reply-content">
 					<c:forEach var="reply" items="${reply}">
 						<div class="reply-content-repeat">
-							<input class="user_re_no" value=${reply.user_no }>
+							<input class="user_re_no" value=${reply.user_no } type="hidden">
 							<div class="user-info">
 								
 								<div class="user-info">
@@ -177,9 +173,9 @@
 								<span class="replier-info-separator">|</span>
 								<div class="user-info">${reply.replier.honor_rate }</div>
 								
+								<%--댓글 작성자는 해당 댓글에 있는 본인에 대한 친구추가 버튼이 안 보임 --%>
 							    <c:if test="${sessionScope.user_no != reply.user_no}">
 							    
-
 									<c:set var="loopOver" value="false"/>
 									<c:forEach var="friend" items="${friends}">
 									
@@ -189,36 +185,27 @@
 									           	<c:when test="${friend.user_no eq sessionScope.user_no and friend.friend == reply.replier.summoner_id}">
 									          		<c:choose>
 											        	<c:when test="${friend.status =='친구'}">
-															<button class="friend-btn chg-friend-status" action="deleteFriend" value="${reply.replier.summoner_id }">친구 삭제</button>
+															<button class="friend-btn chg-friend-status" action="deleteFriend" value="${reply.replier.summoner_id }" style="background-color: #f46119; color: white;">친구 삭제</button>
 									           				<c:set var="loopOver" value="true" />
 									           			</c:when>
 									           			<%--내가 상대를 차단함 --%>
 											        	<c:when test="${friend.status =='차단'}">
-															<button class="friend-btn chg-friend-status" action="cancelBan" value="${reply.replier.summoner_id }">차단 풀기</button>
+															<button class="friend-btn chg-friend-status" action="cancelBan" value="${reply.replier.summoner_id }" style="color: red;">차단 풀기</button>
 									           				<c:set var="loopOver" value="true" />
 									           			</c:when>
 											        	<c:when test="${friend.status =='대기'}">
-															<button class="friend-btn chg-friend-status" action="cancelFriendRequest" value="${reply.replier.summoner_id }">대기 중</button>
+															<button class="friend-btn chg-friend-status" action="cancelFriendRequest" value="${reply.replier.summoner_id }" style="background-color: #f46119; color: white;">대기 중</button>
 									           				<c:set var="loopOver" value="true" />
 									           			</c:when>
 											        </c:choose>
 									           	</c:when>
 									        	<%--상대방이 내게 친구 신청을 걸었는데 내가 아직 응답하지 않았을 때 --%>
 									        	<c:when test="${friend.user_no eq reply.replier.user_no and friend.friend == sessionScope.summoner_id and status=='대기'}">
-														<button class="friend-btn chg-friend-status" action="acceptFriendRequest" value="${reply.replier.summoner_id}">친구 수락</button>
+														<button class="friend-btn chg-friend-status" action="acceptFriendRequest" value="${reply.replier.summoner_id}" style="color: gold;">친구 수락</button>
 							           				<c:set var="loopOver" value="true" />
 							           			</c:when>
 								       		</c:choose>
 								    	</c:if>
-								    	<%-- <div>
-								    	**********************************************
-									    	<input value="${friend.user_no}">
-									    	<input value="${friend.friend}">
-									    	<input value="${reply.replier.summoner_id}">
-									    	<input value="${friend.status}">
-								    	**********************************************
-								    	</div> --%>
-								    	
 									</c:forEach>
 							    	
 					       	 		<%-- 친추한 적이 없거나 친구삭제/차단해제 등을 해서 무관한 관계가 되었을 때 --%>
@@ -227,9 +214,10 @@
 							     	</c:if>
 							     	
 								</c:if>
+								
 								<span id="reply-date">( <c:out value="${reply.re_date }" /> )</span>
 								
-								<!-- 본인이 작성한 댓글이면 삭제 버튼이, 아니면 신고 버튼이 보임. -->
+								<%-- 본인이 작성한 댓글이면 삭제 버튼이, 아니면 신고 버튼이 보임. --%>
 								<c:choose>
 								    <c:when test="${sessionScope.user_no != reply.user_no}">
 										<button class="report-btn" value="${reply.user_no }">신고</button>
@@ -243,6 +231,7 @@
 							
 							<div>
 								<span class="reply-content"><c:out value="${reply.re_text }" /></span>
+								<%-- 글 작성자에게만 체크 버튼이 보임 --%>
 								<c:if test="${sessionScope.user_no == board.writer.user_no }">
 									<button class="choose-user">
 										<img src="../resources/imgs/post_detail/unchecked.png" class="check-img" value="${reply.user_no }">
@@ -253,7 +242,7 @@
 					</c:forEach>
 				</div>
 				
-				<!-- 글쓴이는 댓글 작성 불가 -->
+				<%-- 글쓴이는 댓글 작성 불가 --%>
 				<c:if test="${sessionScope.user_no != board.writer.user_no }">
 					<div id="new-reply">
 						<form method="post" action="insertReply.do" onsubmit="return checkReplyValidation();">
@@ -270,5 +259,5 @@
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 
 </body>
-    <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
+    <script src="../resources/js/post_view.js?ver=3" type="text/javascript"></script>
 </html>

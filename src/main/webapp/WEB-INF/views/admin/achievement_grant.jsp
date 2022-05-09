@@ -13,7 +13,7 @@
 <body>
 <%@ include file="/WEB-INF/views/basic/header.jsp"%>
 <div id="main-page">
-	<form method="get" action="grant.do" onsubmit="return grant();">
+	<form method="get" action="grant.do">
 		<div id="input_achievements">
 			<div class="fixed_position">
 				<input id="icon_payments" name="user_id" type="text" placeholder="유저 아이디" required/>
@@ -23,12 +23,14 @@
 			</div>
 			<div id="icon_select">
 				<div id="achievements_select">
+						<div id="icon_div">
 					<c:forEach var="i" begin="1" end="9">
-						<div class="modal-profile-icon-body">
-							<input type="radio" class="profile-icon-radio" name="badge_file" value="${i}" id="${i}">
-							<label for="${i}"><img class="modal-profile-icon" src="/resources/imgs/profile_icon/${i}.png"></label>
-						</div>
+							<div class="modal-profile-icon-body">
+								<input type="radio" class="profile-icon-radio" name="badge_file" value="${i}" id="${i}">
+								<label for="${i}"><img class="modal-profile-icon" src="/resources/imgs/profile_icon/${i}.png"></label>
+							</div>
 					</c:forEach>
+						</div>
 				</div>
 			</div>
 		</div>

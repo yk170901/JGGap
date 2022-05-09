@@ -1,5 +1,6 @@
 package com.lol.java.profile;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,9 @@ public interface ProfileDAO {
 
 	// 마이페이지 유저 정보 불러오기
 	Object mypage_info(Object user_no);
+	
+	// 마이페이지 친구 신청 목록 불러오기
+	List<ProfileVO> mypage_friend(HashMap<String, Object> friend);
 	
 	// 마이페이지 뱃지 목록 불러오기
 	List<ProfileVO> mypage_badge(Object user_no);
@@ -31,6 +35,15 @@ public interface ProfileDAO {
 
 	// 명예 점수
 	void honor_rate(ProfileVO profileVO);
+	
+	// 친구 신청 수락
+	void friend_add(Map<String, Object> friend);
+
+	// 친구 신청 차단
+	void friend_block(Map<String, Object> friend);
+
+	// 친구 신청 취소
+	void friend_cancle(Map<String, Object> friend);
 	
 	
 	

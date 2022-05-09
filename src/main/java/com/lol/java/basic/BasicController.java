@@ -37,7 +37,7 @@ public class BasicController {
 		
 		int check = 0;
 		for(HttpSession s : sessionList) {
-			if((int) s.getAttribute("user_no") == (int) session.getAttribute("user_no")) {
+			if(s.equals(session)) {
 				check++;
 			}
 		}
@@ -76,11 +76,18 @@ public class BasicController {
 		return "redirect:/login.jsp";
 	}
 	
-	// X버튼으로 로그아웃
-	@RequestMapping("/logoutESC.do")
-	public void logoutESC(HttpSession session) {
-		sessionList.remove(session);
-		session.invalidate();
-	}
+//	// X버튼으로 로그아웃
+//	@RequestMapping("/logoutESC.do")
+//	public void logoutESC(HttpSession session) {
+//		sessionList.remove(session);
+//		session.invalidate();
+//	}
+	
+	// 포인트에 따라 레벨 여부      
+    @RequestMapping("/level_point.do")
+    public @ResponseBody String level_point(HttpSession session) {
+       Object user_no = session.getAttribute("user_no");
+       return basicService.level_point(user_no);
+    }   
 
 }

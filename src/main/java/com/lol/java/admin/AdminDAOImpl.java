@@ -26,7 +26,6 @@ public class AdminDAOImpl implements AdminDAO{
 
 	@Override
 	public void grant(AdminVO vo) {
-		
 		mybatis.insert("AdminDAO.grant",vo);
 	}
 
@@ -46,6 +45,12 @@ public class AdminDAOImpl implements AdminDAO{
 	public List<AdminVO> report_list() {
 		
 		return mybatis.selectList("AdminDAO.report_list");
+	}
+
+	@Override
+	public int overlap_check(AdminVO vo) {
+		
+		return mybatis.selectOne("AdminDAO.overlap_check",vo);
 	}
 	
 }

@@ -61,10 +61,17 @@ $(function() { $('#CSC').on("click", function() {
 	})
 })
 
-$(window).bind("beforeunload", function (e){
-	$.ajax({
-		url: "/basic/logoutESC.do",
-		type: "post"
-	})
-});
+//$(window).bind("beforeunload", function (e){
+//	$.ajax({
+//		url: "/basic/logoutESC.do",
+//		type: "post"
+//	})
+//});
 
+   $.ajax({
+      url: "/basic/level_point.do",
+      type: "post",
+      error: function(err) {
+         alert("point에러" + err)
+      }
+   })

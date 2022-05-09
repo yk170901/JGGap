@@ -57,7 +57,7 @@ body {
     font-style: normal;
     font-weight: normal;
     line-height: 1.31;
-    height: 3000px;
+    text-align: center;
 }
 
 .page-main {
@@ -66,23 +66,25 @@ body {
     -moz-appearance: none !important;
     display: inline-block;
     position: relative;
-    margin : 120px 45px;
+    margin : 120px 295px;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 1160px;
-    margin-left: 250px;
-    padding-left: 50px;
+    width: 75%;
+    padding: 0px 50px;
+    height: 100%;
 }
 
 .page-body {
     width: 100%;
+    height: 100%;
 }
 
     
 .profile-body,
 .badges-body,
 .boardlist-body,
-.choices-body {
+.choices-body,
+.friends-body {
 	padding: 20px 30px;
     border-radius: 10px;
     margin-top: 30px;
@@ -97,17 +99,16 @@ body {
 	
 }
     
-.boardlist-body,
 .profile-info {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    text-align: left;
 }
 
 .profile-info-icon {
-    flex: 0 0 110px;
-    width: 110px;
-    height: 110px;
+    width: 23%;
+    height: 23%;
     margin-right: 20px;
     overflow: hidden;
     border-radius: 50%;
@@ -115,19 +116,19 @@ body {
 }
 
 .profile-icon {
-	width: 120px;
-	height: 120px;
+	width: 100%;
+	height: 100%;
 }
 
 .profile-icon-text {
-	font-size: 25px;
+	font-size: 150%;
 	position: absolute;
 	text-align: center;
-	width: 110px;
-	height: 110px;
+	width: 100%;
+	height: 100%;
 	top: 50%;
 	left: 50%;
-	padding-top: 40px;
+	padding-top: 35%;
 	transform: translate(-50%, -50%);
 	color:white;
 	opacity: 0;
@@ -207,7 +208,8 @@ body {
 
 .badges-head,
 .boardlist-head,
-.choices-head {
+.choices-head,
+.friends-head {
 	margin-top: 60px;
     display: flex;
     align-items: center;
@@ -217,7 +219,8 @@ body {
 
 .badges-title,
 .boardlist-title,
-.choices-title {
+.choices-title,
+.friends-title {
 	margin-bottom: 10px;
 	font-weight: bold;
 }
@@ -255,18 +258,20 @@ body {
 	margin-bottom: 10px;
 }
 
-.choices-list {
-	width: 1100px;
+.choices-list,
+.friends-list {
+	width: 100%;
 	text-align: center;
-	margin-left : 20px;
 	border:none;
 }
 
-.choice-list tbody {
+.choice-list tbody,
+.friends-list tbody {
 	border:none;
 }
 
-.choices-list tr {
+.choices-list tr,
+.friends-list tr {
 	border: none;
 	height: 45px;
 	outline: none;
@@ -277,32 +282,38 @@ body {
 }
 
 .td-empty {
-	width: 20px;
+	width: 2%;
 }
 
-.choice-tiers {
+.choice-tiers,
+.friends-profile-icon {
 	width : 45px;
-	height: 35px;
 	padding: 0px 5px 0px 5px;
 }
 
-.td-tier {
-	width: 160px;
+.friends-profile-icon {
+	border-radius: 50%;
 }
 
-.td-honnorrate{
-	width: 70px;
+.td-tier,
+.td-profile-icon {
+	width: 15%;
+}
+
+.td-honorrate{
+	width: 7%;
 }
 
 .td-summonerid {
-	width: 230px;
+	width: 22%;
 	text-align: left;
 	padding-left: 10px;
 	padding-top: 5px;
 }
 
 
-.choice-level {
+.choice-level,
+.friends-level {
 	width: 30px;
 	height: 22px;
 	transform: translateY(-2px);
@@ -312,19 +323,23 @@ body {
 	color: black;
 }
 
-.td-checked {
-	width: 60px;
-}
-.choices_check {
-	width : 45px;
-	height: 35px;
+.choices_check,
+.friends_check {
+	width : 4%;
+	height: 2%;
 	padding: 0px 5px 0px 5px;
 	border-radius:50%;
 }
 
-.choices_check:hover {
+.choices_check:hover,
+.friends_check:hover {
 	cursor:pointer;
 	filter:grayscale(100%);
+}
+
+.choices_check img,
+.friends_check img {
+	width:45px;
 }
 
 .badges-info {
@@ -354,8 +369,9 @@ body {
 	display: block;
 }
 
-
-
+.board-list {
+	width: 100%;
+}
 
 .board-list tr{
 	height: 40px;

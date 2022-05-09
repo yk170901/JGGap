@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
         $(this).toggleClass('is-active');
         $('.sidebar').toggleClass('is-show');
     });
-    const mediaHeader = window.matchMedia('(max-width: 959px)');
+//    const mediaHeader = window.matchMedia('(max-width: 959px)');
 
     function handleHeader(e) {
         if (e.matches) {
