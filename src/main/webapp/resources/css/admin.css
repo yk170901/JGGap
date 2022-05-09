@@ -70,8 +70,17 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     width: 1250px;
-    margin-left: 250px;
+    margin-left: 160px;
 }
+
+/* td:not(:first-child),
+td:not(:last-child),
+th:not(:first-child),
+th:not(:last-child) {
+	border-left: none;
+	
+} */
+
 
 .page-body {
     width: 100%;
@@ -79,16 +88,107 @@ body {
 }
 
 #user_list_table {
+	width: 100%;
 	padding: 50px;
-	height: 500px;
-	border: solid 1px black;
 	margin-top: 75px;
 }
 
 .list {
+	width: 100%;
+	text-align: center;
+	border: 1px solid #444444;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+ }
+
+#main-page {
+	width: 100%;
+	margin-left: 350px;
+	margin-top: 75px;
+	height: 600px;
+	display: flex;
+}
+
+#input_achievements, #icon_select {position:relative}
+.absolute {position:absolute;bottom:0;right:0}
+
+#input_achievements {
+	width: 250px;
+	height: 600px;
+	display: flex;
+	margin-top: 75px;
+}
+
+#icon_select {
+	width: 720px;
+	height: 600px;
+	
+}
+
+.fixed_position {
+	width: 250px;
+	height: 150px;
+	margin: auto;
+	padding: auto;
+}
+
+#icon_payments {
+	width: 250px;
+	height: 50px;
+	outline: none;
+	border-radius: 10px;
+	
+}
+
+#payments_button_wrap{
+	margin-top: 20px;
 	text-align: center;
 }
 
-td {
+#payments_button {
+	width: 150px;
 	height: 50px;
+	background-color: white;
+	color: #F46119;
+	outline: none;
+	text-decoration: none;
+	border-radius: 10px;
+	
+}
+
+.modal-profile-icon-body {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	margin: 18px 20px;
+}
+
+.modal-profile-icon {
+	border-radius: 50%;
+}
+
+.modal-profile-icon:hover {
+	cursor:pointer;
+}
+
+.profile-icon-radio {
+	display:none;
+}
+
+.profile-icon-radio:checked + label img {
+	border: 5px groove #F46119;
+}
+
+#achievements_select {
+	width: 470px;
+	height: 500px;
+	margin: auto;
+	background-color: lightgray;
+	margin-left: 60px;
+	border: 15px solid #F46119;
+	border-radius: 5%;
 }

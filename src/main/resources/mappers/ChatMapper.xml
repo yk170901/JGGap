@@ -5,5 +5,8 @@
   <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
   
   <mapper namespace="ChatDAO">
+  	<select id="user_info" parameterType="chat" resultType="String">
+  	  select profile_icon from user_info where summoner_id = #{summoner_id}
+  	</select> 
   
   </mapper>

@@ -16,6 +16,14 @@ public interface Board_view_Service {
 	public void chooseUser(HashMap<String, Integer> map);
 	
 	public void cancelUser(HashMap<String, Integer> map);
+
+	public void submitReport(HashMap<String, String> map);
+
+	public void deleteReply(int user_re_no);
 	
-	/* public boolean replyAlreadyChosen(HashMap<String, Integer> map); */
+	public void befriend(HashMap<String, String> map);
+
+	public List<Board_view_VO_friend> getFriends(int user_no);
+
+	public void chgFriendStatus(HashMap<String, String> map);
 }

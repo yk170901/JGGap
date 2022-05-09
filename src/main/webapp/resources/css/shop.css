@@ -85,7 +85,7 @@
 	border-radius: 15px;
 }
 
-.shop-apply:hover {
+.shop-apply:hover, .shop-buy:hover {
 	box-shadow: 0px 0px 20px #F46119;
 	transition: 0.5s all;
 }

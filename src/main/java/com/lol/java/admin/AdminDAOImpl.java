@@ -23,5 +23,34 @@ public class AdminDAOImpl implements AdminDAO{
 		
 		return mybatis.selectOne("AdminDAO.member_count");
 	}
+
+	@Override
+	public void grant(AdminVO vo) {
+		mybatis.insert("AdminDAO.grant",vo);
+	}
+
+	@Override
+	public int conversion(String user_id) {
+		
+		return mybatis.selectOne("AdminDAO.conversion",user_id);
+	}
+
+	@Override
+	public int report_count() {
+
+		return mybatis.selectOne("AdminDAO.report_count");
+	}
+
+	@Override
+	public List<AdminVO> report_list() {
+		
+		return mybatis.selectList("AdminDAO.report_list");
+	}
+
+	@Override
+	public int overlap_check(AdminVO vo) {
+		
+		return mybatis.selectOne("AdminDAO.overlap_check",vo);
+	}
 	
 }

@@ -62,3 +62,45 @@ $(function() { $('.apply').on("click", function() {
 			}		
 	})
 })
+
+$(function(){ $('.shop-buy-btn').on('click', function(){
+	var item_point = Number($(this).parents(".shop-buy").children(".point-amount").text().split('P')[0].trim());
+	var usable_points = Number($(this).parents(".shop-main").children(".shop-top").children("#shop-point-wrapper").children("#shop-point").children('.shop-explain-color').text().trim());
+		if(item_point > (usable_points)){
+				Swal.fire({
+					title : "포인트가 부족합니다",
+					icon : 'warning',
+					confirmButtonText: '확인'
+				})
+		} else{
+			Swal.fire({
+			title: '구매 완료!',
+			html: '상품에 대한 안내를 문자메시지로 발송드렸습니다.',
+			confirmButtonText: '확인',
+			icon: 'success'
+			})
+			$.ajax({
+				url : "/shop/buy.do",
+				type : "POST",
+				data : {
+					item_point : item_point
+				},
+				success: function(data) {
+					Swal.mixin().fire({
+						toast: true,
+						position: 'center-center',
+						showConfirmButton: false,
+						timer: 1300,
+						timerProgressBar: true,
+						icon: 'success',
+						title: 'loading...'
+					})
+					location.href = "/shop/shop.do";
+				},
+				error : function(request, status, err){
+					alert("code = "+ request.status+"\n error = " +err);						
+				}
+			})
+		}		
+	})	
+})

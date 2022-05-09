@@ -18,8 +18,13 @@ public class BasicServiceImpl implements BasicService{
 	}
 
 	@Override
-	public List<BasicVO> follower(Object user_no) {
-		return basicDAO.follower(user_no);
+	public List<BasicVO> getfriends(Object user_no) {
+		return basicDAO.getfriends(user_no);
+	}
+
+	@Override
+	public List<BasicVO> getbanned(Object user_no) {		
+		return basicDAO.getbanned(user_no);
 	}
 	
 }

@@ -1,5 +1,8 @@
 package com.lol.java.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.method.annotation.SessionAttributesHandler;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.socket.WebSocketSession;
 
 // 로그인페이지(메인) 및 회원가입페이지
 @Controller
@@ -19,6 +21,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	//세션 리스트
+    private List<HttpSession> sessionList = new ArrayList<HttpSession>();
 
 //	회원가입 컨트롤러
 	@RequestMapping("/sign_up.do")
@@ -40,8 +44,14 @@ public class UserController {
 		UserVO result = userService.idCheck_Login(vo);
 		String tier = userService.tier_info(result.getUser_no());
 		System.out.println("login 컨트롤러 호출");
-		System.out.println(tier);
-		
+		for( HttpSession member : sessionList) {
+			if (session == member) {
+				session.invalidate();
+				return "user/duplicate_login";
+			}
+		}
+		sessionList.add(session);
+		System.out.println(sessionList);
 		if (result == null) {
 			
 			System.out.println("존재하지 않는 아이디 또는 아이디 비밀번호가 틀렸습니다");
@@ -70,8 +80,6 @@ public class UserController {
 	@ResponseBody
 	public String idCheck(String user_id) {
 
-		String x = userService.idCheck(user_id);
-
 		return userService.idCheck(user_id);
 	}
 	
@@ -80,16 +88,7 @@ public class UserController {
 	@ResponseBody
 	public String summoner_idCheck(String summoner_id) {
 		
-		String x = userService.summoner_idCheck(summoner_id);
-		
 		return userService.summoner_idCheck(summoner_id);
-	}
-
-	// 로그아웃
-	@RequestMapping("/logout.do")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/login.jsp";
-	}
+	}	
 
 }

@@ -18,4 +18,6 @@ public class Board_view_VO_replier {
 	/* Reply 단 유저의 Lol_info */
 	private String solo_tier;
 	private String solo_tier_grade;
+	private String free_tier;
+	private String free_tier_grade;
 }

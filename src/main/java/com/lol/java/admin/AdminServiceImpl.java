@@ -22,6 +22,36 @@ public class AdminServiceImpl implements AdminService{
 		
 		return adminDAO.member_count();
 	}
+
+	@Override
+	public void grant(AdminVO vo) {
+		
+		adminDAO.grant(vo);
+	}
+
+	@Override
+	public int conversion(String user_id) {
+		
+		return adminDAO.conversion(user_id);
+	}
+
+	@Override
+	public int report_count() {
+		
+		return adminDAO.report_count();
+	}
+
+	@Override
+	public List<AdminVO> report_list() {
+		
+		return adminDAO.report_list();
+	}
+
+	@Override
+	public int overlap_check(AdminVO vo) {
+		
+		return adminDAO.overlap_check(vo);
+	}
 	
 	
 	
