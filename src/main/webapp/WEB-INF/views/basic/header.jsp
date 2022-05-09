@@ -23,7 +23,7 @@
 	        <div class="page-header__content">
 	            <div class="page-header__search">
 	                <div class="search">
-	                    <div class="search__input"><i class="ico_search"></i><input type="search" name="search" placeholder="Search"></div>
+	                    <div class="search__input"><i class="ico_search"></i><input type="search" name="search" placeholder="전적검색할 소환사명..."></div>
 	                </div>
 	            </div>
 	            <div class="page-header__action">
@@ -40,7 +40,7 @@
 	        </div>
 	    </div>
 	</header>
-    <aside class="sidebar is-show">
+    <aside class="sidebar">
         <div class="sidebar-box">
             <ul class="uk-nav">
                 <li class="uk-active"><a href="http://localhost:8080/board_list/board_list.do"><i class="ico_home"></i><span>구인게시판</span></a></li>

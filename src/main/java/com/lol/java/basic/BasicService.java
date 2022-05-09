@@ -8,4 +8,5 @@ public interface BasicService {
 	BasicVO header_point(Object user_no);
 	List<BasicVO> getfriends(Object user_no);
 	List<BasicVO> getbanned(Object user_no);
+	String level_point(Object user_no);
 }

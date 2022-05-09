@@ -30,7 +30,10 @@ public class BasicDAOImpl implements BasicDAO{
 		return mybatis.selectList("BasicDAO.header_banned", user_no);
 	}
 	
-	
+    @Override
+    public String level_point(Object user_no) {
+       return mybatis.selectOne("BasicDAO.level_point", user_no);
+    }
 	
 	
 }
