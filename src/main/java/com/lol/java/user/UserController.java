@@ -52,7 +52,7 @@ public class UserController {
 		}
 		sessionList.add(session);
 		System.out.println(sessionList);
-		if (result == null) {
+		if (result.getUser_no() < 1) {
 			
 			System.out.println("존재하지 않는 아이디 또는 아이디 비밀번호가 틀렸습니다");
 			return "user/join";

@@ -34,11 +34,11 @@ public class AdminController {
 			// 리스트에 개수 보여주는 기능
 			if (nowPage == null && cntPerPage == null) {
 				nowPage = "1";
-				cntPerPage = "10";
+				cntPerPage = "3";
 			} else if (nowPage == null) {
 				nowPage = "1";
 			} else if (cntPerPage == null) { 
-				cntPerPage = "10";
+				cntPerPage = "3";
 			}
 			System.out.println("토탈 계산 끝 : " + total);
 			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
@@ -94,11 +94,11 @@ public class AdminController {
 			// 리스트에 개수 보여주는 기능
 			if (nowPage == null && cntPerPage == null) {
 				nowPage = "1";
-				cntPerPage = "10";
+				cntPerPage = "3";
 			} else if (nowPage == null) {
 				nowPage = "1";
 			} else if (cntPerPage == null) { 
-				cntPerPage = "10";
+				cntPerPage = "3";
 			}
 			System.out.println("토탈 계산 끝 : " + total);
 			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));

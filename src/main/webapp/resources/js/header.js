@@ -60,11 +60,11 @@ $(function() { $('#CSC').on("click", function() {
 		})
 	})
 })
-
-$(window).bind("beforeunload", function (e){
-	$.ajax({
-		url: "/basic/logoutESC.do",
-		type: "post"
-	})
-});
-
+//
+//$(window).bind("beforeunload", function (e){
+//	$.ajax({
+//		url: "/basic/logoutESC.do",
+//		type: "post"
+//	})
+//});
+//

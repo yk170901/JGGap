@@ -76,11 +76,11 @@ public class BasicController {
 		return "redirect:/login.jsp";
 	}
 	
-	// X버튼으로 로그아웃
-	@RequestMapping("/logoutESC.do")
-	public void logoutESC(HttpSession session) {
-		sessionList.remove(session);
-		session.invalidate();
-	}
+//	// X버튼으로 로그아웃
+//	@RequestMapping("/logoutESC.do")
+//	public void logoutESC(HttpSession session) {
+//		sessionList.remove(session);
+//		session.invalidate();
+//	}
 
 }

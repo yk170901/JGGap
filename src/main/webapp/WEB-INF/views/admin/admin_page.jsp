@@ -10,6 +10,8 @@
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script type="text/javascript" src="../resources/js/post_list.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -25,13 +27,13 @@
 				<table class="list">
 					<tr>
 						<th width="200px">아이디</th>
-						<th width="110px">아이디 고유 번호</th>
+						<th width="200px">아이디 번호</th>
 						<th width="300px">닉네임</th>
 						<th width="110px">연락처</th>
-						<th width="100px">사이트 레벨</th>
+						<th width="100px">레벨</th>
 						<th width="100px">Point</th>
-						<th width="110px">아이콘 고유 번호</th>
-						<th width="80px">명예 점수</th>
+						<th width="230px">아이콘 번호</th>
+						<th width="150px">명예 점수</th>
 						<th width="110px">가입 날짜</th>
 						<th width="110px">밴</th>
 					</tr>
