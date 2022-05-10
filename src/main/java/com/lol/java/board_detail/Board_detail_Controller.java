@@ -26,25 +26,52 @@ public class Board_detail_Controller {
 		return "board_detail/"+path;
 	}
 
+	// 관리자글 작성
+	@RequestMapping("/adminPostInsert.do")
+	public String insertAdminPost(Board_detail_VO vo, HttpSession session) {
+		vo.setUser_no((int)session.getAttribute("user_no"));
+		
+		board_detail_Service.insertAdminPost(vo);
+		
+		// 유저 번호를 사용해, 그 유저의 최신 작성글 번호 post_no 가져오기		
+		return "redirect:/board_view/viewAdminBoard.do?post_no=" + board_detail_Service.getAdminPostNo(vo.getUser_no());
+	}
+
+	// 글 작성
 	@RequestMapping("/postInsert.do")
 	public String insertPost(Board_detail_VO vo, HttpSession session) {
-
 		vo.setUser_no(Integer.parseInt(String.valueOf(session.getAttribute("user_no"))));
 		
 		board_detail_Service.insertPost(vo);
 		
 		// 유저 번호를 사용해, 그 유저의 최신 작성글 번호 post_no 가져오기
-		int post_no = board_detail_Service.getPost_no(vo.getUser_no());
+		int post_no = board_detail_Service.getPostNo(vo.getUser_no());
 		
 		return "redirect:/board_view/viewBoard.do?post_no="+post_no;
 	}
 	
+	// 글 수정 정보 가져오기
 	@RequestMapping("/updateBoard.do")
 	public void getBoardToUpdate(Board_detail_VO vo, Model model) {
 		model.addAttribute("update", board_detail_Service.getBoard(vo.getPost_no()));
 	}
-	
 
+	
+	// 공지 글 수정 정보 가져오기
+	@RequestMapping("/updateAdminBoard.do")
+	public void getAdminBoardToUpdate(Board_detail_VO vo, Model model) {
+		model.addAttribute("update", board_detail_Service.getAdminBoard(vo.getPost_no()));
+	}
+
+	// 관리자 글 수정
+	@RequestMapping("/adminPostUpdate.do")
+	public String updateAdminBoard(Board_detail_VO vo) {
+		board_detail_Service.updateAdminPost(vo);
+		return "redirect:/board_view/viewAdminBoard.do?post_no="+vo.getPost_no();
+		
+	}
+
+	// 글 수정
 	@RequestMapping("/postUpdate.do")
 	public String updateBoard(Board_detail_VO vo) {
 		board_detail_Service.updatePost(vo);
@@ -52,10 +79,17 @@ public class Board_detail_Controller {
 		
 	}
 	
+	// 관리자글 삭제
+	@RequestMapping("/adminPostDelete.do")
+	public String deleteAdminBoard(int post_no) {
+		board_detail_Service.deleteAdminPost(post_no);
+		return "redirect:/board_list/board_list.do";
+	}
+	
+	// 글 삭제
 	@RequestMapping("/postDelete.do")
-	public String deleteBoard(int post_no, HttpServletResponse response) throws IOException {
+	public String deleteBoard(int post_no) {
 		board_detail_Service.deletePost(post_no);
-		
 		return "redirect:/board_list/board_list.do";
 	}
 }

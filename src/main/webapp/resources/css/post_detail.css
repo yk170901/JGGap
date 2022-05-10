@@ -2,6 +2,14 @@
 
 /* 모달 */
 
+select{
+	padding: 6px 0;
+}
+
+.post-header-top{
+	font-weight: 700;
+}
+
 .modal-bg{
 	position: fixed;
 	top: 0;
@@ -33,6 +41,8 @@
 	align-items: center;
 	flex-direction: column;
 	position: relative;
+	padding: 15px;
+	border-radius: 30px;
 }
 
 .modal button{
@@ -41,11 +51,21 @@
 	color: white;
 	border: 0;
 	cursor: pointer;
+	border-radius: 10px;
+}
+
+.modal input{
+	padding: 5px;
+	width: 80%;
+	outline: none;
 }
 
 .modal textarea{
 	width: 80%;
 	color: white;
+	padding: 5px;
+	margin: 10px 0;
+	resize: none;
 }
 
 .modal-close{
@@ -54,10 +74,14 @@
 	right: 10px;
 	font-weight: bold;
 	cursor: pointer;
+	font-size: 1.5em;
+	padding-right: 10px;
 }
 
 .modal-title{
 	color: #f46119;
+	font-weight: bold;
+	margin-bottom: 10px;
 }
 
 /* 모달 */
@@ -74,16 +98,37 @@
 
 .reply-content{
 	display: inline-block;
-	width:85%;
+	width:90%;
 	line-height:30px;
 }
 
 .post-info{
 	padding-right: 10px;
+	font-weight: bold;
+}
+
+#content{
+	resize: none;
+	padding: 5px;
+}
+
+.post-info > .post-info-detail{
+	font-weight: 500;
 }
 
 .post-info-detail{
-	color: blue;
+	color: #f46119;
+}
+
+.user-record-link{
+	color: black;
+	text-decoration: none;
+}
+
+
+.user-record-link:hover{
+	color: #f46119;
+	text-decoration: none;
 }
 
 .friend-btn{
@@ -103,7 +148,7 @@
 }
 
 .tier-img{
-	width: 45px;
+	width: 35px;
 }
 
 #message-img{
@@ -111,7 +156,7 @@
 	margin-right: 10px;
 }
 
-.chooseUser{
+.choose-user{
 	padding:0;
 	border:0;
 }
@@ -195,7 +240,8 @@
 	margin:auto;
 	padding-top: 20px;
 	width: 80%;
-	padding-left: 200px; 
+	padding-left: 200px;
+	min-height: 750px;
 }
 
 input#title{
