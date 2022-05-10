@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Insert title here</title>	
 	<link rel="stylesheet" href="/resources/css/main.css" type="text/css">
 	<link rel="stylesheet" href="/resources/css/libs.min.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">    
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marcell`us&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
@@ -49,7 +49,7 @@
 
                 <li><a href="http://localhost:8080/shop/shop.do"><i class="ico_store"></i><span>포인트샵</span></a></li>
                 
-                <li><a href="http://localhost:8080/record/record.do"><i class="ico_profile"></i><span>전적검색</span></a></li>
+                <li><a href="http://localhost:8080/record/record.do"><i class="ico_search"></i><span>전적검색</span></a></li>
                 
                 <% if ((int)ban == 3) { %>
                 <li><a href="http://localhost:8080/admin/admin_page.do"><i class="ico_profile"></i><span>회원 정보 관리</span></a></li>

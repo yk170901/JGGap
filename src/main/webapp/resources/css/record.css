@@ -145,6 +145,8 @@ body {
 
 .summoner-button-text {
 	color:white;
+	background: transparent;
+	border: none;
 }
 
 hr{

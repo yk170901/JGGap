@@ -11,19 +11,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/record.css" type="text/css">
 </head>
 <body>
 <%-- 전적갱신 누르면 넘기기 위한 유저넘 : ${record.user_no } --%>
 	<%@ include file="/WEB-INF/views/basic/header.jsp"%>
 	<main class="page-main">
+		<c:set var="game_id" value="${score }"/>
 		<div class="page-body">
 			<!-- 소환사 정보 -->
 			<div class="summoner-info-body">
 				<div><img class="summoner-profile-icon" src="/resources/imgs/profile_icon/${record.profile_icon }.png"></div>
 				<div class="summoner-summoner-id" value="${record.user_no }">${record.summoner_id }</div>
-				<a class="summoner-button" href="#!" ><span class="summoner-button-text">전적 갱신</span></a>
+				<form class="summoner-button" method="post" action="record_update.do">
+					<input type="hidden" name="summoner_id" value="${record.summoner_id }">
+					<input type="hidden" name="gameid" value="${game_id[0].gameid }">
+					<input type="submit" class="summoner-button-text" value="전적 갱신">
+				</form>
 			</div>
 			<hr>
 			<div class="summoner-stats-body">

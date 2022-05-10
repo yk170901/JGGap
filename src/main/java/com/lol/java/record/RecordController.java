@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 // 전적 페이지
@@ -24,6 +25,13 @@ public class RecordController {
 	public void record(Model model, RecordVO recordVO) {
 		model.addAttribute("record", recordService.record_info(recordVO));
 		model.addAttribute("score", recordService.record_score(recordVO));
+	}
+	
+	// 전적 페이지 불러오기
+	@RequestMapping("/record_update.do")
+	@ResponseBody
+	public void record_update(RecordVO vo) {
+		System.out.println(vo);
 	}
 	
 	// 전적 더보기 버튼

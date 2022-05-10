@@ -4,16 +4,14 @@ import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 
 import org.python.jline.internal.InputStreamReader;
-import org.python.util.PythonInterpreter;
 
- 
 public class test {
  
     public static void main(String[] args) throws IOException, InterruptedException {
-    	String command = "C:\\Users\\grood\\anaconda3\\envs\\flask\\python.exe";  // 명령어
-    	String arg1 = "C:\\Users\\grood\\Desktop\\JGGapProject\\JGGap\\crawling.py"; // 인자
+    	String command = "C:\\Users\\grood\\anaconda3\\envs\\JGGap\\python.exe";  // 명령어
+    	String arg = "C:\\Users\\grood\\Desktop\\JGGapProject\\JGGap\\crawling.py"; // 인자
     	System.out.println("1");
-    	ProcessBuilder builder = new ProcessBuilder(command, arg1, "네네스노윙순살");
+    	ProcessBuilder builder = new ProcessBuilder(command, arg, "네네스노윙순살", "gameid");
     	builder.redirectOutput(Redirect.INHERIT);
     	builder.redirectError(Redirect.INHERIT);
     	

@@ -1,5 +1,11 @@
 $(function() {
 	
+	// 전적갱신 버튼 클릭시
+//	$('.summoner-button-text').on.on("click", function() {
+//		console.log()
+//	})
+	
+	
 	// 전적 더보기 버튼 클릭시
 	var begin_num = 11;
 	var user_no =$('.summoner-summoner-id').attr('value')
@@ -428,9 +434,10 @@ content += '				</div>'
 			content+='		</div>'
 			content+='	</div>'
 		
+		}
+
+
 	}
 
-
-}
 
 })

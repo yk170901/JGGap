@@ -12,7 +12,7 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="format-detection" content="telephone=no">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="/resources/css/shop.css" type="text/css">
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>

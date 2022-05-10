@@ -28,6 +28,13 @@ public class BasicController {
 		return basicService.header_point(user_no);
 	}
 	
+   // 포인트에 따라 레벨 여부      
+   @RequestMapping("/level_point.do")
+   public @ResponseBody String level_point(HttpSession session) {
+      Object user_no = session.getAttribute("user_no");
+      return basicService.level_point(user_no);
+   }   
+	
 	// 사이드바 친구관리
 	@RequestMapping("/friend.do")
 	public @ResponseBody List<BasicVO> createdSession(HttpSession session) {

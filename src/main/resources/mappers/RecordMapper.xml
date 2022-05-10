@@ -21,7 +21,7 @@
 			SELECT *
 			FROM lol_record
 			WHERE user_no=#{user_no}
-			order by game_duration desc
+			order by game_timestamp desc
 			) a
 		<![CDATA[where rownum <= 10]]>
 	</select>
@@ -35,7 +35,7 @@
 				SELECT *
 				FROM LOL_RECORD
 				WHERE USER_NO = #{user_no}
-				ORDER BY game_duration desc 
+				ORDER BY game_timestamp desc 
 			) a
 		)
 		WHERE num BETWEEN #{begin_num} AND #{begin_num} +9
@@ -49,7 +49,7 @@
 				SELECT win,kills, deaths, assists,team_total_kills
 				FROM lol_record
 				WHERE user_no=#{user_no}
-				order by game_duration desc
+				order by game_timestamp desc
 				) a
 			<![CDATA[where rownum <= 20]]>
 	</select>
@@ -61,7 +61,7 @@
 			SELECT champion_name, win, kills, deaths, assists, champion_name_KR
 			FROM LOL_RECORD
 			WHERE USER_NO =#{user_no}
-			ORDER BY game_duration DESC
+			ORDER BY game_timestamp DESC
 		) a
 		<![CDATA[where rownum <= 20]]>
 		GROUP BY a.CHAMPION_NAME, a.champion_name_KR
@@ -75,7 +75,7 @@
 			SELECT lane, win,game_mode
 			FROM LOL_RECORD
 			WHERE USER_NO =#{user_no}
-			ORDER BY game_duration DESC
+			ORDER BY game_timestamp DESC
 		) a
 		<![CDATA[where rownum <= 20]]> AND a.game_mode != '칼바람 나락'
 		GROUP BY a.lane

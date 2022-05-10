@@ -42,7 +42,7 @@ public class RecordVO {
 		private String win;
 		private String spell_fir;
 		private String spell_sec;
-		private int gameid;
+		private String gameid;
 		private String lane;
 		private String game_duration;
 		private String game_timestamp;

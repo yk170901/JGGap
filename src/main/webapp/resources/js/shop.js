@@ -23,6 +23,32 @@ $(function() { $('.apply').on("click", function() {
 						imageUrl: '/resources/imgs/shop_etc/sad_imoji.png',
 						title : '꽝!',
 						confirmButtonText: '네...'
+					}).then(function(){
+						Swal.mixin().fire({
+									toast: true,
+									position: 'center-center',
+									showConfirmButton: false,
+									timer: 5000,
+									timerProgressBar: true,
+									icon: 'success',
+									title: 'loading...'
+						})
+							$.ajax({
+							url : "/shop/apply.do",
+							type : "POST",
+							data : {
+								item_name : $(this).parents(".shop-apply").children(".item_name").text(),
+								item_point : item_point,
+								item_per : item_per,
+								item_remain : item_remain
+							},
+							success: function(data) {								
+								location.href = "/shop/shop.do";
+							},
+							error : function(request, status, err){
+								alert("code = "+ request.status+"\n error = " +err);						
+							}
+						})
 					})
 				} else {
 					Swal.fire({
@@ -30,34 +56,37 @@ $(function() { $('.apply').on("click", function() {
 						title: '당첨!',
 						html: '상품코드 : KREQWQEITKDB<br/>등록기간 : 7/22 23:59까지<br/>기간만료시 사용불가',
 						confirmButtonText: '네!!!'
-					})
-					item_remain = item_remain - 1;
-				}
-				$.ajax({
-					url : "/shop/apply.do",
-					type : "POST",
-					data : {
-						item_name : $(this).parents(".shop-apply").children(".item_name").text(),
-						item_point : item_point,
-						item_per : item_per,
-						item_remain : item_remain
-					},
-					success: function(data) {
+					}).then(function(){
+						item_remain = item_remain - 1;
 						Swal.mixin().fire({
-							toast: true,
-							position: 'center-center',
-							showConfirmButton: false,
-							timer: 1300,
-							timerProgressBar: true,
-							icon: 'success',
-							title: 'loading...'
+									toast: true,
+									position: 'center-center',
+									showConfirmButton: false,
+									timer: 5000,
+									timerProgressBar: true,
+									icon: 'success',
+									title: 'loading...'
 						})
-						location.href = "/shop/shop.do";
-					},
-					error : function(request, status, err){
-						alert("code = "+ request.status+"\n error = " +err);						
-					}
-					})	
+							$.ajax({
+							url : "/shop/apply.do",
+							type : "POST",
+							data : {
+								item_name : $(this).parents(".shop-apply").children(".item_name").text(),
+								item_point : item_point,
+								item_per : item_per,
+								item_remain : item_remain
+							},
+							success: function(data) {								
+								location.href = "/shop/shop.do";
+							},
+							error : function(request, status, err){
+								alert("code = "+ request.status+"\n error = " +err);						
+							}
+						})
+					})
+					
+				}
+					
 				}
 			}		
 	})
@@ -78,29 +107,30 @@ $(function(){ $('.shop-buy-btn').on('click', function(){
 			html: '상품에 대한 안내를 문자메시지로 발송드렸습니다.',
 			confirmButtonText: '확인',
 			icon: 'success'
-			})
-			$.ajax({
-				url : "/shop/buy.do",
-				type : "POST",
-				data : {
-					item_point : item_point
-				},
-				success: function(data) {
-					Swal.mixin().fire({
-						toast: true,
-						position: 'center-center',
-						showConfirmButton: false,
-						timer: 1300,
-						timerProgressBar: true,
-						icon: 'success',
-						title: 'loading...'
-					})
-					location.href = "/shop/shop.do";
-				},
-				error : function(request, status, err){
-					alert("code = "+ request.status+"\n error = " +err);						
-				}
-			})
+			}).then(function(){
+					$.ajax({
+					url : "/shop/buy.do",
+					type : "POST",
+					data : {
+						item_point : item_point
+					},
+					success: function(data) {
+						Swal.mixin().fire({
+							toast: true,
+							position: 'center-center',
+							showConfirmButton: false,
+							timer: 1600,
+							timerProgressBar: true,
+							icon: 'success',
+							title: 'loading...'
+						})
+						location.href = "/shop/shop.do";
+					},
+					error : function(request, status, err){
+						alert("code = "+ request.status+"\n error = " +err);						
+					}
+				})
+			})			
 		}		
 	})	
 })

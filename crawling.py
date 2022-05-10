@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import cx_Oracle
-import requests, json, sys
-import cx_Oracle as oci # 오라클 클라이언트를 사용하는 모듈
+import requests, json, sys, os
+import jpype
+import jaydebeapi as jp
 
 
 
@@ -147,11 +148,6 @@ def lol_info(name):
     return name
 
 def DBConn(data):
-    import os
-    import sys
-    import jpype
-    import jaydebeapi as jp
-
 
     # oracle jdbc 파일 경로 및 class 경로 설정
     JDBC_Driver = 'C:/Users/grood/Desktop/JGGapProject/ojdbc10-full/ojdbc10.jar'
@@ -159,10 +155,10 @@ def DBConn(data):
     args = '-Djava.class.path=%s' % jar
 
     # 환경 변수 출력
-    print('Python Version : ', sys.version)
-    print('JAVA_HOME : ', os.environ["JAVA_HOME"])
-    print('JDBC_Driver Path : ', JDBC_Driver)
-    print('Jpype Default JVM Path : ', jpype.getDefaultJVMPath())
+    # print('Python Version : ', sys.version)
+    # print('JAVA_HOME : ', os.environ["JAVA_HOME"])
+    # print('JDBC_Driver Path : ', JDBC_Driver)
+    # print('Jpype Default JVM Path : ', jpype.getDefaultJVMPath())
 
     # java class path 설정
     jpype.startJVM(jpype.getDefaultJVMPath(), args)
@@ -182,9 +178,6 @@ def DBConn(data):
     conn.close()
 
 
-
-
-
-
 if __name__ == "__main__":
-    crawling()
+    print(sys.argv[1], sys.argv[2])
+    print(sys.version)

@@ -11,8 +11,14 @@ $(document).ready(function() {
 		error: function(err) {
 			alert("point에러" + err)
 		}
-
 	})
+	$.ajax({
+      url: "/basic/level_point.do",
+      type: "post",
+      error: function(err) {
+         alert("point에러" + err)
+      }
+   })
 	$.ajax({
 		url: "/basic/friend.do",
 		type: "post",
