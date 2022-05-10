@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -17,20 +16,21 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/basic/header.jsp" %>
-<div class="total_div" style="background-color: white;">
-
+<div class="total_div">
+	<div class="middle_div">
 	<!-- 검색 전체 div -->
 	<div class=map_game_gategory>
-		
+	
+		<div style="margin: auto;">
 		<!-- 토탈 검색 기능 -->
-		<form action="board_list.do" method="get" onsubmit="return is_checked()">
+		<form action="board_list.do" method="get" onsubmit="return is_checked()" style="display: inline-block; overflow: hidden;">
 			<!-- 맵 분류 -->
 			<div class="map">
 				<div class="main_hr">
 					<span class="map_category">맵 분류</span>
 				</div>
 				<div class="new">
-				    <div class="form-group">
+				    <div class="form-group" style="margin-bottom: 0px;">
 				      <input type="checkbox" id="hupgok" checked="checked" name="search_check_map" value="소환사의 협곡">
 				      <label for="hupgok">소환사의 협곡</label>
 				      &ensp;
@@ -50,7 +50,7 @@
 				<div class="main_hr">
 					<span class="game_category">게임 분류</span>
 				</div>
-				<div class="form-group">
+				<div class="form-group" style="margin-bottom: 0px;">
 				      <input type="checkbox" id="mode_normal" checked="checked" name="search_check_mode" value="일반">
 				      <label for="mode_normal">일반</label>
 				      &ensp;
@@ -71,12 +71,14 @@
 					<option value="summoner_id">작성자</option>
 				</select>
 				<input type="text" class="radius" id="text_ra" name="searchKeyword"/>
-<!-- 				<i class="ico_search"></i> -->
-				<input type="submit" id="submitbutton" class="ico_search">
+<!-- 				<input type="submit" id="submitbutton" class="ico_search" value="검색"> -->
+				<button type="button" class="button_submit"><i class="ico_search"></i></button>
+				
 			</div>
 			<!--  검색 기능 end -->
 		</form>
 		<!-- 토탈 검색 기능 end -->
+		</div>
 	</div>
 	<!-- 	검색 전체 div end -->
 	
@@ -89,6 +91,7 @@
 				<th width="140px">분류</th>
 				<th width="470px">제목</th>
 				<th width="320px" colspan="2">글쓴이</th>
+				<th width="50px">명예 점수</th>
 				<th width="100px">등록일</th>
 				<th width="40px">모집 인원</th>
 			</tr>
@@ -98,11 +101,13 @@
 			<tr>
 				<td class="admin_td admin_td_left"><c:out value="공지"/></td>
 				<td class="admin_td"></td>
-				<td class="admin_td"><c:out value="${admin_vo.board_title}"/></td>
+				<td class="admin_td"><a class="admin_td_a" style="text-decoration: none; color: blue; font-size: 13px;"
+				href="../board_view/viewAdminBoard.do?post_no=${admin_vo.post_no }"><c:out value="${admin_vo.board_title}"/></a></td>
 				<td class="admin_td" style="text-align: left;">
 				<img src="/resources/imgs/level_icon/222.gif" class="tier_img">
 				<c:out value="관리자"/>
 				</td>
+				<td class="admin_td"></td>
 				<td class="admin_td"></td>
 				<td class="admin_td">
 					<c:out value="${admin_vo.board_date}"/>
@@ -149,21 +154,23 @@
 				<c:out value="${vo.board_title}"/></a></td>
 				<td style="text-align: left;"><img src="/resources/imgs/level_icon/${vo.site_level}.gif" class="tier_img">
 					<c:out value="${vo.summoner_id}"/></td>
-				<td style="text-align: left;">
+				<td style="text-align: left; font-size: 13px; letter-spacing: 0.5px;">
 					<!-- 일반 / 솔로랭크 티어 정보 -->
 					<c:if test="${vo.game_mode == '일반' or vo.game_mode == '솔로 랭크' or vo.game_map == '칼바람 나락'}">
 						<img src="/resources/imgs/tier/${vo.solo_tier}.png" class="tier_img">
-						<c:out value="| ${vo.solo_tier_grade} | "/>
+						<c:out value=" ${vo.solo_tier_grade} "/>
 					</c:if>
 					
 					<!-- 자유랭크 티어 정보 -->
 					<c:if test="${vo.game_mode == '자유 랭크'}">
 						<img src="/resources/imgs/tier/${vo.free_tier}.png" class="tier_img">
-						<c:out value="| ${vo.free_tier_grade} | "/>
+						<c:out value="| ${vo.free_tier_grade}"/>
 					</c:if>
 
 					<!-- 그 외 정보 -->
-						
+				</td>
+				
+				<td>
 					<c:out value="${vo.honor_rate}"/>
 				</td>
 				
@@ -284,9 +291,9 @@
 			<!-- 스프링 부트 end -->
 		</div>
 		<!-- 페이징 end -->
-	</div>		
+	</div>
+	</div>
 </div>	
-	
 <%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
 </html>
