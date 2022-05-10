@@ -18,45 +18,12 @@ int num = (int) (Math.random() * 4 + 1);
 <meta name="HandheldFriendly" content="true">
 <meta name="format-detection" content="telephone=no">
 <meta content="IE=edge" http-equiv="X-UA-Compatible">
-<link rel="shortcut icon" href="resources/img/favicon.png"
-	type="image/x-icon">
+<link rel="shortcut icon" href="resources/imgs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="resources/css/libs.min.css">
 <link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/login.css">
-<script
-	src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<style type="text/css">
-.repair {
-	padding: 25px 45px;
-}
-
-#sign_up {
-	height: 60px;
-}
-
-ul>li {
-	list-style: none
-}
-
-a {
-	text-decoration: none;
-}
-
-.important {
-	height: 650px;
-	/*  	margin-right: 7px; */
-	margin-left: 100px;
-	padding: 30px 30px 30px 30px;
-	-webkit-box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	border-radius: 25px;
-	background: #FFFFFF;
-	box-shadow: 0px 30px 70px rgba(0, 0, 0, 0.03);
-	/*     opacity: 0.85; */
-}
-</style>
 </head>
 
 <body class="page-login"
@@ -78,7 +45,7 @@ a {
 					<div class="form-login">
 						<div class="form-login__box">
 							<div class="uk-heading-line uk-text-center">
-								<span>ㅈㄱㅊㅇ</span>
+								<img src="/resources/imgs/logo.png" alt="logo" id="header_logo">
 							</div>
 							<!-- 로그인 폼 -->
 							<form method="POST" action="user/login_ok.do">
@@ -95,9 +62,9 @@ a {
 									<button type="submit"
 										class="uk-button uk-button-danger uk-width-1-1" id="login" name="login">로그인</button>
 								</div>
-								<div class="uk-margin uk-text-center">
+								<!-- <div class="uk-margin uk-text-center">
 									<a href="#">또 잊어먹음?</a>
-								</div>
+								</div> -->
 								<hr>
 							</form>
 							<div class="uk-text-center">
@@ -181,7 +148,5 @@ a {
 
 <script src="resources/js/login.js"/>
 <script src="resources/js/lib.js"></script>
-<!-- <script src="resources/js/main.js"></script> -->
-<script src="resources/js/index.js?ver=1"></script>
 
 </html>

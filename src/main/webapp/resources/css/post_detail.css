@@ -57,6 +57,7 @@ select{
 .modal input{
 	padding: 5px;
 	width: 80%;
+	outline: none;
 }
 
 .modal textarea{

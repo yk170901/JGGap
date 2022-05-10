@@ -23,14 +23,14 @@
 			</div>
 			<div id="icon_select">
 				<div id="achievements_select">
-						<div id="icon_div">
-					<c:forEach var="i" begin="1" end="9">
-							<div class="modal-profile-icon-body">
-								<input type="radio" class="profile-icon-radio" name="badge_file" value="${i}" id="${i}">
-								<label for="${i}"><img class="modal-profile-icon" src="/resources/imgs/profile_icon/${i}.png"></label>
-							</div>
-					</c:forEach>
-						</div>
+					<div id="icon_div">
+						<c:forEach var="i" begin="1" end="9">
+								<div class="modal-profile-icon-body">
+									<input type="radio" class="profile-icon-radio" name="badge_file" value="${i}" id="${i}">
+									<label for="${i}"><img class="modal-profile-icon" src="/resources/imgs/profile_icon/${i}.png"></label>
+								</div>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 		</div>
