@@ -56,6 +56,12 @@
 		INSERT INTO re_board(user_re_no, post_no, re_text, re_date, user_no)
 			VALUES(user_re_no.NEXTVAL, #{post_no}, #{re_text}, current_date, #{user_no})
 	</insert>
+	
+	<select id="selectAdminBoard" parameterType="int" resultType="board_view">
+		SELECT *
+			FROM admin_board
+			WHERE post_no = #{value}
+	</select>
 
 	<select id="selectBoard" resultMap="BoardMap" parameterType="int" resultType="board_view" >
 		SELECT DISTINCT u.honor_rate, u.summoner_id, u.site_level, u.ban,

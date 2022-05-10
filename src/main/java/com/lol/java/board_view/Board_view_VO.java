@@ -1,7 +1,5 @@
 package com.lol.java.board_view;
 
-import java.util.Date;
-
 import lombok.Data;
 
 @Data

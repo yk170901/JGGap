@@ -10,32 +10,50 @@ public class Board_detail_ServiceImpl implements Board_detail_Service{
 	Board_detail_DAO board_detail_DAO;
 
 	@Override
-	public void insertPost(Board_detail_VO vo) {
-		if(vo.getBan()==3) {
-			board_detail_DAO.insertAdminPost(vo);
-		}else {
-			board_detail_DAO.insertPost(vo);
-		}
-	}
-	
-	@Override
-	public void updatePost(Board_detail_VO vo) {
-		if(vo.getBan()==3) {
-			board_detail_DAO.updatePost(vo);
-		}else {
-			board_detail_DAO.updatePost(vo);
-		}
+	public void insertAdminPost(Board_detail_VO vo) {
+		board_detail_DAO.insertAdminPost(vo);
 	}
 
 	@Override
-	public int getPost_no(int user_no) {
-		return board_detail_DAO.getPost_no(user_no);
+	public void insertPost(Board_detail_VO vo) {
+		board_detail_DAO.insertPost(vo);
 	}
+
+	@Override
+	public void updateAdminPost(Board_detail_VO vo) {
+		board_detail_DAO.updateAdminPost(vo);
+	}
+
+	@Override
+	public void updatePost(Board_detail_VO vo) {
+		board_detail_DAO.updatePost(vo);
+	}
+
+	@Override
+	public int getAdminPostNo(int user_no) {
+		return board_detail_DAO.getAdminPostNo(user_no);
+	}
+	
+	@Override
+	public int getPostNo(int user_no) {
+		return board_detail_DAO.getPostNo(user_no);
+	}
+
+	@Override
+	public Board_detail_VO getAdminBoard(int post_no) {
+		return board_detail_DAO.getAdminBoard(post_no);
+	}
+
 
 	@Override
 	public Board_detail_VO getBoard(int post_no) {
 		return board_detail_DAO.getBoard(post_no);
 	}
+	
+	@Override
+	public void deleteAdminPost(int post_no) {
+		board_detail_DAO.deleteAdminPost(post_no);
+	};
 	
 	@Override
 	public void deletePost(int post_no) {

@@ -1,4 +1,42 @@
-/* 모달 모음 */
+/* -------------------------------------로드 시작--------------------------------------- */
+
+// 로드 시 실행
+window.onload = function() {
+	checkChosenUsers();
+	canChooseMore();
+}
+
+// 댓글쓴이들 중 채택된 유저들의 체크박스 이미지 바꾸기
+function checkChosenUsers(){
+	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
+	var reply_user_no = document.getElementsByClassName('reply-content-repeat').length;
+	
+	for(var i = 1; (i-1) < reply_user_no; i++){
+		for(var ii = 1; (ii-1)< chosen_user_no; ii++){
+			if(document.querySelector(".reply-content-repeat:nth-child("+i+") > input").value == document.querySelector("div.chosen-user-list > input:nth-child("+ii+")").value){
+				document.getElementsByClassName('check-img')[i-1].setAttribute('src','../resources/imgs/post_detail/checked.png');
+			}
+		}
+	}
+}
+
+// 채택을 더 할 수 있는가 확인
+function canChooseMore() {
+	//ajax로 올라가는 chosen-users를 선택하는 게, 새로 고침해야 오르는 cru-pre보다 낫다
+	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
+	
+	if((chosen_user_no + 1) >= document.getElementById('cru-max').value){
+		document.querySelector('.choose-user').setAttribute('disabled','');
+		return false;
+	}
+}
+
+/* -------------------------------------로드 끝--------------------------------------- */
+
+
+
+/* -------------------------------------모달 시작--------------------------------------- */
+
 var reportBtn = document.querySelector('.report-btn');
 var modalBg = document.querySelector('.modal-bg');
 var modalClose = document.querySelector('.modal-close');
@@ -39,10 +77,17 @@ $('#submitReport').on("click", function() {
 	// 신고 후 모달의 내용 초기화
 	document.querySelector('#report-title').value = ""
 	document.querySelector('#report-content').value = ""
-	
 });
 
-/* 모달 끝 */
+/* -------------------------------------모달 끝--------------------------------------- */
+
+
+// 게시글 삭제
+function confirmPostDelete(){
+	return confirm("정말로 게시글을 삭제하시겠습니까?");
+}
+
+/* -------------------------------------친구 시작--------------------------------------- */
 
 // 친구 추가
 $('.befriend').on('click', function(){
@@ -63,7 +108,6 @@ $('.befriend').on('click', function(){
 
 // 친구 관계 수정
 $('.chg-friend-status').on('click', function(){
-	
 	$.ajax({
 		url:'/board_view/chgFriendStatus.do',
 		type : "POST",
@@ -92,27 +136,10 @@ function alertOnStatus(action){
 	}
 }
 
-// 댓글 삭제
-$('.delete-reply').on("click", function() {
-
-	$.ajax({
-		url:'/board_view/deleteReply.do',
-		type : "POST",
-		data : {
-			user_re_no : $(this).val()
-		}
-	})
-	
-	alert('댓글이 삭제되었습니다.');
-	document.location.reload()
-});
+/* -------------------------------------친구 끝--------------------------------------- */
 
 
-// 게시글 삭제
-function confirmPostDelete(){
-	return confirm("정말로 게시글을 삭제하시겠습니까?");
-}
-
+/* -------------------------------------채택 시작--------------------------------------- */
 
 // 채택 버튼 눌렀을 때
 $(function() { 
@@ -167,13 +194,13 @@ function alreadyChosen(reply_user_no){
 			return true;
 		}
 	}
+	
 	return false;
 }
 
 
 // 채택 해제
 function deleteChosenUser(reply_user_no){
-	
 	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
 	
 	for(var i = 1; (i-1) < chosen_user_no; i++){
@@ -181,41 +208,16 @@ function deleteChosenUser(reply_user_no){
 			document.querySelector("div.chosen-user-list > input:nth-child("+i+")").remove();
 		}
 	}
-	
 }
 
 
-// 채택을 더 할 수 있는가 확인
-function canChooseMore() {
-	//ajax로 올라가는 chosen-users를 선택하는 게, 새로 고침해야 오르는 cru-pre보다 낫다
-	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
-	
-	if((chosen_user_no + 1) >= document.getElementById('cru-max').value){
-		document.querySelector('.choose-user').setAttribute('disabled','');
-		return false;
-	}
-}
+/* -------------------------------------채택 끝--------------------------------------- */
 
-
-// 댓글쓴이들 중 채택된 유저들의 체크박스 이미지 바꾸기
-function checkChosenUsers(){
-	
-	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
-	var reply_user_no = document.getElementsByClassName('reply-content-repeat').length;
-	
-	for(var i = 1; (i-1) < reply_user_no; i++){
-		for(var ii = 1; (ii-1)< chosen_user_no; ii++){
-			if(document.querySelector(".reply-content-repeat:nth-child("+i+") > input").value == document.querySelector("div.chosen-user-list > input:nth-child("+ii+")").value){
-				document.getElementsByClassName('check-img')[i-1].setAttribute('src','../resources/imgs/post_detail/checked.png');
-			}
-		}
-	}
-}
-
+/* -------------------------------------댓글 시작--------------------------------------- */
 
 // 댓글 작성 가능 여부 확인 (공백, 중복 등)
-function checkReplyValidation(){
-	if(document.getElementById('new-reply-text').value == ""){
+function checkReplyValidation(text){
+	if(text == ""){
 		alert('댓글 내용을 작성해주세요.')
 		return false;
 	}
@@ -228,14 +230,43 @@ function checkReplyValidation(){
 			return false;
 		}
 	}
+}
+
+
+// 댓글 작성
+$('.submit-reply').on('click', function(){
+	let text = document.getElementById('new-reply-text').value;
+	
+	checkReplyValidation(text);
+	
+	$.ajax({
+		url:'/board_view/insertReply.do',
+		type : "POST",
+		data : {
+			post_no : document.getElementById('post-no').value,
+			re_text : text,
+			user_no : document.getElementById('session-user-no').value
+		}
+	})
 	
 	// 중복 작성 방지용 클릭 버튼 disable화
-	document.querySelector('.submit-reply').setAttribute('disabled','');	
-}
+	document.querySelector('.submit-reply').setAttribute('disabled','');
+	document.location.reload();
+})
 
 
-// 로드 시 실행
-window.onload = function() {
-	checkChosenUsers();
-	canChooseMore();
-}
+// 댓글 삭제
+$('.delete-reply').on("click", function() {
+	$.ajax({
+		url:'/board_view/deleteReply.do',
+		type : "POST",
+		data : {
+			user_re_no : $(this).val()
+		}
+	})
+	
+	alert('댓글이 삭제되었습니다.');
+	document.location.reload()
+});
+
+/* -------------------------------------댓글 끝--------------------------------------- */

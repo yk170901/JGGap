@@ -5,7 +5,9 @@ import java.util.List;
 
 public interface Board_view_DAO {
 	public void insertReply(Board_view_VO_reply vo);
-	
+
+	public Board_view_VO selectAdminBoard(int post_no);
+
 	public Board_view_VO selectBoard(int post_no);
 
 	public List<Integer> selectChoiceList(int user_no);

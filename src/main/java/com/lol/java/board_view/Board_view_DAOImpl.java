@@ -19,6 +19,12 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 		mybatis.insert("Board_view_DAO.insertReply", vo);
 	}
 	
+	// 관리자 공지글 상세 보기
+	@Override
+	public Board_view_VO selectAdminBoard(int post_no) {
+		return mybatis.selectOne("Board_view_DAO.selectAdminBoard",post_no);
+	}
+	
 	// 글 상세 보기
 	@Override
 	public Board_view_VO selectBoard(int post_no) {
@@ -101,5 +107,6 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	public void deleteFriend(HashMap<String, String> map) {
 		mybatis.delete("Board_view_DAO.deleteFriend", map);
 	}
+
 
 }
