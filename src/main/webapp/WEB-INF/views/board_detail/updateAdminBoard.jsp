@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>구인 게시글 수정 페이지</title>
+	<title>공지글 수정 페이지</title>
     <link href="../resources/css/post_detail.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -14,27 +14,12 @@
 	<hr><br>
 
 	<div class="post-wrap">
-		<form method="post" action="postUpdate.do?" onsubmit="return checkValidation();">
+		<form method="post" action="adminPostUpdate.do?" onsubmit="return checkValidation();">
 			<div class="post-header">
-				<h1 class="post-header-top">글 수정</h1>
+				<h1 class="post-header-top">공지 수정</h1>
 				<div class="post-header-bottom">
 					<input type="hidden" name="post_no" id="post_no" value="${update.post_no}">
 					<input type="text" id="title" name="board_title" maxlength=30 value="${update.board_title }">
-					
-					<div class="category-wrap">
-						<div class="category-content">
-							<div class="category-title">맵 분류 : </div> ${update.game_map }
-						</div>
-						
-						<div class="category-content game-mode">
-							<div class="category-title">게임 분류 : </div> ${update.game_mode }
-						</div>
-						
-						<div class="category-content">
-							<div class="category-title">플레이 인원 : </div> ${update.cru_max }
-						</div>
-					</div>
-					
 				</div>
 			</div>
 			<div class="post-content">

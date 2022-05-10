@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>    
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,19 +12,23 @@
 <body>
 	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
 	
-	<hr><br>
+	<hr>
 
 	<div class="post-wrap">
-		<form method="post" action="postInsert.do" onsubmit="return checkValidation();">
-			<div class="post-header">
-			<c:choose>
-			    <c:when test="${sessionScope.ban == 3}">
-					<h1 class="post-header-top">관리자 글 작성</h1>
-			    </c:when>    
-			    <c:otherwise>
+
+	<%--관리자/일반유저 여부의 따라 다른 제출 컨트롤러/제목 --%>
+	<c:choose>
+		<c:when test="${sessionScope.ban eq 3 }">
+			<form method="post" action="adminPostInsert.do" onsubmit="return checkValidation();">
+				<div class="post-header">
+					<h1 class="post-header-top">공지 작성</h1>
+		</c:when>
+		<c:otherwise>
+			<form method="post" action="postInsert.do" onsubmit="return checkValidation();">
+				<div class="post-header">
 					<h1 class="post-header-top">글 작성</h1>
-			    </c:otherwise>
-			</c:choose>
+		</c:otherwise>
+	</c:choose>
 				<div class="post-header-bottom">
 					<input type="hidden" name="ban" id="ban" value="${sessionScope.ban}">
 					<input type="text" id="title" placeholder="제목을 입력해주세요" name="board_title" maxlength=30>
@@ -35,8 +38,8 @@
 						<div class="category-wrap">
 							<div class="category-content">
 								<div class="category-title">맵 분류</div>
-								<select class="category-map" id="category-map" name="game_map"> 
-									<option value="none">선택해주세요.</option>
+								<select class="category-map label" id="category-map" name="game_map"> 
+									<option value="none">선택해주세요</option>
 									<option value="소환사의 협곡">소환사의 협곡</option>
 									<option value="칼바람 나락">칼바람 나락</option>
 								</select>
@@ -45,7 +48,7 @@
 							<div class="category-content game-mode">
 								<div class="category-title">게임 분류</div>
 								<select class="category-game" id="category-game" name="game_mode">
-									<option value="none">선택해주세요.</option>
+									<option value="none">선택해주세요</option>
 									<option value="일반">일반</option>
 									<option value="솔로 랭크">솔로 랭크</option>
 									<option value="자유 랭크">자유 랭크</option>
@@ -55,7 +58,7 @@
 							<div class="category-content">
 								<div class="category-title">플레이 인원</div>
 								<select class="category-cru-max" id="category-cru-max" name="cru_max">
-									<option value="none">선택해주세요.</option>
+									<option value="none">선택해주세요</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
 									<option value="4">4</option>

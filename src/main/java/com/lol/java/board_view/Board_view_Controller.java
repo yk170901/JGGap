@@ -2,6 +2,7 @@ package com.lol.java.board_view;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +26,25 @@ public class Board_view_Controller {
 		return "board_view/"+path;
 	}
 
+	// 관리자 글 상세보기 
+	@RequestMapping("/viewAdminBoard.do")
+	public String viewAdminBoard(Board_view_VO board_vo, Model model, HttpSession session) {
+		if (session.getAttribute("user_no") == null) {
+			return "redirect:/login.jsp";
+		 }
+		
+		// 글 & 글쓴이 보여주는 메소드
+		model.addAttribute("board",board_view_Service.viewAdminBoard(board_vo.getPost_no()));
+
+		return "/board_view/viewAdminBoard";
+	}
+
 	// 글 상세보기 
 	@RequestMapping("/viewBoard.do")
-	public void viewBoard(Board_view_VO board_vo, Board_view_VO_reply reply_vo, Model model, HttpSession session) {
-
-		/*
-		 * if (session.getAttribute("user_no") == null) { return "redirect:/login.jsp";
-		 * }
-		 */
+	public String viewBoard(Board_view_VO board_vo, Board_view_VO_reply reply_vo, Model model, HttpSession session) {
+		if (session.getAttribute("user_no") == null) {
+			return "redirect:/login.jsp";
+		 }
 		
 		int post_no = board_vo.getPost_no();
 		
@@ -47,13 +59,15 @@ public class Board_view_Controller {
 		
 		// 접속자 친구 상태 담은 VO 전달
 		model.addAttribute("friends", board_view_Service.getFriends((int)session.getAttribute("user_no")));
+
+		return "/board_view/viewBoard";
 	}
 	
-	
+
 	// 댓글 삽입
+	@ResponseBody
 	@RequestMapping("/insertReply.do")
 	public String insertReply(Board_view_VO_reply reply_vo, HttpSession session, Model model){
-		
 		reply_vo.setUser_no((int)session.getAttribute("user_no"));
 		
 		// 댓글 넣기 
@@ -66,7 +80,6 @@ public class Board_view_Controller {
 	@ResponseBody
 	@RequestMapping("/chooseUser.do")
 	public void chooseUser(int writer_no, int chosen_user_no, Model model) {
-		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		
 		map.put("writer_no", writer_no);
@@ -79,7 +92,6 @@ public class Board_view_Controller {
 	@ResponseBody
 	@RequestMapping("/cancelUser.do")
 	public void cancelUser(int writer_no, int chosen_user_no, Model model) {
-		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		
 		map.put("writer_no", writer_no);
@@ -92,7 +104,6 @@ public class Board_view_Controller {
 	@ResponseBody
 	@RequestMapping("/submitReport.do")
 	public void submitReport(String report_title, String report_content, String report_target, String post_no, HttpSession session) {
-		
 		HashMap<String, String> map = new HashMap<String, String>();
 		
 		map.put("report_title", report_title);
@@ -117,7 +128,6 @@ public class Board_view_Controller {
 	@ResponseBody
 	@RequestMapping("/befriend.do")
 	public void befriend(String asked_user_id, HttpSession session) {
-		
 		HashMap<String, String> map = new HashMap<String, String>();
 
 		map.put("asking_user_no", String.valueOf(session.getAttribute("user_no")));
