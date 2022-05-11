@@ -14,7 +14,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
-	
+	<hr>
 	<%--신고 모달 --%>
 	<div class="modal-bg">
 		<div class="modal">

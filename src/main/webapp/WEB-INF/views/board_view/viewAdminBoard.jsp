@@ -13,14 +13,19 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
-
+	<hr>
 	<div class="post-wrap">
 		<div class="post-content">
 			<div class="post-header">
 				<h1 class="post-header-top"><c:out value="${board.board_title }" /></h1>
 			</div>
-			<hr>
+			<div class="post-header-bottom">
+				<div style="display: inline-block;"><img src="/resources/imgs/level_icon/222.gif" style="margin-bottom: 4px;"></div>
+				<div style="display: inline-block; font-weight: bold;">&nbsp;관리자</div>&emsp;
+				<div style="display: inline-block;"><b style="color: #f46119;">작성날짜</b>&nbsp;&nbsp;:&nbsp;&nbsp;<span class="post-info-detail" style="color: black;"><c:out value="${board.board_date }" /></span></div>
+			</div>
 			
+			<hr>
 			<div style="word-break:break-all;"><span id="post-content">${board.board_text }</span></div>
 			
 			<%--관리자에게만 글 수정/삭제 버튼이 보임 --%>
