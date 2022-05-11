@@ -44,7 +44,7 @@ var modalClose = document.querySelector('.modal-close');
 // 신고
 $('.report-btn').on("click", function() {
 	modalBg.classList.add('bg-active');
-	document.querySelector('#report-target').setAttribute('value',$(this).val())
+	document.querySelector('#report-target').setAttribute('value',$(this).val());
 })
 
 // 신고 모달 닫기
@@ -55,10 +55,10 @@ $('.modal-close').on("click", function() {
 // 신고 접수
 $('#submitReport').on("click", function() {
 	// reporter의 user_no은 컨트롤러에서 세션으로 얻어오기
-	var report_title = document.querySelector('#report-title').value
-	var report_content = document.querySelector('#report-content').value
-	var report_target = document.querySelector('#report-target').value
-	var post_no = document.querySelector('#post-no').value
+	var report_title = document.querySelector('#report-title').value;
+	var report_content = document.querySelector('#report-content').value;
+	var report_target = document.querySelector('#report-target').value;
+	var post_no = document.querySelector('#post-no').value;
 		
 	$.ajax({
 		url:'/board_view/submitReport.do',
@@ -71,12 +71,12 @@ $('#submitReport').on("click", function() {
 		}
 	})
 	
-	alert('신고 접수가 완료되었습니다.')
+	alert('신고 접수가 완료되었습니다.');
 	modalBg.classList.remove('bg-active');
 	
 	// 신고 후 모달의 내용 초기화
-	document.querySelector('#report-title').value = ""
-	document.querySelector('#report-content').value = ""
+	document.querySelector('#report-title').value = "";
+	document.querySelector('#report-content').value = "";
 });
 
 /* -------------------------------------모달 끝--------------------------------------- */
@@ -91,8 +91,7 @@ function confirmPostDelete(){
 
 // 친구 추가
 $('.befriend').on('click', function(){
-	
-	alert($(this).val())
+	alert($(this).val());
 	
 	$.ajax({
 		url:'/board_view/befriend.do',
@@ -101,8 +100,8 @@ $('.befriend').on('click', function(){
 			asked_user_id : $(this).val()
 		}
 	})
-	alert('친구 신청이 완료되었습니다.')
-	document.location.reload()
+	alert('친구 신청이 완료되었습니다.');
+	document.location.reload();
 })
 
 
@@ -119,20 +118,20 @@ $('.chg-friend-status').on('click', function(){
 	})
 	
 	alertOnStatus($(this).attr('action'));
-	document.location.reload()
+	document.location.reload();
 })
 
 
 // 친구 관계 수정 시 알림 모음
 function alertOnStatus(action){
 	if(action == 'deleteFriend'){
-		alert('친구 삭제가 완료되었습니다.')
+		alert('친구 삭제가 완료되었습니다.');
 	}else if(action == 'cancelFriendRequest'){
-		alert('친구 신청이 취소되었습니다.')
+		alert('친구 신청이 취소되었습니다.');
 	}else if(action == 'cancelBan'){
-		alert('차단이 취소되었습니다.')
+		alert('차단이 취소되었습니다.');
 	}else if(action == 'acceptFriendRequest'){
-		alert('친구 신청이 수락되었습니다.')
+		alert('친구 신청이 수락되었습니다.');
 	}
 }
 
@@ -167,7 +166,7 @@ $(function() {
 				$('.chosen-user-list').append('<input class="chosen-users" value="'+reply_user_no+'">');
 			// 채택 해제를 위해 누른 거라면
 			}else{
-				alert('올레디쵸슨 결과 확인 진입 - 이미 채택됐었음')
+				alert('올레디쵸슨 결과 확인 진입 - 이미 채택됐었음');
 				$.ajax({
 					url:'/board_view/cancelUser.do',
 					type : "POST",
@@ -180,7 +179,7 @@ $(function() {
 				deleteChosenUser(reply_user_no);
 				$(this).children().attr('src', '../resources/imgs/post_detail/unchecked.png');
 			}
-			checkChosenUsers()
+			checkChosenUsers();
 	})
 });
 
@@ -218,7 +217,7 @@ function deleteChosenUser(reply_user_no){
 // 댓글 작성 가능 여부 확인 (공백, 중복 등)
 function checkReplyValidation(text){
 	if(text == ""){
-		alert('댓글 내용을 작성해주세요.')
+		alert('댓글 내용을 작성해주세요.');
 		return false;
 	}
 	
@@ -226,7 +225,7 @@ function checkReplyValidation(text){
 	
 	for(var i = 1; (i-1) < reply_user_no; i++){
 		if(document.getElementById('session-user-no').value == document.querySelector(".reply-content-repeat:nth-child("+i+") > input").value){
-			alert('이미 신청 댓글을 작성하셨습니다.')
+			alert('이미 신청 댓글을 작성하셨습니다.');
 			return false;
 		}
 	}
@@ -266,7 +265,7 @@ $('.delete-reply').on("click", function() {
 	})
 	
 	alert('댓글이 삭제되었습니다.');
-	document.location.reload()
+	document.location.reload();
 });
 
 /* -------------------------------------댓글 끝--------------------------------------- */
