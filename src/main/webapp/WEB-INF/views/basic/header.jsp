@@ -45,7 +45,9 @@
             <ul class="uk-nav">
                 <li class="uk-active"><a href="http://localhost:8080/board_list/board_list.do"><i class="ico_home"></i><span>구인게시판</span></a></li>
 
-                <li><a href="javascript:Frameset('http://192.168.1.82:8080/chat/chat.do?user_no=<%= session.getAttribute("user_no")%>&summoner_id=<%=session.getAttribute("summoner_id")%>&ban=<%= session.getAttribute("ban")%>&solo_tier=<%=session.getAttribute("solo_tier")%>')"><i class="ico_chats"></i><span>채팅</span></a></li>
+<%--                 <li><a href="javascript:Frameset('http://192.168.1.82:8080/chat/chat.do?user_no=<%= session.getAttribute("user_no")%>&summoner_id=<%=session.getAttribute("summoner_id")%>&ban=<%= session.getAttribute("ban")%>&solo_tier=<%=session.getAttribute("solo_tier")%>')"><i class="ico_chats"></i><span>채팅</span></a></li> --%>
+				<li><a href="http://192.168.1.82:8080/chat/chat.do?user_no=<%= session.getAttribute("user_no")%>&summoner_id=<%=session.getAttribute("summoner_id")%>&ban=<%= session.getAttribute("ban")%>&solo_tier=<%=session.getAttribute("solo_tier")%>"><i class="ico_chats"></i><span>채팅</span></a></li>
+
 
                 <li><a href="http://localhost:8080/shop/shop.do"><i class="ico_store"></i><span>포인트샵</span></a></li>
                 

@@ -42,7 +42,7 @@ public class UserController {
 		String encryPassword = UserSHA.encrypt(vo.getUser_pwd());
 		vo.setUser_pwd(encryPassword);
 		UserVO result = userService.idCheck_Login(vo);
-		String tier = userService.tier_info(vo.getUser_no());
+		String tier = userService.tier_info(result.getUser_no());
 		
 //		경고 누적 3회 일시
 		if(vo.getReport_status() == 3) {

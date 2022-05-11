@@ -8,16 +8,16 @@ $(document).ready(function() {
 			$('#profile_summoner_id')[0].innerHTML = data.summoner_id;
 			$('#profile_img').attr("src", "/resources/imgs/level_icon/"+data.site_level+".gif");
 		},
-		error: function(err) {
-			alert("point에러" + err)
-		}
+//		error: function(err) {
+//			alert("point에러" + err)
+//		}
 	})
 	$.ajax({
       url: "/basic/level_point.do",
       type: "post",
-      error: function(err) {
-         alert("point에러" + err)
-      }
+//      error: function(err) {
+//         alert("point에러" + err)
+//      }
    })
 	$.ajax({
 		url: "/basic/friend.do",
@@ -36,9 +36,9 @@ $(document).ready(function() {
 				$(".friend").append(content);
 			})
 		},
-		error: function(err) {
-			alert("friend에러" + err)
-		}
+//		error: function(err) {
+//			alert("friend에러" + err)
+//		}
 	})
 	$.ajax({
 		url: "/basic/banned.do",
@@ -52,9 +52,9 @@ $(document).ready(function() {
 				$(".banned").append(content);
 			})
 		},
-		error: function(err) {
-			alert("banned에러" + err)
-		}
+//		error: function(err) {
+//			alert("banned에러" + err)
+//		}
 	})
 	
 	// 헤더 전적검색 부분
@@ -83,13 +83,13 @@ $(function() { $('#CSC').on("click", function() {
 
 
 function Frameset(page) {
+	alert(page);
 		framecode = "<frameset rows='1*'>"
 		+ "<frame name=main src='" + page + "'>"
 		+ "</frameset>";
 
 		document.write(framecode);
 		document.title = "채팅방";
-		document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 		document.close();	
 	}
 
