@@ -11,7 +11,7 @@
 	INSERT INTO
 	USER_INFO
 	VALUES
-	(USER_NO.NEXTVAL, #{summoner_id}, #{user_id}, #{user_pwd}, #{phone_number}, 1, 0, 0, 0, 1, 0, current_date, null, null, 0)
+	(USER_NO.NEXTVAL, #{summoner_id}, #{user_id}, #{user_pwd}, 0 ,#{phone_number}, 1, 0, 0, 0, 1, 1, 0, current_date, 0)
 	</insert>
 	
 	<!-- 로그인 -->
