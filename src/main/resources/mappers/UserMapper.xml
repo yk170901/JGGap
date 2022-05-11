@@ -11,12 +11,12 @@
 	INSERT INTO
 	USER_INFO
 	VALUES
-	(USER_NO.NEXTVAL, #{summoner_id}, #{user_id}, #{user_pwd}, #{phone_number}, 1, 0, 0, 0, 1, 0, current_date, null, null)
+	(USER_NO.NEXTVAL, #{summoner_id}, #{user_id}, #{user_pwd}, #{phone_number}, 1, 0, 0, 0, 1, 0, current_date, null, null, 0)
 	</insert>
 	
 	<!-- 로그인 -->
 	<select id="idCheck_Login" parameterType="user" resultType="user">
-	SELECT USER_NO, BAN, SUMMONER_ID
+	SELECT USER_NO, BAN, SUMMONER_ID, REPORT_STATUS
 	FROM USER_INFO
 	WHERE USER_ID = #{user_id} AND USER_PWD = #{user_pwd}
 	</select>
@@ -40,5 +40,11 @@
 	FROM LOL_INFO
 	WHERE USER_NO = #{user_no}
 	</select>
+	
+	<update id="ban" parameterType="user">
+	UPDATE USER_INFO
+	SET REPORT_STATUS = REPORT_STATUS-1, BAN = 1
+	WHERE USER_NO = #{user_no}
+	</update>
 
 </mapper>

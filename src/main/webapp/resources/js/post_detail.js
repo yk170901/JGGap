@@ -19,9 +19,9 @@ function checkValidation(){
 	var game = document.getElementById('category-game');
 	var cru_max = document.getElementById('category-cru-max');
 
-	var map_value = map.options[map.selectedIndex].value
-	var game_value = game.options[game.selectedIndex].value
-	var cru_max_value = cru_max.options[cru_max.selectedIndex].value
+	var map_value = map.options[map.selectedIndex].value;
+	var game_value = game.options[game.selectedIndex].value;
+	var cru_max_value = cru_max.options[cru_max.selectedIndex].value;
 	
 	if(title==""){
 		alert("제목을 입력해주세요");

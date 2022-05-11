@@ -19,6 +19,6 @@ public class AdminVO {
 	private String summoner_id;
 	private String phone_number;
 	
-	private int report_no, reporter, report_target, report_url, report_result;
-	private String report_title, report_content;
+	private int report_no, reporter, report_target, report_url, report_cnt;
+	private String report_title, report_content, report_result;
 }

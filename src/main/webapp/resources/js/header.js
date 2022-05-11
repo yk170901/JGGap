@@ -56,6 +56,13 @@ $(document).ready(function() {
 			alert("banned에러" + err)
 		}
 	})
+	
+	// 헤더 전적검색 부분
+	$("input[name=search]").keydown(function (key) {
+		if(key.keyCode == 13) {
+			location.href = "/record/record.do?summoner_id=" +$("input[name=search]").val();
+		}
+	})
 });
 
 $(function() { $('#CSC').on("click", function() {
@@ -73,4 +80,16 @@ $(function() { $('#CSC').on("click", function() {
 //		type: "post"
 //	})
 //});
+
+
+function Frameset(page) {
+		framecode = "<frameset rows='1*'>"
+		+ "<frame name=main src='" + page + "'>"
+		+ "</frameset>";
+
+		document.write(framecode);
+		document.title = "채팅방";
+		document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
+		document.close();	
+	}
 

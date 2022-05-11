@@ -1,5 +1,6 @@
 package com.lol.java.admin;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -51,6 +52,13 @@ public class AdminDAOImpl implements AdminDAO{
 	public int overlap_check(AdminVO vo) {
 		
 		return mybatis.selectOne("AdminDAO.overlap_check",vo);
+	}
+
+	@Override
+	public void accepted(AdminVO vo) {
+		
+		mybatis.update("AdminDAO.accepted_first",vo);
+		mybatis.update("AdminDAO.accepted_second",vo);
 	}
 	
 }

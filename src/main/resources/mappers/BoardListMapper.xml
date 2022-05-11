@@ -65,7 +65,7 @@
 			SELECT ROWNUM RN, A.* FROM (
 				SELECT DISTINCT
 					a.SITE_LEVEL,
-					a.HONOR_RATE,
+					trunc(a.honor_rate/a.honor_cnt,1) as honor_rate,
 					b.SOLO_TIER,
 					b.FREE_TIER,
 					b.SOLO_TIER_GRADE,

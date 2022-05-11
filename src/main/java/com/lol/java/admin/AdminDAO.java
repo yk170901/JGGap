@@ -1,5 +1,6 @@
 package com.lol.java.admin;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface AdminDAO {
@@ -17,4 +18,6 @@ public interface AdminDAO {
 	public List<AdminVO> report_list();
 	
 	public int overlap_check(AdminVO vo);
+	
+	public void accepted(AdminVO vo);
 }
