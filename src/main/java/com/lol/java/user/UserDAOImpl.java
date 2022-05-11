@@ -39,4 +39,10 @@ public class UserDAOImpl implements UserDAO{
 		
 		return mybatis.selectOne("userMapper.tier_info", user_no);
 	}
+
+	@Override
+	public void ban(UserVO vo) {
+		
+		mybatis.update("userMapper.ban", vo);
+	}
 }

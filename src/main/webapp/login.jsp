@@ -1,4 +1,3 @@
-
 <%@page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -36,6 +35,7 @@ int num = (int) (Math.random() * 4 + 1);
 			<source id="mp4" src="resources/imgs/LOL<%=num%>.mp4"
 				type="video/mp4">
 		</video>
+		<!-- 	로그인 화면 영상 end -->
 
 		<main class="page-first-screen">
 			<div
@@ -48,7 +48,7 @@ int num = (int) (Math.random() * 4 + 1);
 								<img src="/resources/imgs/logo.png" alt="logo" id="header_logo">
 							</div>
 							<!-- 로그인 폼 -->
-							<form method="POST" action="user/login_ok.do">
+							<form method="POST" action="user/login_ok.do" onsubmit="return confirm2();">
 								<div class="uk-margin">
 									<input class="uk-input" name="user_id" type="text"
 										onkeyup="chkCharCode(event)" placeholder="아이디">
@@ -62,9 +62,6 @@ int num = (int) (Math.random() * 4 + 1);
 									<button type="submit"
 										class="uk-button uk-button-danger uk-width-1-1" id="login" name="login">로그인</button>
 								</div>
-								<!-- <div class="uk-margin uk-text-center">
-									<a href="#">또 잊어먹음?</a>
-								</div> -->
 								<hr>
 							</form>
 							<div class="uk-text-center">
@@ -76,10 +73,6 @@ int num = (int) (Math.random() * 4 + 1);
 						</div>
 					</div>
 				</div>
-
-				<!-- 				<div class="form-login repair hidden" id="modal" -->
-				<!-- 					style="margin-left: 100px; height: 670px;"> -->
-
 				<!-- 회원가입 modal 적용 -->
 				<div class="modal hidden important" id="modal">
 
@@ -121,12 +114,12 @@ int num = (int) (Math.random() * 4 + 1);
 							</div>
 							<div style="padding-top: 10px;">
 								<ul>
-									<li><input type="checkbox" name="chkAll" id="chk"
-										class="chkAll" /> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
-									<li><input type="checkbox" name="chk" id="chk1"
-										class="chk" /> 이용약관 동의(필수)</li>
-									<li><input type="checkbox" name="chk" id="chk2"
-										class="chk" /> 개인정보 수집 및 이용에 대한 안내(필수)</li>
+									<li><input type="checkbox" name="chkAll"
+										vlaue="chkAll" onclick='selectAll(this)'/> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
+									<li><input type="checkbox" name="chk"
+										value="chk1" onclick='checkSelectAll()'/> 이용약관 동의(필수)</li>
+									<li><input type="checkbox" name="chk"
+										value="chk2" onclick='checkSelectAll()'/> 개인정보 수집 및 이용에 대한 안내(필수)</li>
 								</ul>
 							</div>
 
@@ -137,16 +130,14 @@ int num = (int) (Math.random() * 4 + 1);
 							</div>
 						</form>
 					</div>
-
 				</div>
-				<!-- 				</div> -->
 			</div>
 		</main>
 	</div>
 
 </body>
 
-<script src="resources/js/login.js"/>
+<script src="resources/js/login.js?ver=1"></script>
 <script src="resources/js/lib.js"></script>
 
 </html>

@@ -1,5 +1,6 @@
 package com.lol.java.admin;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +53,11 @@ public class AdminServiceImpl implements AdminService{
 		
 		return adminDAO.overlap_check(vo);
 	}
-	
-	
-	
+
+	@Override
+	public void accepted(AdminVO vo) {
+		
+		adminDAO.accepted(vo);
+	}
 	
 }

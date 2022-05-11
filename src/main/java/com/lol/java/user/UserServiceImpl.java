@@ -10,9 +10,6 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	UserDAO userDAO;
 
-
-
-
 	@Override
 	public int sign_up(UserVO vo) {	
 		
@@ -43,6 +40,12 @@ public class UserServiceImpl implements UserService{
 	public String tier_info(int user_no) {
 		
 		return userDAO.tier_info(user_no);
+	}
+
+	@Override
+	public void ban(UserVO vo) {
+		
+		userDAO.ban(vo);
 	}
 	
 	

@@ -43,9 +43,22 @@
   	</select>
   	
   	<select id="report_list" resultType="admin">
-  		SELECT REPORT_NO, REPORTER, REPORT_TARGET, REPORT_URL, REPORT_TITLE, REPORT_CONTENT, REPORT_RESULT
+  		SELECT REPORT_NO, REPORTER, REPORT_TARGET, REPORT_URL, REPORT_TITLE, REPORT_CONTENT, REPORT_CNT
   		FROM MANAGER_REPORT
   		WHERE 1=1
   	</select>
+  	
+  	<update id="accepted_first" parameterType="admin">
+  		UPDATE MANAGER_REPORT
+  		SET REPORT_RESULT = #{report_result},
+  		REPORT_CNT = 1
+  		WHERE REPORT_TARGET = #{report_target} AND REPORT_URL = #{report_url}
+  	</update>
+  	
+  	<update id="accepted_second" parameterType="admin">
+  		UPDATE USER_INFO
+  		SET REPORT_STATUS = REPORT_STATUS+1
+  		WHERE REPORT_TARGET = #{report_target}
+  	</update>
  
   </mapper>

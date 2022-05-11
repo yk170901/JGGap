@@ -1,5 +1,7 @@
 package com.lol.java.admin;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -108,6 +110,12 @@ public class AdminController {
 			System.out.println(adminService.report_list());
 		}
 		 return "/admin/report_history";
+	}
+	
+	@RequestMapping("/accepted.do")
+	public void accepted(AdminVO vo) {
+
+		adminService.accepted(vo);
 	}
 }
 

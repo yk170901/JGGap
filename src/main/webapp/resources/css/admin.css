@@ -222,6 +222,15 @@ tr:not(:first-child) {
 	width: 50px;
 }
 
+.receipt{
+	width: 100ox;
+	height: 40px;
+	border-radius: 10%;
+	border: 3px solid #F46119;
+	color: #F46119;
+	
+}
+
 /* 모달 */
 .post-header-top{
 	font-weight: 700;
@@ -251,8 +260,8 @@ tr:not(:first-child) {
 
 .modal{
 	background-color: white;
-	width: 30%;
-	height: 30%;
+	width: 40%;
+	height: 300px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -279,10 +288,15 @@ tr:not(:first-child) {
 
 .modal textarea{
 	width: 80%;
+	height: 80px;
 	color: white;
 	padding: 5px;
 	margin: 10px 0;
 	resize: none;
+}
+
+.modal textarea:focus {
+  outline: none;
 }
 
 .modal-close{
