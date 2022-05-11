@@ -54,7 +54,7 @@ int num = (int) (Math.random() * 4 + 1);
 										onkeyup="chkCharCode(event)" placeholder="아이디">
 								</div>
 								<div class="uk-margin">
-									<input class="uk-input user_id" name="user_pwd" type="password"
+									<input class="uk-input user_pwd" name="user_pwd" type="password"
 										placeholder="비밀번호">
 								</div>
 								<div class="uk-margin">

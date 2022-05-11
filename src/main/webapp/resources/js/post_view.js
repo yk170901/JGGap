@@ -29,6 +29,7 @@ function canChooseMore() {
 		document.querySelector('.choose-user').setAttribute('disabled','');
 		return false;
 	}
+	return true;
 }
 
 /* -------------------------------------로드 끝--------------------------------------- */
