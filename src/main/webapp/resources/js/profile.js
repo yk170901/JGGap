@@ -27,6 +27,7 @@ function honor_rate_cancle() {
 }
 
 
+// 비밀번호 변경 엔터키
 $(document).ready(function(){
 	
 	$("input[name=current-password]").keydown(function (key) {
