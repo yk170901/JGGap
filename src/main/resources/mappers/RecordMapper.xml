@@ -10,7 +10,7 @@
 	<select id="record_info" parameterType="record" resultType="record">
 		SELECT lol_info.*, user_info.summoner_id, user_info.user_no, user_info.profile_icon
 		FROM lol_info, user_info
-		WHERE user_info.user_no = #{user_no} 
+		WHERE user_info.summoner_id = #{summoner_id} 
 		AND lol_info.user_no = user_info.user_no
 	</select>
 	
@@ -20,7 +20,9 @@
 		FROM (
 			SELECT *
 			FROM lol_record
-			WHERE user_no=#{user_no}
+			WHERE user_no =(SELECT user_no 
+								FROM user_info 
+								WHERE summoner_id = #{summoner_id})
 			order by game_timestamp desc
 			) a
 		<![CDATA[where rownum <= 10]]>

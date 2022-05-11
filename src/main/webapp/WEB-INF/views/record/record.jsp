@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>[]~(￣▽￣)~*</title>
+<title>${record.summoner_id } - 소환사 전적</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -26,7 +26,8 @@
 				<div class="summoner-summoner-id" value="${record.user_no }">${record.summoner_id }</div>
 				<form class="summoner-button" method="post" action="record_update.do">
 					<input type="hidden" name="summoner_id" value="${record.summoner_id }">
-					<input type="hidden" name="gameid" value="${game_id[0].gameid }">
+					<input type="hidden" name="gameid" value="${game_id[0].gameid }">					
+					<input type="hidden" name="user_no" value="${record.user_no }">					
 					<input type="submit" class="summoner-button-text" value="전적 갱신">
 				</form>
 			</div>

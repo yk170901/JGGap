@@ -32,7 +32,7 @@
 	   				<div id="shop-explain">
 	   					<img src="/resources/imgs/info.png">
 			   			<div class="shop-explain-wrapper">
-					    	<h2 style="margin-bottom: 15px;">포인트 획득 방법</h2>
+					    	<h3 style="margin-bottom: 15px;">포인트 획득 방법</h3>
 					    	<div>소환사협곡(2인,3인,5인) - 승리시 <span class="shop-explain-color">10</span>P / 패배시 <span class="shop-explain-color">5</span>P</div>
 					    	<div>소환사협곡(일반) - 승리시 <span class="shop-explain-color">7</span>P / 패배시 <span class="shop-explain-color">3</span>P</div>
 					    	<div>칼바람나락 - 승리시 <span class="shop-explain-color">3</span>P / 패배시 <span class="shop-explain-color">1</span>P</div>
@@ -70,40 +70,42 @@
 		    </div>
 		    <hr class="shop-line">
 		    <!-- 구매상품 목록 -->
-		    <div class="shop-top" style="border-bottom: 1px solid gray;">
-   				<div class="shop-class"><p>구매</p></div>
-   			</div>
-		    <div class="shop-buy-wrapper">
-		    	<div class="shop-buy">
-		    		<div class="item_name">컴퓨터+모니터 세트</div>
-		    		<div class="point-amount"><p>5000P</p></div>
-		    		<div class="shop-buy-img">
-			    		<img src="/resources/imgs/shop_items/shop_computer.jpg">
+		    <div style="display: inline-block;">
+			    <div class="shop-top" style="border-bottom: 1px solid gray;">
+	   				<div class="shop-class"><p>구매</p></div>
+	   			</div>
+			    <div class="shop-buy-wrapper">
+			    	<div class="shop-buy">
+			    		<div class="item_name">컴퓨터+모니터 세트</div>
+			    		<div class="point-amount"><p>5000P</p></div>
+			    		<div class="shop-buy-img">
+				    		<img src="/resources/imgs/shop_items/shop_computer.jpg">
+				    	</div>
+				    	<div class="shop-buy-btn">
+				    		<button>구매하기</button>
+				    	</div>
 			    	</div>
-			    	<div class="shop-buy-btn">
-			    		<button>구매하기</button>
+			    	<div class="shop-buy">
+			    		<div class="item_name">LG 트롬 워시타워</div>
+			    		<div class="point-amount"><p>5000P</p></div>
+			    		<div class="shop-buy-img">
+				    		<img src="/resources/imgs/shop_items/shop_washer.jpg">
+				    	</div>
+				    	<div class="shop-buy-btn">
+				    		<button>구매하기</button>
+				    	</div>
 			    	</div>
-		    	</div>
-		    	<div class="shop-buy">
-		    		<div class="item_name">LG 트롬 워시타워</div>
-		    		<div class="point-amount"><p>5000P</p></div>
-		    		<div class="shop-buy-img">
-			    		<img src="/resources/imgs/shop_items/shop_washer.jpg">
+			    	<div class="shop-buy">
+			    		<div class="item_name">삼성 비스포크 냉장고</div>
+			    		<div class="point-amount"><p>5000P</p></div>
+			    		<div class="shop-buy-img">
+				    		<img src="/resources/imgs/shop_items/shop_fridge.jpg">
+				    	</div>
+				    	<div class="shop-buy-btn">
+				    		<button>구매하기</button>
+				    	</div>
 			    	</div>
-			    	<div class="shop-buy-btn">
-			    		<button>구매하기</button>
-			    	</div>
-		    	</div>
-		    	<div class="shop-buy">
-		    		<div class="item_name">삼성 비스포크 냉장고</div>
-		    		<div class="point-amount"><p>5000P</p></div>
-		    		<div class="shop-buy-img">
-			    		<img src="/resources/imgs/shop_items/shop_fridge.jpg">
-			    	</div>
-			    	<div class="shop-buy-btn">
-			    		<button>구매하기</button>
-			    	</div>
-		    	</div>
+			    </div>
 		    </div>
 	    </main>
     

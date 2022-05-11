@@ -34,7 +34,7 @@
 				<div class="profile-button-body">
 					<a class="profile-button" href="#!" onclick="chg_password()">
 						<span class="profile-button-text">비밀번호 변경</span></a>
-					<a class="profile-button" href="/record/record.do?user_no=${sessionScope.user_no}">
+					<a class="profile-button" href="/record/record.do?summoner_id=${sessionScope.summoner_id}">
 						<span class="profile-button-text">전적 보기</span></a>
 				</div>
 			</div>
@@ -48,7 +48,7 @@
 				<div class="friends-body">
 						<c:set var="i" value="0" />
 						<c:set var="j" value="2" />
-						<table border=1 class="friends-list">
+						<table class="friends-list">
 							<c:choose>
 								<c:when test="${friends != null}">
 									<c:forEach items="${friends}" var="friends" varStatus="friends_index">
@@ -116,7 +116,7 @@
 				<div class="choices-body">
 						<c:set var="i" value="0" />
 						<c:set var="j" value="2" />
-						<table border=1 class="choices-list">
+						<table class="choices-list">
 							<c:choose>
 								<c:when test="${profile_choice != null}">
 									<c:forEach items="${profile_choice}" var="choice" varStatus="choice_index">
@@ -163,9 +163,9 @@
 				<div class="boardlist-body">
 					<table border="1" class="board-list">
 						<tr>
-							<th width="11%">No</th>
-							<th width="76%">제목</th>
-							<th width="13%">등록일</th>
+							<th width="15%">No</th>
+							<th width="70%">제목</th>
+							<th width="15%">등록일</th>
 						</tr>
 						<c:forEach items="${profile_board }" var="board">
 							<tr>
