@@ -1,13 +1,15 @@
 /* -------------------------------------모달 시작--------------------------------------- */
 
-var reportBtn = document.querySelector('.report-btn');
+var reportBtn = document.querySelector('.receipt');
 var modalBg = document.querySelector('.modal-bg');
 var modalClose = document.querySelector('.modal-close');
 
 // 신고
-$('.report-btn').on("click", function() {
+$('.receipt').on("click", function() {
 	modalBg.classList.add('bg-active');
-	document.querySelector('#report-target').setAttribute('value',$(this).val())
+	document.querySelector('#report_url').setAttribute('value',$(this).val());
+	document.querySelector('#report_target').setAttribute('value',$(this).parents().children(".help").children(".help2").val());
+	
 })
 
 // 신고 모달 닫기
@@ -18,28 +20,39 @@ $('.modal-close').on("click", function() {
 // 신고 접수
 $('#submitReport').on("click", function() {
 	// reporter의 user_no은 컨트롤러에서 세션으로 얻어오기
-	var report_title = document.querySelector('#report-title').value
-	var report_content = document.querySelector('#report-content').value
-	var report_target = document.querySelector('#report-target').value
-	var post_no = document.querySelector('#post-no').value
-		
+	var report_result = document.querySelector('#report-result').value
+	var report_target = document.querySelector('#report_target').value
+	var report_url = document.querySelector('#report_url').value
+	
 	$.ajax({
-		url:'/board_view/submitReport.do',
+		url:'/admin/accepted.do',
 		type : "POST",
 		data : {
-			report_title : report_title,
-			report_content : report_content,
+			report_result : report_result,
 			report_target : report_target,
-			post_no : post_no
-		}
+			report_url : report_url
+		},
+		datatype: "text",
+		success: Swal.fire({
+		icon: 'success',
+		title: '처리 완료',
+		text: '정상처리 되었습니다.'
+		}),
+		error: Swal.fire({
+		icon: 'error',
+		title: '실패',
+		text: '회원이 보유한 업적입니다.'
+		})
+	
 	})
 	
-	alert('신고 접수가 완료되었습니다.')
 	modalBg.classList.remove('bg-active');
 	
 	// 신고 후 모달의 내용 초기화
-	document.querySelector('#report-title').value = ""
-	document.querySelector('#report-content').value = ""
+	document.querySelector('#report_result').value = ""
 });
 
 /* -------------------------------------모달 끝--------------------------------------- */
+
+
+$(document).read()

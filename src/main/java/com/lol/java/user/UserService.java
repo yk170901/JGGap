@@ -13,5 +13,6 @@ public interface UserService {
 	public String summoner_idCheck(String summoner_id);
 	
 	public String tier_info(int user_no);
-	
+
+	public void ban(UserVO vo);
 }

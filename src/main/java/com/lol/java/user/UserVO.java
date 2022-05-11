@@ -12,4 +12,5 @@ public class UserVO {
 	private String phone_number;
 	private int ban;
 	private String solo_tier;
+	private int report_status;
 }

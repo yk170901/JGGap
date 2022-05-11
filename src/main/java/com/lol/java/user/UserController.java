@@ -38,23 +38,32 @@ public class UserController {
 //	로그인 컨트롤러
 	@RequestMapping("/login_ok.do")
 	public String login(UserVO vo, HttpSession session) throws Exception {
-
+	
 		String encryPassword = UserSHA.encrypt(vo.getUser_pwd());
 		vo.setUser_pwd(encryPassword);
 		UserVO result = userService.idCheck_Login(vo);
-		String tier = userService.tier_info(result.getUser_no());
+		String tier = userService.tier_info(vo.getUser_no());
+		
+//		경고 누적 3회 일시
+		if(vo.getReport_status() == 3) {
+			
+			userService.ban(vo);
+		}
+		
 		System.out.println("login 컨트롤러 호출");
+		
+//		세션 중복 방지
 		for( HttpSession member : sessionList) {
 			if (session == member) {
-				session.invalidate();
+				member.invalidate();
 				return "user/duplicate_login";
 			}
 		}
 		sessionList.add(session);
 		System.out.println(sessionList);
+		
 		if (result.getUser_no() < 1) {
 			
-			System.out.println("존재하지 않는 아이디 또는 아이디 비밀번호가 틀렸습니다");
 			return "user/join";
 		} else if (result.getBan() == 1) {
 
