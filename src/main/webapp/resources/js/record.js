@@ -171,7 +171,7 @@ content += '										<img alt="item" src="https://ddragon.leagueoflegends.com/c
 content += '									</div>'
 			if(data[record].game_mode != '칼바람 나락') {
 content += '										<div class="item">'
-content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/2055.png">'
+content += '											<img alt="item" src="/resources/imgs/ward.png">'
 content += '											<div class="ward-cnt">'+ data[record].ward_cnt +'</div>'
 content += '										</div>'				
 				}
@@ -396,6 +396,7 @@ content += '				</div>'
 		var content = '<div class="stats-positions">';
 		var lane = "";
 		for(var lane in data) {
+			console.log(data[lane].lane)
 			total += data[lane].lane_cnt;
 		}
 		
@@ -407,22 +408,21 @@ content += '				</div>'
 				return;
 			}
 			switch (data[i].lane) {
-				case 'Top':
+				case 'TOP':
 					lane = "탑";
 					break;
-				case 'Jungle':
+				case 'JUNGLE':
 					lane = "정글"
 					break;
-				case 'Mid':
+				case 'MIDDLE':
 					lane = "미드"
 					break;
-				case 'Bot':
+				case 'BOT':
 					lane = "원딜"
 					break;
-				case 'Support':
+				case 'SUPPORT':
 					lane = "서포터"
-					break;
-					
+					break;					
 			}
 			
 			content+='	<div class="stats-position-body">'
@@ -435,6 +435,8 @@ content += '				</div>'
 			content+='	</div>'
 		
 		}
+		content+='</div>'
+		$('.summoner-stats-position').append(content);
 
 
 	}

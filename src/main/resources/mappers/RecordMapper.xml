@@ -79,7 +79,7 @@
 			WHERE USER_NO =#{user_no}
 			ORDER BY game_timestamp DESC
 		) a
-		<![CDATA[where rownum <= 20]]> AND a.game_mode != '칼바람 나락'
+		<![CDATA[where rownum <= 20]]> AND a.game_mode != '칼바람 나락' AND a.lane != 'NONE'
 		GROUP BY a.lane
 		ORDER BY lane_cnt desc
 	</select>

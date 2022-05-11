@@ -189,7 +189,7 @@
 										</div>
 										<c:if test="${score.game_mode != '칼바람 나락' }">
 											<div class="item">
-												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/2055.png">
+												<img alt="item" src="/resources/imgs/ward.png">
 												<div class="ward-cnt">${score.ward_cnt }</div>
 											</div>
 										</c:if>
