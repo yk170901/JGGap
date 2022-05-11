@@ -45,7 +45,7 @@ public class RecordVO {
 		private String gameid;
 		private String lane;
 		private String game_duration;
-		private String game_timestamp;
+		private int game_timestamp;
 		private String multi_killed;
 		private String game_mode;
 		private int eaten_minions;
