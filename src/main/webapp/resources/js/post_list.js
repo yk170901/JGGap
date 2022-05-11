@@ -44,6 +44,7 @@ function Frameset(page) {
 
 		document.write(framecode);
 		document.title = "구인 게시판";
+		document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 		document.close();
 		
 	}
@@ -65,3 +66,10 @@ function testDate(){
 //	localStorage.setItem('date', dateDays);
 	
 }
+
+
+window.onload = function() {
+    document.getElementById('button_submit').onclick = function() {
+        document.getElementById('frm').submit();
+    };
+};
