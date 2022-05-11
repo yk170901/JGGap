@@ -109,8 +109,8 @@ body {
 }
 
 .profile-info-icon {
-    width: 23%;
-    height: 23%;
+    width: 120px;
+    height: 120px;
     margin-right: 20px;
     overflow: hidden;
     border-radius: 50%;
@@ -155,7 +155,7 @@ body {
     color: #353535;
     font-size: 26px;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 600;
     line-height: 1.35;
 }
 
@@ -166,16 +166,16 @@ body {
 }
 
 .profile-user-text {
-    margin-top: 6px;
+    margin-top: 12px;
     color: #353535;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: normal;
     line-height: 1.36;
 }
 
 .profile-button-body {
-	width: 120px;
+	width: 130px;
 }
 
     
@@ -186,17 +186,17 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
+    height: 45px;
     border-radius: 15px;
     font-size: 16px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: none;
     transition: all 0.25s linear;
     text-decoration: none; 
     background: #F46119;
     color: #fff;
-    width: 110px;
+    width: 120px;
 }
 
 .profile-button:hover,
@@ -204,6 +204,8 @@ body {
 .profile-button:active {
     text-decoration: none;
     color:white;
+    backface-visibility: hidden;
+    transform: translateZ(0);
     transform: scale(1.05);
 	transition: transform .2s;
 }
