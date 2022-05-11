@@ -40,6 +40,7 @@
                                     		<div class="user-item --active" style="margin-top: 10px; margin-bottom: 20px;">
                                     			<div class="user-item__desc summoner_id_info">
                                     				<span class="messages_class">메시지</span>
+                                    				<%= request.getParameter("solo_tier")%>
                                     			</div>
                                     		</div>
                                     	</li>

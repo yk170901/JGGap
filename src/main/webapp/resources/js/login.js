@@ -140,11 +140,11 @@ function confirm2() {
 	
 	alert(i1 + "/" + p1);
 	
-	if ( i1.value == null){
+	if ( i1 == null){
 		Swal.fire("아이디를 입력해주세요");
 		return false;
 	}
-	if ( p1.value == null){
+	if ( p1 == null){
 		Swal.fire("비밀번호를 입력해주세요");
 		return false;
 	}

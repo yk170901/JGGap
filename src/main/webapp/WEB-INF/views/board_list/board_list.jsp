@@ -10,7 +10,7 @@
 <link href="../resources/css/post_list.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
-<script type="text/javascript" src="../resources/js/post_list.js"></script>
+<script type="text/javascript" src="/resources/js/post_list.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -24,7 +24,7 @@
 	
 		<div style="margin: auto;">
 		<!-- 토탈 검색 기능 -->
-		<form action="board_list.do" method="get" id="frm" onsubmit="return is_checked()" style="display: inline-block; overflow: hidden;">
+		<form action="board_list.do" method="post" id="frm" style="display: inline-block; overflow: hidden;">
 			<!-- 맵 분류 -->
 			<div class="map">
 				<div class="main_hr">

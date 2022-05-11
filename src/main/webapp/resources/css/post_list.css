@@ -23,6 +23,7 @@
 	}
 	
 	.middle_div {
+		min-height: 750px;
 		max-width: 1200px;
 		margin: auto;
 	}
