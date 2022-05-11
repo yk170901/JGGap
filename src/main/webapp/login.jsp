@@ -17,7 +17,7 @@ int num = (int) (Math.random() * 4 + 1);
 <meta name="HandheldFriendly" content="true">
 <meta name="format-detection" content="telephone=no">
 <meta content="IE=edge" http-equiv="X-UA-Compatible">
-<link rel="shortcut icon" href="resources/imgs/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="resources/imgs/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="resources/css/libs.min.css">
 <link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/login.css">
@@ -50,11 +50,11 @@ int num = (int) (Math.random() * 4 + 1);
 							<!-- 로그인 폼 -->
 							<form method="POST" action="user/login_ok.do" onsubmit="return confirm2();">
 								<div class="uk-margin">
-									<input class="uk-input" name="user_id" type="text"
+									<input class="uk-input user_id" name="user_id" type="text"
 										onkeyup="chkCharCode(event)" placeholder="아이디">
 								</div>
 								<div class="uk-margin">
-									<input class="uk-input" name="user_pwd" type="password"
+									<input class="uk-input user_id" name="user_pwd" type="password"
 										placeholder="비밀번호">
 								</div>
 								<div class="uk-margin">
@@ -117,9 +117,9 @@ int num = (int) (Math.random() * 4 + 1);
 									<li><input type="checkbox" name="chkAll"
 										vlaue="chkAll" onclick='selectAll(this)'/> 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</li>
 									<li><input type="checkbox" name="chk"
-										value="chk1" onclick='checkSelectAll()'/> 이용약관 동의(필수)</li>
+										id="chk1" value="chk1" onclick='checkSelectAll()'/> 이용약관 동의(필수)</li>
 									<li><input type="checkbox" name="chk"
-										value="chk2" onclick='checkSelectAll()'/> 개인정보 수집 및 이용에 대한 안내(필수)</li>
+										id="chk2" value="chk2" onclick='checkSelectAll()'/> 개인정보 수집 및 이용에 대한 안내(필수)</li>
 								</ul>
 							</div>
 

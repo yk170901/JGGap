@@ -47,7 +47,7 @@ $("#user_id").blur(function() {
 				$("#sign_up_submit").attr("disabled", true);
 			}
 			
-			if ( user_id.length > 0 || user_id.length < 6 || user_id.length > 15) {
+			if ( user_id.length < 6 || user_id.length > 15) {
 
 					$('#id_check').text("아이디는 영문과 숫자 6~15자리만 가능합니다 :) :)");
 					$('#id_check').css('color', 'red');
@@ -58,7 +58,7 @@ $("#user_id").blur(function() {
 				$("#id_check").text("사용중인 아이디입니다 :p");
 				$("#id_check").css("color", "red");
 				$("#sign_up_submit").attr("disabled", true);
-			}else if (user_id.length > 0){
+			}else if (user_id.length > 0 && user_id.length > 5 && user_id.length < 16 && data != user_id){
 					// 0 : 아이디 길이 / 문자열 검사
 					$("#id_check").text("사용가능한 아이디 입니다.");
 					$("#id_check").css("color", "green");
@@ -112,7 +112,7 @@ function confirm() {
 	let p2 = document.getElementById('user_pwd_chk').value;
 	let c1 = document.getElementById("chk1").checked;
 	let c2 = document.getElementById("chk2").checked;
-	
+		
 	if (c1 == false || c2 == false) {
 		Swal.fire("이용약관, 개인정보 수집 및 이용에 동의해주세요.");
 		return false;
@@ -135,14 +135,16 @@ function confirm() {
 
 function confirm2() {
 	
-	let i1 = document.getElementById('user_id').value;
-	let p1 = document.getElementById('user_pwd').value;
+	let i1 = document.getElementsByClassName('user_id')[0].value;
+	let p1 = document.getElementsByClassName('user_pwd')[0].value;
 	
-	if ( i1.value == null || !i1.value ){
+	alert(i1 + "/" + p1);
+	
+	if ( i1.value == null){
 		Swal.fire("아이디를 입력해주세요");
 		return false;
 	}
-	if ( p1.value == null || !p1.value ){
+	if ( p1.value == null){
 		Swal.fire("비밀번호를 입력해주세요");
 		return false;
 	}
