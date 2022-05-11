@@ -30,6 +30,7 @@
 	
 	.form-group {
 	  display: block;
+	  font-size: 13px;
 	}
 	
 	.form-group input {
@@ -89,6 +90,7 @@
 		border-bottom: 2px solid black;
 		padding-bottom: 6px;
 		margin-bottom: 17px;
+		font-size: 17px;
 	}
 	
 	.map_game_gategory {
@@ -121,11 +123,10 @@
 	}
 	
 	.searchsubmit {
-		margin-top: 20px;
-		margin-left: 30px;
+		margin-top: 24px;
+		margin-left: 68px;
 		float: left;
 		display: table;
-		width: 300px;
 	}
 	
 	.radius {
@@ -135,24 +136,16 @@
 	}
 	
 	#text_ra {
-		height: 31px;
+		height: 39px;
+		padding-left: 8px;
 	}
 	
 	#search_value {
-		width: 70px;
-		height: 31px;
+		width: 104px;
+		height: 39px;
 		border: 1px solid black;
+		padding-left: 8px;
 	}
-	
-	#submitbutton {
-		margin-left: 10px;
-		width: 70px;
-		height: 36px;
-		background-color: white;
-		border: 1px solid black;
-	}
-	
-	
 	
 	
 	/* 유저 게시판 조회*/
@@ -213,13 +206,23 @@
 	
 	
 	.button_submit {
-		padding: 6px 10px 6px 10px;
+		padding: 11px 17px 9px 18px;
 		border: 1px solid black;
 		border-left: none;
+		background-color: rgb(244,244,244);
 	}
 	
-
-
-
+	
+	.a_tag_title {
+		color: black;
+		font-weight: normal;
+		text-decoration: none;
+		font-size: 13px;
+		width: 150px;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    display: inline-block;
+	    white-space: nowrap;
+	}
 	
 	
