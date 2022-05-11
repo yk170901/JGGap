@@ -37,13 +37,7 @@ $('#submitReport').on("click", function() {
 		icon: 'success',
 		title: '처리 완료',
 		text: '정상처리 되었습니다.'
-		}),
-		error: Swal.fire({
-		icon: 'error',
-		title: '실패',
-		text: '회원이 보유한 업적입니다.'
 		})
-	
 	})
 	
 	modalBg.classList.remove('bg-active');
