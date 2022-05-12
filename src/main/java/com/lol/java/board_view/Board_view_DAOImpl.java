@@ -85,7 +85,6 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	@Override
 	public void insertFriendRequest(HashMap<String, String> map) {
 		mybatis.insert("insertFriendRequest", map);
-		
 	}
 
 	@Override
@@ -108,5 +107,9 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 		mybatis.delete("Board_view_DAO.deleteFriend", map);
 	}
 
+	@Override
+	public void cancelFriendRequest(HashMap<String, String> map) {
+		mybatis.delete("Board_view_DAO.cancelFriendRequest", map);
+	}
 
 }

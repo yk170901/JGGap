@@ -24,39 +24,98 @@ function checkValidation(){
 	var cru_max_value = cru_max.options[cru_max.selectedIndex].value;
 	
 	if(title==""){
-		alert("제목을 입력해주세요");
+		Swal.fire({
+			title: "작성 오류!",
+			text : "제목을 입력해주세요.",
+			icon : "error",
+			confirmButtonText : "확인"
+		});
 		return false;
 	}
 	else if(context==""){
-		alert("내용을 입력해주세요");
+		Swal.fire({
+			title: "작성 오류!",
+			text : "내용을 입력해주세요.",
+			icon : "error",
+			confirmButtonText : "확인"
+		});
 		return false;
 	}
 	else if(map_value=="none"){
-		alert("맵을 선택해주세요");
+		Swal.fire({
+			title: "작성 오류!",
+			text : "맵을 선택해주세요.",
+			icon : "error",
+			confirmButtonText : "확인"
+		});
 		return false;
 	}
 	else if(!(map_value=="칼바람 나락") && (game_value=="none")){
-		alert("게임 모드를 선택해주세요");
+		Swal.fire({
+			title: "작성 오류!",
+			text : "게임 모드를 선택해주세요.",
+			icon : "error",
+			confirmButtonText : "확인"
+		});
 		return false;
 	}
 	else if(cru_max_value=="none"){
-		alert("모집 인원을 선택해주세요");
+		Swal.fire({
+			title: "작성 오류!",
+			text : "플레이 인원을 선택해주세요.",
+			icon : "error",
+			confirmButtonText : "확인"
+		});
 		return false;
 	}
+}
+
+
+// 관리자 수정 취소
+function cancelAdminPostUpdate(){
+	Swal.fire({
+	     title: "잠깐!",
+	     text: "수정한 내용을 저장하지 않고 끝내시겠습니까?",
+	     icon: "warning",
+		 showCancelButton: true,
+		 confirmButtonText: '확인',
+		 cancelButtonText: '취소'
+	}).then((goBack) => {
+	     if (goBack.isConfirmed) {
+	     	window.location.href = 'http://localhost:8080/board_view/viewAdminBoard.do?post_no='+document.getElementById('post_no').value;
+		}
+	});
 }
 
 
 // 수정 취소
 function cancelPostUpdate(){
-	if(confirm("수정한 내용을 저장하지 않고 끝내시겠습니까?")){
-		window.location.href = 'http://localhost:8080/board_view/viewBoard.do?post_no='+document.getElementById('post_no').value;
-	}
+	Swal.fire({
+	     title: "잠깐!",
+	     text: "수정한 내용을 저장하지 않고 끝내시겠습니까?",
+	     icon: "warning",
+		 showCancelButton: true,
+		 confirmButtonText: '확인',
+		 cancelButtonText: '취소'
+	}).then((goBack) => {
+	     if (goBack.isConfirmed) {
+	     	window.location.href = 'http://localhost:8080/board_view/viewBoard.do?post_no='+document.getElementById('post_no').value;
+		}
+	});
 }
-
 
 // 작성 취소
 function cancelPostInsert(){
-	if(confirm("작성한 내용을 저장하지 않고 끝내시겠습니까?")){
-		window.location.href = 'http://localhost:8080/board_list/board_list.do';
-	}
+	Swal.fire({
+	     title: "잠깐!",
+	     text: "작성한 내용을 저장하지 않고 끝내시겠습니까?",
+	     icon: "warning",
+		 showCancelButton: true,
+		 confirmButtonText: '확인',
+	  	 cancelButtonText: '취소'
+	}).then((goBack) => {
+	     if (goBack.isConfirmed) {
+	     	window.location.href = 'http://localhost:8080/board_list/board_list.do';
+		}
+	});
 }

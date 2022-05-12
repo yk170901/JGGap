@@ -7,10 +7,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>구인 게시글 상세 페이지</title>
+	<title>ㅈㄱㅊㅇ - 구인글 조회</title>
     <link href="../resources/css/post_detail.css" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
-    
+    <link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
@@ -19,8 +18,8 @@
 	<div class="modal-bg">
 		<div class="modal">
 			<h3 class="modal-title">신고 작성</h3>
-			<input type="text" name="report_title" id="report-title" placeholder="제목을 적어주세요">
-			<textarea name="report_content" id="report-content" style="color: black;" placeholder="내용을 적어주세요"></textarea>
+			<input type="text" name="report_title" id="report-title" placeholder="제목을 적어주세요" maxlength="30">
+			<textarea name="report_content" id="report-content" style="color: black;" placeholder="내용을 적어주세요" maxlength="330"></textarea>
 			<input type="hidden" name="report_target" id="report-target" value="">
 			<button id="submitReport">신고하기</button>
 			<span class="modal-close">&times;</span>
@@ -39,15 +38,16 @@
 						<div class="user-info">
 							<c:if test="${board.game_mode == '일반' or board.game_mode == '솔로 랭크' or board.game_map == '칼바람 나락'}">
 								<img src="../resources/imgs/tier/${board.writer.solo_tier}.png" class="tier-img">
+								<span class="writer-info-separator">|</span>
+								<div class="user-info"><c:out value="${board.writer.solo_tier } ${board.writer.solo_tier_grade }" /></div>
 							</c:if>
 							
 							<c:if test="${board.game_mode == '자유 랭크'}">
 								<img src="../resources/imgs/tier/${board.writer.free_tier}.png" class="tier-img">
+								<span class="writer-info-separator">|</span>
+								<div class="user-info"><c:out value="${board.writer.free_tier } ${board.writer.free_tier_grade }" /></div>
 							</c:if>					
 						</div>
-						<span class="writer-info-separator">|</span>
-						<div class="user-info"><c:out value="${board.writer.solo_tier } ${board.writer.solo_tier_grade }" /></div>
-						
 						<span class="writer-info-separator">|</span>
 						<div class="user-info"><img src="../resources/imgs/level_icon/${board.writer.site_level}.gif">&emsp;</div>
 						<div class="user-info"><a class="user-record-link" href="/record/record.do?user_no=${board.writer.user_no}"><c:out value="${board.writer.summoner_id }" /></a></div>
@@ -103,7 +103,8 @@
 						<c:if test="${board.game_map eq '소환사의 협곡' }">						
 							<div class="post-info">게임 분류&nbsp;&nbsp;:&nbsp;&nbsp;<span class="post-info-detail"><c:out value="${board.game_mode }" /></span></div>
 						</c:if>
-						<div class="post-info">플레이 인원&nbsp;&nbsp;:&nbsp;&nbsp;<span class="post-info-detail"><c:out value="${board.cru_pre } / ${board.cru_max }" /></span></div>
+						<input value="${board.cru_pre }">
+						<div class="post-info">플레이 인원&nbsp;&nbsp;:&nbsp;&nbsp;<span class="post-info-detail"><span id="cru-pre">${board.cru_pre }</span> / ${board.cru_max }</span></div>
 						<input type="hidden" id="cru-max" value=" ${board.cru_max }">
 						<div class="post-info">작성날짜&nbsp;&nbsp;:&nbsp;&nbsp;<span class="post-info-detail" style="color: black;"><c:out value="${board.board_date }" /></span></div>
 						
@@ -123,9 +124,7 @@
 			<c:if test="${sessionScope.user_no == board.writer.user_no }">
 				<div id="writer-post-button">
 					<a class="detail-big-btn modify-post" href="../board_detail/updateBoard.do?post_no=<c:out value="${board.post_no }"/>" style=" padding-left: 20px; padding-right: 20px;">수정</a>
-					<form method="post" action="../board_detail/postDelete.do?post_no=<c:out value="${board.post_no }"/>" style="display: inline-block;" onsubmit="return confirmPostDelete()">
-						<button class="detail-big-btn" type="submit">삭제</button>
-					</form>
+					<button class="detail-big-btn" id="delete-post" style="display: inline-block;">삭제</button>
 				</div>
 			</c:if>
 		</div>
@@ -152,14 +151,16 @@
 							<div class="user-info">
 								<c:if test="${board.game_mode == '일반' or board.game_mode == '솔로 랭크' or board.game_map == '칼바람 나락'}">
 									<img src="../resources/imgs/tier/${reply.replier.solo_tier}.png" class="tier-img">
+									<span class="replier-info-separator">|</span>
+									<div class="user-info">&nbsp;<c:out value="${reply.replier.solo_tier } ${reply.replier.solo_tier_grade }" /></div>
 								</c:if>
 								
 								<c:if test="${board.game_mode == '자유 랭크'}">
 									<img src="../resources/imgs/tier/${reply.replier.free_tier}.png" class="tier-img">
+									<span class="replier-info-separator">|</span>
+									<div class="user-info">&nbsp;<c:out value="${reply.replier.free_tier } ${reply.replier.free_tier_grade }" /></div>
 								</c:if>
 							</div>
-							<span class="replier-info-separator">|</span>
-							<div class="user-info">&nbsp;<c:out value="${reply.replier.solo_tier } ${reply.replier.solo_tier_grade }" /></div>
 							<span class="replier-info-separator">|</span>
 							<div class="user-info"><img src="../resources/imgs/level_icon/${reply.replier.site_level}.gif"></div>
 							<div class="user-infolink">&emsp;<a class="user-record-link" href="/record/record.do?user_no=${reply.replier.user_no}">${reply.replier.summoner_id }</a></div>
@@ -174,6 +175,9 @@
 								
 							     <%-- loopOver가 반대가 되면 break --%>
 							     	<c:if test="${not loopOver}">
+<%-- 							     	<input value="${friend.user_no / reply.replier.user_no}">
+							     	<input value="${friend.friend / sessionScope.summoner_id}">
+							     	<input value="${friend.friend / sessionScope.summoner_id}"> --%>
 							       	 	<c:choose>
 								           	<c:when test="${friend.user_no eq sessionScope.user_no and friend.friend == reply.replier.summoner_id}">
 								          		<c:choose>
@@ -193,8 +197,8 @@
 										        </c:choose>
 								           	</c:when>
 								        	<%--상대방이 내게 친구 신청을 걸었는데 내가 아직 응답하지 않았을 때 --%>
-								        	<c:when test="${friend.user_no eq reply.replier.user_no and friend.friend == sessionScope.summoner_id and status=='대기'}">
-													<button class="friend-btn chg-friend-status" action="acceptFriendRequest" value="${reply.replier.summoner_id}" style="color: gold;">친구 수락</button>
+								        	<c:when test="${friend.user_no eq reply.replier.user_no and friend.friend == sessionScope.summoner_id and friend.status eq '대기'}">
+													<button class="friend-btn chg-friend-status" action="acceptFriendRequest" value="${reply.replier.summoner_id}" style="background-color: gold;">친구 수락</button>
 						           				<c:set var="loopOver" value="true" />
 						           			</c:when>
 							       		</c:choose>
@@ -248,5 +252,6 @@
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 
 </body>
-    <script src="../resources/js/post_view.js?ver=3" type="text/javascript"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+	<script src="../resources/js/post_view.js?ver=3" type="text/javascript"></script>
 </html>

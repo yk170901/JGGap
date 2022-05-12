@@ -6,9 +6,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>구인 게시글 상세 페이지</title>
+	<title>ㅈㄱㅊㅇ - 공지 조회</title>
     <link href="../resources/css/post_detail.css" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
     
 </head>
 <body>
@@ -32,9 +32,7 @@
 			<c:if test="${sessionScope.ban == 3 }">
 				<div id="writer-post-button">
 					<a class="detail-big-btn modify-post" href="../board_detail/updateAdminBoard.do?post_no=<c:out value="${board.post_no }"/>" style=" padding-left: 20px; padding-right: 20px;">수정</a>
-					<form method="post" action="../board_detail/adminPostDelete.do?post_no=<c:out value="${board.post_no }"/>" style="display: inline-block;" onsubmit="return confirmPostDelete()">
-						<button class="detail-big-btn" type="submit">삭제</button>
-					</form>
+					<button class="detail-big-btn" id="delete-admin-post" value="<c:out value="${board.post_no }"/>">삭제</button>
 				</div>
 			</c:if>
 		</div>
@@ -43,5 +41,6 @@
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 
 </body>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
     <script src="../resources/js/post_view.js?ver=3" type="text/javascript"></script>
 </html>
