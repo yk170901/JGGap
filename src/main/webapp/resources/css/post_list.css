@@ -85,6 +85,7 @@
 		max-height: 1200px;
 		background-color: #e5e5e5;
 		text-align: center;
+		margin-bottom: 50px;
 	}
 
 	.main_hr {
@@ -148,6 +149,14 @@
 		padding-left: 8px;
 	}
 	
+	#search_value:focus {
+		outline: 0px;
+	}
+	
+	#text_ra:focus {
+		outline: 0px;
+	}
+	
 	
 	/* 유저 게시판 조회*/
 	.table_list {
@@ -155,6 +164,7 @@
 		width: 1200px;
 		display: inline-block;
 		background-color: white;	
+		border-radius: 15px;
 	}
 	
 	td{
@@ -184,7 +194,7 @@
 	/* 관리자 리스트 */
 	.admin_td {
 		font-weight: bold;
-		color: blue;
+		color: rgb(244, 97, 25);
 		background-color: rgb(244,244,244);
 		font-size: 13px;
 	}
@@ -225,5 +235,10 @@
 	    display: inline-block;
 	    white-space: nowrap;
 	}
+	
+	
+/* 	.map_category .game_category { */
+/* 		font-family: 'Noto Sans KR', sans-serif !important; */
+/* 	} */
 	
 	

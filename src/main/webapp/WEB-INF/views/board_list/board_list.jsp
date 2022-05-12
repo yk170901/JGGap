@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구인 게시판</title>
+<title>ㅈㄱㅊㅇ - 전적검색과 구인을 한 번에!</title>
 <link href="../resources/css/post_list.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
@@ -16,7 +16,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
+<body style="background: #e5e5e5;">
 <%@ include file="/WEB-INF/views/basic/header.jsp" %>
 <div class="total_div">
 	<div class="middle_div">
@@ -29,7 +29,7 @@
 			<!-- 맵 분류 -->
 			<div class="map">
 				<div class="main_hr">
-					<span class="map_category">맵 분류</span>
+					<span class="map_category" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 600;">맵 분류</span>
 				</div>
 				<div class="new">
 				    <div class="form-group" style="margin-bottom: 0px;">
@@ -50,7 +50,7 @@
 			<!-- 게임 분류 -->
 			<div class="game">
 				<div class="main_hr">
-					<span class="game_category">게임 분류</span>
+					<span class="game_category" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 600;">게임 분류</span>
 				</div>
 				<div class="form-group" style="margin-bottom: 0px;">
 				      <input type="checkbox" id="mode_normal" name="search_check_mode" value="일반">
@@ -91,11 +91,11 @@
 			<tr>
 				<th width="70px">번호</th>
 				<th width="140px">분류</th>
-				<th width="470px">제목</th>
+				<th width="400px">제목</th>
 				<th width="320px" colspan="2">글쓴이</th>
 				<th width="100px">명예 점수 <br>/ 5.0</th>
 				<th width="100px">등록일</th>
-				<th width="40px">모집 인원</th>
+				<th width="70px"><p style="margin-bottom: 0;">모집<br>인원</p></th>
 			</tr>
 			
 		<!-- 관리자 게시판 조회 -->
@@ -103,10 +103,10 @@
 			<tr>
 				<td class="admin_td admin_td_left"><c:out value="공지"/></td>
 				<td class="admin_td"></td>
-				<td class="admin_td"><a class="admin_td_a" style="text-decoration: none; color: blue; font-size: 13px;"
+				<td class="admin_td"><a class="admin_td_a" style="text-decoration: none; color: rgb(244, 97, 25); font-size: 13px;"
 				href="../board_view/viewAdminBoard.do?post_no=${admin_vo.post_no }"><c:out value="${admin_vo.board_title}"/></a></td>
 				<td class="admin_td" style="text-align: left;">
-					<img src="/resources/imgs/level_icon/222.gif" class="tier_img">
+					<img src="/resources/imgs/level_icon/222.gif" class="tier_img" style="margin-right: 3px;">
 					<c:out value="관리자"/>
 				</td>
 				<td class="admin_td"></td>
@@ -154,7 +154,7 @@
 				<td>
 					<a href="../board_view/viewBoard.do?post_no=${vo.post_no }" class="a_tag_title">
 				<c:out value="${vo.board_title}"/></a></td>
-				<td style="text-align: left;"><img src="/resources/imgs/level_icon/${vo.site_level}.gif" class="tier_img">
+				<td style="text-align: left;"><img src="/resources/imgs/level_icon/${vo.site_level}.gif" class="tier_img" style="margin-right: 3px;">
 					<c:out value="${vo.summoner_id}"/></td>
 				<td style="text-align: left; font-size: 13px; letter-spacing: 0.5px;">
 					<!-- 일반 / 솔로랭크 티어 정보 -->
@@ -207,7 +207,7 @@
 				<a href="/board_detail/insertAdminBoard.do" style="text-decoration: none;">글 작성</a>			
 			</c:if>
 			<c:if test="${ban != 3}">
-				<a href="/board_detail/insertBoard.do" style="text-decoration: none;">글 작성</a>			
+				<a href="/board_detail/insertBoard.do" style="text-decoration: none; color: rgb(244, 97, 25);">글 작성</a>			
 			</c:if>
 		</div>
 		
@@ -224,7 +224,7 @@
 								<!-- 이전 페이지 조건문 -->
 								<c:if test="${paging.startPage != 1 }">
 									<li class="page-item">
-										<a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}')">이전</a>
+										<a class="page-link" style="color: black;" href="javascript:Frameset('board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}')">이전</a>
 									</li>				
 								</c:if>
 								<!-- 이전 페이지 조건문 end -->
@@ -236,12 +236,12 @@
 										<c:choose>
 											<c:when test="${p == paging.nowPage }">
 												<li class="page-item">
-													<a class="page-link" style="font-weight: bold; color: rgb(65,105,225);">${p }</a>
+													<a class="page-link" style="font-weight: bold; color: rgb(244, 97, 25);">${p }</a>
 												</li>
 											</c:when>
 											<c:when test="${p != paging.nowPage }">
 												<li class="page-item">													
-													<a class="page-link paging_num" href="javascript:Frameset('board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}')">${p }</a>
+													<a class="page-link paging_num" style="color: black;" href="javascript:Frameset('board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}')">${p }</a>
 												</li>
 											</c:when>
 										</c:choose>															
@@ -252,7 +252,7 @@
 								<!-- 다음 페이지 조건문 -->
 								<c:if test="${paging.endPage != paging.lastPage}">
 									<li class="page-item">
-										<a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}')">다음</a>
+										<a class="page-link" style="color: black;" href="javascript:Frameset('board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}')">다음</a>
 									</li>
 								</c:if>	
 								<!-- 다음 페이지 조건문 end -->
@@ -332,4 +332,18 @@
 </div>	
 <%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
+<script>
+	var test = document.getElementById('text_ra');
+	test.onkeydown = function(event) {
+		if(event.keyCode == 13){
+			Swal.fire({
+				html : "검색버튼을 이용해 주세요.",
+				icon : 'error',
+				confirmButtonText: '확인',
+				confirmButtonColor: "#F46119"
+			})
+			return false;			
+		}
+	}
+</script>
 </html>

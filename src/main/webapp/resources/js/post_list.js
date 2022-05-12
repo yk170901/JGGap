@@ -1,16 +1,15 @@
-
 function Frameset(page) {
 		framecode = "<frameset rows='1*'>"
 		+ "<frame name=main src='" + page + "'>"
 		+ "</frameset>";
 
 		document.write(framecode);
-		document.title = "구인 게시판";
+		document.title = "ㅈㄱㅊㅇ - 전적검색과 구인을 한 번에!";
 		document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 		document.close();
 		
 	}
-	
+
 function testDate(){
 	const dbdate = new Date(document.getElementById("dbdate").value);
 	const nowdate = new Date(document.getElementById("nowdate").value);
