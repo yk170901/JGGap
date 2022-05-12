@@ -24,32 +24,62 @@ public class RecordController {
 	
 	// 전적 페이지 로딩중
 	@RequestMapping("/record.do")
-	public void record() {
+	public void record(Model model, RecordVO recordVO) {
+		System.out.println("record");
 	}
 	
 	// 존재하는 소환사명인지 확인
 	@RequestMapping("/record_check.do")
-	public void record_check(RecordVO recordVO) throws IOException, InterruptedException {
+	public String record_check(RecordVO recordVO) throws IOException, InterruptedException {
 		System.out.println("record_check");
 		
 		String command = "C:\\Users\\grood\\anaconda3\\envs\\pythonProject\\python.exe";  // 명령어
     	String arg = "C:\\Users\\grood\\PycharmProjects\\pythonProject\\checking_id.py"; // 인자
     	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id());
-    	builder.redirectOutput(Redirect.INHERIT);
     	builder.redirectError(Redirect.INHERIT);    	
     	builder.redirectErrorStream(true);
     	Process process = builder.start();
     	int exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림
     	BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
-    	String line;
+    	String result = br.readLine();
     	if(exitVal != 0) {
     	  // 비정상 종료
     	  System.out.println("서브 프로세스가 비정상 종료되었다.");
     	}
+    	
+    	if (result.equals("success")) {
+    		if (recordService.record_info(recordVO) == null) {
+    			// 소환사명이 있고 db에 값이 없을때 riot api 전적 insert
+    			arg = "C:\\Users\\grood\\PycharmProjects\\pythonProject\\insert_lol.py";
+    			builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), recordVO.getGameid());
+    			builder.redirectError(Redirect.INHERIT);    	
+    	    	builder.redirectErrorStream(true);
+    	    	process = builder.start();
+    	    	exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림
+    	    	br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
+    	    	result = br.readLine();
+    	    	if(exitVal != 0) {
+    	    	  // 비정상 종료
+    	    	  System.out.println("서브 프로세스가 비정상 종료되었다.");
+    	    	}
+    			return "redirect:/record/onloaded.do";
+    		}
+    		else {
+    			// 소환사명이 있고 db에 값이 있을때 ( 업데이트 안함 )
+    			return "redirect:/record/onloaded.do";
+    		}
+    	} else {
+    		// 소환사명이 없을때
+    		return "redirect:/record/onloaded.do";
+    	}
+    	
+    	
+    	
 	}
 	
 	// 전적 페이지 불러오기
 	public void onloaded(Model model, RecordVO recordVO) {
+		System.out.println("onloaded");
 		model.addAttribute("record", recordService.record_info(recordVO));
 		model.addAttribute("score", recordService.record_score(recordVO));
 	}
