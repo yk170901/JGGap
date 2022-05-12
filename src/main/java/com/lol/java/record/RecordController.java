@@ -26,9 +26,8 @@ public class RecordController {
 	
 	// 전적 페이지 로딩중
 	@RequestMapping("/record.do")
-	public String record(Model model, RecordVO recordVO) throws Exception {
-		String summoner_id = URLEncoder.encode(recordVO.getSummoner_id(), "UTF-8");
-		return "redirect:/record/record_check.do?summoner_id="+summoner_id;
+	public void record(Model model, RecordVO recordVO) throws Exception {
+
 	}
 	
 	// 존재하는 소환사명인지 확인
