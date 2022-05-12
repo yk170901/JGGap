@@ -47,6 +47,18 @@ public class UserServiceImpl implements UserService{
 		
 		userDAO.ban(vo);
 	}
+
+	@Override
+	public String user_id_check(UserVO vo) {
+		
+		return userDAO.user_id_check(vo);
+	}
+
+	@Override
+	public String user_pwd_check(UserVO vo) {
+		
+		return userDAO.user_pwd_check(vo);
+	}
 	
 	
 }

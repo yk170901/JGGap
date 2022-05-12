@@ -40,26 +40,20 @@ $("#user_id").blur(function() {
 		},
 		datatype: "text",
 		success: function(data) {
-			console.log("1 = 중복o / 0 = 중복x : " + "x"+  data +"y" +user_id);
-			if ( user_id == "" || user_id == null || user_id == undefined ) {
-				$('#id_check').text("");
-				$('#id_check').css('color', 'red');
-				$("#sign_up_submit").attr("disabled", true);
-			}
-			
+			console.log("x"+  data +"y" +user_id);
 			if ( user_id.length < 6 || user_id.length > 15) {
-
+				
 					$('#id_check').text("아이디는 영문과 숫자 6~15자리만 가능합니다 :) :)");
 					$('#id_check').css('color', 'red');
 					$("#sign_up_submit").attr("disabled", true);
 			}
 			if (user_id.length > 0 && data == user_id) {
-				// 1 : 아이디가 중복되는 문구
+				
 				$("#id_check").text("사용중인 아이디입니다 :p");
 				$("#id_check").css("color", "red");
 				$("#sign_up_submit").attr("disabled", true);
 			}else if (user_id.length > 0 && user_id.length > 5 && user_id.length < 16 && data != user_id){
-					// 0 : 아이디 길이 / 문자열 검사
+					
 					$("#id_check").text("사용가능한 아이디 입니다.");
 					$("#id_check").css("color", "green");
 					$("#sign_up_submit").attr("disabled", false);
@@ -85,14 +79,14 @@ $("#summoner_id").blur(function() {
 		},
 		datatype: "text",
 		success: function(data) {
-
+			
 			if (data == 1) {
-
+				
 				$("#summoner_check").text("사용중인 아이디입니다.");
 				$("#summoner_check").css("color", "red");
 				$("#sign_up_submit").attr("disabled", true);
-			} else {
-
+			}else {
+			
 				$("#summoner_check").text("사용가능한 아이디 입니다 :p");
 				$("#summoner_check").css("color", "green");
 				$("#sign_up_submit").attr("disabled", false);
@@ -104,6 +98,16 @@ $("#summoner_id").blur(function() {
 	});
 });
 // 서머너 아이디 중복 검사 end
+
+// 아이디칸 한글 입력 방지
+function chkCharCode(event) {
+	const regExp = /[^0-9a-zA-Z]/g;
+	const ele = event.target;
+	if (regExp.test(ele.value)) {
+		ele.value = ele.value.replace(regExp, '');
+	}
+};
+// 아이디칸 한글 입력 방지 end
 
 /* 회원가입 비밀번호 확인 */
 function confirm() {
@@ -126,7 +130,7 @@ function confirm() {
 		Swal.fire("비밀번호 불일치");
 		return false;
 	} else {
-		Swal.fire("비밀번호가 일치합니다");
+		Swal.fire("회원가입이 완료되었습니다.");
 		return true;
 	}
 }
@@ -138,13 +142,11 @@ function confirm2() {
 	let i1 = document.getElementsByClassName('user_id')[0].value;
 	let p1 = document.getElementsByClassName('user_pwd')[0].value;
 	
-	alert(i1 + "/" + p1);
-	
-	if ( i1 == null){
+	if ( i1 == null || !i1){
 		Swal.fire("아이디를 입력해주세요");
 		return false;
 	}
-	if ( p1 == null){
+	if ( p1 == null || !p1){
 		Swal.fire("비밀번호를 입력해주세요");
 		return false;
 	}
@@ -152,16 +154,7 @@ function confirm2() {
 }
 
 
-// 아이디칸 한글 입력 방지
-function chkCharCode(event) {
-	const regExp = /[^0-9a-zA-Z]/g;
-	const ele = event.target;
-	if (regExp.test(ele.value)) {
-		ele.value = ele.value.replace(regExp, '');
-	}
-};
 
-// 아이디칸 한글 입력 방지 end
 
 // 로그인 버튼 엔터 적용
 $(document).ready(function(){
