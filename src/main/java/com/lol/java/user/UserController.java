@@ -33,7 +33,6 @@ public class UserController {
 		String encryPassword = UserSHA.encrypt(vo.getUser_pwd());
 		vo.setUser_pwd(encryPassword);
 		userService.sign_up(vo);
-		System.out.println(encryPassword);
 		return "redirect:/login.jsp";
 	}
 
@@ -45,7 +44,7 @@ public class UserController {
 		vo.setUser_pwd(encryPassword);
 		String id_chk = userService.user_id_check(vo);
 		String pwd_chk = userService.user_pwd_check(vo);
-		System.out.println(id_chk + " / " + pwd_chk);
+		
 		if (id_chk == null) {
 			return "user/join";
 		}else if(pwd_chk == null){
@@ -60,7 +59,6 @@ public class UserController {
 			userService.ban(vo);
 		}
 		
-		System.out.println("login 컨트롤러 호출");
 		
 //		세션 중복 방지
 		for( HttpSession member : sessionList) {
@@ -70,10 +68,8 @@ public class UserController {
 			}
 		}
 		sessionList.add(session);
-		System.out.println(sessionList);
+		
 		if (result.getBan() == 1) {
-
-			System.out.println("정지당한 회원");
 			return "user/ban";
 		} else if(result.getBan() == 3) {
 			session.setAttribute("user_no", result.getUser_no());

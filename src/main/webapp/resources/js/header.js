@@ -81,3 +81,14 @@ $(function() { $('#CSC').on("click", function() {
 //	})
 //});
 
+function Frameset(page) {
+		alert(page);
+		framecode = "<frameset rows='1*'>"
+		+ "<frame name=main src='" + page + "'>"
+		+ "</frameset>";
+
+		document.write(framecode);
+		document.title = "채팅방";
+		document.close();	
+	}
+
