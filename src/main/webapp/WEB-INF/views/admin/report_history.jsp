@@ -15,7 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<link rel="shortcut icon" href="/resources/imgs/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/admin.css" type="text/css">
 
 </head>
@@ -43,7 +43,7 @@
 							<td><a href="http://localhost:8080/board_view/viewBoard.do?post_no=${list.report_url}"><c:out value="${list.report_title}"/></a></td>
 							<td><c:out value="${list.report_content}"/></td>
 							<td><button class="receipt" value="${list.report_url}">신고 처리</button></td>			
-							<td><input type="hidden" name="cnt" id="cnt" value="${list.report_cnt}"/><c:out value="${list.report_cnt}"/></td>
+							<td id="nodes"><input type="hidden" name="cnt" id="cnt" value="${list.report_cnt}"/><c:out value="${list.report_cnt}"/></td>
 						</tr>
 					</c:forEach>
 				</table>

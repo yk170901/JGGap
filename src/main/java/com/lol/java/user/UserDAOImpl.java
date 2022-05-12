@@ -45,4 +45,16 @@ public class UserDAOImpl implements UserDAO{
 		
 		mybatis.update("userMapper.ban", vo);
 	}
+
+	@Override
+	public String user_id_check(UserVO vo) {
+		
+		return mybatis.selectOne("userMapper.user_id_check",vo);
+	}
+
+	@Override
+	public String user_pwd_check(UserVO vo) {
+		
+		return mybatis.selectOne("userMapper.user_pwd_check",vo);
+	}
 }

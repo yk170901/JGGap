@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 // 관리자 페이지
 @Controller
@@ -61,21 +62,21 @@ public class AdminController {
 		
 		return "/admin/achievement_grant";
 	}
-	
+	@ResponseBody
 	@RequestMapping("/grant.do")
 	public String grant(AdminVO vo) {
 		
 		vo.setUser_no(adminService.conversion(vo.getUser_id()));
-		
+		System.out.println(adminService.overlap_check(vo));
 		if(adminService.overlap_check(vo) > 0) {
-			
-			return "/admin/overlap";
-			
+			System.out.println("false");
+			return "1";
 		}else {
-			
 			adminService.grant(vo);
-			return "/admin/success";
+			System.out.println("true");
+			return "0";
 		}
+		
 		
 	}
 	

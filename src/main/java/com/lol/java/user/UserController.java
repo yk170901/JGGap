@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.socket.WebSocketSession;
 
+import com.lol.java.admin.AdminVO;
+
 // 로그인페이지(메인) 및 회원가입페이지
 @Controller
 @RequestMapping("/user")
@@ -26,7 +28,7 @@ public class UserController {
 
 //	회원가입 컨트롤러
 	@RequestMapping("/sign_up.do")
-	public String sign_up(UserVO vo, Model model, HttpServletRequest request) {
+	public String sign_up(UserVO vo) {
 		// 비밀번호 암호화 (sha256
 		String encryPassword = UserSHA.encrypt(vo.getUser_pwd());
 		vo.setUser_pwd(encryPassword);
@@ -38,12 +40,20 @@ public class UserController {
 //	로그인 컨트롤러
 	@RequestMapping("/login_ok.do")
 	public String login(UserVO vo, HttpSession session) throws Exception {
-	
+		
 		String encryPassword = UserSHA.encrypt(vo.getUser_pwd());
 		vo.setUser_pwd(encryPassword);
+		String id_chk = userService.user_id_check(vo);
+		String pwd_chk = userService.user_pwd_check(vo);
+		System.out.println(id_chk + " / " + pwd_chk);
+		if (id_chk == null) {
+			return "user/join";
+		}else if(pwd_chk == null){
+			return "user/pwd";
+		}else{
 		UserVO result = userService.idCheck_Login(vo);
 		String tier = userService.tier_info(result.getUser_no());
-		
+			
 //		경고 누적 3회 일시
 		if(vo.getReport_status() == 3) {
 			
@@ -61,11 +71,7 @@ public class UserController {
 		}
 		sessionList.add(session);
 		System.out.println(sessionList);
-		
-		if (result.getUser_no() < 1) {
-			
-			return "user/join";
-		} else if (result.getBan() == 1) {
+		if (result.getBan() == 1) {
 
 			System.out.println("정지당한 회원");
 			return "user/ban";
@@ -82,6 +88,8 @@ public class UserController {
 			session.setAttribute("solo_tier", tier);
 			return "redirect:/board_list/board_list.do";
 		}
+		}
+		
 	}
 
 	// id 중복 체크 컨트롤러

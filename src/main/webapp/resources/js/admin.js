@@ -1,3 +1,35 @@
+
+function grant(){
+	
+	user_id = document.querySelector('input[name="user_id"]').value;
+	badge_file = document.querySelector('input[name="badge_file"]:checked').value;
+	
+	$.ajax({
+		url:'/admin/grant.do',
+		type : "POST",
+		data : {
+			user_id : user_id,
+			badge_file : badge_file
+		},
+		datatype: "text",
+		success: function(data){
+		if(data == 0){
+			Swal.fire({
+			icon: 'success',
+			title: '처리 완료',
+			text: '정상처리 되었습니다.'
+			})
+			}else {
+				Swal.fire({
+				icon: 'error',
+				title: '오류',
+				text: '존재하지 않는 아이디 또는 회원이 보유한 업적 입니다.'
+				})
+			}
+		}
+		
+	})
+}
 /* -------------------------------------모달 시작--------------------------------------- */
 
 var reportBtn = document.querySelector('.receipt');
@@ -19,7 +51,7 @@ $('.modal-close').on("click", function() {
 
 // 신고 접수
 $('#submitReport').on("click", function() {
-	// reporter의 user_no은 컨트롤러에서 세션으로 얻어오기
+	
 	var report_result = document.querySelector('#report-result').value
 	var report_target = document.querySelector('#report_target').value
 	var report_url = document.querySelector('#report_url').value
@@ -49,4 +81,14 @@ $('#submitReport').on("click", function() {
 /* -------------------------------------모달 끝--------------------------------------- */
 
 
-$(document).read()
+$(document).ready(function(){
+	
+	var nodes = document.getElementById("nodes").value;
+	var node = document.getElementById("nodes")
+	
+	if (nodes == 0) {
+		node.innerHTML = "대기중"
+	}else{
+		node.innerHTML = "처리 완료"
+	}
+})

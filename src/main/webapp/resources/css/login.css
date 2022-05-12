@@ -63,3 +63,11 @@ a {
 	width: 75px;
 	height: 75px;
 }
+
+#modal_on{
+	width: 100ox;
+	height: 40px;
+	border-radius: 10%;
+	border: 3px solid #F46119;
+	color: #F46119;
+}
