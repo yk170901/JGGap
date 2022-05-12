@@ -27,15 +27,15 @@
 					</div>
 					<div class="form-group">
 						<label>현재 비밀번호</label> <input type="password" name="current-password"
-							class="form-box" required />
+							class="form-box" id="form-box-focus" required />
 					</div>
 					<div class="form-group">
 						<label>새 비밀번호 <small>(필수)</small></label> <input type="password"
-							name="new-password" class="form-box" required />
+							name="new-password" class="form-box" id="form-box-focus" required />
 					</div>
 					<div class="form-group">
 						<label>새 비밀번호 확인 <small>(필수)</small></label> <input
-							type="password" name="new-password2" class="form-box" required />
+							type="password" name="new-password2" class="form-box" id="form-box-focus" required />
 					</div>
 					<div class="form-group" style="text-align: right">
 						<input name="form-submit" class="form-submit" type="button" value="비밀번호 변경 확인" onclick="chg_pwd(password_form)" />

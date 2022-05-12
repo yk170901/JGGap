@@ -60,7 +60,7 @@ int num = (int) (Math.random() * 4 + 1);
 								<div class="uk-margin">
 									<div id="result"></div>
 									<button type="submit"
-										class="uk-button uk-button-danger uk-width-1-1" id="login" name="login">로그인</button>
+										class="uk-button uk-button-danger uk-width-1-1" id="login" name="login" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 700">로그인</button>
 								</div>
 								<hr>
 							</form>

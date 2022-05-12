@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이 페이지</title>
+<title>ㅈㄱㅊㅇ - 전적검색과 구인을 한 번에!</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
@@ -14,6 +14,7 @@
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
 <link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="/resources/css/profile.css" type="text/css">
+
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/basic/header.jsp"%>
@@ -92,7 +93,7 @@
 			<!-- 뱃지 목록 -->
 			<div class="badges-box">
 				<div class="badges-head">
-					<h2 class="badges-title">활동 뱃지</h2>
+					<h3 class="badges-title">활동 뱃지</h3>
 				</div>
 				<div class="badges-body">
 					<ul class="badges-list">
@@ -111,7 +112,7 @@
 			<!-- 채택 목록 -->
 			<div class="choices-box">
 				<div class="choices-head">
-					<h2 class="choices-title">채택 목록</h2>
+					<h3 class="choices-title">채택 목록</h3>
 				</div>
 				<div class="choices-body">
 						<c:set var="i" value="0" />
@@ -158,7 +159,7 @@
 			<!-- 게시글 목록 -->
 			<div class="board-box">
 				<div class="boardlist-head">
-					<h2 class="boardlist-title">게시글<small> [최신순 10개]</small></h2>
+					<h3 class="boardlist-title">게시글<small> [최신순 10개]</small></h3>
 				</div>
 				<div class="boardlist-body">
 					<table border="1" class="board-list">
