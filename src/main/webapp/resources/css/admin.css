@@ -220,6 +220,8 @@ tr:not(:first-child) {
 	float: right;
 	margin-top: 20px;
 	width: 50px;
+	border: 3px solid #F46119;
+	color: #F46119;
 }
 
 .receipt{
@@ -229,6 +231,11 @@ tr:not(:first-child) {
 	border: 3px solid #F46119;
 	color: #F46119;
 	
+}
+
+.container {
+	margin-top: 30px; 
+	padding-left: 50px;
 }
 
 /* 모달 */

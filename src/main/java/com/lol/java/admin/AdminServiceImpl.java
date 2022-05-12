@@ -13,9 +13,9 @@ public class AdminServiceImpl implements AdminService{
 	AdminDAO adminDAO;
 
 	@Override
-	public List<AdminVO> user_list() {
+	public List<AdminVO> user_list(Paging_VO vo) {
 
-		return adminDAO.user_list();
+		return adminDAO.user_list(vo);
 	}
 
 	@Override
@@ -43,9 +43,9 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<AdminVO> report_list() {
+	public List<AdminVO> report_list(Paging_VO vo) {
 		
-		return adminDAO.report_list();
+		return adminDAO.report_list(vo);
 	}
 
 	@Override

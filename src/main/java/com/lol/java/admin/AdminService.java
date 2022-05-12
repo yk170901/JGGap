@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface AdminService {
 
-	public List<AdminVO> user_list();
+	public List<AdminVO> user_list(Paging_VO vo);
 	
 	public int member_count();
 	
@@ -15,7 +15,7 @@ public interface AdminService {
 	
 	public int report_count();
 	
-	public List<AdminVO> report_list();
+	public List<AdminVO> report_list(Paging_VO vo);
 	
 	public int overlap_check(AdminVO vo);
 	

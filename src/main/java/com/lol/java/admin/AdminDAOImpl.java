@@ -14,9 +14,9 @@ public class AdminDAOImpl implements AdminDAO{
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public List<AdminVO> user_list() {
+	public List<AdminVO> user_list(Paging_VO vo) {
 		
-		return mybatis.selectList("AdminDAO.user_list");
+		return mybatis.selectList("AdminDAO.user_list", vo);
 	}
 
 	@Override
@@ -43,9 +43,9 @@ public class AdminDAOImpl implements AdminDAO{
 	}
 
 	@Override
-	public List<AdminVO> report_list() {
+	public List<AdminVO> report_list(Paging_VO vo) {
 		
-		return mybatis.selectList("AdminDAO.report_list");
+		return mybatis.selectList("AdminDAO.report_list",vo);
 	}
 
 	@Override

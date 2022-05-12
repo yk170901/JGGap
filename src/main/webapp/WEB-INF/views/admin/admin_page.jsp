@@ -11,7 +11,6 @@
 <title>관리자 페이지</title>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<script type="text/javascript" src="../resources/js/post_list.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -62,8 +61,7 @@
 							
 								<!-- 이전 페이지 조건문 -->
 								<c:if test="${paging.startPage != 1 }">
-									<li class="page-item"><a class="page-link" href="javascript:Frameset('admin_page.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}
-									')">이전</a></li>		
+									<li class="page-item"><a class="page-link" href="admin_page.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">이전</a></li>		
 								</c:if>
 								<!-- 이전 페이지 조건문 end -->
 								
@@ -79,8 +77,7 @@
 											</c:when>
 											<c:when test="${p != paging.nowPage }">
 												<li class="page-item">
-													<a class="page-link paging_num" href="javascript:Frameset('admin_page.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}
-													')"
+													<a class="page-link paging_num" href="admin_page.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}"
 													>${p }</a>
 												</li>
 											</c:when>
@@ -92,8 +89,7 @@
 								<!-- 다음 페이지 조건문 -->
 								<c:if test="${paging.endPage != paging.lastPage}">
 									<li class="page-item">
-										<a class="page-link" href="javascript:Frameset('admin_page.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}
-										')">다음</a>
+										<a class="page-link" href="admin_page.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">다음</a>
 									</li>
 								</c:if>
 								<!-- 다음 페이지 조건문 end -->
