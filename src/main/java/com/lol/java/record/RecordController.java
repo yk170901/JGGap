@@ -22,9 +22,34 @@ public class RecordController {
 	@Autowired
 	private RecordService recordService;
 	
-	// 전적 페이지 불러오기
+	// 전적 페이지 로딩중
 	@RequestMapping("/record.do")
-	public void record(Model model, RecordVO recordVO) {
+	public void record() {
+	}
+	
+	// 존재하는 소환사명인지 확인
+	@RequestMapping("/record_check.do")
+	public void record_check(RecordVO recordVO) throws IOException, InterruptedException {
+		System.out.println("record_check");
+		
+		String command = "C:\\Users\\grood\\anaconda3\\envs\\pythonProject\\python.exe";  // 명령어
+    	String arg = "C:\\Users\\grood\\PycharmProjects\\pythonProject\\checking_id.py"; // 인자
+    	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id());
+    	builder.redirectOutput(Redirect.INHERIT);
+    	builder.redirectError(Redirect.INHERIT);    	
+    	builder.redirectErrorStream(true);
+    	Process process = builder.start();
+    	int exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림
+    	BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
+    	String line;
+    	if(exitVal != 0) {
+    	  // 비정상 종료
+    	  System.out.println("서브 프로세스가 비정상 종료되었다.");
+    	}
+	}
+	
+	// 전적 페이지 불러오기
+	public void onloaded(Model model, RecordVO recordVO) {
 		model.addAttribute("record", recordService.record_info(recordVO));
 		model.addAttribute("score", recordService.record_score(recordVO));
 	}
@@ -33,7 +58,7 @@ public class RecordController {
 	@RequestMapping("/record_update.do")
 	public String record_update(RecordVO recordVO) throws IOException, InterruptedException {		
 		String command = "C:\\Users\\grood\\anaconda3\\envs\\pythonProject\\python.exe";  // 명령어
-    	String arg = "C:\\Users\\grood\\PycharmProjects\\pythonProject\\crawling.py"; // 인자
+    	String arg = "C:\\Users\\grood\\PycharmProjects\\pythonProject\\updating.py"; // 인자
     	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), recordVO.getGameid(), String.valueOf(recordVO.getUser_no()));
     	builder.redirectOutput(Redirect.INHERIT);
     	builder.redirectError(Redirect.INHERIT);    	
@@ -53,10 +78,10 @@ public class RecordController {
 	// 전적 더보기 버튼
 	@ResponseBody
 	@RequestMapping("/record_more.do")
-	public Object record_more(int begin_num, int user_no) {
+	public Object record_more(int begin_num, String summoner_id) {
 		
 		HashMap<String,Object> record = new HashMap<String, Object>();
-		record.put("user_no", user_no);
+		record.put("summoner_id", summoner_id);
 		record.put("begin_num", begin_num);
 		List<RecordVO> recordVO = recordService.record_more(record);
 		return recordVO;
@@ -66,10 +91,10 @@ public class RecordController {
 	// 시각화를 위한 데이터 가져오기
 	@ResponseBody
 	@RequestMapping("/record_chart.do")
-	public HashMap<String, List<RecordVO>> record_chart(int user_no) {
-		List<RecordVO> recordVO1 = recordService.record_chart(user_no);
-		List<RecordVO> recordVO2 = recordService.record_champion_rate(user_no);
-		List<RecordVO> recordVO3 = recordService.record_lane_rate(user_no);
+	public HashMap<String, List<RecordVO>> record_chart(String summoner_id) {
+		List<RecordVO> recordVO1 = recordService.record_chart(summoner_id);
+		List<RecordVO> recordVO2 = recordService.record_champion_rate(summoner_id);
+		List<RecordVO> recordVO3 = recordService.record_lane_rate(summoner_id);
 		
 		HashMap<String, List<RecordVO>> chart = new HashMap<String, List<RecordVO>>();
 		chart.put("chart", recordVO1);
