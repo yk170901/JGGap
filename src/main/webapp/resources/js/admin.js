@@ -13,7 +13,6 @@ function grant(){
 		},
 		datatype: "text",
 		success: function(data){
-			alert(data);
 		if(data == 0){
 			Swal.fire({
 			icon: 'success',
