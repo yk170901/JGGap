@@ -6,7 +6,7 @@ function FramesetUn(page) {
 		+ "</frameset>";
 
 		document.write(framecode);
-		document.title = "채팅방";
+		document.title = "ㅈㄱㅊㅇ - 전적검색과 구인을 한 번에!";
 		document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 		document.close();
 		}
@@ -31,7 +31,7 @@ function FramesetBr(page) {
 			+ "</frameset>";
 	
 			document.write(framecode);
-			document.title = "채팅방";
+			document.title = "ㅈㄱㅊㅇ - 전적검색과 구인을 한 번에!";
 			document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 			document.close();
 		}
@@ -55,7 +55,7 @@ function FramesetGo(page) {
 			+ "</frameset>";
 	
 			document.write(framecode);
-			document.title = "채팅방";
+			document.title = "ㅈㄱㅊㅇ - 전적검색과 구인을 한 번에!";
 			document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 			document.close();
 		}
@@ -79,7 +79,7 @@ function FramesetMa(page) {
 			+ "</frameset>";
 	
 			document.write(framecode);
-			document.title = "채팅방";
+			document.title = "ㅈㄱㅊㅇ - 전적검색과 구인을 한 번에!";
 			document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 			document.close();
 		}

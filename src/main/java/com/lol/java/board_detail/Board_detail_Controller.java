@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 // 구인게시판(작성, 상세) 페이지
 @Controller
 @RequestMapping("/board_detail")
-public class Board_detail_Controller {
+public class Board_detail_Controller { 
  
 	@Autowired
 	private Board_detail_Service board_detail_Service;
@@ -81,15 +81,13 @@ public class Board_detail_Controller {
 	
 	// 관리자글 삭제
 	@RequestMapping("/adminPostDelete.do")
-	public String deleteAdminBoard(int post_no) {
+	public void deleteAdminBoard(int post_no) {
 		board_detail_Service.deleteAdminPost(post_no);
-		return "redirect:/board_list/board_list.do";
 	}
 	
 	// 글 삭제
 	@RequestMapping("/postDelete.do")
-	public String deleteBoard(int post_no) {
+	public void deleteBoard(int post_no) {
 		board_detail_Service.deletePost(post_no);
-		return "redirect:/board_list/board_list.do";
 	}
 }

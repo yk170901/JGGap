@@ -5,8 +5,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>공지글 수정 페이지</title>
+	<title>ㅈㄱㅊㅇ - 전적검색과 구인을 한 번에!</title>
     <link href="../resources/css/post_detail.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <%@ include file="/WEB-INF/views/basic/header.jsp" %>
@@ -23,11 +24,11 @@
 				</div>
 			</div>
 			<div class="post-content">
-				<div class="textarea-wrap"><textarea id="content" name="board_text">${update.board_text }</textarea></div>
+				<div class="textarea-wrap"><textarea id="content" name="board_text" maxlength="1300">${update.board_text }</textarea></div>
 			</div>
 			<div class="button-wrap">
 				<button class="post-modify detail-big-btn" type="submit">수정</button>
-				<button class="post-discard detail-big-btn" type="button" onclick="cancelPostUpdate()">취소</button>
+				<button class="post-discard detail-big-btn" type="button" onclick="cancelAdminPostUpdate()">취소</button>
 			</div>
 		</form>
 	</div>
@@ -36,5 +37,6 @@
 	
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
     <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
 </html>

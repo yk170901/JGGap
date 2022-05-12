@@ -22,8 +22,8 @@
 		<div class="page-body">
 		<c:if test="${record.summoner_id == null }">
 			<div class="summoner-info-none"><span>"<%=request.getParameter("summoner_id") %>"</span> 는 존재하지 않는 소환사명 입니다.</div>
-		</c:if>
-		<c:if test="${record.summoner_id != null}">
+ 		</c:if>
+ 		<c:if test="${record.summoner_id != null}">
 			<!-- 소환사 정보 -->
 			<div class="summoner-info-body">
 				<div><img class="summoner-profile-icon" src="/resources/imgs/profile_icon/${record.profile_icon }.png"></div>
@@ -400,16 +400,7 @@
 				<a class="summoner-record-more">더보기</a>
 
 			</div>
-
-
-
-
-
-
-
-
-
-		</c:if>
+ 		</c:if>
 		</div>
 	</main>
 	<%@ include file="/WEB-INF/views/basic/footer.jsp"%>

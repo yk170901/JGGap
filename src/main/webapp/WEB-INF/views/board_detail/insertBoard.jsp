@@ -5,9 +5,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>구인 게시글 작성 페이지</title>
+	<title>ㅈㄱㅊㅇ - 전적검색과 구인을 한 번에!</title>
     <link href="../resources/css/post_detail.css" rel="stylesheet" type="text/css">
-    <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
+    <link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
@@ -23,7 +23,7 @@
 						<div class="category-content">
 							<div class="category-title">맵 분류</div>
 							<select class="category-map label" id="category-map" name="game_map"> 
-								<option value="none">선택해주세요</option>
+								<option value="none">선택</option>
 								<option value="소환사의 협곡">소환사의 협곡</option>
 								<option value="칼바람 나락">칼바람 나락</option>
 							</select>
@@ -32,7 +32,7 @@
 						<div class="category-content game-mode">
 							<div class="category-title">게임 분류</div>
 							<select class="category-game" id="category-game" name="game_mode">
-								<option value="none">선택해주세요</option>
+								<option value="none">선택</option>
 								<option value="일반">일반</option>
 								<option value="솔로 랭크">솔로 랭크</option>
 								<option value="자유 랭크">자유 랭크</option>
@@ -41,8 +41,8 @@
 						
 						<div class="category-content">
 							<div class="category-title">플레이 인원</div>
-							<select class="category-cru-max" id="category-cru-max" name="cru_max">
-								<option value="none">선택해주세요</option>
+							<select class="category-cru-max" id="category-cru-max" name="cru_max" style="width: 65px;">
+								<option value="none">선택</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
 								<option value="4">4</option>
@@ -54,7 +54,7 @@
 				</div>
 			</div>
 			<div class="post-content">
-				<div class="textarea-wrap"><textarea id="content" name="board_text"></textarea></div>
+				<div class="textarea-wrap"><textarea id="content" name="board_text" maxlength="1300"></textarea></div>
 			</div>
 			<div class="button-wrap">
 				<button class="post-submit detail-big-btn" type="submit">작성</button>
@@ -67,5 +67,6 @@
 	
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
     <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
 </html>

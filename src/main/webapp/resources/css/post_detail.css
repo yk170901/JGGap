@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+input:focus,
+textarea:focus{
+	outline: 0 !important;
+}
+
 /* 모달 */
 
 select{
@@ -185,6 +190,7 @@ select{
 
 #writer-post-button{
 	text-align: right;
+	padding: 15px 0;
 }
 
 #reply-date{

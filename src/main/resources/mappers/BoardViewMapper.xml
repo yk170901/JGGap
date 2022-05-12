@@ -181,6 +181,13 @@
 					 				FROM user_info
 					 				WHERE user_no = ${user_no})
 					 )
+			
+	</delete>
+	
+	<delete id="cancelFriendRequest" parameterType="hashmap">
+		DELETE friend
+			WHERE user_no = ${user_no} 
+				AND friend = #{friend}
 	</delete>
 	
   </mapper>
