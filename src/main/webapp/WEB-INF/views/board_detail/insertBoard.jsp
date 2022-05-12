@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>ㅈㄱㅊㅇ - 구인글 작성</title>
+	<title>ㅈㄱㅊㅇ - 전적검색과 구인을 한 번에!</title>
     <link href="../resources/css/post_detail.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 </head>
