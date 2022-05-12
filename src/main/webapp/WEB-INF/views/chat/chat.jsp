@@ -32,16 +32,13 @@
                 	<!-- 채팅방 목록 -->
                     <div class="uk-width-1-3@l" style="margin-left: 23%; margin-top: 7%;">
                         <div class="chat-user-list" style="width: 400px; height: 600px;">
-                            <div class="chat-user-list__box">
-                                
-                                
+                            <div class="chat-user-list__box">         
                                 <div class="chat-user-list__body">
                                     <ul>
                                     	<li>
                                     		<div class="user-item --active" style="margin-top: 10px; margin-bottom: 20px;">
                                     			<div class="user-item__desc summoner_id_info">
                                     				<span class="messages_class">메시지</span>
-                                    				<%= request.getParameter("solo_tier")%>
                                     			</div>
                                     		</div>
                                     	</li>

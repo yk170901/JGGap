@@ -18,7 +18,7 @@ public class ChatController {
 	
 	@RequestMapping("/chat.do")
 	public String chat(HttpSession session, Model model, HttpServletRequest request, ChatVO vo){
-		session.setAttribute("user_no", request.getParameter("user_no"));
+		session.setAttribute("user_no", Integer.parseInt(request.getParameter("user_no")));
 		session.setAttribute("summoner_id", request.getParameter("summoner_id"));
 		session.setAttribute("ban", Integer.parseInt(request.getParameter("ban")));
 		session.setAttribute("solo_tier", request.getParameter("solo_tier"));
@@ -45,9 +45,6 @@ public class ChatController {
 			return "redirect:http://localhost:8080/login.jsp";
 		} 
 		else {
-				System.out.println("벤 : " + request.getParameter("ban"));
-				System.out.println("현재 티어 : " + request.getParameter("solo_tier"));
-				
 				model.addAttribute("user_no", request.getParameter("user_no"));
 				model.addAttribute("summoner_id", request.getParameter("summoner_id"));
 				model.addAttribute("ban", request.getParameter("ban"));
@@ -70,9 +67,6 @@ public class ChatController {
 			return "redirect:http://localhost:8080/login.jsp";
 		} 
 		else {
-				System.out.println("벤 : " + request.getParameter("ban"));
-				System.out.println("현재 티어 : " + request.getParameter("solo_tier"));
-				
 				model.addAttribute("user_no", request.getParameter("user_no"));
 				model.addAttribute("summoner_id", request.getParameter("summoner_id"));
 				model.addAttribute("ban", request.getParameter("ban"));
@@ -96,9 +90,6 @@ public class ChatController {
 			return "redirect:http://localhost:8080/login.jsp";
 		} 
 		else {
-				System.out.println("벤 : " + request.getParameter("ban"));
-				System.out.println("현재 티어 : " + request.getParameter("solo_tier"));
-				
 				model.addAttribute("user_no", request.getParameter("user_no"));
 				model.addAttribute("summoner_id", request.getParameter("summoner_id"));
 				model.addAttribute("ban", request.getParameter("ban"));
@@ -122,8 +113,6 @@ public class ChatController {
 			return "redirect:http://localhost:8080/login.jsp";
 		} 
 		else {
-				System.out.println("벤 : " + request.getParameter("ban"));
-				System.out.println("현재 티어 : " + request.getParameter("solo_tier"));
 				
 				model.addAttribute("user_no", request.getParameter("user_no"));
 				model.addAttribute("summoner_id", request.getParameter("summoner_id"));

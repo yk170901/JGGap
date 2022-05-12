@@ -50,7 +50,7 @@ public class BasicController {
 		}
 		if (check == 0) sessionList.add(session);
 		
-		System.out.println(sessionList.size());
+//		System.out.println(sessionList.size());
 		for(HttpSession s : sessionList) {
 			for(BasicVO f : friendList) {
 				if(s.getAttribute("summoner_id").equals(f.getFriend())) {
