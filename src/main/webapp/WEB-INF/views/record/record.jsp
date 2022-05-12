@@ -18,7 +18,7 @@
 	<%@ include file="/WEB-INF/views/basic/header.jsp"%>
 	<main class="page-main">
 		<div class="page-body">
-			로딩중...............
+			<div class="summoner-info-loading"><img src="/resources/imgs/loading.gif"></div>
 		</div>
 	</main>
 	<%@ include file="/WEB-INF/views/basic/footer.jsp"%>

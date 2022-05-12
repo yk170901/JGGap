@@ -1,7 +1,6 @@
 $(function() {
 	
 	var summoner_id = getParameter("summoner_id");
-	alert('엌');
 	
 	function getParameter(name) {
 		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
