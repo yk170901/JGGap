@@ -305,7 +305,7 @@
 				<a class="summoner-record-more">더보기</a>
 
 			</div>
-<%-- 		</c:if> --%>
+ 		</c:if>
 		</div>
 	</main>
 	<%@ include file="/WEB-INF/views/basic/footer.jsp"%>
