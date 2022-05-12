@@ -2,7 +2,9 @@ package com.lol.java.record;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.ProcessBuilder.Redirect;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
@@ -24,17 +26,17 @@ public class RecordController {
 	
 	// 전적 페이지 로딩중
 	@RequestMapping("/record.do")
-	public void record(Model model, RecordVO recordVO) {
-		System.out.println("record");
+	public String record(Model model, RecordVO recordVO) throws Exception {
+		String summoner_id = URLEncoder.encode(recordVO.getSummoner_id(), "UTF-8");
+		return "redirect:/record/record_check.do?summoner_id="+summoner_id;
 	}
 	
 	// 존재하는 소환사명인지 확인
 	@RequestMapping("/record_check.do")
 	public String record_check(RecordVO recordVO) throws IOException, InterruptedException {
-		System.out.println("record_check");
-		
-		String command = "C:\\Users\\grood\\anaconda3\\envs\\pythonProject\\python.exe";  // 명령어
-    	String arg = "C:\\Users\\grood\\PycharmProjects\\pythonProject\\checking_id.py"; // 인자
+		System.out.println(recordVO.getSummoner_id());
+		String command = "C:\\Users\\grood\\.conda\\envs\\JGGap\\python.exe";  // 명령어
+    	String arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\checking_id.py"; // 인자
     	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id());
     	builder.redirectError(Redirect.INHERIT);    	
     	builder.redirectErrorStream(true);
@@ -45,13 +47,12 @@ public class RecordController {
     	if(exitVal != 0) {
     	  // 비정상 종료
     	  System.out.println("서브 프로세스가 비정상 종료되었다.");
-    	}
-    	
+    	}  	
     	if (result.equals("success")) {
     		if (recordService.record_info(recordVO) == null) {
     			// 소환사명이 있고 db에 값이 없을때 riot api 전적 insert
-    			arg = "C:\\Users\\grood\\PycharmProjects\\pythonProject\\insert_lol.py";
-    			builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), recordVO.getGameid());
+    			arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\insert_lol.py";
+    			builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), "10007");
     			builder.redirectError(Redirect.INHERIT);    	
     	    	builder.redirectErrorStream(true);
     	    	process = builder.start();
@@ -61,37 +62,30 @@ public class RecordController {
     	    	if(exitVal != 0) {
     	    	  // 비정상 종료
     	    	  System.out.println("서브 프로세스가 비정상 종료되었다.");
-    	    	}
-    			return "redirect:/record/onloaded.do";
-    		}
-    		else {
-    			// 소환사명이 있고 db에 값이 있을때 ( 업데이트 안함 )
-    			return "redirect:/record/onloaded.do";
-    		}
-    	} else {
-    		// 소환사명이 없을때
-    		return "redirect:/record/onloaded.do";
-    	}
-    	
-    	
-    	
+    	    	}   			
+    		}    	    		
+    	}     	
+    	// 소환사명이 있고 db에 값이 있을때 ( 업데이트 안함 )
+    	String summoner_id = URLEncoder.encode(recordVO.getSummoner_id(), "UTF-8");
+    	return "redirect:/record/onloaded.do?summoner_id="+summoner_id;
 	}
 	
 	// 전적 페이지 불러오기
-	public void onloaded(Model model, RecordVO recordVO) {
+	@RequestMapping("/onloaded.do")
+	public void onloaded(Model model, RecordVO recordVO){
 		System.out.println("onloaded");
 		model.addAttribute("record", recordService.record_info(recordVO));
 		model.addAttribute("score", recordService.record_score(recordVO));
 	}
 	
-	// 전적 페이지 불러오기
+	// 전적 갱신 버튼 클릭시
 	@RequestMapping("/record_update.do")
 	public String record_update(RecordVO recordVO) throws IOException, InterruptedException {		
-		String command = "C:\\Users\\grood\\anaconda3\\envs\\pythonProject\\python.exe";  // 명령어
-    	String arg = "C:\\Users\\grood\\PycharmProjects\\pythonProject\\updating.py"; // 인자
+		String command = "C:\\Users\\grood\\.conda\\envs\\JGGap\\python.exe";  // 명령어
+    	String arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\update_lol.py"; // 인자
     	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), recordVO.getGameid(), String.valueOf(recordVO.getUser_no()));
     	builder.redirectOutput(Redirect.INHERIT);
-    	builder.redirectError(Redirect.INHERIT);    	
+    	builder.redirectError(Redirect.INHERIT);
     	builder.redirectErrorStream(true);
     	Process process = builder.start();
     	int exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림

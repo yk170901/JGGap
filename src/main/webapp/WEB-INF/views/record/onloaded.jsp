@@ -169,7 +169,7 @@
 										
 											<div class="item">
 												<c:if test="${score.item0 == 0}">
-													<div style="backgroun:white"></div>
+													<img style="backgroun:white">
 												</c:if>
 												<c:if test="${score.item0 != 0}">
 													<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item0}.png">
@@ -177,7 +177,7 @@
 											</div>
 											<div class="item">
 												<c:if test="${score.item1 == 0}">
-													<div style="backgroun:white"></div>
+													<img style="backgroun:white">
 												</c:if>
 												<c:if test="${score.item1 != 0}">
 													<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item1}.png">
@@ -185,7 +185,7 @@
 											</div>
 											<div class="item">
 												<c:if test="${score.item2 == 0}">
-													<div style="backgroun:white"></div>
+													<img style="backgroun:white">
 												</c:if>
 												<c:if test="${score.item2 != 0}">
 													<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item2}.png">
@@ -193,7 +193,7 @@
 											</div>
 											<div class="item">
 												<c:if test="${score.item3 == 0}">
-													<div style="backgroun:white"></div>
+													<img style="backgroun:white">
 												</c:if>
 												<c:if test="${score.item3 != 0}">
 													<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item3}.png">
@@ -201,7 +201,7 @@
 											</div>
 											<div class="item">
 												<c:if test="${score.item4 == 0}">
-													<div style="backgroun:white"></div>
+													<img style="backgroun:white">
 												</c:if>
 												<c:if test="${score.item4 != 0}">
 													<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item4}.png">
@@ -209,7 +209,7 @@
 											</div>
 											<div class="item">
 												<c:if test="${score.item5 == 0}">
-													<div style="backgroun:white"></div>
+													<img style="backgroun:white">
 												</c:if>
 												<c:if test="${score.item5 != 0}">
 													<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item5 }.png">
@@ -220,7 +220,7 @@
 									<div class="item-item-box2">
 										<div class="item">
 											<c:if test="${score.item6 == 0}">
-												<div style="backgroun:white"></div>
+												<img style="backgroun:white">
 											</c:if>
 											<c:if test="${score.item6 != 0}">
 												<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/${score.item6}.png">
@@ -243,65 +243,70 @@
 										<div class="summoner-img">
 											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.blue_champion1 }.png">
 										</div>
+										<div class="summoner-name">
 										<c:if test="${score.blue_summonerid1 == record.summoner_id}">
-											<div class="summoner-name" style="font-weight: 600">
+											<a style="color:black;">
 										</c:if>
 										<c:if test="${score.blue_summonerid1 != record.summoner_id}">
-											<div class="summoner-name">
+											<a>
 										</c:if>
-											<a>${score.blue_summonerid1 }</a>
+											${score.blue_summonerid1 }</a>
 										</div>
 									</div>
 									<div class="summoners-summoner">
 										<div class="summoner-img">
 											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.blue_champion2 }.png">
 										</div>
+										<div class="summoner-name">
 										<c:if test="${score.blue_summonerid2 == record.summoner_id}">
-											<div class="summoner-name" style="font-weight: 600">
+											<a style="color:black;">
 										</c:if>
 										<c:if test="${score.blue_summonerid2 != record.summoner_id}">
-											<div class="summoner-name">
+											<a>
 										</c:if>
-											<a>${score.blue_summonerid2 }</a>
+											${score.blue_summonerid2 }</a>
 										</div>
 									</div>
 									<div class="summoners-summoner">
 										<div class="summoner-img">
 											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.blue_champion3 }.png">
 										</div>
+										<div class="summoner-name">
 										<c:if test="${score.blue_summonerid3 == record.summoner_id}">
-											<div class="summoner-name" style="font-weight: 600">
+											<a style="color:black;">
 										</c:if>
 										<c:if test="${score.blue_summonerid3 != record.summoner_id}">
-											<div class="summoner-name">
+											<a>
 										</c:if>
-											<a>${score.blue_summonerid3 }</a>
+											${score.blue_summonerid3 }</a>
 										</div>
 									</div>
 									<div class="summoners-summoner">
 										<div class="summoner-img">
 											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.blue_champion4 }.png">
 										</div>
+										<div class="summoner-name">
 										<c:if test="${score.blue_summonerid4 == record.summoner_id}">
-											<div class="summoner-name" style="font-weight: 600">
+											<a style="color:black;">
 										</c:if>
 										<c:if test="${score.blue_summonerid4 != record.summoner_id}">
-											<div class="summoner-name">
+											<a>
 										</c:if>
-											<a>${score.blue_summonerid4 }</a>
+											${score.blue_summonerid4 }</a>
 										</div>
 									</div>
 									<div class="summoners-summoner">
 										<div class="summoner-img">
 											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.blue_champion5 }.png">
 										</div>
+										<div class="summoner-name">
 										<c:if test="${score.blue_summonerid5 == record.summoner_id}">
-											<div class="summoner-name" style="font-weight: 600">
+											<a style="color:black;">
 										</c:if>
 										<c:if test="${score.blue_summonerid5 != record.summoner_id}">
-											<div class="summoner-name">
+											<a>
 										</c:if>
-											<a>${score.blue_summonerid5 }</a>
+											${score.blue_summonerid5 }</a>
 										</div>
 									</div>
 										
@@ -312,65 +317,70 @@
 										<div class="summoner-img">
 											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.red_champion1 }.png">
 										</div>
+										<div class="summoner-name">
 										<c:if test="${score.red_summonerid1 == record.summoner_id}">
-											<div class="summoner-name" style="font-weight: 600">
+											<a style="color:black;">
 										</c:if>
 										<c:if test="${score.red_summonerid1 != record.summoner_id}">
-											<div class="summoner-name">
+											<a>
 										</c:if>
-											<a>${score.red_summonerid1 }</a>
+											${score.red_summonerid1 }</a>
 										</div>
 									</div>
 									<div class="summoners-summoner">
 										<div class="summoner-img">
 											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.red_champion2 }.png">
 										</div>
+										<div class="summoner-name">
 										<c:if test="${score.red_summonerid2 == record.summoner_id}">
-											<div class="summoner-name" style="font-weight: 600">
+											<a style="color:black;">
 										</c:if>
 										<c:if test="${score.red_summonerid2 != record.summoner_id}">
-											<div class="summoner-name">
+											<a>
 										</c:if>
-											<a>${score.red_summonerid2 }</a>
+											${score.red_summonerid2 }</a>
 										</div>
 									</div>
 									<div class="summoners-summoner">
 										<div class="summoner-img">
 											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.red_champion3 }.png">
 										</div>
+										<div class="summoner-name">
 										<c:if test="${score.red_summonerid3 == record.summoner_id}">
-											<div class="summoner-name" style="font-weight: 600">
+											<a style="color:black;">
 										</c:if>
 										<c:if test="${score.red_summonerid3 != record.summoner_id}">
-											<div class="summoner-name">
+											<a>
 										</c:if>
-											<a>${score.red_summonerid3 }</a>
+											${score.red_summonerid3 }</a>
 										</div>
 									</div>
 									<div class="summoners-summoner">
 										<div class="summoner-img">
 											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.red_champion4 }.png">
 										</div>
+										<div class="summoner-name">
 										<c:if test="${score.red_summonerid4 == record.summoner_id}">
-											<div class="summoner-name" style="font-weight: 600">
+											<a style="color:black;">
 										</c:if>
 										<c:if test="${score.red_summonerid4 != record.summoner_id}">
-											<div class="summoner-name">
+											<a>
 										</c:if>
-											<a>${score.red_summonerid4 }</a>
+											${score.red_summonerid4 }</a>
 										</div>
 									</div>
 									<div class="summoners-summoner">
 										<div class="summoner-img">
 											<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/${score.red_champion5 }.png">
 										</div>
+										<div class="summoner-name">
 										<c:if test="${score.red_summonerid5 == record.summoner_id}">
-											<div class="summoner-name" style="font-weight: 600">
+											<a style="color:black;">
 										</c:if>
 										<c:if test="${score.red_summonerid5 != record.summoner_id}">
-											<div class="summoner-name">
+											<a>
 										</c:if>
-											<a>${score.red_summonerid5 }</a>
+											${score.red_summonerid5 }</a>
 										</div>
 									</div>
 								</div>

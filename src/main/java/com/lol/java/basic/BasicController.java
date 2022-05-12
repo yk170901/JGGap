@@ -41,28 +41,28 @@ public class BasicController {
 		Object user_no = session.getAttribute("user_no");
 		List<BasicVO> friendList = basicService.getfriends(user_no);
 		List<BasicVO> loginedList = new ArrayList<BasicVO>();
-		
-		int check = 0;
-		for(HttpSession s : sessionList) {
-			if((int) s.getAttribute("user_no") == (int) session.getAttribute("user_no")) {
-				check++;
-			}
-		}
-		if (check == 0) sessionList.add(session);
+//		
+//		int check = 0;
+//		for(HttpSession s : sessionList) {
+//			if((int) s.getAttribute("user_no") == (int) session.getAttribute("user_no")) {
+//				check++;
+//			}
+//		}
+//		if (check == 0) sessionList.add(session);
 		
 //		System.out.println(sessionList.size());
-		for(HttpSession s : sessionList) {
-			for(BasicVO f : friendList) {
-				if(s.getAttribute("summoner_id").equals(f.getFriend())) {
-					f.setLogin_or_not(1);
-				} else {
-					if(f.getLogin_or_not() != 1) {
-					f.setLogin_or_not(0);
-					}
-				}
-			}
-		}
-		
+//		for(HttpSession s : sessionList) {
+//			for(BasicVO f : friendList) {
+//				if(s.getAttribute("summoner_id").equals(f.getFriend())) {
+//					f.setLogin_or_not(1);
+//				} else {
+//					if(f.getLogin_or_not() != 1) {
+//					f.setLogin_or_not(0);
+//					}
+//				}
+//			}
+//		}
+//		
 		for(BasicVO f : friendList) {
 			loginedList.add(f);
 		}

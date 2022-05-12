@@ -144,7 +144,7 @@ content += '							<div class="item-item-boxs">'
 content += '								<div class="item-item-box">'
 content += '										<div class="item">'
 			if(data[record].item0 == 0) {
-content += '											<div style="backgroun:white"></div>'				
+content += '											<img style="backgroun:white">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item0 +'.png">'
@@ -152,7 +152,7 @@ content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/
 content += '										</div>'
 content += '										<div class="item">'
 			if(data[record].item1 == 0) {
-content += '											<div style="backgroun:white"></div>'				
+content += '											<img style="backgroun:white">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item1 +'.png">'
@@ -160,7 +160,7 @@ content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/
 content += '										</div>'
 content += '										<div class="item">'
 			if(data[record].item2 == 0) {
-content += '											<div style="backgroun:white"></div>'				
+content += '											<img style="backgroun:white">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item2 +'.png">'
@@ -168,7 +168,7 @@ content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/
 content += '										</div>'
 content += '										<div class="item">'
 			if(data[record].item3 == 0) {
-content += '											<div style="backgroun:white"></div>'				
+content += '											<img style="backgroun:white">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item3 +'.png">'
@@ -176,7 +176,7 @@ content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/
 content += '										</div>'
 content += '										<div class="item">'
 			if(data[record].item4 == 0) {
-content += '											<div style="backgroun:white"></div>'				
+content += '											<img style="backgroun:white">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item4 +'.png">'
@@ -184,7 +184,7 @@ content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/
 content += '										</div>'
 content += '										<div class="item">'
 			if(data[record].item5 == 0) {
-content += '											<div style="backgroun:white"></div>'				
+content += '											<img style="backgroun:white">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item5 +'.png">'
@@ -195,7 +195,7 @@ content += '								</div>'
 content += '								<div class="item-item-box2">'
 content += '									<div class="item">'
 			if(data[record].item6 == 0) {
-content += '										<div style="backgroun:white"></div>'				
+content += '										<img style="backgroun:white">'				
 			}
 			else {
 content += '										<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item6 +'.png">'
@@ -217,65 +217,70 @@ content += '								<div class="summoners-summoner">'
 content += '									<div class="summoner-img">'
 content += '										<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+ data[record].blue_champion1 +'.png">'
 content += '									</div>'
+content += '									<div class="summoner-name">'
 			if(data[record].blue_summonerid1 == summoner_id) {
-content += '									<div class="summoner-name" style="font-weight: 600">'				
+content += '									<a style="color:black">'				
 			}
 			else {
-content += '									<div class="summoner-name">'				
+content += '									<a>'				
 			}
-content += '										<a>'+ data[record].blue_summonerid1 +'</a>'
+content += 										data[record].blue_summonerid1 +'</a>'
 content += '									</div>'
 content += '								</div>'
 content += '								<div class="summoners-summoner">'
 content += '									<div class="summoner-img">'
 content += '										<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+ data[record].blue_champion2 +'.png">'
 content += '									</div>'
+content += '									<div class="summoner-name">'
 			if(data[record].blue_summonerid2 == summoner_id) {
-content += '									<div class="summoner-name" style="font-weight: 600">'				
+content += '									<a style="color:black">'				
 			}
 			else {
-content += '									<div class="summoner-name">'				
+content += '									<a>'				
 			}
-content += '										<a>'+ data[record].blue_summonerid2 +'</a>'
+content += 										data[record].blue_summonerid2 +'</a>'
 content += '									</div>'
 content += '								</div>'
 content += '								<div class="summoners-summoner">'
 content += '									<div class="summoner-img">'
 content += '										<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+ data[record].blue_champion3 +'.png">'
 content += '									</div>'
+content += '									<div class="summoner-name">'
 			if(data[record].blue_summonerid3 == summoner_id) {
-content += '									<div class="summoner-name" style="font-weight: 600">'				
+content += '									<a style="color:black">'				
 			}
 			else {
-content += '									<div class="summoner-name">'				
+content += '									<a>'				
 			}
-content += '										<a>'+ data[record].blue_summonerid3 +'</a>'
+content += 										data[record].blue_summonerid3 +'</a>'
 content += '									</div>'
 content += '								</div>'
 content += '								<div class="summoners-summoner">'
 content += '									<div class="summoner-img">'
 content += '										<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+ data[record].blue_champion4 +'.png">'
 content += '									</div>'
+content += '									<div class="summoner-name">'
 			if(data[record].blue_summonerid4 == summoner_id) {
-content += '									<div class="summoner-name" style="font-weight: 600">'				
+content += '									<a style="color:black">'				
 			}
 			else {
-content += '									<div class="summoner-name">'				
+content += '									<a>'				
 			}
-content += '										<a>'+ data[record].blue_summonerid4 +'</a>'
+content += 										data[record].blue_summonerid4 +'</a>'
 content += '									</div>'
 content += '								</div>'
 content += '								<div class="summoners-summoner">'
 content += '									<div class="summoner-img">'
 content += '										<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+ data[record].blue_champion5 +'.png">'
 content += '									</div>'
+content += '									<div class="summoner-name">'
 			if(data[record].blue_summonerid5 == summoner_id) {
-content += '									<div class="summoner-name" style="font-weight: 600">'				
+content += '									<a style="color:black">'				
 			}
 			else {
-content += '									<div class="summoner-name">'				
+content += '									<a>'				
 			}
-content += '										<a>'+ data[record].blue_summonerid5 +'</a>'
+content += 										data[record].blue_summonerid5 +'</a>'
 content += '									</div>'
 content += '								</div>'
 
@@ -285,65 +290,70 @@ content += '								<div class="summoners-summoner">'
 content += '									<div class="summoner-img">'
 content += '										<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+ data[record].red_champion1 +'.png">'
 content += '									</div>'
+content += '									<div class="summoner-name">'
 			if(data[record].red_summonerid1 == summoner_id) {
-content += '									<div class="summoner-name" style="font-weight: 600">'				
+content += '									<a style="color:black">'				
 			}
 			else {
-content += '									<div class="summoner-name">'				
+content += '									<a>'				
 			}
-content += '										<a>'+ data[record].red_summonerid1 +'</a>'
+content += 										data[record].red_summonerid1 +'</a>'
 content += '									</div>'
 content += '								</div>'
 content += '								<div class="summoners-summoner">'
 content += '									<div class="summoner-img">'
 content += '										<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+ data[record].red_champion2 +'.png">'
 content += '									</div>'
+content += '									<div class="summoner-name">'
 			if(data[record].red_summonerid2 == summoner_id) {
-content += '									<div class="summoner-name" style="font-weight: 600">'				
+content += '									<a style="color:black">'				
 			}
 			else {
-content += '									<div class="summoner-name">'				
+content += '									<a>'				
 			}
-content += '										<a>'+ data[record].red_summonerid2 +'</a>'
+content += 										data[record].red_summonerid2 +'</a>'
 content += '									</div>'
 content += '								</div>'
 content += '								<div class="summoners-summoner">'
 content += '									<div class="summoner-img">'
 content += '										<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+ data[record].red_champion3 +'.png">'
 content += '									</div>'
+content += '									<div class="summoner-name">'
 			if(data[record].red_summonerid3 == summoner_id) {
-content += '									<div class="summoner-name" style="font-weight: 600">'				
+content += '									<a style="color:black">'				
 			}
 			else {
-content += '									<div class="summoner-name">'				
+content += '									<a>'				
 			}
-content += '										<a>'+ data[record].red_summonerid3 +'</a>'
+content += 										data[record].red_summonerid3 +'</a>'
 content += '									</div>'
 content += '								</div>'
 content += '								<div class="summoners-summoner">'
 content += '									<div class="summoner-img">'
 content += '										<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+ data[record].red_champion4 +'.png">'
 content += '									</div>'
+content += '									<div class="summoner-name">'
 			if(data[record].red_summonerid4 == summoner_id) {
-content += '									<div class="summoner-name" style="font-weight: 600">'				
+content += '									<a style="color:black">'				
 			}
 			else {
-content += '									<div class="summoner-name">'				
+content += '									<a>'				
 			}
-content += '										<a>'+ data[record].red_summonerid4 +'</a>'
+content += 										data[record].red_summonerid4 +'</a>'
 content += '									</div>'
 content += '								</div>'
 content += '								<div class="summoners-summoner">'
 content += '									<div class="summoner-img">'
 content += '										<img src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/champion/'+ data[record].red_champion5 +'.png">'
 content += '									</div>'
+content += '									<div class="summoner-name">'
 			if(data[record].red_summonerid5 == summoner_id) {
-content += '									<div class="summoner-name" style="font-weight: 600">'				
+content += '									<a style="color:black">'				
 			}
 			else {
-content += '									<div class="summoner-name">'				
+content += '									<a>'				
 			}
-content += '										<a>'+ data[record].red_summonerid5 +'</a>'
+content += 										data[record].red_summonerid5 +'</a>'
 content += '									</div>'
 content += '								</div>'
 content += '							</div>'
@@ -499,7 +509,7 @@ content += '				</div>'
 				case 'MIDDLE':
 					lane = "미드"
 					break;
-				case 'BOT':
+				case 'BOTTOM':
 					lane = "원딜"
 					break;
 				case 'SUPPORT':
