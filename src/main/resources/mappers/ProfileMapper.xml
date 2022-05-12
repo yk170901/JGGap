@@ -102,7 +102,7 @@
   	<delete id="friend_cancle" parameterType="hashmap">
   		delete
 		from friend
-		where user_no = #{my_user_no} and friend=#{friend_summoner_id} and status = '대기'
+		where user_no = #{friend_user_no} and friend=#{my_summoner_id} and status = '대기'
   	</delete>
   	
   </mapper>

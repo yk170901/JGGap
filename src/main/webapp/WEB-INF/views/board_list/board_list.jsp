@@ -14,6 +14,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/basic/header.jsp" %>
@@ -32,10 +33,10 @@
 				</div>
 				<div class="new">
 				    <div class="form-group" style="margin-bottom: 0px;">
-				      <input type="checkbox" id="hupgok" checked="checked" name="search_check_map" value="소환사의 협곡">
+				      <input type="checkbox" id="hupgok" name="search_check_map" value="소환사의 협곡">
 				      <label for="hupgok">소환사의 협곡</label>
 				      &ensp;
-				      <input type="checkbox" id="kalbaram" checked="checked" name="search_check_map" value="칼바람 나락">
+				      <input type="checkbox" id="kalbaram" name="search_check_map" value="칼바람 나락">
 				      <label for="kalbaram">칼바람 나락</label>
 				    </div>
 				</div>
@@ -52,13 +53,13 @@
 					<span class="game_category">게임 분류</span>
 				</div>
 				<div class="form-group" style="margin-bottom: 0px;">
-				      <input type="checkbox" id="mode_normal" checked="checked" name="search_check_mode" value="일반">
+				      <input type="checkbox" id="mode_normal" name="search_check_mode" value="일반">
 				      <label for="mode_normal">일반</label>
 				      &ensp;
-				      <input type="checkbox" id="mode_solorank" checked="checked" name="search_check_mode" value="솔로 랭크">
+				      <input type="checkbox" id="mode_solorank" name="search_check_mode" value="솔로 랭크">
 				      <label for="mode_solorank">솔로 랭크</label>
 				      &ensp;
-				      <input type="checkbox" id="mode_freerank" checked="checked" name="search_check_mode" value="자유 랭크">
+				      <input type="checkbox" id="mode_freerank" name="search_check_mode" value="자유 랭크">
 				      <label for="mode_freerank">자유 랭크</label>
 				</div>
 			</div>
@@ -222,7 +223,9 @@
 							<c:if test="${paging.searchKeyword == null || paging.searchKeyword == empty string}">
 								<!-- 이전 페이지 조건문 -->
 								<c:if test="${paging.startPage != 1 }">
-									<li class="page-item"><a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}')">이전</a></li>				
+									<li class="page-item">
+										<a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}')">이전</a>
+									</li>				
 								</c:if>
 								<!-- 이전 페이지 조건문 end -->
 								
@@ -265,9 +268,8 @@
 							<c:if test="${paging.searchKeyword != null}">
 								<!-- 이전 페이지 조건문 -->
 								<c:if test="${paging.startPage != 1 }">
-									<li class="page-item"><a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}
-									&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }
-									&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}')">이전</a></li>				
+									
+									<li class="page-item"><a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&search_check_map=${paging.search_check_map[0]}&search_check_mode=${paging.search_check_mode}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }')">이전</a></li>				
 								</c:if>
 								<!-- 이전 페이지 조건문 end -->
 								
@@ -283,10 +285,24 @@
 											</c:when>
 											<c:when test="${p != paging.nowPage }">
 												<li class="page-item">
-													<a class="page-link paging_num" href="javascript:Frameset('board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}
-													&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }
-													&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}')"
-													>${p }</a>
+													<!-- 칼바람일 경우 / search_check_mode == null -->
+													<c:if test="${paging.search_check_mode == null}">
+														<a class="page-link paging_num" href="javascript:Frameset('board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&search_check_map=${paging.search_check_map[0]}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }')">${p }</a>
+													</c:if>
+													<!-- 칼바람일 경우 / search_check_mode == null  end-->
+													
+													<!-- 소환사의 협곡 일 경우 -->
+													 <c:choose>
+												         <c:when test="${paging.search_check_mode[0] != null && paging.search_check_mode[1] == null}">
+												            <a class="page-link paging_num" href="javascript:Frameset('board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&search_check_map=${paging.search_check_map[0]}&search_check_mode=${paging.search_check_mode[0]}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }')">${p }</a>
+												         </c:when>
+												         <c:when test="${paging.search_check_mode[1] != null && paging.search_check_mode[2] == null}">
+												            <a class="page-link paging_num" href="javascript:Frameset('board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&search_check_map=${paging.search_check_map[0]}&search_check_mode=${paging.search_check_mode[0]}&search_check_mode=${paging.search_check_mode[1]}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }')">${p }</a>
+												         </c:when>
+												         <c:when test="${paging.search_check_mode[2] != null}">
+												            <a class="page-link paging_num" href="javascript:Frameset('board_list.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&search_check_map=${paging.search_check_map[0]}&search_check_mode=${paging.search_check_mode[0]}&search_check_mode=${paging.search_check_mode[1]}&search_check_mode=${paging.search_check_mode[2]}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }')">${p }</a>
+												         </c:when>
+											     	 </c:choose>
 												</li>
 											</c:when>
 										</c:choose>															
@@ -297,14 +313,14 @@
 								<!-- 다음 페이지 조건문 -->
 								<c:if test="${paging.endPage != paging.lastPage}">
 									<li class="page-item">
-										<a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}
-										&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }
-										&search_check_map=${paging.search_check_map}&search_check_mode=${paging.search_check_mode}')">다음</a>
+										<a class="page-link" href="javascript:Frameset('board_list.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&search_check_map=${paging.search_check_map[0]}&search_check_mode=${paging.search_check_mode}&searchCondition=${paging.searchCondition }&searchKeyword=${paging.searchKeyword }')">다음</a>
 									</li>
 								</c:if>
 								<!-- 다음 페이지 조건문 end -->
 							</c:if>
+
 						</ul>
+							
 					</div>
 				</div>
 			</div>
