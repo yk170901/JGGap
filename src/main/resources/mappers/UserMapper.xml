@@ -23,7 +23,7 @@
 	<select id="user_pwd_check" parameterType="user" resultType="String">
 	SELECT SUMMONER_ID
 	FROM USER_INFO 
-	WHERE USER_PWD = #{user_pwd}
+	WHERE USER_ID = #{user_id} AND USER_PWD = #{user_pwd}
 	</select>
 	
 	<!-- 로그인 -->

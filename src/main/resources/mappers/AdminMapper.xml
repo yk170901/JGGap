@@ -6,10 +6,13 @@
   
   <mapper namespace="AdminDAO">
   	<!-- 회원 정보 조회 -->
-  	<select id="user_list" resultType="admin">
-  		SELECT USER_NO, USER_ID, SUMMONER_ID, PHONE_NUMBER, SITE_LEVEL, USABLE_POINT, HONOR_RATE, BAN, JOIN_DATE
-  		FROM USER_INFO
-  		WHERE 1=1
+  	<select id="user_list" parameterType="admin_paging" resultType="admin">
+  		SELECT * 
+			FROM ( SELECT ROWNUM RN, A.* FROM (
+       				SELECT USER_NO, USER_ID, SUMMONER_ID, PHONE_NUMBER, SITE_LEVEL, USABLE_POINT, HONOR_RATE, BAN, JOIN_DATE
+				    FROM USER_INFO
+				    ORDER BY USER_NO DESC ) A )
+				WHERE RN BETWEEN #{start} AND #{end}
   	</select>
   	
   	<!-- 회원 카운터 -->
@@ -42,10 +45,13 @@
   	 	FROM MANAGER_REPORT
   	</select>
   	
-  	<select id="report_list" resultType="admin">
-  		SELECT REPORT_NO, REPORTER, REPORT_TARGET, REPORT_URL, REPORT_TITLE, REPORT_CONTENT, REPORT_CNT
-  		FROM MANAGER_REPORT
-  		WHERE 1=1
+  	<select id="report_list" parameterType="admin_paging" resultType="admin">
+  		SELECT * 
+			FROM ( SELECT ROWNUM RN, A.* FROM (
+       				SELECT REPORT_NO, REPORTER, REPORT_TARGET, REPORT_URL, REPORT_TITLE, REPORT_CONTENT, REPORT_CNT
+				    FROM MANAGER_REPORT
+				    ORDER BY REPORT_CNT DESC ) A )
+				WHERE RN BETWEEN #{start} AND #{end}
   	</select>
   	
   	<update id="accepted_first" parameterType="admin">

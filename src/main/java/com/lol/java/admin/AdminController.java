@@ -37,18 +37,19 @@ public class AdminController {
 			// 리스트에 개수 보여주는 기능
 			if (nowPage == null && cntPerPage == null) {
 				nowPage = "1";
-				cntPerPage = "3";
+				cntPerPage = "5";
 			} else if (nowPage == null) {
 				nowPage = "1";
 			} else if (cntPerPage == null) { 
-				cntPerPage = "3";
+				cntPerPage = "5";
 			}
 			System.out.println("토탈 계산 끝 : " + total);
 			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			System.out.println("이게뭐냐" + Integer.parseInt(nowPage) +"/"+ Integer.parseInt(cntPerPage));
 			
 			model.addAttribute("paging", vo);
-			model.addAttribute("list", adminService.user_list());
-			System.out.println(adminService.user_list());
+			model.addAttribute("list", adminService.user_list(vo));
+			
 		}
 		return "/admin/admin_page";
 	}
@@ -97,18 +98,18 @@ public class AdminController {
 			// 리스트에 개수 보여주는 기능
 			if (nowPage == null && cntPerPage == null) {
 				nowPage = "1";
-				cntPerPage = "3";
+				cntPerPage = "5";
 			} else if (nowPage == null) {
 				nowPage = "1";
 			} else if (cntPerPage == null) { 
-				cntPerPage = "3";
+				cntPerPage = "5";
 			}
 			System.out.println("토탈 계산 끝 : " + total);
 			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 			
 			model.addAttribute("paging", vo);
-			model.addAttribute("list", adminService.report_list());
-			System.out.println(adminService.report_list());
+			model.addAttribute("list", adminService.report_list(vo));
+			System.out.println(adminService.report_list(vo));
 		}
 		 return "/admin/report_history";
 	}
