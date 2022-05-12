@@ -27,13 +27,15 @@
 	                </div>
 	            </div>
 	            <div class="page-header__action">
-					<img src="#" id="profile_img" style="margin-right: 6px">
-	            	<div><span id="profile_summoner_id"></span></div>
-	            	<div id="profile_dropdown">
-	            		<div class="profile_point"><span class="profile_point_value" style="color: white;"></span></div>
-	            		<a href="http://localhost:8080/record/record.do?summoner_id=${sessionScope.summoner_id}" class="profile_dropdown_list" style="color: white;">내 전적</a>
-	            		<a href="http://localhost:8080/profile/profile.do" class="profile_dropdown_list" style="color: white;">회원정보</a>
-	            		<a href="http://localhost:8080/basic/logout.do" class="profile_dropdown_list" style="color: white;">로그아웃</a>
+	            	<div id="profile-wrapper">
+						<img src="#" id="profile-img" style="margin-right: 6px">
+		            	<div><span id="profile-summoner-id"></span></div>
+		            	<div id="profile-dropdown">
+		            		<div class="profile-point"><span class="profile-point-value" style="color: white;"></span></div>
+		            		<a href="http://localhost:8080/record/record.do?summoner_id=${sessionScope.summoner_id}" class="profile-dropdown-list" style="color: white;">내 전적</a>
+		            		<a href="http://localhost:8080/profile/profile.do" class="profile-dropdown-list" style="color: white;">회원정보</a>
+		            		<a href="http://localhost:8080/basic/logout.do" class="profile-dropdown-list" style="color: white;">로그아웃</a>
+		            	</div>
 	            	</div>
 	            </div>
 	        </div>
