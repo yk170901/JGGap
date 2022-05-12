@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>업적 부여 완료</title>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <script type="text/javascript">

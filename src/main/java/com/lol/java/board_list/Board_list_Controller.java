@@ -63,7 +63,6 @@ public class Board_list_Controller {
 						System.out.println(vo.getSearch_check_mode()[i]);
 					}
 				}
-				System.out.println("체크해봐라 : " + session.getAttribute("ban"));
 				model.addAttribute("admin_list", board_list_Service.admin_boardList());
 				model.addAttribute("paging", vo);
 				model.addAttribute("list", board_list_Service.selectBoard(vo));

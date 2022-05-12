@@ -6,13 +6,14 @@
 <meta charset="UTF-8">
 <title>로그인 실패</title>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <script type="text/javascript">
 Swal.fire({
 	icon: 'error',
 	title: '로그인 실패',
-	text: '존재하지 않는 아이디 입니다.',   }).then(function(){
+	text: '존재하지 않는 아이디 또는 아이디가 틀렸습니다.',   }).then(function(){
 	location.href='../../login.jsp';
 	})
 </script>
