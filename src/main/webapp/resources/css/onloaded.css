@@ -1,0 +1,668 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI-Light.woff") format("woff"), url("../fonts/SegoeUI-Light.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI.woff") format("woff"), url("../fonts/SegoeUI.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI-Italic.woff") format("woff"), url("../fonts/SegoeUI-Italic.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI-SemiBold.woff") format("woff"), url("../fonts/SegoeUI-SemiBold.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI-Bold.woff") format("woff"), url("../fonts/SegoeUI-Bold.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI-BoldItalic.woff") format("woff"), url("../fonts/SegoeUI-BoldItalic.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: italic;
+    font-weight: 700;
+}
+
+body {
+    color: #353535;
+    font-family: "SegoeUI";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.31;
+    text-align:center;
+}
+
+.page-main {
+    scrollbar-color: #F46119 #E2EBEC;
+    scrollbar-width: thin !important;
+    -moz-appearance: none !important;
+    display: inline-block;
+    position: relative;
+    margin: 100px auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    max-width:1160px;
+    min-width:1160px;
+}
+
+.page-body {
+    width: 100%;  
+}
+
+.summoner-info-none {
+	height:1000px;
+	align-items:center;
+	display:grid;
+	font-size:21px;
+	
+}
+
+.summoner-info-none span {
+	font-size: 24px;
+	font-weight: 700;
+	display:contents;
+}
+
+.summoner-info-body,
+.summoner-record-body {
+	padding: 10px 10px;
+    border-radius: 10px;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(224, 224 ,224);
+}
+.summoner-stats-body {
+	padding: 10px 10px;
+    border-radius: 10px;
+    margin-top: 30px;
+    align-items: center;
+    background: rgb(224, 224 ,224);
+}
+
+.summoner-info-body,
+.summoner-stats-body {
+	display: flex;
+}
+
+.summoner-info-body {
+	padding: 20px 30px;
+}
+
+
+.summoner-profile-icon {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.summoner-summoner-id {
+	color: #353535;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.summoner-button {
+	margin-right: 10px;
+	font-family: 'Marcellus', serif;
+	display: inline-flex;
+	align-items: center;
+    justify-content: center;
+	height: 50px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: mormal;
+    text-decoration: none; 
+    background: rgb(52,152,219);
+    color: #fff;
+    width: 120px;
+}
+
+.summoner-button:hover {
+	text-decoration: none;
+	transform: scale(1.05);
+	transition: transform .2s;
+}
+
+.summoner-button-text {
+	color:white;
+	background: transparent;
+	border: none;
+}
+
+hr{
+	height: 2px;
+	background: rgb(224, 224 ,224);
+}
+
+.summoner-stats-body {
+	margin-top: 10px;
+}
+
+.summoner-stats-body > div {
+	width: 25%;
+	margin: 0px;
+	padding: 0px 5px;
+	height: 220px;
+	border: 1px solid darkgray;
+	text-align:left;
+}
+
+.summoner-stats-tier{
+	border-left: 1px solid darkgray;
+}
+
+.summoner-stats-tier-solo,
+.summoner-stats-tier-free {
+	width:245px;
+	margin: 6.5px 5px;
+	height: 100px;
+	display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.tier-img {
+	margin: 0px 10px;
+	width: 90px;
+	height: 90px;
+}
+
+.summoner-stats-tier-detail {
+	padding-left: 15px;
+	text-align: left;
+	width: 130px;
+	color: black;
+}
+
+.summoner-stats-rank-text {
+	font-size: 13px;
+}
+.summoner-stats-tier-text {
+	margin-top: 5px;
+	font-size: 17px;
+}
+
+.summoner-stats-lp-text {
+	font-size: 12px;
+}
+
+.summoner-no-data {
+	text-align: center;
+    margin: 35% 0%;
+}
+
+.doughnut-title {
+	height: 75px;
+	padding: 28px 0px 14px 0px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.doughnut-body {
+	padding-left: 14px;
+	width: 120px;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.doughnut-kda {
+	padding-top: 20px;
+	width: 135px;
+	height: 100px;
+	display:inline-block;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.doughnut-k-d-a {
+	height: 12px;
+	font-size: 12px;
+}
+.doughnut-ratio {
+	margin-top: 5px;
+	height: 20px;
+	font-size: 20px;
+}
+
+.stats-champions,
+.stats-positions {
+	margin: 15px 0px 15px 10px;
+	width: 95%;
+	height: 90%;
+}
+.stats-positions {
+	align-items: center;
+	display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+.stats-champion-body,
+.stats-position-body {
+	width: 100%;
+	height: 30%;
+	margin-bottom:3%;
+	display: flex;
+	align-items: center;
+}
+
+.stats-champion-imgs,
+.stats-position-imgs {
+	width: 20%;
+	height: 100%;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.stats-champion-img,
+.stats-position-img {
+	border-radius: 50%;
+}
+.stats-champion-info,
+.stats-position-info {
+	width: 75%;
+	margin-left: 5%;
+	height: 90%;
+}
+
+.stats-champion-name,
+.stats-position-name {
+	height:45%;
+	display:block;
+}
+
+.stats-champion-win-rate {
+	width:50%;
+	height:45%;
+	font-size: 14px;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.stats-position-pick-rate {
+	width:15%;
+	height:45%;
+	font-size: 14px;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.stats-champion-kda,
+.stats-position-win-rates {
+	margin-left:5%;
+	width:40%;
+	height: 45%;
+	font-size: 14px;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.summoner-record {
+	background: silver;
+	width:1140px !important;
+	height: 100px;
+	display:block;
+	margin-top: 0.5rem;
+	position: relative;
+}
+
+.summoner-record-more {
+	background: white;
+}
+
+
+.record-lose {
+	background: #fef9f9;
+}
+
+.result-lose {
+	background: rgb(237,103,103);
+}
+
+.record-win {
+	background: #f9fbfd;
+}
+
+.result-win {
+	background: rgb(83,147,202);
+}
+
+.summoner-record-result {
+	width: 8px;
+	height: 100px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.summoner-record-result2 {
+	width: 8px;
+	height: 100px;
+	float: right;
+}
+
+.summoner-record-content {
+	width: 1120px;
+	height: 80px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.summoner-record-info {
+	display:inline-block;
+	width: 110px;
+	height: 70px;
+	text-align: center;
+	position: relative;
+	vertical-align: middle;
+}
+
+.summoner-record-info span {
+	display:block;
+	height: 16px;
+}
+
+.info-game-result {
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 6px;
+}
+
+.game-lose {
+	color: rgb(237,103,103)
+}
+
+.game-win {
+	color: rgb(83,147,202)
+}
+
+.info-game-mode,
+.info-game-time,
+.info-game-past {
+	font-size: 12px;
+}
+
+.info-game-past{
+	color: gray;
+}
+
+.summoner-record-stat {
+	display: inline-block;
+	width: 430px;
+	height: 65px;
+	position: relative;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+.stat-champion {
+	width: 140px;
+	height: 55px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.stat-champion-icon {
+	width: 55px;
+	height: 55px;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+}
+
+.summoner-record-image {
+	width: 100%;
+	height: 100%;
+}
+
+.champion-level {
+	position: absolute;
+	font-size: 12px;
+	background: rgba(0,0,0,.4);
+	color: white;
+	bottom: 0;
+	right: 0;
+	padding: 4px;
+}
+
+.stat-champion-spells {
+	width: 24px;
+	height: 55px;
+	display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+.stat-champion-spell,
+.stat-champion-rune {
+	width: 24px;
+	height: 24px;
+	display: block;
+}
+
+.stat-champion-spell + .stat-champion-spell,
+.stat-champion-rune + .stat-champion-rune {
+	margin-top: 7px;
+}
+
+.stat-champion-runes {
+	width: 24px;
+	height: 55px;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+}
+
+.stat-kda {
+	width: 140px;
+	height: 65px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+.stat-k-d-a {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.stat-d {
+	color: rgb(237,103,103);
+}
+
+.stat-ratio {
+	font-size: 13px;
+	margin-top: 4px;
+	font-weight: bold;
+}
+
+.stat-multikill {
+	display: inline-block;
+	border-radius: 10px;
+	width:90px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.multikill-double {
+	color: white;
+	background: rgb(35,206,111);
+}
+
+.multikill-triple {
+	color: white;
+	background: rgb(83,131,232);
+}
+
+.multikill-quadra {
+	color: white;
+	background: rgb(237,103,103);
+}
+
+.multikill-penta {
+	color: white;
+	background: rgb(116,57,157);
+}
+
+.stat-stats{
+	width: 140px;
+	font-size: 12px;
+	line-height: 16px;
+	display: inline-block;
+	vertical-align: middle;
+	padding-left:5px;
+}
+.stat-stats span{
+	font-weight: 600px;
+}
+
+.stat-stats-kill {
+	color: rgb(237,103,103);
+}
+
+.summoner-record-item{
+	width:220px;
+	height:80px;
+	vertical-align: middle;
+	display: inline-block;
+	position: relative;
+}
+
+.item-item-boxs {
+	width:140px;
+	height:80px;
+	vertical-align: middle;
+	display: inline-block;
+	padding: 8px 5px;
+}
+
+.item-item-box {
+	width:92px;
+	height: 64px;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+.item-item-box2 {
+	width:28px;
+	height: 64px;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+.item {
+	width: 28px;
+	height: 28px;
+	display: inline-block;
+	margin: 2px 0px;
+}
+
+.ward-cnt {
+	position: absolute;
+	font-size: 8px;
+	background: rgba(0,0,0,.4);
+	color: white;
+	bottom: 0;
+	right: 0;
+}
+
+.summoner-record-summoners{
+	width:320px;
+	height:80px;
+	vertical-align: middle;
+	display: inline-block;
+	position: relative;
+	text-align:left;
+}
+
+.summoners-box {
+	width: 49%;
+	height: 100%;
+	display: inline-block;
+}
+
+.summoners-summoner{
+	height: 14px;
+}
+
+.summoners-summoner + .summoners-summoner {
+	margin-top: 2px;
+}
+
+.summoner-img {
+	height: 100%;
+	width:14px;
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+}
+
+.summoner-img > img{
+	vertical-align: top;
+}
+
+.summoner-name {
+	height: 100%;
+	width: 110px;
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	
+}
+
+.summoner-name > a {
+	display:block;
+	font-size: 12px;
+	color: darkgrey;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	
+	
+}
+
+.summoner-record-more {
+	width: 100%;
+    display: block;
+    margin-top: 0.5rem;
+    text-align: center;
+    border: 1px solid gray;
+    color: gray;
+    align-content: center;
+    padding: 8px;
+}
