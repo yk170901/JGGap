@@ -5020,30 +5020,34 @@ body.dark-theme #modal-help ul li {
     font-weight: 600 !important;
 }
 
-#profile_dropdown {
+#profile-wrapper {
+	width: 100%;
+}
+
+#profile-dropdown {
 	width:160px;
 	display: none;
 	position: absolute;
 	font-size:14px;
-	top: 41px;
+	top: 26px;
 	right: -33px;
 	z-index: 1;
 	background: gray;
 	padding-left: 0;
 }
 
-.profile_point {
+.profile-point {
 	background: black;
 }
 
-.profile_point span {
+.profile-point span {
 	font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: 1.31;
 }
 
-.profile_dropdown_list, .profile_point {
+.profile-dropdown-list, .profile-point {
 	list-style: none;
 	text-align: center;
 	padding-top: 6px;
@@ -5051,20 +5055,20 @@ body.dark-theme #modal-help ul li {
 	display: block;
 }
 
-.page-header__action:hover > #profile_dropdown {
+.profile-wrapper:hover > #profile-dropdown {
 	display:block;
 }
 
-.profile_dropdown_list:hover {
+.profile-dropdown-list:hover {
 	background: #F46119;
 }
 
-#profile_img {
+#profile-img {
 	width: 33px;
 	height: 24px;
 }
 
-#profile_summoner_id {
+#profile-summoner-id {
 	font-weight: 600;
 	font-size: 20px;
 }

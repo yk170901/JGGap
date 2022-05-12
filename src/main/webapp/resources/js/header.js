@@ -4,10 +4,10 @@ $(document).ready(function() {
 		type: "post",
 		dataType: 'json',
 		success: function(data) {
-			$('.profile_point_value')[0].innerHTML = '사용가능 포인트 <br/>'+data.usable_point+' points';
-			$('#profile_summoner_id')[0].innerHTML = data.summoner_id;
-			$('#profile_img').attr("src", "/resources/imgs/level_icon/"+data.site_level+".gif");
-		},
+			$('.profile-point-value')[0].innerHTML = '사용가능 포인트 <br/>'+data.usable_point+' points';
+			$('#profile-summoner-id')[0].innerHTML = data.summoner_id;
+			$('#profile-img').attr("src", "/resources/imgs/level_icon/"+data.site_level+".gif");
+		}
 //		error: function(err) {
 //			alert("point에러" + err)
 //		}
@@ -35,7 +35,7 @@ $(document).ready(function() {
 				content += "</div></li>"
 				$(".friend").append(content);
 			})
-		},
+		}
 //		error: function(err) {
 //			alert("friend에러" + err)
 //		}
@@ -51,7 +51,7 @@ $(document).ready(function() {
 				content += "</div></li>"
 				$(".banned").append(content);
 			})
-		},
+		}
 //		error: function(err) {
 //			alert("banned에러" + err)
 //		}

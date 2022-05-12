@@ -17,10 +17,10 @@
 	</select>
 	
 	<!-- 상품 추가 -->
-	<insert id="insertItem" parameterType="shop">
-		INSERT INTO shop_items 
-		values(#{item_name}, #{item_remain}, #{item_total}, #{item_per}, #{item_point}, #{item_file})
-	</insert>
+<!-- 	<insert id="insertItem" parameterType="shop"> -->
+<!-- 		INSERT INTO shop_items  -->
+<!-- 		values(#{item_name}, #{item_remain}, #{item_total}, #{item_per}, #{item_point}, #{item_file}) -->
+<!-- 	</insert> -->
 
 	<!-- 응모횟수 조회 -->
 	<select id="getCounts" parameterType="shop" resultType="shop">

@@ -3,6 +3,7 @@ $(function() { $('.apply').on("click", function() {
 		var usable_points = Number($(this).parents(".shop-main").children(".shop-top").children("#shop-point-wrapper").children("#shop-point").children('.shop-explain-color').text().trim());
 		var item_per = Number($(this).parents(".shop-apply-btn").children(".description").children(".point-per").text().split(': ')[1].split('%')[0]);
 		var item_remain = Number($(this).parents(".shop-apply-btn").children(".description").children(".item-remain").text().split(': ')[1].split('/')[0]);
+		var item_name = $(this).parents(".shop-apply").children(".item_name").text();
 		if(item_remain <= 0){
 			Swal.fire({
 				title: "상품이 모두 떨어졌습니다...",
@@ -37,7 +38,7 @@ $(function() { $('.apply').on("click", function() {
 							url : "/shop/apply.do",
 							type : "POST",
 							data : {
-								item_name : $(this).parents(".shop-apply").children(".item_name").text(),
+								item_name : item_name,
 								item_point : item_point,
 								item_per : item_per,
 								item_remain : item_remain
