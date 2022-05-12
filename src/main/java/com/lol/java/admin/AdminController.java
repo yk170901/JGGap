@@ -1,8 +1,5 @@
 package com.lol.java.admin;
 
-import java.util.HashMap;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +27,7 @@ public class AdminController {
 			return "redirect:/login.jsp";
 		}
 		else {
-			System.out.println("컨트롤 접속");
+			
 			/* 회원 총 인원 카운트*/
 			int total = adminService.member_count();
 			
@@ -43,9 +40,9 @@ public class AdminController {
 			} else if (cntPerPage == null) { 
 				cntPerPage = "5";
 			}
-			System.out.println("토탈 계산 끝 : " + total);
+			
 			vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-			System.out.println("이게뭐냐" + Integer.parseInt(nowPage) +"/"+ Integer.parseInt(cntPerPage));
+		
 			
 			model.addAttribute("paging", vo);
 			model.addAttribute("list", adminService.user_list(vo));
@@ -68,13 +65,13 @@ public class AdminController {
 	public String grant(AdminVO vo) {
 		
 		vo.setUser_no(adminService.conversion(vo.getUser_id()));
-		System.out.println(adminService.overlap_check(vo));
+		
 		if(adminService.overlap_check(vo) > 0) {
-			System.out.println("false");
+			
 			return "1";
 		}else {
 			adminService.grant(vo);
-			System.out.println("true");
+		
 			return "0";
 		}
 		

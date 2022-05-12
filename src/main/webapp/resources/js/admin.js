@@ -80,15 +80,16 @@ $('#submitReport').on("click", function() {
 
 /* -------------------------------------모달 끝--------------------------------------- */
 
-
-$(document).ready(function(){
-	
-	var nodes = document.getElementById("nodes").value;
-	var node = document.getElementById("nodes")
-	
-	if (nodes == 0) {
-		node.innerHTML = "대기중"
-	}else{
-		node.innerHTML = "처리 완료"
-	}
-})
+//
+//$(document).ready(function(){
+//	
+//	var nodes = document.getElementsByClassName("nodes");
+//	var node = document.getElementsByClassName("nodes");
+//	console.log(nodes)
+//	if (nodes == "0") {
+//		node.innerHTML = "대기중"
+//	}else{
+//		node.innerHTML = "처리 완료"
+//	}
+//})
+//

@@ -42,7 +42,10 @@
 							<td><a href="http://localhost:8080/board_view/viewBoard.do?post_no=${list.report_url}"><c:out value="${list.report_title}"/></a></td>
 							<td><c:out value="${list.report_content}"/></td>
 							<td><button class="receipt" value="${list.report_url}">신고 처리</button></td>			
-							<td id="nodes"><input type="hidden" name="cnt" id="cnt" value="${list.report_cnt}"/><c:out value="${list.report_cnt}"/></td>
+							<td class="nodes"><input type="hidden" name="cnt" id="cnt" value="${list.report_cnt}"/>
+							<c:if test="${list.report_cnt == 0 }">대기 중</c:if>
+							<c:if test="${list.report_cnt == 1 }">처리 완료</c:if>							
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
