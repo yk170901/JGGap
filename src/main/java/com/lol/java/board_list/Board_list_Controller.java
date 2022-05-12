@@ -51,25 +51,11 @@ public class Board_list_Controller {
 				} else if (cntPerPage == null) { 
 					cntPerPage = "10";
 				}
-				System.out.println("토탈 계산 끝 : " + total);
 				vo = new Paging_VO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), searchCondition, searchKeyword, search_check_map, search_check_mode);
-				if(vo.getSearch_check_map() != null) {
-					for(int i=0; i<vo.getSearch_check_map().length; i++) {
-						System.out.println(vo.getSearch_check_map()[i]);
-					}
-				}
-				if(vo.getSearch_check_mode() != null) {
-					for(int i=0; i<vo.getSearch_check_mode().length; i++) {
-						System.out.println(vo.getSearch_check_mode()[i]);
-					}
-				}
 				model.addAttribute("admin_list", board_list_Service.admin_boardList());
 				model.addAttribute("paging", vo);
 				model.addAttribute("list", board_list_Service.selectBoard(vo));
 				model.addAttribute("ban", session.getAttribute("ban"));
-				System.out.println(board_list_Service.selectBoard(vo));
-				System.out.println(session.getAttribute("user_no"));
-				System.out.println(session.getAttribute("summoner_id"));
 				return "/board_list/board_list";
 			}
 		}

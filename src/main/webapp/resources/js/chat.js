@@ -7,6 +7,7 @@ function FramesetUn(page) {
 
 		document.write(framecode);
 		document.title = "채팅방";
+		document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 		document.close();
 		}
 		else
@@ -31,6 +32,7 @@ function FramesetBr(page) {
 	
 			document.write(framecode);
 			document.title = "채팅방";
+			document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 			document.close();
 		}
 		else
@@ -54,6 +56,7 @@ function FramesetGo(page) {
 	
 			document.write(framecode);
 			document.title = "채팅방";
+			document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 			document.close();
 		}
 		else
@@ -77,6 +80,7 @@ function FramesetMa(page) {
 	
 			document.write(framecode);
 			document.title = "채팅방";
+			document.title.after('<link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">');
 			document.close();
 		}
 		else
@@ -90,6 +94,3 @@ function FramesetMa(page) {
 			return false;
 		}
 	}
-	
-	
-//$('html,body').animate({ scrollTop: $('.chat-messages-body').offset().top }, 500);

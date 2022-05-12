@@ -27,9 +27,6 @@ public class EchoHandler1 extends TextWebSocketHandler{
     	
     	String user_no = (String)map.get("user_no");
     	String summoner_id = (String)map.get("summoner_id");
-    	
-    	System.out.println("아브실 채팅방 로그인 한 아이디 : " + user_no);
-    	System.out.println("아브실 채팅방 소환사 아이디 : " + summoner_id);
     	sessionList.add(session);
     	
         logger.info("세션 아이디:{}연결됨", session.getId());
@@ -47,8 +44,6 @@ public class EchoHandler1 extends TextWebSocketHandler{
     	String summoner_id = (String)map.get("summoner_id");
     	
     	logger.info("{}로 부터 {} 받음", session.getId(), message.getPayload());
-    	System.out.println("아브실 채팅방 메세지 보냄 user_no:"+ user_no +" 소환사명:"+ summoner_id);
-    	System.out.println("아브실 채팅방 접속한 user_no:"+ user_no +" 소환사명:{}"+ summoner_id);
         //모든 유저에게 메세지 출력
         for(WebSocketSession sess : sessionList){
             sess.sendMessage(new TextMessage(message.getPayload()));
@@ -61,8 +56,6 @@ public class EchoHandler1 extends TextWebSocketHandler{
     	Map<String,Object> map = session.getAttributes();
     	String user_no = (String)map.get("user_no");
     	String summoner_id = (String)map.get("summoner_id");
-    	
-    	
     	
     	sessionList.remove(session);
         
