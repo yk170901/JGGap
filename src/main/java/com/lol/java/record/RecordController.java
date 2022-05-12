@@ -49,7 +49,6 @@ public class RecordController {
 	}
 	
 	// 전적 페이지 불러오기
-	@RequestMapping("/onloaded.do")
 	public void onloaded(Model model, RecordVO recordVO) {
 		model.addAttribute("record", recordService.record_info(recordVO));
 		model.addAttribute("score", recordService.record_score(recordVO));
