@@ -89,8 +89,9 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 		switch (map.get("action")) {
 		case "cancelBan":
 		case "deleteFriend":
-		case "cancelFriendRequest":
 			board_view_DAO.deleteFriend(map);
+		case "cancelFriendRequest":
+			board_view_DAO.cancelFriendRequest(map);
 			break;
 		case "acceptFriendRequest":
 			board_view_DAO.acceptFriendRequest(map);

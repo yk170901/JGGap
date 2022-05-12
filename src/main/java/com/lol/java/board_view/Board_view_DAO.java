@@ -35,6 +35,8 @@ public interface Board_view_DAO {
 	public void acceptFriendRequest(HashMap<String, String> map);
 
 	public void insertFriendAfterAcceptance(HashMap<String, String> map);
-	
+
 	public void deleteFriend(HashMap<String, String> map);
+	
+	public void cancelFriendRequest(HashMap<String, String> map);
 }
