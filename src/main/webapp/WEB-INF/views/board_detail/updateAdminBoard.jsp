@@ -15,7 +15,7 @@
 	<hr><br>
 
 	<div class="post-wrap">
-		<form method="post" action="adminPostUpdate.do?" onsubmit="return checkValidation();">
+		<form method="post" action="adminPostUpdate.do?" onsubmit="return checkUpdateValidation();">
 			<div class="post-header">
 				<h1 class="post-header-top">공지 수정</h1>
 				<div class="post-header-bottom">
@@ -32,8 +32,6 @@
 			</div>
 		</form>
 	</div>
-	
-	<hr>
 	
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
