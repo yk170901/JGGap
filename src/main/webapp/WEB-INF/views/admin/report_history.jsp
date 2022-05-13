@@ -40,7 +40,7 @@
 							<td><c:out value="${list.reporter}"/></td>
 							<td class="help"><input type="hidden" class="help2" value="${list.report_target}"><c:out value="${list.report_target}"/></td>
 							<td><a href="http://localhost:8080/board_view/viewBoard.do?post_no=${list.report_url}"><c:out value="${list.report_title}"/></a></td>
-							<td><c:out value="${list.report_content}"/></td>
+							<td class="help2"><c:out value="${list.report_content}"/></td>
 							<td><button class="receipt" value="${list.report_url}">신고 처리</button></td>			
 							<td class="nodes"><input type="hidden" name="cnt" id="cnt" value="${list.report_cnt}"/>
 							<c:if test="${list.report_cnt == 0 }">대기 중</c:if>
@@ -49,18 +49,6 @@
 						</tr>
 					</c:forEach>
 				</table>
-			</div>
-		</div>
-		
-		<%--신고 모달 --%>
-		<div class="modal-bg">
-			<div class="modal">
-				<h3 class="modal-title">신고 처리</h3>
-				<textarea name="report_result" id="report-result" style="color: black;" placeholder="내용을 적어주세요"></textarea>
-				<input type="hidden" name="report_url" id="report_url" value="">
-				<input type="hidden" name="report_target" id="report_target" value="">
-				<button id="submitReport">확인</button>
-				<span class="modal-close">&times;</span>
 			</div>
 		</div>
 		
@@ -113,7 +101,17 @@
 			<!-- 스프링 부트 end -->
 		</div>
 		<!-- 페이징 end -->
-
+	<%--신고 모달 --%>
+		<div class="modal-bg">
+			<div class="modal">
+				<h3 class="modal-title">신고 처리</h3>
+				<textarea name="report_result" id="report-result" style="color: black;" placeholder="내용을 적어주세요"></textarea>
+				<input type="hidden" name="report_url" id="report_url" value="">
+				<input type="hidden" name="report_target" id="report_target" value="">
+				<button id="submitReport">확인</button>
+				<span class="modal-close">&times;</span>
+			</div>
+		</div>
 	</main>
 	<%@ include file="/WEB-INF/views/basic/footer.jsp"%>
 </body>
