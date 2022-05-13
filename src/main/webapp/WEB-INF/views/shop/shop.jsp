@@ -41,8 +41,8 @@
 				</div>
 	    	</div>
 	    	<hr class="shop-line">
-	    	<!-- 응모상품 목록 -->
 	    	
+	    	<!-- 응모상품 목록 -->	    	
 	    	<div class="shop-apply-wrapper">
 		    	<c:forEach items="${items}" var="item" varStatus="items">
 			    	<div class="shop-apply<c:if test="${item.item_remain <= 0 }">-off</c:if>">
@@ -69,6 +69,7 @@
 			    </c:forEach>
 		    </div>
 		    <hr class="shop-line">
+		    
 		    <!-- 구매상품 목록 -->
 		    <div style="display: inline-block;">
 			    <div class="shop-top" style="border-bottom: 1px solid gray;">

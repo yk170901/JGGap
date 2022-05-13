@@ -26,8 +26,7 @@ function canChooseMore() {
 	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
 	console.log("chosen_user_no : "+chosen_user_no)
 	console.log("cru-max : "+document.getElementById('cru-max').value)
-	if((chosen_user_no) >= document.getElementById('cru-max').value){
-		document.querySelector('.choose-user').setAttribute('disabled','');
+	if((chosen_user_no + 1) >= document.getElementById('cru-max').value){
 		return false;
 	}
 	return true;
@@ -211,15 +210,8 @@ function alertOnStatus(action){
 // 채택 버튼 눌렀을 때
 $(function() { 
 	$('.choose-user').on("click", function() {
-		if(!canChooseMore()){
-			Swal.fire({
-				title: "채택 불가!",
-				text: "이미 플레이 인원이 충족되었습니다.",
-				icon : "warning",
-				confirmButtonText : "확인"
-			});
-			return;
-		}
+		console.log('채택 버튼 누름')
+		
 		var post_no = document.getElementById('post-no').value;
 		var writer_no = document.getElementById('writer-no').value;
 		var reply_user_no = $(this).children().attr('value'); // 댓글 단 유저 user_no
@@ -227,6 +219,16 @@ $(function() {
 			// 채택을 위해 누른 거라면
 			if(!alreadyChosen(reply_user_no)){
 				console.log('채택 완료 들어옴')
+				if(!canChooseMore()){
+					Swal.fire({
+						title: "채택 불가!",
+						text: "이미 플레이 인원이 충족되었습니다.",
+						icon : "warning",
+						confirmButtonText : "확인"
+					});
+					return;
+				}
+				console.log('canChooseMore 뚫음')
 				$.ajax({
 					url:'/board_view/chooseUser.do',
 					type : "POST",
@@ -277,9 +279,10 @@ function alreadyChosen(reply_user_no){
 
 // 채택 해제
 function deleteChosenUser(reply_user_no){
-	var chosen_user_no = document.getElementsByClassName('chosen-users').length;
-	console.log(chosen_user_no+"개의 채택인들.")
-	for(var i = 0; i < chosen_user_no; i++){
+/*	var chosen_user_no = document.getElementsByClassName('chosen-users').length;*/
+	console.log(document.getElementsByClassName('chosen-users').length+"개의 채택인들.")
+	for(var i = 0; i < document.getElementsByClassName('chosen-users').length; i++){
+		console.log("다시 말하지만 이만큼의 채택인이 있습니다 : "+document.getElementsByClassName('chosen-users').length+"개의 채택인들.")
 		console.log(i+"번째 : "+document.querySelector("div.chosen-user-list > input:nth-child("+(i+1)+")").value)
 		if(reply_user_no == document.querySelector("div.chosen-user-list > input:nth-child("+(i+1)+")").value){
 			document.querySelector("div.chosen-user-list > input:nth-child("+(i+1)+")").remove();

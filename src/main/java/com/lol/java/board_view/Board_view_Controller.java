@@ -80,10 +80,11 @@ public class Board_view_Controller {
 	@ResponseBody
 	@RequestMapping("/chooseUser.do")
 	public void chooseUser(int writer_no, int chosen_user_no, Model model) {
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		HashMap<String, Long> map = new HashMap<String, Long>();
 		
-		map.put("writer_no", writer_no);
-		map.put("chosen_user_no", chosen_user_no);
+		map.put("writer_no", (long)writer_no);
+		map.put("chosen_user_no", (long)chosen_user_no);
+		map.put("timestamp", System.currentTimeMillis()/1000);
 		
 		board_view_Service.chooseUser(map);
 	}

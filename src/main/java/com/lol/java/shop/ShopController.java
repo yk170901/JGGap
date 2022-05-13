@@ -20,7 +20,7 @@ public class ShopController {
 	// 페이지 진입시
 	@RequestMapping("/shop.do")
 	public void shopEnter(Model model, HttpSession session) {
-		int user_no = (int) session.getAttribute("user_no");
+		int user_no = Integer.parseInt((String) session.getAttribute("user_no"));
 		vo.setUser_no(user_no);
 		model.addAttribute("usablePoints", shopService.getUsablePoints(vo));
 		model.addAttribute("items", shopService.getItems());
@@ -30,7 +30,7 @@ public class ShopController {
 	// 응모버튼 클릭시	
 	@RequestMapping("/apply.do")
 	public @ResponseBody ShopVO shopApply(HttpSession session, ShopVO vo) {
-		int user_no = (int) session.getAttribute("user_no");
+		int user_no = Integer.parseInt((String) session.getAttribute("user_no"));
 		vo.setUser_no(user_no);
 		shopService.insertApply(vo);
 		return vo;				
@@ -39,7 +39,7 @@ public class ShopController {
 	// 구매버튼 클릭시
 	@RequestMapping("/buy.do")
 	public @ResponseBody ShopVO shopBuy(HttpSession session, ShopVO vo) {
-		int user_no = (int) session.getAttribute("user_no");
+		int user_no = Integer.parseInt((String) session.getAttribute("user_no"));
 		vo.setUser_no(user_no);
 		shopService.buyItem(vo);
 		return vo;				

@@ -50,7 +50,7 @@ public class Board_view_DAOImpl implements Board_view_DAO{
 	
 	// 채택
 	@Override
-	public void insertChosenUser(HashMap<String, Integer> map) {
+	public void insertChosenUser(HashMap<String, Long> map) {
 		mybatis.insert("insertChosenUser", map);
 	}
 	

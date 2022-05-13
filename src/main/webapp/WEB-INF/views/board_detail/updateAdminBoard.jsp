@@ -15,7 +15,7 @@
 	<hr><br>
 
 	<div class="post-wrap">
-		<form method="post" action="adminPostUpdate.do?" onsubmit="return checkValidation();">
+		<form method="post" action="adminPostUpdate.do?" onsubmit="return checkUpdateValidation();">
 			<div class="post-header">
 				<h1 class="post-header-top">공지 수정</h1>
 				<div class="post-header-bottom">
@@ -33,10 +33,8 @@
 		</form>
 	</div>
 	
-	<hr>
-	
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
-    <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
+    <script src="../resources/js/post_detail.js?ver=4" type="text/javascript"></script>
 </html>
