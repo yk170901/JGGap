@@ -1,6 +1,7 @@
 package com.lol.java.user;
 
 import java.lang.reflect.Member;
+import java.util.List;
 
 public interface UserService {
 
@@ -10,7 +11,7 @@ public interface UserService {
 	
 	public String idCheck(String user_id);
 	
-	public String summoner_idCheck(String summoner_id);
+//	public String summoner_idCheck(String summoner_id);
 	
 	public String tier_info(int user_no);
 

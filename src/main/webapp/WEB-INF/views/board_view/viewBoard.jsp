@@ -103,7 +103,6 @@
 						<c:if test="${board.game_map eq '소환사의 협곡' }">						
 							<div class="post-info">게임 분류&nbsp;&nbsp;:&nbsp;&nbsp;<span class="post-info-detail"><c:out value="${board.game_mode }" /></span></div>
 						</c:if>
-						<input value="${board.cru_pre }">
 						<div class="post-info">플레이 인원&nbsp;&nbsp;:&nbsp;&nbsp;<span class="post-info-detail"><span id="cru-pre">${board.cru_pre }</span> / ${board.cru_max }</span></div>
 						<input type="hidden" id="cru-max" value=" ${board.cru_max }">
 						<div class="post-info">작성날짜&nbsp;&nbsp;:&nbsp;&nbsp;<span class="post-info-detail" style="color: black;"><c:out value="${board.board_date }" /></span></div>
@@ -175,19 +174,16 @@
 								
 							     <%-- loopOver가 반대가 되면 break --%>
 							     	<c:if test="${not loopOver}">
-<%-- 							     	<input value="${friend.user_no / reply.replier.user_no}">
-							     	<input value="${friend.friend / sessionScope.summoner_id}">
-							     	<input value="${friend.friend / sessionScope.summoner_id}"> --%>
 							       	 	<c:choose>
 								           	<c:when test="${friend.user_no eq sessionScope.user_no and friend.friend == reply.replier.summoner_id}">
 								          		<c:choose>
-										        	<c:when test="${friend.status =='친구'}">
-														<button class="friend-btn chg-friend-status" action="deleteFriend" value="${reply.replier.summoner_id }" style="background-color: #f46119; color: white;">친구 삭제</button>
-								           				<c:set var="loopOver" value="true" />
-								           			</c:when>
 								           			<%--내가 상대를 차단함 --%>
 										        	<c:when test="${friend.status =='차단'}">
 														<button class="friend-btn chg-friend-status" action="cancelBan" value="${reply.replier.summoner_id }" style="color: red;">차단 풀기</button>
+								           				<c:set var="loopOver" value="true" />
+								           			</c:when>
+										        	<c:when test="${friend.status =='친구'}">
+														<button class="friend-btn chg-friend-status" action="deleteFriend" value="${reply.replier.summoner_id }" style="background-color: #f46119; color: white;">친구 삭제</button>
 								           				<c:set var="loopOver" value="true" />
 								           			</c:when>
 										        	<c:when test="${friend.status =='대기'}">
@@ -196,15 +192,16 @@
 								           			</c:when>
 										        </c:choose>
 								           	</c:when>
-								        	<%--상대방이 내게 친구 신청을 걸었는데 내가 아직 응답하지 않았을 때 --%>
-								        	<c:when test="${friend.user_no eq reply.replier.user_no and friend.friend == sessionScope.summoner_id and friend.status eq '대기'}">
-													<button class="friend-btn chg-friend-status" action="acceptFriendRequest" value="${reply.replier.summoner_id}" style="background-color: gold;">친구 수락</button>
-						           				<c:set var="loopOver" value="true" />
-						           			</c:when>
 							       		</c:choose>
 							    	</c:if>
 								</c:forEach>
-						    	
+						       		<c:choose>
+							        	<%--상대방이 내게 친구 신청을 걸었는데 내가 아직 응답하지 않았을 때 --%>
+							        	<c:when test="${friend.user_no eq reply.replier.user_no and friend.friend == sessionScope.summoner_id and friend.status eq '대기'}">
+												<button class="friend-btn chg-friend-status" action="acceptFriendRequest" value="${reply.replier.summoner_id}" style="background-color: gold;">친구 수락</button>
+					           				<c:set var="loopOver" value="true" />
+					           			</c:when>
+						       		</c:choose>
 				       	 		<%-- 친추한 적이 없거나 친구삭제/차단해제 등을 해서 무관한 관계가 되었을 때 --%>
 						     	<c:if test="${not loopOver}">
 									<button class="friend-btn befriend" value="${reply.replier.summoner_id }">친구 추가</button>

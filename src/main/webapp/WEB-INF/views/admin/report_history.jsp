@@ -49,7 +49,6 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<button id="progress">진행</button>
 			</div>
 		</div>
 		

@@ -47,9 +47,9 @@ public class Board_view_ServiceImpl implements Board_view_Service{
 
 	// 유저 채택
 	@Override
-	public void chooseUser(HashMap<String, Integer> map) {
+	public void chooseUser(HashMap<String, Long> map) {
 		board_view_DAO.insertChosenUser(map);
-		board_view_DAO.increaseCruPre(map.get("writer_no"));
+		board_view_DAO.increaseCruPre(Math.toIntExact(map.get("writer_no")));
 	}
 
 	// 채택 취소

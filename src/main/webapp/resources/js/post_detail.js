@@ -10,6 +10,31 @@ $('#category-map').on('change',function(){
 	}
 })
 
+function checkUpdateValidation(){
+	var title = document.getElementById('title').value;
+	var context = document.getElementById('content').value;
+	
+	if(title==""){
+		Swal.fire({
+			title: "수정 오류!",
+			text : "제목을 입력해주세요.",
+			icon : "error",
+			confirmButtonText : "확인"
+		});
+		return false;
+	}
+	else if(context==""){
+		Swal.fire({
+			title: "수정 오류!",
+			text : "내용을 입력해주세요.",
+			icon : "error",
+			confirmButtonText : "확인"
+		});
+		return false;
+	}
+	
+	return true;
+}
 
 // 글 작성/수정 시 내용에 빈 값이 있나 체크
 function checkValidation(){
@@ -68,6 +93,8 @@ function checkValidation(){
 		});
 		return false;
 	}
+	
+	return true;
 }
 
 

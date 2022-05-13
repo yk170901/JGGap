@@ -18,7 +18,7 @@ public class ChatController {
 	
 	@RequestMapping("/chat.do")
 	public String chat(HttpSession session, Model model, HttpServletRequest request, ChatVO vo){
-		session.setAttribute("user_no", Integer.parseInt(request.getParameter("user_no")));
+		session.setAttribute("user_no", request.getParameter("user_no"));
 		session.setAttribute("summoner_id", request.getParameter("summoner_id"));
 		session.setAttribute("ban", Integer.parseInt(request.getParameter("ban")));
 		session.setAttribute("solo_tier", request.getParameter("solo_tier"));

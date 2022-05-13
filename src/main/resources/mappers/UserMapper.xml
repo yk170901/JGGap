@@ -14,12 +14,14 @@
 	(USER_NO.NEXTVAL, #{summoner_id}, #{user_id}, #{user_pwd}, 0 ,#{phone_number}, 1, 0, 0, 0, 1, 1, 0, current_date, 0)
 	</insert>
 	
+	<!-- 아이디 체크 ( 1차 ) -->
 	<select id="user_id_check" parameterType="user" resultType="String">
 	SELECT SUMMONER_ID
 	FROM USER_INFO 
 	WHERE USER_ID = #{user_id}
 	</select>
 	
+	<!-- 비밀번호 체크 ( 2차 ) -->
 	<select id="user_pwd_check" parameterType="user" resultType="String">
 	SELECT SUMMONER_ID
 	FROM USER_INFO 
@@ -40,19 +42,14 @@
 	WHERE USER_ID = #{user_id}
 	</select>
 	
-	<!-- ajax 서머너 아이디 중복 확인 -->
-	<select id="summonerIdCheck" parameterType="String" resultType="String">
-	SELECT COUNT(*)
-	FROM USER_INFO
-	WHERE SUMMONER_ID = #{summoner_id}
-	</select>
-	
+	<!-- 세션으로 넘겨줄 유저의 티어값 -->
 	<select id="tier_info" parameterType="int" resultType="String">
 	SELECT SOLO_TIER
 	FROM LOL_INFO
 	WHERE USER_NO = #{user_no}
 	</select>
 	
+	<!-- 차단 당한 유저의 구분 -->
 	<update id="ban" parameterType="user">
 	UPDATE USER_INFO
 	SET REPORT_STATUS = REPORT_STATUS-1, BAN = 1
@@ -60,3 +57,10 @@
 	</update>
 
 </mapper>
+
+<!-- 	 ajax 서머너 아이디 중복 확인 -->
+<!-- 	<select id="summonerIdCheck" parameterType="String" resultType="String"> -->
+<!-- 	SELECT COUNT(*) -->
+<!-- 	FROM USER_INFO -->
+<!-- 	WHERE SUMMONER_ID = #{summoner_id} -->
+<!-- 	</select> -->

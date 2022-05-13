@@ -107,7 +107,7 @@
 	
 	<insert id="insertChosenUser" parameterType="hashmap">
 		INSERT INTO choice
-			VALUES(user_cho_no.NEXTVAL, #{writer_no}, #{chosen_user_no})
+			VALUES(user_cho_no.NEXTVAL, #{writer_no}, #{chosen_user_no}, #{timestamp})
 	</insert>
 	
 	
