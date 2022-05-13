@@ -43,27 +43,31 @@ public class RecordController {
     	int exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림
     	BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
     	String result = br.readLine();
+    	System.out.println("result : "+result);
     	if(exitVal != 0) {
     	  // 비정상 종료
     	  System.out.println("서브 프로세스가 비정상 종료되었다.");
-    	}  	
-    	if (result.equals("success")) {
-    		if (recordService.record_info(recordVO) == null) {
-    			// 소환사명이 있고 db에 값이 없을때 riot api 전적 insert
-    			arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\insert_lol.py";
-    			builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), "10007");
-    			builder.redirectError(Redirect.INHERIT);    	
-    	    	builder.redirectErrorStream(true);
-    	    	process = builder.start();
-    	    	exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림
-    	    	br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
-    	    	result = br.readLine();
-    	    	if(exitVal != 0) {
-    	    	  // 비정상 종료
-    	    	  System.out.println("서브 프로세스가 비정상 종료되었다.");
-    	    	}   			
-    		}    	    		
-    	}     	
+    	}
+    	
+    	RecordVO vo = recordService.record_lol_info(recordVO);
+    	System.out.println("if 전, VO" + vo);
+    	if (result.equals("success") && vo.getSummoner_id() == null) {
+			// 소환사명이 있고 db에 값이 없을때 riot api 전적 insert
+			System.out.println("소환사명 있고 DB 없음" + vo);
+			arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\insert_lol.py";
+			builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), String.valueOf(vo.getUser_no()));
+			builder.redirectError(Redirect.INHERIT);    	
+	    	builder.redirectErrorStream(true);
+	    	process = builder.start();
+	    	exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림
+	    	br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
+	    	result = br.readLine();
+	    	if(exitVal != 0) {
+	    	  // 비정상 종료
+	    	  System.out.println("서브 프로세스가 비정상 종료되었다.");    	    	  			
+	    	}
+    	}
+    	System.out.println("if 후");
     	// 소환사명이 있고 db에 값이 있을때 ( 업데이트 안함 )
     	String summoner_id = URLEncoder.encode(recordVO.getSummoner_id(), "UTF-8");
     	return "redirect:/record/onloaded.do?summoner_id="+summoner_id;
@@ -73,7 +77,15 @@ public class RecordController {
 	@RequestMapping("/onloaded.do")
 	public void onloaded(Model model, RecordVO recordVO){
 		System.out.println("onloaded");
-		model.addAttribute("record", recordService.record_info(recordVO));
+		RecordVO vo = recordService.record_user(recordVO);
+		recordVO = recordService.record_lol_info(recordVO);
+		if (vo.getSummoner_id() != null) {
+			recordVO.setProfile_icon(vo.getProfile_icon());
+			recordVO.setUser_no(vo.getUser_no());
+		} else {
+			recordVO.setProfile_icon("0");
+		}
+		model.addAttribute("record", recordVO);
 		model.addAttribute("score", recordService.record_score(recordVO));
 	}
 	

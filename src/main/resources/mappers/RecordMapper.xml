@@ -7,11 +7,16 @@
 <mapper namespace="RecordDAO">
 
 	<!-- 전적 회원,롤 정보 가져오기 -->
-	<select id="record_info" parameterType="record" resultType="record">
-		SELECT lol_info.*, user_info.summoner_id, user_info.user_no, user_info.profile_icon
-		FROM lol_info, user_info
-		WHERE user_info.summoner_id = #{summoner_id} 
-		AND lol_info.user_no = user_info.user_no
+	<select id="record_user" parameterType="record" resultType="record">
+		SELECT user_no, summoner_id, profile_icon
+		FROM user_info
+		WHERE summoner_id = #{summoner_id}
+	</select>
+	
+	<select id="record_lol_info" parameterType="record" resultType="record">
+		SELECT *
+		FROM lol_info
+		WHERE summoner_id = #{summoner_id}
 	</select>
 	
 	<!-- 롤 전적 가져오기 -->

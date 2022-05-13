@@ -14,8 +14,13 @@ public class RecordServiceImpl implements RecordService{
 
 	// 전적 회원,롤 정보 가져오기
 	@Override
-	public Object record_info(RecordVO recordVO) {
-		return recordDAO.record_info(recordVO);
+	public RecordVO record_user(RecordVO recordVO) {
+		return recordDAO.record_user(recordVO);
+	}
+	
+	@Override
+	public RecordVO record_lol_info(RecordVO recordVO) {
+		return recordDAO.record_lol_info(recordVO);
 	}
 	
 	// 롤 전적 가져오기

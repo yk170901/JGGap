@@ -15,8 +15,13 @@ public class RecordDAOImpl implements RecordDAO{
 
 	// 전적 회원,롤 정보 가져오기
 	@Override
-	public Object record_info(RecordVO recordVO) {
-		return mybatis.selectOne("RecordDAO.record_info",recordVO);
+	public RecordVO record_user(RecordVO recordVO) {
+		return mybatis.selectOne("RecordDAO.record_user",recordVO);
+	}
+	
+	@Override
+	public RecordVO record_lol_info(RecordVO recordVO) {
+		return mybatis.selectOne("RecordDAO.record_lol_info", recordVO);
 	}
 	
 	// 롤 전적 가져오기
