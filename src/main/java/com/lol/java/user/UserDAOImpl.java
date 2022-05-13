@@ -1,5 +1,7 @@
 package com.lol.java.user;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,11 +30,11 @@ public class UserDAOImpl implements UserDAO{
 		return mybatis.selectOne("userMapper.userIdCheck",user_id);
 	}
 
-	@Override
-	public String summoner_idCheck(String summoner_id) {
-		
-		return mybatis.selectOne("userMapper.summonerIdCheck",summoner_id);
-	}
+//	@Override
+//	public String summoner_idCheck(String summoner_id) {
+//		
+//		return mybatis.selectOne("userMapper.summonerIdCheck",summoner_id);
+//	}
 
 	@Override
 	public String tier_info(int user_no) {

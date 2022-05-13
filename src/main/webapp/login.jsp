@@ -106,7 +106,7 @@ int num = (int) (Math.random() * 4 + 1);
 							<div class="uk-margin">
 								<input class="uk-input" id="summoner_id" name="summoner_id"
 									type="text" placeholder="Riot-name" required>
-								<div id="summoner_check"></div>
+<!-- 								<div id="summoner_check"></div> -->
 							</div>
 							<div class="uk-margin">
 								<input class="uk-input" name="phone_number" type="text"

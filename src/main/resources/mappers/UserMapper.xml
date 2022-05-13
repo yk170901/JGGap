@@ -40,12 +40,12 @@
 	WHERE USER_ID = #{user_id}
 	</select>
 	
-	<!-- ajax 서머너 아이디 중복 확인 -->
-	<select id="summonerIdCheck" parameterType="String" resultType="String">
-	SELECT COUNT(*)
-	FROM USER_INFO
-	WHERE SUMMONER_ID = #{summoner_id}
-	</select>
+<!-- 	 ajax 서머너 아이디 중복 확인 -->
+<!-- 	<select id="summonerIdCheck" parameterType="String" resultType="String"> -->
+<!-- 	SELECT COUNT(*) -->
+<!-- 	FROM USER_INFO -->
+<!-- 	WHERE SUMMONER_ID = #{summoner_id} -->
+<!-- 	</select> -->
 	
 	<select id="tier_info" parameterType="int" resultType="String">
 	SELECT SOLO_TIER
