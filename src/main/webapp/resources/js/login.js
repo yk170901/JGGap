@@ -40,7 +40,6 @@ $("#user_id").blur(function() {
 		},
 		datatype: "text",
 		success: function(data) {
-			console.log("x"+  data +"y" +user_id);
 			if ( user_id.length < 6 || user_id.length > 15) {
 				
 					$('#id_check').text("아이디는 영문과 숫자 6~15자리만 가능합니다 :) :)");
@@ -67,38 +66,72 @@ $("#user_id").blur(function() {
 });
 // 아이디 유효성 검사 end
 
-// 서머너 아이디 중복 검사
-$("#summoner_id").blur(function() {
-
-	let summoner_id = $('#summoner_id').val();
-	$.ajax({
-		url: 'user/summoner_Check.do',
-		type: 'post',
-		data: {
-			summoner_id: summoner_id
-		},
-		datatype: "text",
-		success: function(data) {
-			
-			if (data == 1) {
-				
-				$("#summoner_check").text("사용중인 아이디입니다.");
-				$("#summoner_check").css("color", "red");
-				$("#sign_up_submit").attr("disabled", true);
-			}else {
-			
-				$("#summoner_check").text("사용가능한 아이디 입니다 :p");
-				$("#summoner_check").css("color", "green");
-				$("#sign_up_submit").attr("disabled", false);
-			}
-		},
-		error: function() {
-			console.log("실패");
-		}
-	});
-});
-// 서머너 아이디 중복 검사 end
-
+//// 서머너 아이디 중복 검사
+//$("#summoner_id").blur(function() {
+//
+//	let summoner_id = $('#summoner_id').val();
+//	$.ajax({
+//		url: 'user/summoner_Check.do',
+//		type: 'post',
+//		data: {
+//			summoner_id: summoner_id
+//		},
+//		datatype: "text",
+//		success: function(data) {
+//			
+//			if (data == 1) {
+//				
+//				$("#summoner_check").text("사용중인 아이디입니다.");
+//				$("#summoner_check").css("color", "red");
+//				$("#sign_up_submit").attr("disabled", true);
+//			}else {
+//			
+//				$("#summoner_check").text("사용가능한 아이디 입니다 :p");
+//				$("#summoner_check").css("color", "green");
+//				$("#sign_up_submit").attr("disabled", false);
+//			}
+//		},
+//		error: function() {
+//			console.log("실패");
+//		}
+//	});
+//	
+//	let user_id = $('#user_id').val();
+//	$.ajax({
+//		url: 'user/idCheck.do',
+//		type: 'post',
+//		data: {
+//			user_id: user_id
+//		},
+//		datatype: "text",
+//		success: function(data) {
+//			if ( user_id.length < 6 || user_id.length > 15) {
+//				
+//					$('#summoner_check').text(" 소환사 아이디는 2~11자리까지 가능합니다. :) :)");
+//					$('#summoner_check').css('color', 'red');
+//					$("#sign_up_submit").attr("disabled", true);
+//			}
+//			if (user_id.length > 0 && data == user_id) {
+//				
+//				$("#summoner_check").text("사용중인 소환사아이디입니다 :p");
+//				$("#summoner_check").css("color", "red");
+//				$("#sign_up_submit").attr("disabled", true);
+//			}else if (user_id.length > 0 && user_id.length > 5 && user_id.length < 16 && data != user_id){
+//					
+//					$("#summoner_check").text("사용가능한 소환사아이디 입니다.");
+//					$("#summoner_check").css("color", "green");
+//					$("#sign_up_submit").attr("disabled", false);
+//
+//					}
+//		},
+//		error: function() {
+//			console.log("실패");
+//		}
+//	});
+//	
+//});
+//// 서머너 아이디 중복 검사 end
+//
 // 아이디칸 한글 입력 방지
 function chkCharCode(event) {
 	const regExp = /[^0-9a-zA-Z]/g;

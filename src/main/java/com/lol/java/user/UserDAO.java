@@ -1,5 +1,7 @@
 package com.lol.java.user;
 
+import java.util.List;
+
 public interface UserDAO {
 
 	public int sign_up(UserVO vo);
@@ -8,7 +10,7 @@ public interface UserDAO {
 	
 	public String idCheck(String user_id);
 	
-	public String summoner_idCheck(String summoner_id);
+//	public String summoner_idCheck(String summoner_id);
 	
 	public String tier_info(int user_no);
 	

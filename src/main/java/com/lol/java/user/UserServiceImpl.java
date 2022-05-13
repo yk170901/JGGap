@@ -1,5 +1,7 @@
 package com.lol.java.user;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,11 +32,11 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	// 서머너 아이디 중복 체크
-	@Override
-	public String summoner_idCheck(String user_id) {
-		
-		return userDAO.summoner_idCheck(user_id);
-	}
+//	@Override
+//	public String summoner_idCheck(String summoner_id) {
+//		
+//		return userDAO.summoner_idCheck(summoner_id);
+//	}
 
 	@Override
 	public String tier_info(int user_no) {
