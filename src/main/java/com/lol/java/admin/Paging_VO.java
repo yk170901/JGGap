@@ -1,7 +1,5 @@
 package com.lol.java.admin;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data
