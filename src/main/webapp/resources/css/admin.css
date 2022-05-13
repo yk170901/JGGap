@@ -98,6 +98,7 @@ th:not(:last-child) {
 	text-align: center;
 /* 	border: 1px solid #444444;
  */    border-collapse: collapse;
+ table-layout: fixed
 }
 th {
 	color: #878787;
@@ -227,6 +228,14 @@ tr:not(:first-child) {
 .container {
 	margin-top: 30px; 
 	padding-left: 50px;
+	display:flex;
+	justify-content: center;
+}
+
+td.help2 {
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow: hidden;
 }
 
 /* 모달 */
@@ -314,3 +323,9 @@ tr:not(:first-child) {
 }
 
 /* 모달 */
+
+/* #rororo {
+	display: flex;
+	
+}
+ */
