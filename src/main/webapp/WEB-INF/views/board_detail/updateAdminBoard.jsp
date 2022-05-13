@@ -36,5 +36,5 @@
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
-    <script src="../resources/js/post_detail.js?ver=3" type="text/javascript"></script>
+    <script src="../resources/js/post_detail.js?ver=4" type="text/javascript"></script>
 </html>

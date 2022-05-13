@@ -13,7 +13,7 @@
 	<%@ include file="/WEB-INF/views/basic/header.jsp" %>
 	<hr>
 	<div class="post-wrap">
-		<form method="post" action="adminPostInsert.do" onsubmit="return checkValidation();">
+		<form method="post" action="adminPostInsert.do" onsubmit="return checkUpdateValidation();">
 			<div class="post-header">
 				<h1 class="post-header-top">공지 작성</h1>
 				<div class="post-header-bottom">
