@@ -21,6 +21,38 @@ public class BasicController {
 	private List<HttpSession> sessionList = new ArrayList<HttpSession>();
 	
 	
+	
+	// 포인트 지급 시스템
+	// 채택 시간 가져오기
+	@ResponseBody
+	@RequestMapping("/choice_time.do")
+	public List<BasicVO> choice_time() {
+		List<BasicVO> choice = basicService.choice_time();
+		return choice;
+	}
+	// 전적에서 필요한 정보 가져오기
+	@ResponseBody
+	@RequestMapping("/record_time.do")
+	public List<BasicVO> record_time(BasicVO basicVO) {
+		List<BasicVO> record = basicService.record_time(basicVO);
+		return record;
+	}
+	// 채택 목록 가져오기
+	@ResponseBody
+	@RequestMapping("/taking_choice.do")
+	public List<BasicVO> taking_choice(BasicVO basicVO) {
+		List<BasicVO> taking = basicService.taking_choice(basicVO);
+		return taking;
+	}
+	// 포인트 주기
+	@ResponseBody
+	@RequestMapping("/giving_point.do")
+	public String giving_point(BasicVO basicVO) {
+		basicService.giving_point(basicVO);
+		return null;
+	}
+	
+	
 	// 헤더 포인트		
 	@RequestMapping("/point.do")
 	public @ResponseBody BasicVO header_point(HttpSession session) {
@@ -89,5 +121,7 @@ public class BasicController {
 //		sessionList.remove(session);
 //		session.invalidate();
 //	}
+	
+	
 
 }
