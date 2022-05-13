@@ -16,7 +16,7 @@ public interface Board_view_DAO {
 	
 	public int selectReplyAmount(int post_no);
 
-	public void insertChosenUser(HashMap<String, Integer> map);
+	public void insertChosenUser(HashMap<String, Long> map);
 
 	public void deleteChosenUser(HashMap<String, Integer> map);
 

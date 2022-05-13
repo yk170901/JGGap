@@ -15,7 +15,7 @@ public interface Board_view_Service {
 	
 	public List<Board_view_VO_reply> viewReplyList(int post_no);
 
-	public void chooseUser(HashMap<String, Integer> map);
+	public void chooseUser(HashMap<String, Long> map);
 	
 	public void cancelUser(HashMap<String, Integer> map);
 

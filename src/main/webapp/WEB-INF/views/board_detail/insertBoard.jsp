@@ -63,8 +63,6 @@
 		</form>
 	</div>
 	
-	<hr>
-	
 	<%@ include file="/WEB-INF/views/basic/footer.jsp" %>
 </body>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
