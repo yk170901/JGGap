@@ -34,6 +34,10 @@ public class RecordController {
 	@RequestMapping("/record_check.do")
 	public String record_check(RecordVO recordVO) throws IOException, InterruptedException {
 		System.out.println(recordVO.getSummoner_id());
+		RecordVO vo = recordService.record_user(recordVO);
+    	if (vo != null) {
+    		recordVO = vo;
+    	} 
 		String command = "C:\\Users\\grood\\.conda\\envs\\JGGap\\python.exe";  // 명령어
     	String arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\checking_id.py"; // 인자
     	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id());
@@ -43,7 +47,7 @@ public class RecordController {
     	builder.redirectError(Redirect.INHERIT);    	
     	builder.redirectErrorStream(true);
     	Process process = builder.start();
-    	int exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림
+    	int exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림    	
     	BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
     	String result = br.readLine();
     	System.out.println("result : "+result);
@@ -51,15 +55,14 @@ public class RecordController {
     	  // 비정상 종료
     	  System.out.println("서브 프로세스가 비정상 종료되었다.");
     	}
-    	
-    	RecordVO vo = recordService.record_lol_info(recordVO);
+    	vo = recordService.record_lol_info(recordVO);
     	System.out.println("if 전, VO " + vo);
     	if (result.equals("success") && vo == null) {
 			// 소환사명이 있고 db에 값이 없을때 riot api 전적 insert
 			System.out.println("소환사명 있고 DB 없음" + vo);
 			arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\insert_lol.py";
 			builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), String.valueOf(recordVO.getUser_no()));
-			System.out.println("1" + String.valueOf(recordVO.getUser_no()).getClass());
+			System.out.println("1" + String.valueOf(recordVO.getUser_no()));
 			builder.redirectError(Redirect.INHERIT);    
 			System.out.println("2");
 	    	builder.redirectErrorStream(true);
@@ -71,6 +74,7 @@ public class RecordController {
 	    	br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
 	    	System.out.println("6");
 	    	result = br.readLine();
+	    	System.out.println(result);
 	    	if(exitVal != 0) {
 	    	  // 비정상 종료
 	    	  System.out.println("서브 프로세스가 비정상 종료되었다.");    	    	  			
@@ -114,6 +118,7 @@ public class RecordController {
     	  // 비정상 종료
     	  System.out.println("서브 프로세스가 비정상 종료되었다.");
     	}
+    	process.destroy();
     	String encodedSum = URLEncoder.encode(recordVO.getSummoner_id(), "UTF-8");
     	return "redirect:/record/record.do?summoner_id="+encodedSum;
 	}
