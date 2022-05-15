@@ -37,6 +37,9 @@ public class RecordController {
 		String command = "C:\\Users\\grood\\.conda\\envs\\JGGap\\python.exe";  // 명령어
     	String arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\checking_id.py"; // 인자
     	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id());
+    	System.out.println(command);
+    	System.out.println(arg);
+    	System.out.println(recordVO.getSummoner_id());
     	builder.redirectError(Redirect.INHERIT);    	
     	builder.redirectErrorStream(true);
     	Process process = builder.start();
@@ -50,17 +53,23 @@ public class RecordController {
     	}
     	
     	RecordVO vo = recordService.record_lol_info(recordVO);
-    	System.out.println("if 전, VO" + vo);
-    	if (result.equals("success") && vo.getSummoner_id() == null) {
+    	System.out.println("if 전, VO " + vo);
+    	if (result.equals("success") && vo == null) {
 			// 소환사명이 있고 db에 값이 없을때 riot api 전적 insert
 			System.out.println("소환사명 있고 DB 없음" + vo);
 			arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\insert_lol.py";
-			builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), String.valueOf(vo.getUser_no()));
-			builder.redirectError(Redirect.INHERIT);    	
+			builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), String.valueOf(recordVO.getUser_no()));
+			System.out.println("1" + String.valueOf(recordVO.getUser_no()).getClass());
+			builder.redirectError(Redirect.INHERIT);    
+			System.out.println("2");
 	    	builder.redirectErrorStream(true);
+	    	System.out.println("3");
 	    	process = builder.start();
+	    	System.out.println("4");
 	    	exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림
+	    	System.out.println("5");
 	    	br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
+	    	System.out.println("6");
 	    	result = br.readLine();
 	    	if(exitVal != 0) {
 	    	  // 비정상 종료
@@ -95,7 +104,6 @@ public class RecordController {
 		String command = "C:\\Users\\grood\\.conda\\envs\\JGGap\\python.exe";  // 명령어
     	String arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\update_lol.py"; // 인자
     	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), recordVO.getGameid(), String.valueOf(recordVO.getUser_no()));
-    	builder.redirectOutput(Redirect.INHERIT);
     	builder.redirectError(Redirect.INHERIT);
     	builder.redirectErrorStream(true);
     	Process process = builder.start();

@@ -6,8 +6,8 @@ import lombok.Data;
 public class RecordVO {
 
 	// User_Info
-		private int user_no;
-		private String summoner_id;
+		int user_no;
+		String summoner_id;
 		private String profile_icon;
 		
 	// LOL_Info
