@@ -447,6 +447,15 @@ hr{
 	height: 100%;
 }
 
+.summoner-record-image-rune {
+	width:80%;
+	height:80%;
+}
+.summoner-record-image-rune2 {
+	width:70%;
+	height:70%;
+}
+
 .champion-level {
 	position: absolute;
 	font-size: 12px;
@@ -470,6 +479,8 @@ hr{
 	width: 24px;
 	height: 24px;
 	display: block;
+	border-radius: 50%;
+	background: black;
 }
 
 .stat-champion-spell + .stat-champion-spell,

@@ -319,7 +319,7 @@ body {
 	right: -50px;
 	z-index: 1;
 	background: #F46119;
-	padding: 10px 0 10px 0;
+	padding: 10px;
 	color: white;
 	border-radius: 2rem;
 }
@@ -352,6 +352,11 @@ body {
 
 .board-list tr td a {
 	color:black;
+	width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block
 }
 
 

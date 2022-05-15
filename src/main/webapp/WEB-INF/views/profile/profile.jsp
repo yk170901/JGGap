@@ -99,7 +99,7 @@
 					<ul class="badges-list">
 						<c:forEach items="${profile_badge }" var="badge">
 							<li>
-								<img class="badges"src="/resources/imgs/profile_icon/${badge.badge_file }.png" alt="badge">
+								<img class="badges"src="/resources/imgs/badge/${badge.badge_file }.png" alt="badge">
 								<div class="badges-info">
 					    			<h3>${badge.badge_name }</h3>
 					    			<div>"${badge.badge_require }"</div>

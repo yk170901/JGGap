@@ -99,10 +99,10 @@ content += '									</div>'
 content += '								</div>'
 content += '								<div class="stat-champion-runes">'
 content += '									<div class="stat-champion-rune">'
-content += '										<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/spell/SummonerExhaust.png">'
+content += '										<img class="summoner-record-image-rune" src="/resources/imgs/perk/'+data[record].primary_perk+'.png">'
 content += '									</div>'
 content += '									<div class="stat-champion-rune">'
-content += '										<img class="summoner-record-image" src="http://ddragon.leagueoflegends.com/cdn/12.8.1/img/spell/SummonerExhaust.png">'
+content += '										<img class="summoner-record-image-rune2" src="/resources/imgs/perk/'+data[record].sub_perk+'.png">'
 content += '									</div>'
 content += '								</div>'
 content += '							</div>'
@@ -144,7 +144,7 @@ content += '							<div class="item-item-boxs">'
 content += '								<div class="item-item-box">'
 content += '										<div class="item">'
 			if(data[record].item0 == 0) {
-content += '											<img style="backgroun:white">'				
+content += '											<img src="/resources/imgs/no_item.png">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item0 +'.png">'
@@ -152,7 +152,7 @@ content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/
 content += '										</div>'
 content += '										<div class="item">'
 			if(data[record].item1 == 0) {
-content += '											<img style="backgroun:white">'				
+content += '											<img src="/resources/imgs/no_item.png">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item1 +'.png">'
@@ -160,7 +160,7 @@ content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/
 content += '										</div>'
 content += '										<div class="item">'
 			if(data[record].item2 == 0) {
-content += '											<img style="backgroun:white">'				
+content += '											<img src="/resources/imgs/no_item.png">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item2 +'.png">'
@@ -168,7 +168,7 @@ content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/
 content += '										</div>'
 content += '										<div class="item">'
 			if(data[record].item3 == 0) {
-content += '											<img style="backgroun:white">'				
+content += '											<img src="/resources/imgs/no_item.png">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item3 +'.png">'
@@ -176,7 +176,7 @@ content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/
 content += '										</div>'
 content += '										<div class="item">'
 			if(data[record].item4 == 0) {
-content += '											<img style="backgroun:white">'				
+content += '											<img src="/resources/imgs/no_item.png">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item4 +'.png">'
@@ -184,7 +184,7 @@ content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/
 content += '										</div>'
 content += '										<div class="item">'
 			if(data[record].item5 == 0) {
-content += '											<img style="backgroun:white">'				
+content += '											<img src="/resources/imgs/no_item.png">'				
 			}
 			else {
 content += '											<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item5 +'.png">'
@@ -195,7 +195,7 @@ content += '								</div>'
 content += '								<div class="item-item-box2">'
 content += '									<div class="item">'
 			if(data[record].item6 == 0) {
-content += '										<img style="backgroun:white">'				
+content += '										<img src="/resources/imgs/no_item.png">'				
 			}
 			else {
 content += '										<img alt="item" src="https://ddragon.leagueoflegends.com/cdn/12.8.1/img/item/'+ data[record].item6 +'.png">'
