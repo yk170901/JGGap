@@ -33,7 +33,6 @@ public class RecordController {
 	// 존재하는 소환사명인지 확인
 	@RequestMapping("/record_check.do")
 	public String record_check(RecordVO recordVO) throws IOException, InterruptedException {
-		System.out.println(recordVO.getSummoner_id());
 		RecordVO vo = recordService.record_user(recordVO);
     	if (vo != null) {
     		recordVO = vo;
@@ -41,16 +40,13 @@ public class RecordController {
 		String command = "C:\\Users\\grood\\.conda\\envs\\JGGap\\python.exe";  // 명령어
     	String arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\checking_id.py"; // 인자
     	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id());
-    	System.out.println(command);
-    	System.out.println(arg);
-    	System.out.println(recordVO.getSummoner_id());
     	builder.redirectError(Redirect.INHERIT);    	
     	builder.redirectErrorStream(true);
     	Process process = builder.start();
     	int exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림    	
     	BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
     	String result = br.readLine();
-    	System.out.println("result : "+result);
+    	System.out.println("result1 : "+result);
     	if(exitVal != 0) {
     	  // 비정상 종료
     	  System.out.println("서브 프로세스가 비정상 종료되었다.");
@@ -62,19 +58,13 @@ public class RecordController {
 			System.out.println("소환사명 있고 DB 없음" + vo);
 			arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\insert_lol.py";
 			builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), String.valueOf(recordVO.getUser_no()));
-			System.out.println("1" + String.valueOf(recordVO.getUser_no()));
 			builder.redirectError(Redirect.INHERIT);    
-			System.out.println("2");
 	    	builder.redirectErrorStream(true);
-	    	System.out.println("3");
 	    	process = builder.start();
-	    	System.out.println("4");
 	    	exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림
-	    	System.out.println("5");
 	    	br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
-	    	System.out.println("6");
 	    	result = br.readLine();
-	    	System.out.println(result);
+	    	System.out.println("result2 : " + result);
 	    	if(exitVal != 0) {
 	    	  // 비정상 종료
 	    	  System.out.println("서브 프로세스가 비정상 종료되었다.");    	    	  			
@@ -113,7 +103,8 @@ public class RecordController {
     	Process process = builder.start();
     	int exitVal = process.waitFor();  // 자식 프로세스가 종료될 때까지 기다림
     	BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream())); // 서브 프로세스가 출력하는 내용을 받기 위해
-    	String line;
+    	String result = br.readLine();
+    	System.out.println("result3 : " + result);
     	if(exitVal != 0) {
     	  // 비정상 종료
     	  System.out.println("서브 프로세스가 비정상 종료되었다.");
