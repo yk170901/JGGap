@@ -70,7 +70,7 @@ $('#submitReport').on("click", function() {
 		title: '처리 완료',
 		text: '정상처리 되었습니다.'
 		}).then(function(){
-	location.href='/admin/report_history.jsp';
+	document.location.href=document.location.href;
 	})
 	})
 	
