@@ -41,7 +41,10 @@
 							<td class="help"><input type="hidden" class="help2" value="${list.report_target}"><c:out value="${list.report_target}"/></td>
 							<td><a href="http://localhost:8080/board_view/viewBoard.do?post_no=${list.report_url}"><c:out value="${list.report_title}"/></a></td>
 							<td class="help2"><c:out value="${list.report_content}"/></td>
-							<td><button class="receipt" value="${list.report_url}">신고 처리</button></td>			
+							<td>
+							<c:if test="${list.report_cnt == 0 }"><button class="receipt" value="${list.report_url}">신고 처리</button></c:if>
+							<c:if test="${list.report_cnt == 1 }"><button id="report_ok" disabled="disabled">신고 처리</button></c:if>
+							</td>			
 							<td class="nodes"><input type="hidden" name="cnt" id="cnt" value="${list.report_cnt}"/>
 							<c:if test="${list.report_cnt == 0 }">대기 중</c:if>
 							<c:if test="${list.report_cnt == 1 }">처리 완료</c:if>							

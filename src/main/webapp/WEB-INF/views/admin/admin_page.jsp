@@ -25,16 +25,16 @@
 			<div id="user_list_table">
 				<table class="list">
 					<tr>
-						<th width="200px">아이디</th>
-						<th width="200px">아이디 번호</th>
-						<th width="300px">닉네임</th>
-						<th width="110px">연락처</th>
+						<th width="150px">아이디</th>
+						<th width="100px">아이디 번호</th>
+						<th width="250px">닉네임</th>
+						<th width="100px">연락처</th>
 						<th width="100px">레벨</th>
 						<th width="100px">Point</th>
-						<th width="230px">아이콘 번호</th>
-						<th width="150px">명예 점수</th>
+						<th width="80px">아이콘</th>
+						<th width="80px">명예 점수</th>
 						<th width="110px">가입 날짜</th>
-						<th width="110px">밴</th>
+						<th width="50px">밴</th>
 					</tr>
 					<c:forEach items="${list}" var="list">
 						<tr id="test">
