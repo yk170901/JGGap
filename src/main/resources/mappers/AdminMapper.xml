@@ -72,7 +72,7 @@
   	<update id="accepted_second" parameterType="admin">
   		UPDATE USER_INFO
   		SET REPORT_STATUS = REPORT_STATUS+1
-  		WHERE REPORT_TARGET = #{report_target}
+  		WHERE USER_NO = #{report_target}
   	</update>
  
   </mapper>
