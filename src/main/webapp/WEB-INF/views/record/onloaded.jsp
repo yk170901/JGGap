@@ -28,7 +28,7 @@
 			<div class="summoner-info-body">
 				<div><img class="summoner-profile-icon" src="/resources/imgs/profile_icon/${record.profile_icon }.png"></div>
 				<div class="summoner-summoner-id" value="${record.summoner_id }">${record.summoner_id }</div>
-				<form class="summoner-button" method="post" action="record_update.do">
+				<form class="summoner-button" method="post" action="/record/record_update.do">
 					<input type="hidden" name="summoner_id" value="${record.summoner_id }">
 					<input type="hidden" name="gameid" value="${game_id[0].gameid }">					
 					<input type="hidden" name="user_no" value="${record.user_no }">					
