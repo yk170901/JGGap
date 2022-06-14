@@ -1,0 +1,611 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+.banned-li{
+	text-align: left;
+}
+
+.friend {
+	text-align: left;
+}
+
+body {
+    color: #353535;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.31;
+    text-align: center;
+}
+
+.page-main {
+    scrollbar-color: #F46119 #E2EBEC;
+    scrollbar-width: thin !important;
+    -moz-appearance: none !important;
+    display: inline-block;
+    position: relative;
+    margin : 120px auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    padding: 0px 50px;
+    height: 100%;
+    max-width: 1160px;
+    min-width: 1160px;
+}
+
+
+.page-body {
+    width: 100%;
+    height: 100%;
+}
+
+    
+.profile-body,
+.badges-body,
+.boardlist-body,
+.choices-body,
+.friends-body {
+	padding: 20px 30px;
+    border-radius: 10px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;     
+    }
+    
+.profile-body,
+.badges-body {
+	background-color: rgb(224, 224 ,224);
+	
+}
+    
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.profile-info-icon {
+    width: 120px;
+    height: 120px;
+    margin-right: 20px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+}
+
+.profile-icon {
+	width: 100%;
+	height: 100%;
+}
+
+.profile-icon-text {
+	font-size: 150%;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	top: 50%;
+	left: 50%;
+	padding-top: 35%;
+	transform: translate(-50%, -50%);
+	color:white;
+	opacity: 0;
+}
+
+.profile-icon-text:hover,
+.profile-icon-text:focus,
+.profile-icon-text:active {
+	cursor: pointer;
+	opacity: 0.8;
+	background: gray;
+	
+}
+
+
+.profile-user {
+    display: block;
+    position: relative;
+}
+
+.profile-user-title {
+    color: #353535;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.profile-user-level {
+	width: 35px;
+	height: 28px;
+	transform: translateY(-2px);
+}
+
+.profile-user-text {
+    margin-top: 12px;
+    color: #353535;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.36;
+}
+
+.profile-button-body {
+	width: 130px;
+}
+
+    
+.profile-button {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-family: 'Noto Sans KR', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: none;
+    transition: all 0.25s linear;
+    text-decoration: none; 
+    background: #F46119;
+    color: #fff;
+    width: 120px;
+}
+
+.profile-button:hover,
+.profile-button:focus,
+.profile-button:active {
+    text-decoration: none;
+    color:white;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transform: scale(1.05);
+	transition: transform .2s;
+}
+.profile-button-text {
+    text-align: center;
+}
+
+.badges-head,
+.boardlist-head,
+.choices-head,
+.friends-head {
+	margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.badges-title,
+.boardlist-title,
+.choices-title,
+.friends-title {
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.boardlist-title small {
+	font-size: 20px;
+	color:gray;
+}
+
+.badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align:center;
+}
+
+.badges-list li {
+    margin: 0 10px 10px 0;
+    width: 100px;
+    position: relative;
+}
+
+.badges-list li:last-child {
+    margin-right: 0;
+}
+
+.badges {
+	width: 90px;
+	height: 90px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.choices-list,
+.friends-list {
+	width: 100%;
+/* 	text-align: center; */
+	border:none;
+}
+
+.choice-list tbody,
+.friends-list tbody {
+	border:none;
+}
+
+.choices-list tr,
+.friends-list tr {
+	border: none;
+	height: 45px;
+	outline: none;
+}
+
+.td-line {
+	border: 1px solid black;
+}
+
+.td-empty {
+	width: 2%;
+}
+
+.choice-tiers,
+.friends-profile-icon {
+	width : 45px;
+	padding: 0px 5px 0px 5px;
+}
+
+.friends-profile-icon {
+	border-radius: 50%;
+}
+
+.td-tier,
+.td-profile-icon {
+	width: 15%;
+}
+
+.td-honorrate{
+	width: 7%;
+}
+
+.td-summonerid {
+	width: 22%;
+	text-align: left;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+
+.choice-level,
+.friends-level {
+	width: 30px;
+	height: 22px;
+	transform: translateY(-2px);
+}
+
+.choice-record {
+	color: black;
+}
+
+.choices_check,
+.friends_check {
+	width : 4%;
+	height: 2%;
+	padding: 0px 5px 0px 5px;
+	border-radius:50%;
+}
+
+.choices_check:hover,
+.friends_check:hover {
+	cursor:pointer;
+	filter:grayscale(100%);
+}
+
+.choices_check img,
+.friends_check img {
+	width:45px;
+}
+
+.badges-info {
+	width: 200px;
+	display: none;
+	position: absolute;
+	font-size: 14px;
+	top: -75px;
+	right: -50px;
+	z-index: 1;
+	background: #F46119;
+	padding: 10px;
+	color: white;
+	border-radius: 2rem;
+}
+
+.badges-info > h3 {
+	color: white;
+	margin-bottom: 15px;
+}
+
+.badges-list > li > img:hover {
+	border: 2px solid #F46119;
+}
+
+.badges-list > li > img:hover + .badges-info {
+	display: block;
+}
+
+.board-list {
+	width: 100%;
+}
+
+.board-list tr{
+	height: 40px;
+	text-align: center;
+}
+
+.board-list tr:first-child{
+	background-color: rgb(224,224,224);
+}
+
+.board-list tr td a {
+	color:black;
+	width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block
+}
+
+
+/* 비밀번호 변경 모달 부분 */
+.chgpwd-modal-container {
+	width: 450px;
+	height: 480px;
+ 	margin: auto;
+  	background:#fff;
+  	border-radius: 25px;
+  	border: none;
+}
+
+.chgpwd-modal-content,
+.chgicon-modal-content,
+.honor-modal-content {
+	padding: 20px;
+	border-radius: 25px;
+  	border: none;
+}
+
+.chgpwd-modal-header {
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.chgpwd-modal-header button:hover,
+.chgicon-modal-header button:hover,
+.honor-modal-header button:hover {
+	background-color: rgb(224,224,224);
+}
+
+
+.modal_layer {
+	position:fixed;
+ 	top:0;
+  	left:0;
+  	width:100%;
+  	height:100%;
+ 	background:rgba(0, 0, 0, 0.5);
+  	z-index:-1;
+}
+
+.chgpwd-modal-close {
+	border-radius: 1rem;
+	border: 0px;
+	font-size: 1rem;
+}
+
+.form-box {
+	border: none;
+	border-radius: 15px;
+	background-color: rgb(224, 224 ,224);
+	width: 100%;
+	height: 45px;
+	padding: 0px 20px;	
+}
+
+.form-box:focus {
+	border:none;
+}
+
+#form-box-focus:focus {
+	outline: 0px;
+}
+
+.form-box
+
+.password_form div:last-child {
+	border-top: 1px solid rgb(224,224,224);
+}
+
+.form-submit {
+	margin-top: 15px;
+	border: 1px solid rgb(224,224,224);
+	border-radius: 15px;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 45px;	
+	background: #F46119;
+	color : white;
+}
+
+.form-submit:hover {
+	background: #d04b0a;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* 프로필 아이콘 변경 부분 모달 */
+
+.chgicon-modal-container {
+	width: 600px;
+	height: 620px;
+ 	margin: auto;
+  	background:#fff;
+  	border-radius: 25px;
+  	border: none;
+}
+
+
+.chgicon-modal-header,
+.honor-modal-header {
+	display:block;
+	text-align: center;
+}
+
+.chgicon-modal-title {
+	display: inline;
+	padding: 10px;
+	color: white;
+	background: #F46119;
+	border-radius : 2rem;
+}
+
+.chgicon-modal-body {
+	padding: 10px
+}
+
+.profile-icon-list {
+	padding: 10px;
+}
+
+.modal-profile-icon-body {
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	margin: 10px 23px;
+}
+
+.modal-profile-icon {
+	border-radius: 50%;
+}
+
+.modal-profile-icon:hover {
+	cursor:pointer;
+}
+
+.profile-icon-radio {
+	display:none;
+}
+
+
+.profile-icon-radio:checked + label img {
+	border: 5px groove #F46119;
+	
+}
+
+.chgicon-modal-button {
+	margin-top:15px;
+	display:flex;
+	justify-content: center;
+}
+
+.chgicon-modal-button-body {
+	width : 250px;
+	height: 45px;
+	text-align: center;
+}
+
+.chgicon-modal-button-body button {
+	margin: 0px 10px;
+	width:90px;
+	height: 45px;
+	border-radius: 2rem;
+	border: 1px solid rgb(224,224,224);
+	background: #F46119;
+	color : white;
+}
+
+/* 명예 점수 주기 모달 */
+
+.honor-modal-container {
+	width: 600px;
+	height: 350px;
+ 	margin: auto;
+  	background:#fff;
+  	border-radius: 25px;
+  	border: none;
+}
+
+.honor-modal-title,
+.honor-modal-title-text {
+	display: inline;
+	padding: 5px;
+	color: black;
+}
+
+.honor-modal-body {
+	padding: 10px
+}
+
+.honor-form-group {
+	display: inline-block;
+	width: 500px;
+	height: 100px;
+}
+
+
+.honor-modal-button {
+	margin-top:15px;
+	display:flex;
+	justify-content: center;
+}
+
+.honor-modal-button-body {
+	width : 250px;
+	height: 45px;
+	text-align: center;
+}
+
+.honor-modal-button-body button {
+	margin: 0px 10px;
+	width:90px;
+	height: 45px;
+	border-radius: 2rem;
+	border: 1px solid rgb(224,224,224);
+	background: #F46119;
+	color : white;
+}
+
+.honor-form-group {
+	width: 540px;
+	text-align:center;
+}
+
+.honor-star {
+	position: relative;
+	font-size: 4rem;
+	color: #ddd;
+	text-align: center;
+}
+
+.honor-star input {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.honor-star span {
+	width: 0;
+	position: absolute;
+	left: 0;
+	color: red;
+	overflow: hidden;
+	pointer-events: none;
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
+  
+  <mapper namespace="Board_detail_DAO">
+ 
+  	<insert id="insertAdminPost" parameterType="board_detail">
+		INSERT INTO admin_board(post_no, user_no, board_title, board_text, board_date)
+			VALUES (admin_post_no.NEXTVAL, #{user_no}, #{board_title},#{board_text}, current_date)
+  	</insert>
+  	
+  	<insert id="insertPost" parameterType="board_detail">
+		INSERT INTO board(post_no, user_no, board_title, board_text, game_map, game_mode, board_date, cru_pre, cru_max, summoner_id)
+			VALUES (post_no.NEXTVAL, #{user_no}, #{board_title},#{board_text},#{game_map},
+			 <choose>
+				<when test = 'game_map == "소환사의 협곡"'>
+					 #{game_mode}
+				</when>
+				<otherwise>
+					NULL
+				</otherwise>
+			</choose>
+			, current_date, (SELECT count(*)
+								FROM choice
+								WHERE user_no = #{user_no})+1, #{cru_max}, (SELECT summoner_id
+																		FROM user_info
+																		WHERE user_no = #{user_no}))
+  	</insert>
+  	
+  	<update id="updateAdminPost" parameterType="board_detail">
+  		UPDATE admin_board
+  			SET board_title = #{board_title},
+  				board_text = #{board_text}
+  			WHERE post_no = #{post_no}
+  	</update>
+  	
+  	<update id="updatePost" parameterType="board_detail">
+  		UPDATE board
+  			SET board_title = #{board_title},
+  				board_text = #{board_text}
+  			WHERE post_no = #{post_no}
+  	</update>
+  	
+  	<select id="getAdminPostNo" parameterType="int" resultType="int">
+  		SELECT post_no
+			FROM (SELECT post_no
+		  		FROM admin_board
+		  		WHERE user_no = #{value}
+		  		ORDER BY post_no DESC)
+		  	WHERE ROWNUM = 1
+  	</select>
+  
+  	
+  	<select id="getPostNo" parameterType="int" resultType="int">
+  		SELECT post_no
+			FROM (SELECT post_no
+		  		FROM board
+		  		WHERE user_no = #{value}
+		  		ORDER BY post_no DESC)
+		  	WHERE ROWNUM = 1
+  	</select>
+  
+  	<select id="getAdminBoard" parameterType="int" resultType="board_detail">
+  		SELECT *
+  			FROM admin_board
+  			WHERE post_no = #{value}
+  	</select>
+  
+  	<select id="getBoard" parameterType="int" resultType="board_detail">
+  		SELECT *
+  			FROM board
+  			WHERE post_no = #{value}
+  	</select>
+  
+  	<delete id="deleteAdminPost" parameterType="int">
+  		DELETE FROM admin_board
+  			WHERE post_no = #{value}
+  	</delete>
+  	
+  	<update id="deletePost" parameterType="int">
+  		UPDATE board
+  			SET deleted = 1
+  			WHERE post_no = #{value}
+  	</update>
+  </mapper>

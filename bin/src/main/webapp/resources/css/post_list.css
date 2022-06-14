@@ -1,0 +1,244 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+@font-face {
+    font-display: swap;
+    src: url("../fonts/SegoeUI.woff") format("woff"), url("../fonts/SegoeUI.woff2") format("woff2");
+    font-family: "SegoeUI";
+    font-style: normal;
+    font-weight: 400;
+}
+
+	.total_div:before{
+		font-family: "SegoeUI";
+		font-weight: 400;
+	}
+	
+	/* 체크박스 */
+	*, *:before, *:after {
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  box-sizing: border-box;
+	  margin: 0;
+	  padding: 0;
+	}
+	
+	.middle_div {
+		min-height: 750px;
+		max-width: 1200px;
+		margin: auto;
+	}
+	
+	
+	.form-group {
+	  display: block;
+	  font-size: 13px;
+	}
+	
+	.form-group input {
+	  padding: 0;
+	  height: initial;
+	  width: initial;
+	  margin-bottom: 0;
+	  display: none;
+	  cursor: pointer;
+	}
+	
+	.form-group label {
+	  position: relative;
+	  cursor: pointer;
+	}
+	
+	/* 체크 박스 부분*/
+	.form-group label:before {
+	  content:'';
+	  -webkit-appearance: none;
+	  background-color: transparent;
+	  border: 2px solid black;
+	  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+	  padding: 6px;
+	  display: inline-block;
+	  position: relative;
+	  vertical-align: middle;
+	  cursor: pointer;
+	  margin-right: 5px;
+	  margin-top: -3px;
+	}
+	
+	.form-group input:checked + label:after {
+	  content: '';
+	  display: block;
+	  position: absolute;
+	  top: 2px;
+	  left: 5px;
+	  width: 6px;
+	  height: 11px;
+	  border: solid black;
+	  border-width: 0 2px 2px 0;
+	  transform: rotate(45deg);
+	}
+
+
+
+	/* 셀렉트 조회 부분*/
+	.total_div {
+		width: 100%;
+		max-height: 1200px;
+		background-color: #e5e5e5;
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	.main_hr {
+		border-bottom: 2px solid black;
+		padding-bottom: 6px;
+		margin-bottom: 17px;
+		font-size: 17px;
+	}
+	
+	.map_game_gategory {
+		width: 100%;
+		display: inline-block;
+		padding: 30px;
+		font-size: 13px;
+		background-color: white;
+		border: 1px solid #F97B3B; 
+		border-radius: 14px;
+		box-shadow: inset 0 0 5px #F98B54;
+		margin: 10% auto 0% auto;
+	}
+
+	.map {
+		width: 260px;
+		float: left;
+		margin-right: 45px;
+		padding-top: 10px;
+	}
+	
+	.game {
+		width: 280px;
+		float: left;
+		padding-top: 10px;
+	}
+	
+	.map_category,.game_category {
+		font-weight: bold;
+	}
+	
+	.searchsubmit {
+		margin-top: 24px;
+		margin-left: 68px;
+		float: left;
+		display: table;
+	}
+	
+	.radius {
+		border: 1px solid black;
+		border-left: none;
+		height: 100px;
+	}
+	
+	#text_ra {
+		height: 39px;
+		padding-left: 8px;
+	}
+	
+	#search_value {
+		width: 104px;
+		height: 39px;
+		border: 1px solid black;
+		padding-left: 8px;
+	}
+	
+	#search_value:focus {
+		outline: 0px;
+	}
+	
+	#text_ra:focus {
+		outline: 0px;
+	}
+	
+	
+	/* 유저 게시판 조회*/
+	.table_list {
+		margin-top: 10px;
+		width: 1200px;
+		display: inline-block;
+		background-color: white;	
+		border-radius: 15px;
+	}
+	
+	td{
+		padding: 7px;
+	}
+	
+	th{
+		border-top: 2px solid rgb(230,224,224);
+		border-bottom: 2px solid rgb(230,224,224);
+		padding: 7px;
+	}
+	
+	table {
+		border: 1px solid rgb(230,224,224);
+		border-left: none;	
+		border-right: none;
+		border-top: none;
+		border-collapse: collapse;
+		font-size: 13px;
+	}
+	
+	tr {
+		border-bottom: 0.5px solid rgb(230,224,224);
+	}
+	
+	
+	/* 관리자 리스트 */
+	.admin_td {
+		font-weight: bold;
+		color: rgb(244, 97, 25);
+		background-color: rgb(244,244,244);
+		font-size: 13px;
+	}
+	
+	.admin_td_left {
+		border-left: 3px solid red;
+	}
+	
+	
+	/* 페이징 단추 번호 */
+	.paging_total {
+		display: inline-block;
+		margin: 0 auto;
+	}
+	
+	/* 티어 이미지 */
+	.tier_img {
+		width: 24px;
+	}
+	
+	
+	.button_submit {
+		padding: 11px 17px 9px 18px;
+		border: 1px solid black;
+		border-left: none;
+		background-color: rgb(244,244,244);
+	}
+	
+	
+	.a_tag_title {
+		color: black;
+		font-weight: normal;
+		text-decoration: none;
+		font-size: 13px;
+		width: 150px;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    display: inline-block;
+	    white-space: nowrap;
+	}
+	
+	
+/* 	.map_category .game_category { */
+/* 		font-family: 'Noto Sans KR', sans-serif !important; */
+/* 	} */
+	
+	

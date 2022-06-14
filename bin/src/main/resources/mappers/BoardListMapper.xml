@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
+  
+  <mapper namespace="Board_list_DAO">
+  
+  	<!-- 관리자 게시판 조회 기능 -->
+  	<select id="admin_boardList" resultType="board_list">
+  		SELECT post_no, user_no, board_title, TO_CHAR(board_date,'MM-DD') as board_date
+  		FROM admin_board ORDER BY post_no DESC
+  	</select>  	
+  	
+  	<!-- 게시글 카운터 -->
+  	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM board WHERE DELETED=0
+	</select>
+	
+	
+	
+	 <!-- 게시글 카운터 검색페이징 -->
+  	<select id="searchCountBoard" resultType="int">
+		SELECT DISTINCT COUNT(*) FROM board
+		<where>
+			<!-- 소환사의 협곡/칼바람 나락 null 체크  -->
+			<if test="search_check_map != null">
+				game_map in
+				<foreach collection="search_check_map" index="index" item="item" open="(" close=")" separator=",">
+					#{item}
+				</foreach>
+				AND
+			</if>
+			
+			<!-- 일반/솔로 랭크/자유 랭크 null 체크 -->
+			<if test="search_check_mode != null">
+				game_mode in
+				<foreach collection="search_check_mode" index="index" item="item" open="(" close=")" separator=",">
+					#{item}
+				</foreach>
+				AND
+			</if>
+			
+			<!-- 검색 키워드 null 체크 -->
+			<if test="searchKeyword != null">
+				${searchCondition} LIKE '%'||#{searchKeyword}||'%'
+				AND
+	  		</if>
+	  		DELETED=0
+		</where>
+
+	</select>
+
+
+  	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectBoard" parameterType="paging" resultType="board_list" >
+		SELECT * FROM (
+			SELECT ROWNUM RN, A.* FROM (
+				SELECT DISTINCT
+					a.SITE_LEVEL,
+					trunc(a.honor_rate/a.honor_cnt,1) as honor_rate,
+					b.SOLO_TIER,
+					b.FREE_TIER,
+					b.SOLO_TIER_GRADE,
+					b.FREE_TIER_GRADE,
+					c.POST_NO,
+					c.BOARD_TITLE,
+					DECODE(( TO_CHAR(CURRENT_DATE,'YYYYMMDD')-TO_CHAR(c.BOARD_DATE,'YYYYMMDD')),  
+					        1, TO_CHAR(c.BOARD_DATE,'HH24:MI'),
+					        0, TO_CHAR(c.BOARD_DATE,'HH24:MI'),
+					        TO_CHAR(c.BOARD_DATE,'MM-DD') ) AS BOARD_DATE,
+					c.CRU_MAX,
+					c.CRU_PRE,
+					c.GAME_MODE,
+					c.GAME_MAP,
+					c.SUMMONER_ID
+					FROM USER_INFO a, LOL_INFO b, BOARD c
+					<where>
+						a.USER_NO = b.USER_NO AND b.USER_NO = c.USER_NO
+						<!-- 소환사의 협곡/칼바람 나락 null 체크  -->
+						<if test="search_check_map != null">
+							AND game_map in
+							<foreach collection="search_check_map" index="index" item="item" open="(" close=")" separator=",">
+								#{item}
+							</foreach>
+							AND
+						</if>
+						
+						<!-- 일반/솔로 랭크/자유 랭크 null 체크 -->
+						<if test="search_check_mode != null">
+							game_mode in
+							<foreach collection="search_check_mode" index="index" item="item" open="(" close=")" separator=",">
+								#{item}
+							</foreach>
+							AND
+						</if>
+						
+						<!-- 검색 키워드 null 체크 -->
+						<if test="searchKeyword != null">
+							${searchCondition} LIKE '%'||#{searchKeyword}||'%'
+				  		</if>
+				  			AND DELETED=0
+					</where>					
+				ORDER BY POST_NO DESC )
+				A )
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+  	
+  		
+  </mapper>

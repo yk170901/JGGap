@@ -1,0 +1,267 @@
+-- 글쓴이 정보 가져오기
+-- select * from user_info where user_no in (select user_no from board where post_no in 4);
+
+-- 유저번호가 10001인 유저가 작성한 게시글의 댓글 가져오기
+-- select user_no from user_info where user_no in (select choice from choice where user_re_no in (select user_re_no from re_board where post_no in (select post_no from board where user_no in 10001)));
+
+
+-- User_info(회원정보) 관련
+create sequence user_no start with 10000 minvalue 10000;
+create table user_info(
+    user_no number,
+    summoner_id varchar2(50),
+    user_id varchar2(50),
+    user_pwd varchar2(100),
+    encoded_pwd varchar2(100),
+    phone_number varchar2(20),
+    site_level number,
+    total_point number,
+    usable_point number,
+    honor_rate number,
+    honor_cnt number,
+    profile_icon varchar2(999),
+    ban number,
+    join_date date,
+    report_status number default 0,
+    
+    constraint user_no primary key (user_no),
+    constraint summoner_id unique (summoner_id)
+);
+
+-- Board(게시글) 관련
+create sequence post_no start with 1 minvalue 1;
+create table board(
+    post_no number,
+    user_no number,
+    summoner_id varchar2(50),
+    board_title varchar2(100),
+    board_text varchar2(4000),
+    game_map varchar2(20),
+    game_mode varchar2(20),
+    board_date date,
+    cru_max number,
+    cru_pre number default 1,
+    deleted number default 0,
+    
+    constraint user_no_board foreign key(user_no) references user_info(user_no),
+    constraint post_no primary key (post_no)
+);
+
+-- re_board(댓글) 관련
+create sequence user_re_no start with 1 minvalue 1;
+create table re_board(
+    user_re_no number,
+    post_no number,
+    re_date date,
+    re_text varchar2(999),
+    user_no NUMBER,
+
+    constraint user_re_no primary key (user_re_no),
+    constraint post_no_re foreign key(post_no) references board(post_no),
+    CONSTRAINT user_no_re FOREIGN key(user_no) REFERENCES USER_info(user_no)
+);
+
+-- choice(채택) 관련
+create sequence user_cho_no start with 1 minvalue 1;
+create table choice(
+    user_cho_no number,
+    user_no number,
+    choice_user_no number,
+    cho_tiimestamp number,
+    
+    constraint user_cho_no primary key (user_cho_no),
+    constraint user_re_no_cho foreign key(user_no) references user_info(user_no)
+);
+
+-- lol_info(롤 개인정보) 관련
+create sequence lol_info_no start with 1 minvalue 1;
+create table lol_info(
+    lol_info_no number,
+    user_no number,
+    summoner_id varchar2(50),
+    solo_tier varchar2(15),
+    solo_tier_grade varchar2(10),
+    free_tier varchar2(15),
+    free_tier_grade varchar2(10),
+    solo_win number,
+    solo_lose number,
+    solo_LP number,
+    free_win number,
+    free_lose number,
+    free_LP number,
+    
+    constraint lol_info_no_pk primary key(lol_info_no),
+    constraint user_no_lol foreign key(user_no) references user_info(user_no)
+);
+
+
+DROP TABLE lol_record ;
+
+-- lol_record(전적) 관련
+create sequence record_no start with 1 minvalue 1;
+create table lol_record(
+    record_no number,
+    summoner_id varchar2(50),
+    game_mode varchar2(20),
+    champion_name varchar2(30),
+    champion_level number,
+    eaten_minions number,
+    primary_perk number,
+    sub_perk number,
+    vision_point number,
+    ward_cnt number,
+    item0 number,
+    item1 number,
+    item2 number,
+    item3 number,
+    item4 number,
+    item5 number,
+    item6 number,
+    kills number,
+    deaths number,
+    assists number,
+    win varchar2(10),
+    spell_fir varchar2(20),
+    spell_sec varchar2(20),
+    gameid varchar(20),
+    lane varchar2(50),
+    game_duration varchar2(50),
+    blue_champion1 varchar2(70),
+    blue_summonerid1 varchar2(70),
+    blue_champion2 varchar2(70),
+    blue_summonerid2 varchar2(70),
+    blue_champion3 varchar2(70),
+    blue_summonerid3 varchar2(70),
+    blue_champion4 varchar2(70),
+    blue_summonerid4 varchar2(70),
+    blue_champion5 varchar2(70),
+    blue_summonerid5 varchar2(70),
+    red_champion1 varchar2(70),
+    red_summonerid1 varchar2(70),
+    red_champion2 varchar2(70),
+    red_summonerid2 varchar2(70),
+    red_champion3 varchar2(70),
+    red_summonerid3 varchar2(70),
+    red_champion4 varchar2(70),
+    red_summonerid4 varchar2(70),
+    red_champion5 varchar2(70),
+    red_summonerid5 varchar2(70),
+    game_timestamp number,
+    team_total_kills number,
+    champion_name_KR varchar2(30),
+    multi_killed varchar2(20),
+    
+    constraint record_no_pk primary key(record_no)
+);
+
+-- manager_report(신고내역) 관련
+create sequence report_no start with 1 minvalue 1;
+create table manager_report(
+    report_no number,
+    reporter varchar2(50),
+    report_target varchar2(50),
+    report_url varchar2(999),
+    report_result varchar2(999),
+    report_title varchar2(100),
+    report_content varchar2(999),
+    report_cnt number default 0,
+    
+    constraint report_no primary key(report_no)
+);
+
+
+-- friend(친구) 관련
+create sequence user_friend_no start with 1 minvalue 1;
+create table friend(
+    user_friend_no number,
+    user_no number,
+    friend varchar2(50),
+    status varchar2(30),
+    
+    constraint user_friend_no primary key (user_friend_no),
+    constraint user_no_friend foreign key(user_no) references user_info(user_no)
+);
+
+
+-- friend_chat(친구 채팅) 관련
+/* create sequence friend_chat_no start with 1 minvalue 1;
+create table friend_chat(
+    friend_chat_no number,
+    user_friend_no number,
+    log_file varchar2(999),
+    
+    constraint friend_chat_no primary key (friend_chat_no),
+    constraint user_friend_no_chat foreign key(user_friend_no) references friend(user_friend_no)
+); */
+
+-- admin_board(관리자-게시글) 관련
+create sequence admin_post_no start with 1 minvalue 1;
+create table admin_board(
+    post_no number,
+    user_no number,
+    board_title varchar2(100),
+    board_text varchar2(4000),
+    board_date date,
+
+    constraint user_no_admin_board foreign key(user_no) references user_info(user_no),
+    constraint admin_post_no primary key (post_no)
+);
+
+
+-- shop_items(포인트샵 상품) 관련
+create table shop_items (
+    item_name varchar2(100),
+    item_remain number,
+    item_total number,
+    item_per number,
+    item_point number,
+    item_file varchar2(100),
+    
+    constraint item_name_pk primary key(item_name)
+);
+
+-- shop_apply(포인트샵 응모) 관련
+create sequence apply_no minvalue 0 start with 0;
+create table shop_apply(
+    apply_no number,
+    user_no number,
+    item_name varchar2(100),
+    
+    constraint apply_no primary key(apply_no),
+    constraint user_no_fk foreign key(user_no) references user_info(user_no),
+    constraint item_name_fk foreign key(item_name) references shop_items(item_name)
+);
+
+insert into shop_items
+values('필트오버 블리츠크랭크 스킨', 10, 10, 5, 10, 'shop_blitzskin');
+insert into shop_items
+values('연미복 브랜드 스킨', 10, 10, 5, 20, 'shop_brandskin');
+insert into shop_items
+values('펄스건 이즈리얼 스킨', 10, 10, 3, 50, 'shop_ezrealskin');
+insert into shop_items
+values('마법공학 녹턴 스킨', 10, 10, 5, 30, 'shop_nocturneskin');
+insert into shop_items
+values('누누와 윌럼프 봇 스킨', 10, 10, 5, 40, 'shop_nunuskin');
+insert into shop_items
+values('리베로 람머스 스킨', 10, 10, 5, 10, 'shop-rammusskin');
+
+-- badge(뱃지) 관련
+create table badge (
+    badge_file varchar2(100),
+    badge_name varchar2(30),    
+    badge_require varchar2(1000),
+    
+    constraint badge_file_pk primary key(badge_file)
+);
+
+-- user_badge(뱃지 소유) 관련
+create sequence badge_no start with 1;
+create table user_badge (
+    badge_no number,
+    user_no number,
+    badge_file varchar2(30),
+    
+    constraint badge_no_pk primary key(badge_no),
+    constraint user_no_badge foreign key(user_no) references user_info(user_no),
+    constraint badge_file_fk foreign key(badge_file) references badge(badge_file)
+);

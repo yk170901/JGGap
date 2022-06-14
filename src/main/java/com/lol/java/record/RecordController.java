@@ -37,8 +37,8 @@ public class RecordController {
     	if (vo != null) {
     		recordVO = vo;
     	} 
-		String command = "C:\\Users\\grood\\.conda\\envs\\JGGap\\python.exe";  // 명령어
-    	String arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\checking_id.py"; // 인자
+		String command = "C:\\Users\\yk170\\.conda\\envs\\JGGap\\python.exe";  // 명령어
+    	String arg = "C:\\Users\\yk170\\PycharmProjects\\JGGapv2\\checking_id.py"; // 인자
     	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id());
     	builder.redirectError(Redirect.INHERIT);    	
     	builder.redirectErrorStream(true);
@@ -56,7 +56,7 @@ public class RecordController {
     	if (result.equals("success") && vo == null) {
 			// 소환사명이 있고 db에 값이 없을때 riot api 전적 insert
 			System.out.println("소환사명 있고 DB 없음" + vo);
-			arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\insert_lol.py";
+			arg = "C:\\Users\\yk170\\PycharmProjects\\JGGapv2\\insert_lol.py";
 			builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), String.valueOf(recordVO.getUser_no()));
 			builder.redirectError(Redirect.INHERIT);    
 	    	builder.redirectErrorStream(true);
@@ -95,8 +95,8 @@ public class RecordController {
 	// 전적 갱신 버튼 클릭시
 	@RequestMapping("/record_update.do")
 	public String record_update(RecordVO recordVO) throws IOException, InterruptedException {		
-		String command = "C:\\Users\\grood\\.conda\\envs\\JGGap\\python.exe";  // 명령어
-    	String arg = "C:\\Users\\grood\\PycharmProjects\\JGGapv2\\update_lol.py"; // 인자
+		String command = "C:\\Users\\yk170\\.conda\\envs\\JGGap\\python.exe";  // 명령어
+    	String arg = "C:\\Users\\yk170\\PycharmProjects\\JGGapv2\\update_lol.py"; // 인자
     	ProcessBuilder builder = new ProcessBuilder(command, arg, recordVO.getSummoner_id(), recordVO.getGameid());
     	builder.redirectError(Redirect.INHERIT);
     	builder.redirectErrorStream(true);

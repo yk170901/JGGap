@@ -126,15 +126,15 @@ def lol_record(name):
                                 else:
                                     participant["red_champion" + str(cnt-4)] = matches["info"]["participants"][cnt]["championName"]
 
-                    JDBC_Driver = 'C:/Users/grood/Desktop/JGGapProject/ojdbc10-full/ojdbc10.jar'
-                    jar = r'C:/Users/grood/Desktop/JGGapProject/ojdbc10-full/ojdbc10.jar'
+                    JDBC_Driver = 'C:/Users/yk170/Desktop/ojdbc10-full/ojdbc10.jar'
+                    jar = r'C:/Users/yk170/Desktop/ojdbc10-full/ojdbc10.jar'
                     args = '-Djava.class.path=%s' % jar
 
                     if not jpype.isJVMStarted():
                         jpype.startJVM(jpype.getDefaultJVMPath(), args)
 
                     conn = jp.connect('oracle.jdbc.driver.OracleDriver',
-                                      'jdbc:oracle:thin:@dbjunglegap_high?TNS_ADMIN=C:/Users/grood/Desktop/JGGapProject/Wallet_DBJungleGap',
+                                      'jdbc:oracle:thin:@dbjunglegap_high?TNS_ADMIN=C:/Users/yk170/Desktop/Wallet_DBJungleGap',
                                       ["admin", "Ab1234567890"], JDBC_Driver)
                     cursor = conn.cursor()
                     sql = "insert into lol_record values (RECORD_NO.nextval, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"%("'"+name+"'", "'"+detail["game_mode"]+"'", "'"+detail["champion_name"]+"'", str(detail["champ_level"]), str(detail["eaten_minions"]), str(detail["primary_perk"]), str(detail["sub_perk"]), str(detail["vision_point"]), str(detail["ward_cnt"]), str(detail["item0"]), str(detail["item1"]), str(detail["item2"]), str(detail["item3"]), str(detail["item4"]), str(detail["item5"]), str(detail["item6"]), str(detail["kills"]), str(detail["deaths"]), str(detail["assists"]), "'"+str(detail["win"])+"'", "'"+detail["spell_fir"]+"'", "'"+detail["spell_sec"]+"'", "'"+detail["game_id"]+"'", "'"+detail["lane"]+"'", "'"+detail["game_duration"]+"'", "'"+participant["blue_champion1"]+"'", "'"+participant["blue_summonerId1"]+"'", "'"+participant["blue_champion2"]+"'", "'"+participant["blue_summonerId2"]+"'", "'"+participant["blue_champion3"]+"'", "'"+participant["blue_summonerId3"]+"'", "'"+participant["blue_champion4"]+"'", "'"+participant["blue_summonerId4"]+"'", "'"+participant["blue_champion5"]+"'", "'"+participant["blue_summonerId5"]+"'", "'"+participant["red_champion1"]+"'", "'"+participant["red_summonerId1"]+"'", "'"+participant["red_champion2"]+"'", "'"+participant["red_summonerId2"]+"'", "'"+participant["red_champion3"]+"'", "'"+participant["red_summonerId3"]+"'", "'"+participant["red_champion4"]+"'", "'"+participant["red_summonerId4"]+"'", "'"+participant["red_champion5"]+"'", "'"+participant["red_summonerId5"]+"'", detail["game_timestamp"], detail["team_total_kills"], "'"+detail["champion_name_KR"]+"'", "'"+detail["multi_killed"]+"'")
@@ -229,8 +229,8 @@ def insert_lol_info(name, user_no):
         print("DB 드가기 전")
 
         # oracle jdbc 파일 경로 및 class 경로 설정
-        JDBC_Driver = 'C:/Users/grood/Desktop/JGGapProject/ojdbc10-full/ojdbc10.jar'
-        jar = r'C:/Users/grood/Desktop/JGGapProject/ojdbc10-full/ojdbc10.jar'
+        JDBC_Driver = 'C:/Users/yk170/Desktop/ojdbc10-full/ojdbc10.jar'
+        jar = r'C:/Users/yk170/Desktop/ojdbc10-full/ojdbc10.jar'
         args = '-Djava.class.path=%s' % jar
         # java class path 설정
         if not jpype.isJVMStarted():
@@ -238,7 +238,7 @@ def insert_lol_info(name, user_no):
             print("jpype 실행")
         # oracle 접근
         conn = jp.connect('oracle.jdbc.driver.OracleDriver',
-                          'jdbc:oracle:thin:@dbjunglegap_high?TNS_ADMIN=C:/Users/grood/Desktop/JGGapProject/Wallet_DBJungleGap',
+                          'jdbc:oracle:thin:@dbjunglegap_high?TNS_ADMIN=C:/Users/yk170/Desktop/Wallet_DBJungleGap',
                           ["admin", "Ab1234567890"], JDBC_Driver)
         cursor = conn.cursor()
         print("cursor 연결")

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
+
+<mapper namespace="RecordDAO">
+
+	<!-- 전적 회원,롤 정보 가져오기 -->
+	<select id="record_user" parameterType="record" resultType="record">
+		SELECT user_no, summoner_id, profile_icon
+		FROM user_info
+		WHERE summoner_id = #{summoner_id}
+	</select>
+	
+	<select id="record_lol_info" parameterType="record" resultType="record">
+		SELECT *
+		FROM lol_info
+		WHERE summoner_id = #{summoner_id}
+	</select>
+	
+	<!-- 롤 전적 가져오기 -->
+	<select id="record_score" parameterType="record" resultType="record">
+		SELECT a.*
+		FROM (
+			SELECT *
+			FROM lol_record
+			WHERE summoner_id = #{summoner_id}
+			order by game_timestamp desc
+			) a
+		<![CDATA[where rownum <= 10]]>
+	</select>
+	
+	<!-- 전적 더보기 버튼 -->
+	<select id="record_more" parameterType="hashmap" resultType="record">
+		SELECT *
+		FROM (
+			SELECT rownum num, a.*
+			FROM (
+				SELECT *
+				FROM LOL_RECORD
+				WHERE summoner_id = #{summoner_id}
+				ORDER BY game_timestamp desc 
+			) a
+		)
+		WHERE num BETWEEN #{begin_num} AND #{begin_num} +9
+	</select>
+	
+	<!-- 시각화를 위한 데이터 가져오기 -->
+	<!-- 20판 전체승률 -->
+	<select id="record_chart" parameterType="String" resultType="record">
+			SELECT SUM(a.kills) AS kills,SUM(a.deaths) AS deaths,SUM(a.assists) AS assists,SUM(a.team_total_kills) AS team_total_kills, count(CASE WHEN win='True' THEN 1 END) AS win_cnt, count(CASE WHEN win='False' THEN 1 END) AS lose_cnt
+			FROM (
+				SELECT win,kills, deaths, assists,team_total_kills
+				FROM lol_record
+				WHERE summoner_id=#{summoner_id}
+				order by game_timestamp desc
+				) a
+			<![CDATA[where rownum <= 20]]>
+	</select>
+	
+	<!-- 20판 챔피언별승률 -->
+	<select id="record_champion_rate" parameterType="String" resultType="record">
+		SELECT count(a.champion_name) AS champion_cnt, a.champion_name, a.champion_name_KR, count(CASE WHEN win='True' THEN 1 END) AS win_cnt, sum(a.kills) AS kills, sum(a.deaths) AS deaths, sum(a.assists) AS assists
+		FROM (
+			SELECT champion_name, win, kills, deaths, assists, champion_name_KR
+			FROM LOL_RECORD
+			WHERE summoner_id =#{summoner_id}
+			ORDER BY game_timestamp DESC
+		) a
+		<![CDATA[where rownum <= 20]]>
+		GROUP BY a.CHAMPION_NAME, a.champion_name_KR
+		ORDER BY champion_cnt desc
+	</select>
+	
+	<!-- 20판 라인별승률 -->
+	<select id="record_lane_rate" parameterType="String" resultType="record">
+		SELECT count(a.lane) AS lane_cnt, a.lane, count(CASE WHEN win='True' THEN 1 END) AS win_cnt
+		FROM (
+			SELECT lane, win,game_mode
+			FROM LOL_RECORD
+			WHERE summoner_id =#{summoner_id}
+			ORDER BY game_timestamp DESC
+		) a
+		<![CDATA[where rownum <= 20]]> AND a.game_mode != '칼바람 나락' AND a.lane != 'NONE'
+		GROUP BY a.lane
+		ORDER BY lane_cnt desc
+	</select>
+	
+	
+</mapper>

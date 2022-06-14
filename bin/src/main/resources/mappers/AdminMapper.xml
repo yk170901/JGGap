@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
+  
+  <mapper namespace="AdminDAO">
+  
+  	<!-- 회원 정보 조회 페이징 -->
+  	<select id="user_list" parameterType="admin_paging" resultType="admin">
+  		SELECT * 
+			FROM ( SELECT ROWNUM RN, A.* FROM (
+       				SELECT USER_NO, USER_ID, SUMMONER_ID, PHONE_NUMBER, SITE_LEVEL, USABLE_POINT, HONOR_RATE, BAN, JOIN_DATE
+				    FROM USER_INFO
+				    ORDER BY USER_NO DESC ) A )
+				WHERE RN BETWEEN #{start} AND #{end}
+  	</select>
+  	
+  	<!-- 회원 카운터 -->
+  	<select id="member_count" resultType="int">
+		SELECT COUNT(*)
+		FROM USER_INFO
+	</select>
+	
+	<!-- 업적 부여 -->
+	<insert id="grant" parameterType="admin">
+		INSERT INTO
+		USER_BADGE
+		VALUES 
+		(badge_no.nextval, #{user_no}, #{badge_file} )
+	</insert>
+	
+	<!-- 유저의 업적 보유 유무 -->
+	<select id="overlap_check" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM USER_BADGE
+		WHERE USER_NO = #{user_no} AND BADGE_FILE = #{badge_file}
+	</select>
+  	
+  	<!-- 업적 부여를 위한 아이디에서 고유 번호 변환 -->
+  	<select id="conversion" parameterType="String" resultType="int">
+  		SELECT USER_NO
+  		FROM USER_INFO
+  		WHERE USER_ID = #{user_id}
+  	</select>
+  	
+  	<!-- 총 신고 내역 -->
+  	<select id="report_count" resultType="int">
+  	 	SELECT COUNT(*)
+  	 	FROM MANAGER_REPORT
+  	</select>
+  	
+  	<!-- 신고 내역 페이징 -->
+  	<select id="report_list" parameterType="admin_paging" resultType="admin">
+  		SELECT * 
+			FROM ( SELECT ROWNUM RN, A.* FROM (
+       				SELECT REPORT_NO, REPORTER, REPORT_TARGET, REPORT_URL, REPORT_TITLE, REPORT_CONTENT, REPORT_CNT
+				    FROM MANAGER_REPORT
+				    ORDER BY REPORT_CNT,REPORT_NO ) A )
+				WHERE RN BETWEEN #{start} AND #{end}
+  	</select>
+  	
+  	<!-- 신고 접수 -->
+  	<update id="accepted_first" parameterType="admin">
+  		UPDATE MANAGER_REPORT
+  		SET REPORT_RESULT = #{report_result},
+  		REPORT_CNT = 1
+  		WHERE REPORT_TARGET = #{report_target} AND REPORT_URL = #{report_url}
+  	</update>
+  	
+  	<!-- 경고 누적 -->
+  	<update id="accepted_second" parameterType="admin">
+  		UPDATE USER_INFO
+  		SET REPORT_STATUS = REPORT_STATUS+1
+  		WHERE USER_NO = #{report_target}
+  	</update>
+ 
+  </mapper>

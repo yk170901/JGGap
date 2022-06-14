@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
+  
+  <mapper namespace="ShopDAO">
+  	
+	<!-- 사용가능 포인트 조회 -->
+  	<select id="usablePoints" parameterType="int" resultType="shop">
+  		SELECT usable_point AS usable_points from user_info where user_no=#{value }
+  	</select>
+
+	<!-- 상품테이블 전체조회 -->
+	<select id="getItems" resultType="shop">
+		SELECT * FROM shop_items ORDER BY item_name
+	</select>
+	
+	<!-- 상품 추가 -->
+<!-- 	<insert id="insertItem" parameterType="shop"> -->
+<!-- 		INSERT INTO shop_items  -->
+<!-- 		values(#{item_name}, #{item_remain}, #{item_total}, #{item_per}, #{item_point}, #{item_file}) -->
+<!-- 	</insert> -->
+
+	<!-- 응모횟수 조회 -->
+	<select id="getCounts" parameterType="shop" resultType="shop">
+		SELECT item_name, CASE count(*) WHEN 1 THEN 0 ELSE count(*)/2 END item_applied
+		FROM ((SELECT item_name, user_no 
+				FROM (SELECT item_name, user_no 
+						FROM shop_apply 
+						WHERE user_no=#{user_no }) 
+					FULL OUTER JOIN shop_items
+					USING (item_name))
+			UNION ALL
+				(SELECT a.item_name, a.user_no 
+				FROM (SELECT item_name, user_no 
+						FROM shop_apply 
+						WHERE user_no=#{user_no }) a 
+					LEFT JOIN shop_items b
+	                ON a.item_name = b.item_name))
+		GROUP BY item_name
+	</select>
+	
+	<!-- 응모버튼 클릭 -->
+	<insert id="insertApply" parameterType="shop">
+		INSERT INTO shop_apply
+		VALUES(apply_no.nextval, #{user_no}, #{item_name})
+	</insert>
+	
+	<update id="updateItem" parameterType="shop">
+		UPDATE shop_items 
+		SET item_remain = #{item_remain}
+		WHERE item_name = #{item_name} 
+	</update>
+	
+	<update id="updateUser" parameterType="shop">
+		UPDATE user_info
+		SET usable_point = usable_point - #{item_point}
+		WHERE user_no = #{user_no}
+	</update>
+  	
+  </mapper>

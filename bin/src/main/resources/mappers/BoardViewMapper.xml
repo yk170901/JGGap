@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 위 문장으로 아래는 mapper의 내용이 됨 -->
+  
+  <mapper namespace="Board_view_DAO">
+  
+  	<resultMap type="board_view" id="BoardMap">
+  		<id property="post_no" column="post_no"></id>
+ 		<result property="user_no" column="user_no"/>
+ 		<result property="board_title" column="board_title"/>
+ 		<result property="board_text" column="board_text"/>
+ 		<result property="game_map" column="game_map"/>
+ 		<result property="game_mode" column="game_mode"/>
+ 		<result property="board_date" column="board_date"/>
+ 		<result property="cru_pre" column="cru_pre"/>
+ 		<result property="cru_max" column="cru_max"/>
+  			
+  		<association property="writer" javaType="board_view_writer">
+  			<id property="user_no" column="user_no"></id>
+  			<result property="honor_rate" column="honor_rate"/>
+  			<result property="summoner_id" column="summoner_id"/>
+  			<result property="solo_tier" column="solo_tier"/>
+  			<result property="solo_tier_grade" column="solo_tier_grade"/>
+  			<result property="free_tier" column="free_tier"/>
+  			<result property="free_tier_grade" column="free_tier_grade"/>
+  			<result property="site_level" column="site_level"/>
+  			<result property="ban" column="ban"/>
+  		</association>
+  	</resultMap>
+  	
+  	  
+  	<resultMap type="board_view_reply" id="ReplyListMap">
+  		<id property="user_re_no" column="user_re_no"></id>
+ 		<result property="user_no" column="user_no"/>
+ 		<result property="post_no" column="post_no"/>
+ 		<result property="re_text" column="re_text"/>
+ 		<result property="re_date" column="re_date"/>
+ 		<result property="user_no" column="user_no_replier"/>
+  		
+  		<association property="replier" javaType="board_view_replier">
+  			<id property="user_no" column="user_no"></id>
+  			<result property="honor_rate" column="honor_rate"/>
+  			<result property="summoner_id" column="summoner_id"/>
+  			<result property="solo_tier" column="solo_tier"/>
+  			<result property="solo_tier_grade" column="solo_tier_grade"/>
+  			<result property="free_tier" column="free_tier"/>
+  			<result property="free_tier_grade" column="free_tier_grade"/>
+  			<result property="site_level" column="site_level"/>
+  		</association>
+  		
+  	</resultMap>
+ 
+	<insert id="insertReply" parameterType="board_view_reply">
+		INSERT INTO re_board(user_re_no, post_no, re_text, re_date, user_no)
+			VALUES(user_re_no.NEXTVAL, #{post_no}, #{re_text}, current_date, #{user_no})
+	</insert>
+	
+	<select id="selectAdminBoard" parameterType="int" resultType="board_view">
+		SELECT *
+			FROM admin_board
+			WHERE post_no = #{value}
+	</select>
+
+	<select id="selectBoard" resultMap="BoardMap" parameterType="int" resultType="board_view" >
+		SELECT DISTINCT u.honor_rate, u.summoner_id, u.site_level, u.ban,
+					l.solo_tier, l.solo_tier_grade, l.free_tier, l.free_tier_grade,
+					b.post_no, b.board_title, b.board_text, b.game_map, b.game_mode, TO_CHAR(b.board_date, 'YYYY/MM/DD/HH24:MI') as board_date, b.cru_pre, b.cru_max, b.user_no
+			FROM user_info u,
+					lol_info l,
+					board b
+			WHERE b.post_no = #{value}
+					AND u.user_no = b.user_no
+					and l.user_no = b.user_no
+	</select>
+	
+	<select id="selectChoiceList" parameterType="int" resultType="int" >
+		SELECT choice_user_no
+			FROM choice
+			WHERE user_no = (SELECT user_no
+								FROM board
+								WHERE post_no = #{value})
+	</select>
+	
+	<select id="selectReplyList" resultMap="ReplyListMap" parameterType="int" resultType="board_view_reply">
+		SELECT b.post_no, 
+				re.user_re_no, re.re_text, TO_CHAR(re.re_date, 'YYYY/MM/DD/HH24:MI') as re_date, re.user_no, re.user_no,
+					u_re.honor_rate, u_re.summoner_id, u_re.site_level,
+					l_re.solo_tier, l_re.solo_tier_grade, l_re.free_tier, l_re.free_tier_grade
+			FROM board b,
+					re_board re,
+					user_info u_re,
+					lol_info l_re
+			WHERE b.post_no = #{value}
+					and re.post_no = b.post_no
+					AND re.user_no = u_re.USER_NO 
+					AND l_re.USER_NO = re.USER_NO
+			ORDER BY re.re_date
+	</select>
+	
+	<select id="selectReplyAmount" parameterType="int" resultType="int">
+		SELECT count(*)
+			FROM re_board
+			WHERE post_no = #{value}
+	</select>
+	
+	<insert id="insertChosenUser" parameterType="hashmap">
+		INSERT INTO choice
+			VALUES(user_cho_no.NEXTVAL, #{writer_no}, #{chosen_user_no}, #{timestamp})
+	</insert>
+	
+	
+	<delete id="deleteChosenUser" parameterType="hashmap">
+		DELETE FROM choice
+			WHERE user_no =  #{writer_no}
+			AND   choice_user_no = #{chosen_user_no}
+	</delete>
+	
+	<update id="increaseCruPre" parameterType="int">
+		UPDATE board
+			SET cru_pre = cru_pre+1
+			WHERE user_no = #{value}
+	</update>
+	
+	<update id="decreaseCruPre" parameterType="int">
+		UPDATE board
+			SET cru_pre = cru_pre-1
+			WHERE user_no = #{value}
+	</update>
+  
+	<insert id="insertReport" parameterType="hashmap">
+		INSERT INTO manager_report (report_no, reporter, report_target, report_url, report_title, report_content)
+			VALUES(report_no.NEXTVAL, ${reporter}, ${report_target}, #{report_url}, #{report_title}, #{report_content})
+	</insert>
+	
+	
+	<delete id="deleteReply" parameterType="int">
+		DELETE FROM re_board 
+			WHERE user_re_no = #{value}
+	</delete>
+  
+	<insert id="insertFriendRequest" parameterType="hashmap">
+		INSERT INTO friend
+			VALUES(user_friend_no.NEXTVAL, ${asking_user_no}, #{asked_user_id}, '대기')
+	</insert>
+	
+	<select id="selectFriendsAndStatuses" parameterType="int" resultType="board_view_friend">
+		SELECT *
+			FROM friend
+			WHERE user_no = #{value}
+				OR friend = (SELECT summoner_id
+								FROM user_info
+								WHERE user_no = #{value})
+	</select>
+	
+	<update id="acceptFriendRequest" parameterType="hashmap">
+		UPDATE friend
+			SET status = '친구'
+			WHERE user_no = (SELECT user_no
+								FROM user_info
+								WHERE summoner_id = #{friend})
+				AND friend = (SELECT summoner_id
+								FROM user_info
+								WHERE user_no = ${user_no})
+	</update>
+	
+	<insert id="insertFriendAfterAcceptance" parameterType="hashmap">
+		INSERT INTO friend
+			VALUES(user_friend_no.NEXTVAL, ${user_no}, #{friend}, '친구')
+	</insert>
+	
+	<delete id="deleteFriend" parameterType="hashmap">
+		DELETE friend
+			WHERE ( user_no = ${user_no} AND friend = #{friend} )
+				OR ( user_no = (SELECT user_no
+									FROM user_info
+									WHERE summoner_id = #{friend})
+					AND
+					 friend = (SELECT summoner_id
+					 				FROM user_info
+					 				WHERE user_no = ${user_no})
+					 )
+			
+	</delete>
+	
+	<delete id="cancelFriendRequest" parameterType="hashmap">
+		DELETE friend
+			WHERE user_no = ${user_no} 
+				AND friend = #{friend}
+	</delete>
+	
+  </mapper>

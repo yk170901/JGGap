@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <!-- 위 문장 덕에 아래에 mybatis 기능을 사용 가능 -->
+ 
+ <configuration>
+ 	<typeAliases>
+ 		<typeAlias alias="admin" type="com.lol.java.admin.AdminVO"/>
+ 		<typeAlias alias="admin_paging" type="com.lol.java.admin.Paging_VO"/>
+ 		<typeAlias alias="basic" type="com.lol.java.basic.BasicVO"/>
+		<typeAlias alias="board_detail" type="com.lol.java.board_detail.Board_detail_VO"/>
+		<typeAlias alias="board_view" type="com.lol.java.board_view.Board_view_VO"/>
+		<typeAlias alias="board_view_writer" type="com.lol.java.board_view.Board_view_VO_writer"/>
+		<typeAlias alias="board_view_reply" type="com.lol.java.board_view.Board_view_VO_reply"/>
+		<typeAlias alias="board_view_replier" type="com.lol.java.board_view.Board_view_VO_replier"/>
+		<typeAlias alias="board_view_friend" type="com.lol.java.board_view.Board_view_VO_friend"/>
+		<typeAlias alias="board_list" type="com.lol.java.board_list.Board_list_VO"/>
+		<typeAlias alias="paging" type="com.lol.java.board_list.Paging_VO"/>
+		<typeAlias alias="chat" type="com.lol.java.chat.ChatVO"/>
+		<typeAlias alias="profile" type="com.lol.java.profile.ProfileVO"/>
+		<typeAlias alias="record" type="com.lol.java.record.RecordVO"/>
+		<typeAlias alias="shop" type="com.lol.java.shop.ShopVO"/>
+		<typeAlias alias="user" type="com.lol.java.user.UserVO"/>
+		
+ 	</typeAliases> 
+ </configuration> 
