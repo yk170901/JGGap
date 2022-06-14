@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="/resources/imgs/favicon.ico" type="image/x-icon">
 </head>
 <body>
-	<div style="text-align: center;">
+	<div style="text-align: center; width: 100%">
 		<img src="../resources/imgs/error/404.jpg">
 	</div>
 </body>
